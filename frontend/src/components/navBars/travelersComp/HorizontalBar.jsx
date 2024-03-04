@@ -1,20 +1,20 @@
 import Wrapper from '../../../assets/wrappers/travelersWrappers/HorizaontalNavBar'
-
+import { NavLink } from 'react-router-dom'
 const HorizontalBar = () => {
   return (
     <Wrapper>
       <ul className="navBar">
         <li>
-          <a href="opt1">opt1</a>
+          <NavLink to=".">opt1</NavLink>
         </li>
         <li>
-          <a href="opt2">opt2</a>
+          <NavLink to="opt2">opt2</NavLink>
         </li>
         <li>
-          <a href="opt3">opt3</a>
+          <NavLink to="opt3">opt3</NavLink>
         </li>
         <li>
-          <a href="opt4">opt4</a>
+          <NavLink to="opt4">opt4</NavLink>
         </li>
       </ul>
     </Wrapper>

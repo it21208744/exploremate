@@ -6,7 +6,7 @@ const Wrapper = styled.div`
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: grey; //background color
+    background-color: grey;
     position: absolute;
     height: 100%;
     overflow: auto;
@@ -18,18 +18,17 @@ const Wrapper = styled.div`
     display: block;
     padding: 16px;
     text-decoration: none;
-    color: #000; //text color
+    color: #000;
   }
 
   .sidebar a:hover {
-    background-color: #ddd; //hover color
+    background-color: #ddd;
   }
 
-  //active sidebar css
-  .sidebar a.active {
+  /* .sidebar a.active {
     background-color: #4caf50;
     color: white;
-  }
+  } */
 `
 
 export default Wrapper

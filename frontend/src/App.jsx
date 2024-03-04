@@ -27,7 +27,6 @@ const router = createBrowserRouter([
         element: <TravelerDashBoardLayout />,
         children: [
           { index: true, element: <Opt1 /> },
-          { path: 'opt1', element: <Opt1 /> },
           { path: 'opt2', element: <h1>TravelerOpt2</h1> },
           { path: 'opt3', element: <h1>TravelerOpt3</h1> },
           { path: 'opt4', element: <h1>TravelerOpt4</h1> },
