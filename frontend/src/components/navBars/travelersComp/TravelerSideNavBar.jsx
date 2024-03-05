@@ -1,9 +1,15 @@
 import Wrapper from '../../../assets/wrappers/travelersWrappers/TravelerSideNavBar'
 import { NavLink } from 'react-router-dom'
+import { CiMenuBurger } from 'react-icons/ci'
 const TravelerSideNavBar = () => {
   return (
     <Wrapper>
       <ul className="sidebar">
+        <li>
+          <button type="button" className="closeMenuBtn">
+            <CiMenuBurger />
+          </button>
+        </li>
         <li>
           <NavLink to=".">Planner</NavLink>
         </li>

@@ -1,12 +1,15 @@
 import { Outlet } from 'react-router-dom'
 import HorizontalBar from '../../components/navBars/travelersComp/HorizontalBar'
+import Wrapper from '../../assets/wrappers/travelersWrappers/Planner'
 
 const Planner = () => {
   return (
-    <div>
-      <HorizontalBar />
-      <Outlet />
-    </div>
+    <Wrapper>
+      <div className="planner">
+        <HorizontalBar />
+        <Outlet />
+      </div>
+    </Wrapper>
   )
 }
 export default Planner

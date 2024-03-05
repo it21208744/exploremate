@@ -8,9 +8,9 @@ const Wrapper = styled.div`
     overflow: hidden;
     background-color: #333;
     text-align: center;
-    position: absolute;
-    top: 0;
-    left: 50%;
+    position: relative;
+    bottom: 10px;
+    left: 200%;
     transform: translateX(-50%);
   }
 

@@ -1,4 +1,10 @@
+import Wrapper from '../../assets/wrappers/travelersWrappers/PlanOnYourBudget'
+
 const PlanOnYourBudget = () => {
-  return <h1>PlanOnYourBudget</h1>
+  return (
+    <Wrapper>
+      <h1>PlanOnYourBudget</h1>
+    </Wrapper>
+  )
 }
 export default PlanOnYourBudget
