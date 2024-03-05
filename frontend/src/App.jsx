@@ -10,7 +10,12 @@ import {
   TaxiOwnerDashBoard,
   TravelerDashBoardLayout,
 } from './pages'
-import Opt1 from './pages/travelers/Opt1'
+import Planner from './pages/travelers/Planner'
+import PlanOnYourBudget from './pages/travelers/PlanOnYourBudget'
+import Services from './pages/travelers/Services'
+import Profile from './pages/travelers/Profile'
+import Guide from './pages/travelers/Guide'
+import Travelpedia from './pages/travelers/Travelpedia'
 
 const router = createBrowserRouter([
   {
@@ -26,10 +31,18 @@ const router = createBrowserRouter([
         path: 'travelerDashBoard',
         element: <TravelerDashBoardLayout />,
         children: [
-          { index: true, element: <Opt1 /> },
-          { path: 'opt2', element: <h1>TravelerOpt2</h1> },
-          { path: 'opt3', element: <h1>TravelerOpt3</h1> },
-          { path: 'opt4', element: <h1>TravelerOpt4</h1> },
+          {
+            index: true,
+            element: <Planner />,
+          },
+          { path: 'planOnYourBudget', element: <PlanOnYourBudget /> },
+          { path: 'services', element: <Services /> },
+          { path: 'profile', element: <Profile /> },
+
+          //temporary
+          { path: 'guide', element: <Guide /> },
+          { path: 'travelpedia', element: <Travelpedia /> },
+          //temporary
         ],
       },
       {

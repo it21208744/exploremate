@@ -5,17 +5,27 @@ const TravelerSideNavBar = () => {
     <Wrapper>
       <ul className="sidebar">
         <li>
-          <NavLink to=".">opt1</NavLink>
+          <NavLink to=".">Planner</NavLink>
         </li>
         <li>
-          <NavLink to="opt2">opt2</NavLink>
+          <NavLink to="planOnYourBudget">Plan on your budget</NavLink>
         </li>
         <li>
-          <NavLink to="opt3">opt3</NavLink>
+          <NavLink to="services">Services</NavLink>
         </li>
         <li>
-          <NavLink to="opt4">opt4</NavLink>
+          <NavLink to="profile">Profile</NavLink>
         </li>
+
+        {/* temporary */}
+        <li>
+          <NavLink to="guide">guide</NavLink>
+        </li>
+        <li>
+          <NavLink to="travelpedia">travelpedia</NavLink>
+        </li>
+
+        {/* temporary */}
       </ul>
     </Wrapper>
   )

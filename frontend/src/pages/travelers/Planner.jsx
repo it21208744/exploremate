@@ -1,10 +1,12 @@
+import { Outlet } from 'react-router-dom'
 import HorizontalBar from '../../components/navBars/travelersComp/HorizontalBar'
 
-const Opt1 = () => {
+const Planner = () => {
   return (
     <div>
       <HorizontalBar />
+      <Outlet />
     </div>
   )
 }
-export default Opt1
+export default Planner
