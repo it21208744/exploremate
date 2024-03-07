@@ -37,11 +37,7 @@ function MyComponent() {
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      {/* Add Marker component with position prop */}
       <Marker position={center} />
-
-      {/* You can add more markers by creating additional Marker components with different positions */}
-      {/* <Marker position={{ lat: YOUR_LATITUDE, lng: YOUR_LONGITUDE }} /> */}
     </GoogleMap>
   ) : (
     <></>
