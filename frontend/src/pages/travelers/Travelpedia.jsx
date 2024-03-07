@@ -1,4 +1,10 @@
+import GoogleMap from '../../components/GoogleMap/GoogleMap'
+
 const Travelpedia = () => {
-  return <div>Travel pedia</div>
+  return (
+    <div>
+      <GoogleMap />
+    </div>
+  )
 }
 export default Travelpedia
