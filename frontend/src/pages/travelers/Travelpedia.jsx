@@ -1,4 +1,4 @@
 const Travelpedia = () => {
-  return <div>Travelpedia</div>
+  return <div>Travel pedia</div>
 }
 export default Travelpedia
