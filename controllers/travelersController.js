@@ -1,10 +1,14 @@
 import { generatePlans } from '../components/openAI.js'
+import { jsonStringToObject } from '../components/stringToObject.js'
+import { checkWeather } from '../components/weather.js'
 
 export const addPlan = async (req, res) => {
   const { location, dates, type } = req.body
   const plans = await generatePlans(location, dates, type)
+  const plansContent = jsonStringToObject(plans.content)
+  const weather = await checkWeather(location)
 
-  res.send(plans.content)
+  res.json({ plansContent, weather })
 }
 
 export const getAllPlans = (req, res) => {
