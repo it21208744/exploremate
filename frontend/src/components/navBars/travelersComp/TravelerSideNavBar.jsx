@@ -1,13 +1,30 @@
 import Wrapper from '../../../assets/wrappers/travelersWrappers/TravelerSideNavBar'
 import { NavLink } from 'react-router-dom'
 import { CiMenuBurger } from 'react-icons/ci'
+import { useState } from 'react'
+
 const TravelerSideNavBar = () => {
+  const [showSidebar, setShowSidebar] = useState(true)
+
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar)
+    console.log(showSidebar)
+  }
+
   return (
     <Wrapper>
-      <div className="sidebarContainer">
+      <div
+        className={
+          showSidebar ? 'ShowSidebarContainer' : 'HideSidebarContainer'
+        }
+      >
         <ul className="sidebar">
           <li className="menuBtn">
-            <button type="button" className="closeMenuBtn">
+            <button
+              type="button"
+              className="closeMenuBtn"
+              onClick={toggleSidebar}
+            >
               <CiMenuBurger />
             </button>
           </li>

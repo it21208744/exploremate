@@ -1,13 +1,23 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  .sidebarContainer {
+  .ShowSidebarContainer,
+  .HideSidebarContainer {
     position: fixed;
     top: 0;
-    left: 0;
     height: 100%;
     width: 300px;
+    transition: left 0.3s ease, background 0.3s ease;
+  }
+
+  .ShowSidebarContainer {
+    left: 0;
     background: #0b0c10;
+  }
+
+  .HideSidebarContainer {
+    left: -225px;
+    background: transparent;
   }
 
   .navLink {
