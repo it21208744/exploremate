@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  .planOnYourBudgetContainer {
+  .guideContainer {
     position: relative;
     left: 300px;
   }

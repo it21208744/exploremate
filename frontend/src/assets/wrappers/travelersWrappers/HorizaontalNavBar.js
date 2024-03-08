@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  .navBar {
+  /* .navBar {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -29,7 +29,7 @@ const Wrapper = styled.div`
   .navBar li a:hover {
     background-color: #ddd;
     color: black;
-  }
+  } */
 `
 
 export default Wrapper

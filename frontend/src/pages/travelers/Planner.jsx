@@ -5,7 +5,8 @@ import Wrapper from '../../assets/wrappers/travelersWrappers/Planner'
 const Planner = () => {
   return (
     <Wrapper>
-      <div className="planner">
+      <div className="plannerContainer">
+        <h1>Planner</h1>
         <HorizontalBar />
         <Outlet />
       </div>

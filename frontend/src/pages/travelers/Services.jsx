@@ -1,4 +1,12 @@
+import Wrapper from '../../assets/wrappers/travelersWrappers/services'
+
 const Services = () => {
-  return <h1>Services</h1>
+  return (
+    <Wrapper>
+      <div className="servicesContainer">
+        <h1>Services</h1>
+      </div>
+    </Wrapper>
+  )
 }
 export default Services
