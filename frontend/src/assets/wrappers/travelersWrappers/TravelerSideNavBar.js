@@ -1,34 +1,52 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  .sidebar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: grey;
-    position: absolute;
-    height: 100%;
-    overflow: auto;
+  .ShowSidebarContainer,
+  .HideSidebarContainer {
+    position: fixed;
     top: 0;
+    height: 100%;
+    width: 300px;
+    transition: left 0.3s ease, background 0.3s ease;
+  }
+
+  .ShowSidebarContainer {
     left: 0;
+    background: #0b0c10;
   }
 
-  .sidebar a {
-    display: block;
-    padding: 16px;
-    text-decoration: none;
-    color: #000;
+  .HideSidebarContainer {
+    left: -225px;
+    background: transparent;
   }
 
-  .sidebar a:hover {
-    background-color: #ddd;
+  .navLink {
+    position: relative;
+    right: 35px;
+    margin: 10px;
+    padding: 10px;
+    width: 250px;
+    border-radius: 10px;
+    text-align: center;
+
+    color: #0b0c10;
+    transition: color 0.3s;
   }
 
-  /* .sidebar a.active {
-    background-color: #4caf50;
-    color: white;
-  } */
+  /* hover effect doesnt work */
+  .navLink:hover {
+    color: #1f2833;
+  }
+
+  .menuBtn {
+    position: relative;
+    margin-bottom: 40px;
+    left: 190px;
+  }
+
+  ul {
+    list-style: none;
+  }
 `
 
 export default Wrapper
