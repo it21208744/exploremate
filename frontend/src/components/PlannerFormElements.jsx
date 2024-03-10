@@ -1,7 +1,6 @@
 import { Form, useNavigation } from 'react-router-dom'
 import axios from 'axios'
 import PlannerOutput from './PlannerOutput'
-import { useState } from 'react'
 
 export const action = async ({ request }) => {
   const formData = await request.formData()
@@ -31,6 +30,7 @@ const PlannerFormElements = () => {
             name="location"
             className="formInput"
             id="location"
+            required
           />
         </div>
         <div>
@@ -43,7 +43,13 @@ const PlannerFormElements = () => {
           <label htmlFor="days" className="form-label">
             How many days?
           </label>
-          <input type="days" name="days" className="formInput" id="days" />
+          <input
+            type="days"
+            name="days"
+            className="formInput"
+            id="days"
+            required
+          />
         </div>
         <div>
           <label htmlFor="type" className="form-label">
