@@ -1,13 +1,23 @@
-import { Form } from 'react-router-dom'
+import { Form, useNavigation } from 'react-router-dom'
+import axios from 'axios'
+import PlannerOutput from './PlannerOutput'
+import { useState } from 'react'
 
 export const action = async ({ request }) => {
   const formData = await request.formData()
   const data = Object.fromEntries(formData)
-  console.log(data)
+
+  const planAndWeather = await (
+    await axios.post('/api/v1/travelers/', data)
+  ).data
+  console.log(planAndWeather)
   return null
 }
 
 const PlannerFormElements = () => {
+  const navigation = useNavigation()
+  const isSubmitting = navigation.state === 'submitting'
+
   return (
     <div>
       <h1>Plan your next adventure</h1>
@@ -19,7 +29,6 @@ const PlannerFormElements = () => {
           <input
             type="text"
             name="location"
-            // name="location"
             className="formInput"
             id="location"
           />
@@ -28,29 +37,27 @@ const PlannerFormElements = () => {
           <label htmlFor="date" className="form-label">
             When?
           </label>
-          <input
-            type="date"
-            name="date"
-            // name="date"
-            className="formInput-date"
-            id="date"
-          />
+          <input type="date" name="date" className="formInput-date" id="date" />
         </div>
         <div>
           <label htmlFor="days" className="form-label">
             How many days?
           </label>
-          <input
-            type="days"
-            name="days"
-            // name="days"
-            className="formInput"
-            id="days"
-          />
+          <input type="days" name="days" className="formInput" id="days" />
+        </div>
+        <div>
+          <label htmlFor="type" className="form-label">
+            Type?
+          </label>
+          <input type="text" name="type" className="formInput" id="type" />
         </div>
 
-        <button type="submit">Lets travel</button>
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Creating a plan...' : 'Lets travel'}
+        </button>
       </Form>
+
+      <PlannerOutput />
     </div>
   )
 }

@@ -8,9 +8,9 @@ const Planner = () => {
   return (
     <Wrapper>
       <div className="plannerContainer">
-        <PlannerFormElements />
         <HorizontalBar />
-        <PlannerOutput />
+        <PlannerFormElements />
+
         <Outlet />
       </div>
     </Wrapper>

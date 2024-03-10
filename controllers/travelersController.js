@@ -3,8 +3,8 @@ import { jsonStringToObject } from '../components/stringToObject.js'
 import { checkWeather } from '../components/weather.js'
 
 export const addPlan = async (req, res) => {
-  const { location, dates, type } = req.body
-  const plans = await generatePlans(location, dates, type)
+  const { location, days, type } = req.body
+  const plans = await generatePlans(location, days, type)
   const plansContent = jsonStringToObject(plans.content)
   const weather = await checkWeather(location)
 
