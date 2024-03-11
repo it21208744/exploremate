@@ -23,19 +23,6 @@ const Wrapper = styled.div`
     background-position: center;
     color: transparent;
     background-clip: text;
-  }
-
-  h1 {
-    position: relative;
-    font-style: bold;
-    font-size: 18em;
-    text-align: center;
-    background: url(${img});
-    /* background-repeat: no-repeat; */
-    /* background-size: cover; */
-    background-position: center;
-    color: transparent;
-    background-clip: text;
     transition: font-size 0.2s ease;
 
     &:hover {
