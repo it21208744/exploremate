@@ -3,6 +3,7 @@ import express from 'express'
 const app = express()
 //const mongoose = require("mongoose");
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 //const bodyParser = require("body-parser");
 //import bodyParser from 'body-parser';
 //const cors = require("cors");
@@ -22,6 +23,14 @@ mongoose.connect(URL, {
 
 import CoffeeRouter from './routes/Coffee.js'
 app.use("/Coffee", CoffeeRouter);
+
+
+
+
+// Body parser middleware
+app.use(bodyParser.json());
+
+
 
 
 

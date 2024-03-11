@@ -3,9 +3,22 @@ import { Router } from 'express'
 const router = Router ()
 // const router = Router()
 // let cof = require("../models/Cof");
+import multer from 'multer';
+import path from 'path';
  import Cofe from "../models/Cof.js";
+ // Multer setup for image uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
 
-router.route("/add").post((req,res)=>{
+const upload = multer({ storage: storage });
+
+ router.route("/add").post(upload.single('image'), (req, res) => {
     const HotelName =req.body.HotelName;
     const Email  =req.body.Email;
     const PhoneNum =Number(req.body.PhoneNum);
@@ -14,6 +27,7 @@ router.route("/add").post((req,res)=>{
     const Description = req.body.Description;
     const RoomDetail = req.body.RoomDetail;
     const PackDetail = req.body.PackDetail;
+    const imageUrl = `uploads/${req.file.filename}`;
 
     const newSale = new Cofe({
         HotelName,
@@ -23,7 +37,8 @@ router.route("/add").post((req,res)=>{
         Amenties,
         Description,
         RoomDetail,
-        PackDetail
+        PackDetail,
+        imageUrl
     })
 
     newSale.save().then(()=>{
@@ -48,33 +63,42 @@ Cofe.find().then((Coffees)=>{
 
 })
 
-router.route("/update/:id").put(async (req,res)=>{
-    
-   let salesId = req.params.id;
-   const {HotelName,Email,PhoneNum,Location,Amenties,Description,RoomDetail,PackDetail} = req.body;
+// Define your routes
+router.route("/update/:id").put(upload.single('image'), async (req, res) => {
+  try {
+    let salesId = req.params.id;
+    const { HotelName, Email, PhoneNum, Location, Amenties, Description, RoomDetail, PackDetail } = req.body;
 
-   const updateSales = {
-     
-    HotelName,
-    Email,
-    PhoneNum,
-    Location,
-    Amenties,
-    Description,
-    RoomDetail,
-    PackDetail
+    // Check if an image was uploaded
+    const imageUrl = req.file ? `uploads/${req.file.filename}` : undefined;
 
-   }
+    const updateSales = {
+      HotelName,
+      Email,
+      PhoneNum,
+      Location,
+      Amenties,
+      Description,
+      RoomDetail,
+      PackDetail,
+    };
 
-   const update = await cof.findByIdAndUpdate(salesId , updateSales ).then(()=>{
-    res.status(200).send({status: "Sales updated" })
-   }).catch((err)=>{
-    res.status(500).send({status: "Error with updating data" , error: err.message })
+    // Add the image URL to the updateSales object if an image was uploaded
+    if (imageUrl) {
+      updateSales.imageUrl = imageUrl;
+    }
 
-   })
-    
+    const updatedSale = await Cofe.findByIdAndUpdate(salesId, updateSales);
 
-})
+    if (!updatedSale) {
+      return res.status(404).send({ status: "Sale not found" });
+    }
+
+    res.status(200).send({ status: "Sale updated" });
+  } catch (err) {
+    res.status(500).send({ status: "Error with updating data", error: err.message });
+  }
+});
 
 router.route("/delete/:id").delete(async(req,res)=>{
   let salesId = req.params.id;
