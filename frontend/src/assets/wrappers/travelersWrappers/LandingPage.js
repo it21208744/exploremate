@@ -3,31 +3,53 @@ import img from '../../../assets/images/beautiOfEarth.webp'
 import img2 from '../../../assets/images/landingBackground.webp'
 
 const Wrapper = styled.div`
-  .landingPageContainer {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .btnLogin {
+    z-index: 5;
+    position: fixed;
+    top: 2%;
+    right: 1%;
+    margin-right: 10px;
+    background: #c04dff;
+  }
+
+  .btnRegister {
+    z-index: 5;
+    position: fixed;
+    top: 2%;
+    right: 6%;
+    margin-right: 10px;
+    background: #c04dff;
   }
 
   h1 {
-    position: relative;
+    z-index: 4;
+    position: fixed;
+    width: 100%;
+    top: 40px;
     font-style: bold;
-    font-size: 18em;
+    font-size: 20em;
     text-align: center;
     background: url(${img});
-    /* background-repeat: no-repeat; */
-    /* background-size: cover; */
+
     background-position: center;
     color: transparent;
     background-clip: text;
-    transition: font-size 0.2s ease;
+    transition: font-size 0.2s ease, background-position 0.2s ease;
+  }
 
-    &:hover {
-      font-size: 18.5em;
-    }
+  h1.small {
+    z-index: 4;
+    top: -110px;
+    font-size: 8em;
+    color: white;
+    background: #242424;
+  }
+
+  .websiteInfo {
+    z-index: 2;
+    position: absolute;
+    top: 600px;
+    height: 10000px;
   }
 `
 
