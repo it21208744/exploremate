@@ -3,42 +3,53 @@ import mongoose from 'mongoose';
 // const Schema = mongoose.Schema;
 const salesSchema = new mongoose.Schema({
 
-    itemNumber: {
-       type : Number,
-       required: true
-    },
 
-    itemName:{
+    HotelName:{
         type : String,
         required: true
 
     },
 
-    price:{
+    Email:{
+        type : String,
+        required: true
+
+    },
+
+    PhoneNum: {
         type : Number,
+        required: true
+     },
+    
+     Location:{
+        type : String,
+        required: true
+
+    },
+    Amenties:{
+        type : String,
+        required: true
+
+    },
+
+    Description:{
+        type : String,
         required: true
 
     },
     
-    quantity:{
-        type : Number,
+    RoomDetail:{
+        type : String,
         required: true
 
     },
-    discount:{
-        type : Number,
-        required: true
 
-    },
-    cusType:{
+    PackDetail:{
         type : String,
         required: true
 
     }
-
     
-
-
 
 })
 

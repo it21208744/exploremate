@@ -6,22 +6,24 @@ const router = Router ()
  import Cofe from "../models/Cof.js";
 
 router.route("/add").post((req,res)=>{
-    const itemNumber = Number(req.body.itemNumber);
-    const itemName  =req.body.itemName;
-    const price =Number(req.body.price);
-    const quantity =Number(req.body.quantity);
-    const discount = Number(req.body.discount);
-    const cusType = req.body.cusType;
-
+    const HotelName =req.body.HotelName;
+    const Email  =req.body.Email;
+    const PhoneNum =Number(req.body.PhoneNum);
+    const Location =req.body.Location;
+    const Amenties = req.body.Amenties;
+    const Description = req.body.Description;
+    const RoomDetail = req.body.RoomDetail;
+    const PackDetail = req.body.PackDetail;
 
     const newSale = new Cofe({
-        itemNumber,
-        itemName,
-        price,
-        quantity,
-        discount,
-        cusType
-
+        HotelName,
+        Email,
+        PhoneNum,
+        Location,
+        Amenties,
+        Description,
+        RoomDetail,
+        PackDetail
     })
 
     newSale.save().then(()=>{
@@ -49,16 +51,18 @@ Cofe.find().then((Coffees)=>{
 router.route("/update/:id").put(async (req,res)=>{
     
    let salesId = req.params.id;
-   const {itemNumber,itemName,price,quantity,discount,cusType} = req.body;
+   const {HotelName,Email,PhoneNum,Location,Amenties,Description,RoomDetail,PackDetail} = req.body;
 
    const updateSales = {
      
-        itemNumber,
-        itemName,
-        price,
-        quantity,
-        discount,
-        cusType
+    HotelName,
+    Email,
+    PhoneNum,
+    Location,
+    Amenties,
+    Description,
+    RoomDetail,
+    PackDetail
 
    }
 
