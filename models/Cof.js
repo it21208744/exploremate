@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const salesSchema = new Schema({
+//const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+// const Schema = mongoose.Schema;
+const salesSchema = new mongoose.Schema({
 
     itemNumber: {
        type : Number,
@@ -42,5 +43,5 @@ const salesSchema = new Schema({
 })
 
 
-const Coffee = mongoose.model("Coffee" ,salesSchema );
-module.exports = Coffee;
+
+export default mongoose.model('Cofe',salesSchema);

@@ -1,25 +1,26 @@
 import express from 'express'
+
 const app = express()
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const dotenv = require("dotenv");
-require("dotenv").config();
+//const mongoose = require("mongoose");
+import mongoose from 'mongoose';
+//const bodyParser = require("body-parser");
+//import bodyParser from 'body-parser';
+//const cors = require("cors");
+//import cors from 'cors';
+//const dotenv = require("dotenv");
+import * as dotenv from 'dotenv';
+dotenv.config();
 const PORT = process.env.PORT || 5173;
 const URL = process.env.MONGODB_URL;
+
 mongoose.connect(URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("Mongodb Connection success!");
-});
 
 
-
-const CoffeeRouter = require("./routes/Coffee.js");
+import CoffeeRouter from './routes/Coffee.js'
 app.use("/Coffee", CoffeeRouter);
 
 
@@ -40,6 +41,10 @@ try {
   //implement the connection to the database here
   app.listen(5000, () => {
     console.log(`server is running on port 5000`)
+    const connection = mongoose.connection;
+connection.once("open", () => {
+  console.log("Mongodb Connection success!");
+});
   })
 } catch (error) {
   console.log(`error is - ${error}`)

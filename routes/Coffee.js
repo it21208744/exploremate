@@ -1,5 +1,10 @@
-const router = require("express").Router();
-let cof = require("../models/Cof");
+//const router = require("express").Router();
+import { Router } from 'express'
+const router = Router ()
+// const router = Router()
+// let cof = require("../models/Cof");
+ import Cofe from "../models/Cof.js";
+
 router.route("/add").post((req,res)=>{
     const itemNumber = Number(req.body.itemNumber);
     const itemName  =req.body.itemName;
@@ -9,7 +14,7 @@ router.route("/add").post((req,res)=>{
     const cusType = req.body.cusType;
 
 
-    const newSale = new cof({
+    const newSale = new Cofe({
         itemNumber,
         itemName,
         price,
@@ -32,7 +37,7 @@ router.route("/add").post((req,res)=>{
 
 router.route("/").get((req,res)=>{
 
-cof.find().then((Coffees)=>{
+Cofe.find().then((Coffees)=>{
   res.json(Coffees)
 
 }).catch((err)=>{
@@ -69,7 +74,7 @@ router.route("/update/:id").put(async (req,res)=>{
 
 router.route("/delete/:id").delete(async(req,res)=>{
   let salesId = req.params.id;
-  await cof.findByIdAndDelete(salesId)
+  await Cofe.findByIdAndDelete(salesId)
   .then(()=>{
      res.status(200).send({status: "Sale deleted"});
   }).catch((err)=>{
@@ -85,7 +90,7 @@ router.route("/delete/:id").delete(async(req,res)=>{
 
 router.route("/get/:id").get(async(req,res)=>{
     let salesId = req.params.id;
-    const sale = await cof.findById(salesId)
+    const sale = await Cofe.findById(salesId)
     .then((cof)=>{
        res.status(200).send({status: "Sale fetched" ,cof});
     }).catch((err)=>{
@@ -98,8 +103,7 @@ router.route("/get/:id").get(async(req,res)=>{
       
   } )
 
+export default router ;
 
 
 
-
-module.exports = router;
