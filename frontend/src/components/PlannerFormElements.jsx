@@ -1,4 +1,4 @@
-import { Form, useNavigation } from 'react-router-dom'
+import { Form, useNavigation, useActionData } from 'react-router-dom'
 import axios from 'axios'
 import PlannerOutput from './PlannerOutput'
 
@@ -9,13 +9,16 @@ export const action = async ({ request }) => {
   const planAndWeather = await (
     await axios.post('/api/v1/travelers/', data)
   ).data
-  console.log(planAndWeather)
-  return null
+  // console.log(planAndWeather)
+  return planAndWeather
 }
 
 const PlannerFormElements = () => {
   const navigation = useNavigation()
   const isSubmitting = navigation.state === 'submitting'
+
+  const planAndWeather = useActionData()
+  // console.log(planAndWeather)
 
   return (
     <div>
@@ -63,7 +66,7 @@ const PlannerFormElements = () => {
         </button>
       </Form>
 
-      <PlannerOutput />
+      <PlannerOutput planAndWeather={planAndWeather} />
     </div>
   )
 }

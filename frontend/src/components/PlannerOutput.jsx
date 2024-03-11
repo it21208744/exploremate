@@ -1,4 +1,11 @@
-const PlannerOutput = () => {
+const PlannerOutput = (planAndWeather) => {
+  const plans = planAndWeather?.planAndWeather?.plansContent
+  let plansAsArray = []
+
+  if (plans) {
+    plansAsArray = Object.values(plans).map((item) => item.actions)
+  }
+
   return (
     <div>
       <h2>Need a guide?</h2>
@@ -10,39 +17,13 @@ const PlannerOutput = () => {
       </ul>
 
       <ul>
-        <li>
-          Day 1
-          <ul>
-            <li>
-              Visit the bustling food stalls at Marché des Enfants Rouges for a
-              taste of international cuisine
+        {plansAsArray.map((plan, index) => {
+          return (
+            <li key={index}>
+              Day {index + 1} - {plan}
             </li>
-          </ul>
-        </li>
-      </ul>
-
-      <ul>
-        <li>
-          Day 2
-          <ul>
-            <li>
-              Take a food tour of Montmartre and sample delicious French
-              delicacies
-            </li>
-          </ul>
-        </li>
-      </ul>
-
-      <ul>
-        <li>
-          Day 3
-          <ul>
-            <li>
-              Indulge in gourmet chocolates and pastries in
-              Saint-Germain-des-Prés
-            </li>
-          </ul>
-        </li>
+          )
+        })}
       </ul>
 
       <h2>You might need these things...</h2>
