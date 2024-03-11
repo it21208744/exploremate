@@ -1,5 +1,29 @@
 import express from 'express'
 const app = express()
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const dotenv = require("dotenv");
+require("dotenv").config();
+const PORT = process.env.PORT || 5173;
+const URL = process.env.MONGODB_URL;
+mongoose.connect(URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const connection = mongoose.connection;
+connection.once("open", () => {
+  console.log("Mongodb Connection success!");
+});
+
+
+
+const CoffeeRouter = require("./routes/Coffee.js");
+app.use("/Coffee", CoffeeRouter);
+
+
+
 
 import taxiRouter from './routes/taxiRouter.js'
 import travelersRouter from './routes/travelersRouter.js'
