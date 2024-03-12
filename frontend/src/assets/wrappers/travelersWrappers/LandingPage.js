@@ -3,21 +3,24 @@ import img from '../../../assets/images/beautiOfEarth.webp'
 import img2 from '../../../assets/images/landingBackground.webp'
 
 const Wrapper = styled.div`
-  .btnLogin,
   .btnRegister {
     z-index: 5;
+    width: 5vw;
     position: fixed;
     top: 2%;
-    margin-right: 2%;
+    /* margin-right: 2vw; */
     background: #c04dff;
-  }
-
-  .btnRegister {
-    right: 1%;
+    right: 1vw;
   }
 
   .btnLogin {
-    right: 7%;
+    z-index: 5;
+    width: 5vw;
+    position: fixed;
+    top: 2%;
+    /* margin-right: 2vw; */
+    background: #c04dff;
+    right: 7vw;
   }
 
   h1 {
