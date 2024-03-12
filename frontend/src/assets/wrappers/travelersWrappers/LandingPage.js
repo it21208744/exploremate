@@ -65,6 +65,10 @@ const Wrapper = styled.div`
     top: 80%; /* Adjust as needed */
     height: 1000%; /* Adjust as needed */
   }
+
+  .content {
+    background: #45a29e;
+  }
 `
 
 export default Wrapper
