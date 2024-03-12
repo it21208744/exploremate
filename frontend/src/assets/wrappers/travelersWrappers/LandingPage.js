@@ -4,25 +4,35 @@ import img2 from '../../../assets/images/landingBackground.webp'
 
 const Wrapper = styled.div`
   .btnRegister {
+    color: #0b0c10;
     font-size: 0.8vw;
     z-index: 5;
     width: 5vw;
     position: fixed;
     top: 2%;
     /* margin-right: 2vw; */
-    background: #c04dff;
+    background: #45a29e;
     right: 1vw;
+    transition: background 0.5s ease, width 0.5s ease;
   }
 
   .btnLogin {
     font-size: 0.8vw;
+    color: #0b0c10;
     z-index: 5;
     width: 5vw;
     position: fixed;
     top: 2%;
     /* margin-right: 2vw; */
-    background: #c04dff;
+    background: #45a29e;
     right: 7vw;
+    transition: background 0.5s ease, width 0.5s ease;
+  }
+
+  .btnRegister:hover,
+  .btnLogin:hover {
+    background: #66fcf1;
+    /* width: 6vw; */
   }
 
   h1 {
@@ -46,6 +56,7 @@ const Wrapper = styled.div`
     font-size: 5vw; /* Responsive font size based on viewport width */
     color: white;
     background: #242424;
+    height: 6vw;
   }
 
   .websiteInfo {
