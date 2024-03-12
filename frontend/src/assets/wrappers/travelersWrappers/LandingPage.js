@@ -3,6 +3,9 @@ import img from '../../../assets/images/beautiOfEarth.webp'
 import img2 from '../../../assets/images/landingBackground.webp'
 
 const Wrapper = styled.div`
+  /* * {
+    background: #45a29e;
+  } */
   .btnRegister {
     color: #0b0c10;
     font-size: 0.8vw;
@@ -47,7 +50,7 @@ const Wrapper = styled.div`
     background-position: center;
     color: transparent;
     background-clip: text;
-    transition: font-size 0.2s ease, background-position 0.2s ease;
+    transition: font-size 0.5s ease, background-position 0.5s ease;
   }
 
   h1.small {
@@ -69,6 +72,8 @@ const Wrapper = styled.div`
   .content {
     background: #45a29e;
   }
+
+  //content card css
 `
 
 export default Wrapper
