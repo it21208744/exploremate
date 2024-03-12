@@ -4,6 +4,7 @@ import img2 from '../../../assets/images/landingBackground.webp'
 
 const Wrapper = styled.div`
   .btnRegister {
+    font-size: 0.8vw;
     z-index: 5;
     width: 5vw;
     position: fixed;
@@ -14,6 +15,7 @@ const Wrapper = styled.div`
   }
 
   .btnLogin {
+    font-size: 0.8vw;
     z-index: 5;
     width: 5vw;
     position: fixed;
