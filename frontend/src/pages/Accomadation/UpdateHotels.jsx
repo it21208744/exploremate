@@ -6,12 +6,15 @@ import { useNavigate } from "react-router-dom";
 
 const UpdateSale = () => {
     const[id,setid] = useState(" ");
-    const[itemNumber,setitemNumber] = useState("");
-    const[itemName,setitemName] = useState("");
-    const[price,setprice] = useState("");
-    const[quantity,setquantity] = useState("");
-    const[discount,setDisc] = useState("");
-    const[cusType,setcusType] = useState("");
+    const [HotelName , setHotelName] = useState("");
+const [Email , setEmail] = useState("");
+const [PhoneNum , setPhoneNum] = useState("");
+const [Location , setLocation] = useState("");
+const [Amenties , setAmenties] = useState("");
+const [Description , setDescription] = useState("");
+const [RoomDetail , setRoomDetail] = useState("");
+const [PackDetail , setPackDetail] = useState("");
+const [imageUrl , setimageUrl] = useState("");
    
 
     const navigate = useNavigate();
@@ -19,12 +22,15 @@ const UpdateSale = () => {
 
     useEffect(() => {
         setid(localStorage.getItem("id"));
-        setitemNumber(localStorage.getItem("itemNumber"));
-        setitemName(localStorage.getItem("itemName"));
-        setprice(localStorage.getItem("price"));
-        setquantity(localStorage.getItem("quantity"));
-        setDisc(localStorage.getItem("discount"));
-        setcusType(localStorage.getItem("cusType"));
+        setHotelName(localStorage.getItem("HotelName"));
+        setEmail(localStorage.getItem("Email"));
+        setPhoneNum(localStorage.getItem("PhoneNum"));
+        setLocation(localStorage.getItem("Location"));
+        setAmenties(localStorage.getItem("Amenties"));
+        setDescription(localStorage.getItem("Description"));
+        setRoomDetail(localStorage.getItem("RoomDetail"));
+        setPackDetail(localStorage.getItem("PackDetail"));
+        setimageUrl(localStorage.getItem("imageUrl"));
       
      },[])
 
@@ -35,12 +41,15 @@ const UpdateSale = () => {
       axios.put(`http://localhost:8070/Coffee/update/${id}`,
       {
         
-        itemNumber : itemNumber,
-        itemName : itemName,
-        price :price,
-        quantity:quantity,
-        discount:discount,
-        cusType :cusType,
+        HotelName:HotelName,
+        Email:Email,
+        PhoneNum:PhoneNum,
+        Location:Location,
+        Amenties:Amenties,
+        Description:Description,
+        RoomDetail:RoomDetail,
+        PackDetail:PackDetail,
+        imageUrl: imageUrl,
        
       }
       ).then(()=>{

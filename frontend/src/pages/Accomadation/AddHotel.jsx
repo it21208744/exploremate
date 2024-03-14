@@ -6,14 +6,15 @@ import {Link} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 export default function AddSales(){
 
-const [itemNumber , setNumber] = useState("");
-const [itemName , setName] = useState("");
-const [price , setPrice] = useState("");
-const [quantity , setQunty] = useState("");
-const [discount , setDisc] = useState("");
-const [cusType , setType] = useState("");
-
-
+const [HotelName , setHotelName] = useState("");
+const [Email , setEmail] = useState("");
+const [PhoneNum , setPhoneNum] = useState("");
+const [Location , setLocation] = useState("");
+const [Amenties , setAmenties] = useState("");
+const [Description , setDescription] = useState("");
+const [RoomDetail , setRoomDetail] = useState("");
+const [PackDetail , setPackDetail] = useState("");
+const [imageUrl , setimageUrl] = useState("");
 
 const navigate = useNavigate();
 
@@ -26,22 +27,28 @@ function sendData(e){
   
 
   const newSales = {
-    itemNumber,
-    itemName,
-    price,
-    quantity,
-    discount,
-    cusType
+        HotelName,
+        Email,
+        PhoneNum,
+        Location,
+        Amenties,
+        Description,
+        RoomDetail,
+        PackDetail,
+        imageUrl
   }
 
    axios.post("http://localhost:8070/Coffee/add", newSales ).then(() =>{
     
-      setNumber("");
-      setName("");
-      setPrice("");
-      setQunty("");
-      setDisc("");
-      setType("");
+   setHotelName("");
+   setEmail("");
+   setPhoneNum("");
+   setLocation("");
+   setAmenties("");
+   setDescription("");
+   setRoomDetail("");
+   setPackDetail("");
+   setimageUrl("");
       navigate("/allsale1");
 
    }).catch((err)=>{
