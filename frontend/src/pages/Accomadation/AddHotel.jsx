@@ -139,27 +139,21 @@ const cardstyle ={
     <form onSubmit={sendData}>
     <div style={cardstyle}>
   <div className="form-group">
-    <label for="itemNumber" style={lableStyle}  >Item Number</label>
-    <input type="text" class="form-control" id="itemNumber"  placeholder="Enter item number" style={inputStyle}  onChange={(e) => {
-        setNumber(e.target.value);
+    <label for="HotelName" style={lableStyle}  >Item Number</label>
+    <input type="text" class="form-control" id="HotelName"  placeholder="Enter item number" style={inputStyle}  onChange={(e) => {
+        setHotelName(e.target.value);
     }}required
     pattern="[0-9]+"
     title="Only values can be entered"
     />
    </div>
    
-   <div className="form-group">
-    <label for="itemName" style={lableStyle} >Item Name</label>
-    <input type="text" className="form-control" id="itemName"  placeholder="Enter item name" style={inputStyle} onChange={(e) => {
-        setName(e.target.value);
-    }}required
-/>
-   </div>
+
    
    <div className="form-group" >
-    <label for="price" style={lableStyle} >Price(Rs)</label>
-    <input type="text" className="form-control" id="price"  placeholder="Enter price" style={inputStyle} onChange={(e) => {
-        setPrice(e.target.value);
+    <label for="Email" style={lableStyle} >Price(Rs)</label>
+    <input type="text" className="form-control" id="Email"  placeholder="Enter price" style={inputStyle} onChange={(e) => {
+       setEmail(e.target.value);
     }}required
     pattern="[0.0-9.0]+"
     title="Only values can be entered"
@@ -176,23 +170,68 @@ const cardstyle ={
    </div>
    
    <div className="form-group">
-    <label for="discount" style={lableStyle}  >Discount(Rs per item)</label>
-    <input type="text" className="form-control" id="discount"  placeholder="Enter discount" style={inputStyle} onChange={(e) => {
-        setDisc(e.target.value);
+    <label for="PhoneNum " style={lableStyle}  >Discount(Rs per item)</label>
+    <input type="text" className="form-control" id="PhoneNum "  placeholder="Enter discount" style={inputStyle} onChange={(e) => {
+        setPhoneNum(e.target.value);
     }}required
     pattern="[0.0-9.0]+"
     title="Only values can be entered"/>
    </div>
    
    <div className="form-group">
-    <label for="cusType" style={lableStyle} >Customer Type</label>
-    <input type="text" className="form-control" id="cusType"  placeholder="Enter customer type" style={inputStyle} onChange={(e) => {
-        setType(e.target.value);
+    <label for="Location" style={lableStyle} >Customer Type</label>
+    <input type="text" className="form-control" id="Location"  placeholder="Enter customer type" style={inputStyle} onChange={(e) => {
+        setLocation(e.target.value);
     }}required
     pattern="[a-zA-Z\s]+"
     title="Only input strings"/>
     </div>
    
+    <div className="form-group">
+    <label for="Amenties" style={lableStyle}  >Discount(Rs per item)</label>
+    <input type="text" className="form-control" id="Amenties"  placeholder="Enter discount" style={inputStyle} onChange={(e) => {
+        setAmenties(e.target.value);
+    }}required
+    pattern="[0.0-9.0]+"
+    title="Only values can be entered"/>
+   </div>
+
+   <div className="form-group">
+    <label for="Description" style={lableStyle}  >Discount(Rs per item)</label>
+    <input type="text" className="form-control" id="Description"  placeholder="Enter discount" style={inputStyle} onChange={(e) => {
+        setDescription(e.target.value);
+    }}required
+    pattern="[0.0-9.0]+"
+    title="Only values can be entered"/>
+   </div>
+
+   <div className="form-group">
+    <label for="RoomDetail" style={lableStyle}  >Discount(Rs per item)</label>
+    <input type="text" className="form-control" id="RoomDetail"  placeholder="Enter discount" style={inputStyle} onChange={(e) => {
+        setRoomDetail(e.target.value);
+    }}required
+    pattern="[0.0-9.0]+"
+    title="Only values can be entered"/>
+   </div>
+
+   <div className="form-group">
+    <label for="PackDetail" style={lableStyle}  >Discount(Rs per item)</label>
+    <input type="text" className="form-control" id="PackDetail"  placeholder="Enter discount" style={inputStyle} onChange={(e) => {
+        setPackDetail(e.target.value);
+    }}required
+    pattern="[0.0-9.0]+"
+    title="Only values can be entered"/>
+   </div>
+   <div className="form-group">
+    <label for="imageUrl" style={lableStyle}  >Discount(Rs per item)</label>
+    <input type="text" className="form-control" id="imageUrl"  placeholder="Enter discount" style={inputStyle} onChange={(e) => {
+        setimageUrl(e.target.value);
+    }}required
+    pattern="[0.0-9.0]+"
+    title="Only values can be entered"/>
+   </div>
+
+
     <div >
     <button type="submit" class="btn btn-primary" style={buttonStyle}>Submit</button>
  </div>
