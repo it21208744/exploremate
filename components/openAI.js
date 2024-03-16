@@ -27,8 +27,6 @@ export const generatePlans = async (location, dates, type) => {
     temperature: 0,
   })
 
-  // return response.choices[0].message
-  console.log(response.choices[0].message.content)
   return jsonStringToObject(response.choices[0].message.content)
 }
 
