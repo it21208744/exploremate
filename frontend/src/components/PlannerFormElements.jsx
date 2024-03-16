@@ -1,6 +1,8 @@
 import { Form, useNavigation, useActionData } from 'react-router-dom'
 import axios from 'axios'
-import PlannerOutput from './PlannerOutput'
+import PlannerOutputGuide from './PlannerOutputGuide'
+import { useState } from 'react'
+import Travelpedia from '../pages/travelers/Travelpedia'
 
 export const action = async ({ request }) => {
   const formData = await request.formData()
@@ -9,16 +11,19 @@ export const action = async ({ request }) => {
   const planAndWeather = await (
     await axios.post('/api/v1/travelers/', data)
   ).data
-  // console.log(planAndWeather)
+
   return planAndWeather
 }
 
 const PlannerFormElements = () => {
+  const [isGuide, changeGuide] = useState(true)
+
   const navigation = useNavigation()
   const isSubmitting = navigation.state === 'submitting'
 
   const planAndWeather = useActionData()
-  // console.log(planAndWeather)
+  const location = planAndWeather?.weather?.coord
+  // console.log(planAndWeather?.weather?.coord)
 
   return (
     <div>
@@ -66,7 +71,24 @@ const PlannerFormElements = () => {
         </button>
       </Form>
 
-      <PlannerOutput planAndWeather={planAndWeather} />
+      <ul>
+        <li>
+          <button type="button" onClick={() => changeGuide(true)}>
+            GUIDE
+          </button>
+        </li>
+        <li>
+          <button type="button" onClick={() => changeGuide(false)}>
+            TRAVELPEDIA
+          </button>
+        </li>
+      </ul>
+
+      {isGuide ? (
+        <PlannerOutputGuide planAndWeather={planAndWeather} />
+      ) : (
+        <Travelpedia location={location} />
+      )}
     </div>
   )
 }
