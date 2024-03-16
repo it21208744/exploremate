@@ -6,12 +6,12 @@ const containerStyle = {
   height: '400px',
 }
 
-const center = {
-  lat: 6.6828,
-  lng: 80.3992,
-}
-
-function MyComponent() {
+function MyComponent({ location }) {
+  const center = {
+    lat: location.lat,
+    lng: location.lon,
+  }
+  console.log(location)
   const { isLoaded } = useJsApiLoader({
     id: '6ed21df9e972ca0e',
     googleMapsApiKey: 'AIzaSyBegmRyEjys-jM18Uu8IF11oerq7kv6BYc',
