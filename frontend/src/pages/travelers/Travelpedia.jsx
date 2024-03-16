@@ -1,11 +1,11 @@
 import Wrapper from '../../assets/wrappers/travelersWrappers/travelpedia'
 import GoogleMap from '../../components/GoogleMap/GoogleMap'
 
-const Travelpedia = () => {
+const Travelpedia = ({ location }) => {
   return (
     <Wrapper>
       <div className="travelpediaContainer">
-        <GoogleMap />
+        <GoogleMap location={location} />
       </div>
     </Wrapper>
   )
