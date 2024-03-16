@@ -1,4 +1,4 @@
-import { generatePlans } from '../components/openAI.js'
+import { generateList, generatePlans } from '../components/openAI.js'
 
 import { checkWeather } from '../components/weather.js'
 
@@ -7,8 +7,13 @@ export const addPlan = async (req, res) => {
   const plansContent = await generatePlans(location, days, type)
 
   const weather = await checkWeather(location)
+  const descSituation = weather.weather[0].description
+  const temp = weather.main.temp
+  const windSpeed = weather.wind.speed
+  let packingList = await generateList(descSituation, temp, windSpeed)
+  // console.log(packingList)
 
-  res.json({ plansContent, weather })
+  res.json({ plansContent, weather, packingList })
 }
 
 export const getAllPlans = (req, res) => {
@@ -22,9 +27,3 @@ export const getSinglePlan = (req, res) => {
 export const deletePlan = (req, res) => {
   res.send(`delete a plan`)
 }
-
-//const description = weather.weather[0].main
-//const descSituation = weather.weather[0].description
-
-//const temp = weather.main
-//const windSpeed = weather.wind.speed

@@ -23,7 +23,7 @@ const PlannerFormElements = () => {
 
   const planAndWeather = useActionData()
   const location = planAndWeather?.weather?.coord
-  // console.log(planAndWeather?.weather?.coord)
+  const packingList = planAndWeather?.packingList
 
   return (
     <div>
@@ -85,7 +85,10 @@ const PlannerFormElements = () => {
       </ul>
 
       {isGuide ? (
-        <PlannerOutputGuide planAndWeather={planAndWeather} />
+        <PlannerOutputGuide
+          planAndWeather={planAndWeather}
+          packingList={packingList}
+        />
       ) : (
         <Travelpedia location={location} />
       )}

@@ -1,9 +1,21 @@
 const PlannerOutput = (planAndWeather) => {
   const plans = planAndWeather?.planAndWeather?.plansContent
+  console.log(plans)
   let plansAsArray = []
-
   if (plans) {
     plansAsArray = Object.values(plans).map((item) => item.actions)
+  }
+
+  const packingList = planAndWeather?.packingList
+  console.log(packingList)
+  let PackingListAsArray = []
+  if (packingList) {
+    PackingListAsArray = Object.values(packingList).map((item) => ({
+      itemName: item.ItemName,
+      reason: item.ReasonToChoose,
+    }))
+
+    console.log(PackingListAsArray)
   }
 
   return (
@@ -23,14 +35,16 @@ const PlannerOutput = (planAndWeather) => {
       <h2>You might need these things...</h2>
 
       <ul>
-        <li>Cap</li>
-        <li>Cap</li>
-        <li>Cap</li>
-        <li>Cap</li>
-        <li>Cap</li>
-        <li>Cap</li>
-        <li>Cap</li>
-        <li>Cap</li>
+        {PackingListAsArray.map((item, index) => {
+          return (
+            <li key={index}>
+              {item.itemName}
+              <ul>
+                <li>{item.reason}</li>
+              </ul>
+            </li>
+          )
+        })}
       </ul>
     </div>
   )
