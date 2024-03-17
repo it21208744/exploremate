@@ -12,6 +12,11 @@ app.use('/api/v1/travelers', travelersRouter)
 
 app.use('/api/v1/taxi', taxiRouter)
 
+app.use((err, req, res, next) => {
+  console.log(err)
+  res.status(404).json({ msg: 'City not found' })
+})
+
 try {
   //implement the connection to the database here
   app.listen(5000, () => {

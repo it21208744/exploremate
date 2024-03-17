@@ -1,29 +1,38 @@
 import { Form, useNavigation, useActionData } from 'react-router-dom'
 import axios from 'axios'
 import PlannerOutputGuide from './PlannerOutputGuide'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Travelpedia from '../pages/travelers/Travelpedia'
 
 export const action = async ({ request }) => {
   const formData = await request.formData()
   const data = Object.fromEntries(formData)
-
-  const planAndWeather = await (
-    await axios.post('/api/v1/travelers/', data)
-  ).data
-
-  return planAndWeather
+  try {
+    const planAndWeather = await (
+      await axios.post('/api/v1/travelers/', data)
+    ).data
+    return planAndWeather
+  } catch (error) {
+    return error
+  }
 }
 
 const PlannerFormElements = () => {
   const [isGuide, changeGuide] = useState(true)
-
+  const [outputSituation, setSituation] = useState('default')
   const navigation = useNavigation()
   const isSubmitting = navigation.state === 'submitting'
 
   const planAndWeather = useActionData()
+
   const location = planAndWeather?.weather?.coord
+  const weather = planAndWeather?.weather
   const packingList = planAndWeather?.packingList
+
+  useEffect(() => {
+    if (weather) setSituation('outPutPresents')
+    if (!weather) setSituation('Error')
+  }, [weather])
 
   return (
     <div>
@@ -70,7 +79,9 @@ const PlannerFormElements = () => {
           {isSubmitting ? 'Creating a plan...' : 'Lets travel'}
         </button>
       </Form>
-
+      {outputSituation === 'default' ? <h1>default</h1> : null}
+      {outputSituation === 'outPutPresents' ? <h1>outPutPresents</h1> : null}
+      {outputSituation === 'Error' ? <h1>Error</h1> : null}
       <ul>
         <li>
           <button type="button" onClick={() => changeGuide(true)}>
@@ -90,7 +101,7 @@ const PlannerFormElements = () => {
           packingList={packingList}
         />
       ) : (
-        <Travelpedia location={location} />
+        <Travelpedia location={location} weather={weather} />
       )}
     </div>
   )
