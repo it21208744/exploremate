@@ -16,7 +16,8 @@ import Services from './pages/travelers/Services'
 import Profile from './pages/travelers/Profile'
 import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
-import AddSales from './pages/Accomadation/AddHotel'
+import AddHotel from './pages/Accomadation/AddHotel'
+import SalesHeader from './pages/Accomadation/SalesHeader'
 
 const router = createBrowserRouter([
   {
@@ -50,11 +51,12 @@ const router = createBrowserRouter([
         path: 'HotelOwnerDashBoardLayout',
         element: <HotelOwnerDashBoardLayout />,
         children: [
-          { index: true, element: <h1>HotelOwnerOpt1</h1> },
-          { path: 'addhotels', element: <AddSales/> },
-          { path: 'opt2', element: <h1>HotelOwnerOpt2</h1> },
+          { index: true, element: <SalesHeader/> },
+          { path: 'hodash', element: <SalesHeader/> },
           { path: 'opt3', element: <h1>HotelOwnerOpt3</h1> },
           { path: 'opt4', element: <h1>HotelOwnerOpt4</h1> },
+
+        
         ],
       },
       {

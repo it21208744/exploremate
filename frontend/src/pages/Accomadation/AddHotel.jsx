@@ -21,10 +21,6 @@ const navigate = useNavigate();
 
 function sendData(e){
   e.preventDefault();
-  
- 
-  
-  
 
   const newSales = {
         HotelName,
