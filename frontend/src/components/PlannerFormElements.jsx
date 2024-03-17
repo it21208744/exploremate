@@ -29,10 +29,12 @@ const PlannerFormElements = () => {
   const weather = planAndWeather?.weather
   const packingList = planAndWeather?.packingList
 
-  useEffect(() => {
-    if (weather) setSituation('outPutPresents')
-    if (!weather) setSituation('Error')
-  }, [weather])
+  const showOutput = () => {
+    useEffect(() => {
+      if (weather) setSituation('outPutPresents')
+      if (!weather) setSituation('Error')
+    }, [weather])
+  }
 
   return (
     <div>
@@ -75,7 +77,16 @@ const PlannerFormElements = () => {
           <input type="text" name="type" className="formInput" id="type" />
         </div>
 
-        <button type="submit" disabled={isSubmitting}>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          onClick={() =>
+            useEffect(() => {
+              if (weather) setSituation('outPutPresents')
+              if (!weather) setSituation('Error')
+            }, [])
+          }
+        >
           {isSubmitting ? 'Creating a plan...' : 'Lets travel'}
         </button>
       </Form>
