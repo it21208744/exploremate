@@ -15,11 +15,9 @@ const SalesHeader =()=>{
 
       
             <ul className="navbar-nav">       
+            
               <li className="nav-item">
-             <Link to ="/allsale1" className="nav-link" style={lableStyle}>All Sales</Link>
-              </li>
-              <li className="nav-item">
-              <Link to ="/addsale1" className="nav-link"  style={lableStyle}>Add Sales</Link>
+              <Link to ="addhotel" className="nav-link"  style={lableStyle}>Add Sales</Link>
               </li>
               
              <br/>
