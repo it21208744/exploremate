@@ -2,7 +2,6 @@ import Wrapper from '../../assets/wrappers/travelersWrappers/travelpedia'
 import GoogleMap from '../../components/GoogleMap/GoogleMap'
 
 const Travelpedia = ({ location, weather }) => {
-  console.log(weather)
   return (
     <Wrapper>
       <div className="travelpediaContainer">

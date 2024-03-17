@@ -12,7 +12,6 @@ function MyComponent({ location }) {
     lng: location ? location.lon : 10,
   }
 
-  console.log(location)
   const { isLoaded } = useJsApiLoader({
     id: '6ed21df9e972ca0e',
     googleMapsApiKey: 'AIzaSyBegmRyEjys-jM18Uu8IF11oerq7kv6BYc',
