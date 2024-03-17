@@ -3,6 +3,7 @@ import axios from 'axios'
 import PlannerOutputGuide from './PlannerOutputGuide'
 import { useState, useEffect } from 'react'
 import Travelpedia from '../pages/travelers/Travelpedia'
+import { toast } from 'react-toastify'
 
 export const action = async ({ request }) => {
   const formData = await request.formData()
@@ -13,6 +14,7 @@ export const action = async ({ request }) => {
     ).data
     return planAndWeather
   } catch (error) {
+    toast.error('Wrong city name')
     return error
   }
 }
