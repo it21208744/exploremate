@@ -29,12 +29,9 @@ const PlannerFormElements = () => {
   const weather = planAndWeather?.weather
   const packingList = planAndWeather?.packingList
 
-  const showOutput = () => {
-    useEffect(() => {
-      if (weather) setSituation('outPutPresents')
-      if (!weather) setSituation('Error')
-    }, [weather])
-  }
+  useEffect(() => {
+    if (weather) setSituation('outPutPresents')
+  }, [weather])
 
   return (
     <div>
@@ -77,42 +74,36 @@ const PlannerFormElements = () => {
           <input type="text" name="type" className="formInput" id="type" />
         </div>
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          onClick={() =>
-            useEffect(() => {
-              if (weather) setSituation('outPutPresents')
-              if (!weather) setSituation('Error')
-            }, [])
-          }
-        >
+        <button type="submit" disabled={isSubmitting}>
           {isSubmitting ? 'Creating a plan...' : 'Lets travel'}
         </button>
       </Form>
-      {outputSituation === 'default' ? <h1>default</h1> : null}
-      {outputSituation === 'outPutPresents' ? <h1>outPutPresents</h1> : null}
-      {outputSituation === 'Error' ? <h1>Error</h1> : null}
-      <ul>
-        <li>
-          <button type="button" onClick={() => changeGuide(true)}>
-            GUIDE
-          </button>
-        </li>
-        <li>
-          <button type="button" onClick={() => changeGuide(false)}>
-            TRAVELPEDIA
-          </button>
-        </li>
-      </ul>
-
-      {isGuide ? (
-        <PlannerOutputGuide
-          planAndWeather={planAndWeather}
-          packingList={packingList}
-        />
+      {/* {outputSituation === 'default' ? <h1>default</h1> : null} */}
+      {outputSituation === 'outPutPresents' ? (
+        <ul>
+          <li>
+            <button type="button" onClick={() => changeGuide(true)}>
+              GUIDE
+            </button>
+          </li>
+          <li>
+            <button type="button" onClick={() => changeGuide(false)}>
+              TRAVELPEDIA
+            </button>
+          </li>
+        </ul>
+      ) : null}
+      {outputSituation === 'outPutPresents' ? (
+        isGuide ? (
+          <PlannerOutputGuide
+            planAndWeather={planAndWeather}
+            packingList={packingList}
+          />
+        ) : (
+          <Travelpedia location={location} weather={weather} />
+        )
       ) : (
-        <Travelpedia location={location} weather={weather} />
+        <h1>Here goes some bullshit</h1>
       )}
     </div>
   )
