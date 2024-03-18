@@ -3,6 +3,7 @@ const TaxiOwnerDashBoard = () => {
   return (
     <div>
       <h1>taxiOwnerNavBar</h1>
+     
       <Outlet />
     </div>
   )

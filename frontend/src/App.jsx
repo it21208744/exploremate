@@ -17,6 +17,12 @@ import Profile from './pages/travelers/Profile'
 import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
 
+import AddPlanting from './pages/AddPlanting'
+import AllPlanting from './pages/AllPlanting'
+import PlantUpdate from './pages/PlantUpdate'
+
+
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -61,9 +67,9 @@ const router = createBrowserRouter([
         element: <TaxiOwnerDashBoard />,
         children: [
           { index: true, element: <h1>TaxiOwnerOpt1</h1> },
-          { path: 'opt1', element: <h1>TaxiOwnerOpt1</h1> },
-          { path: 'opt2', element: <h1>TaxiOwnerOpt2</h1> },
-          { path: 'opt3', element: <h1>TaxiOwnerOpt3</h1> },
+          { path: 'addPlanting', element: <AddPlanting/> },
+          { path: 'allPlanting', element: <AllPlanting/> },
+          { path: 'plantUpdate', element: <PlantUpdate/> },
           { path: 'opt4', element: <h1>TaxiOwnerOpt4</h1> },
         ],
       },

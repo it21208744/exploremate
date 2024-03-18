@@ -7,18 +7,11 @@ dotenv.config();
 const PORT = process.env.PORT || 5173;
 const URL = process.env.MONGODB_URL;
 
-mongoose.connect(URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+
 
 
 
 import plantingRouter from './routes/plantings.js'
-app.use("/planting", plantingRouter);
-
-
-
 import taxiRouter from './routes/taxiRouter.js'
 import travelersRouter from './routes/travelersRouter.js'
 // app.use('api/v1/auth')
@@ -27,18 +20,16 @@ import travelersRouter from './routes/travelersRouter.js'
 app.use(express.json())
 
 app.use('/api/v1/travelers', travelersRouter)
-
 app.use('/api/v1/taxi', taxiRouter)
+app.use("/api/v1/planting", plantingRouter);
 
 try {
   //implement the connection to the database here
-  app.listen(5000, () => {
-    console.log(`server is running on port 5000`)
-    const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("Mongodb Connection success!");
-});
-  })
+await mongoose.connect('mongodb+srv://Coffee:T39@coffeestatemanagement.vvppjvj.mongodb.net/BrownVilla_db?retryWrites=true&w=majority')
+app.listen(5000, () => {
+  console.log(`server is running on port 5000`)
+})
+  
 } catch (error) {
   console.log(`error is - ${error}`)
 }
