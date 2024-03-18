@@ -1,58 +1,82 @@
 import React,{useState} from "react"
 import axios from "axios";
 
-import {Link} from 'react-router-dom';
+import {Link, Form, useNavigate, useActionData} from 'react-router-dom';
+import {toast} from 'react-toastify'
 
-import { useNavigate } from "react-router-dom";
+
+
+
+export const action = async ({ request }) => {
+  const formData = await request.formData()
+  const data = Object.fromEntries(formData)
+  try {
+    const res = await axios.post("/api/v1/Coffee/add", data )
+    toast.success('Hotel added')
+    return res
+  } catch (error) {
+    toast.error('Something went wrong')
+    return error
+  }
+}
+
 export default function AddHotel(){
 
-const [HotelName , setHotelName] = useState("");
-const [Email , setEmail] = useState("");
-const [PhoneNum , setPhoneNum] = useState("");
-const [Location , setLocation] = useState("");
-const [Amenties , setAmenties] = useState("");
-const [Description , setDescription] = useState("");
-const [RoomDetail , setRoomDetail] = useState("");
-const [PackDetail , setPackDetail] = useState("");
+  //this is how u use the response data
+ const res = useActionData()
+ //:)
+
+
+const [HotelName , setHname] = useState("");
+const [Email , setEma] = useState("");
+const [PhoneNum , setPnum] = useState("");
+const [Location , setLoc] = useState("");
+const [Amenties , setAmen] = useState("");
+const [Description , setDesc] = useState("");
+const [RoomDetail , setRoom] = useState("");
+const [PackDetail , setPack] = useState("");
 
 
 const navigate = useNavigate();
 
 
-function sendData(e){
-  e.preventDefault();
+// function sendData(e){
+//   e.preventDefault();
 
-  const newSales = {
-        HotelName,
-        Email,
-        PhoneNum,
-        Location,
-        Amenties,
-        Description,
-        RoomDetail,
-        PackDetail
+//   const newSales = {
+//         HotelName,
+//         Email,
+//         PhoneNum,
+//         Location,
+//         Amenties,
+//         Description,
+//         RoomDetail,
+//         PackDetail
        
-  }
+//   }
+//   //hehehe
 
-   axios.post("http://localhost:5173/Coffee/add", newSales ).then(() =>{
+
+//   //hehe
+//    axios.post("http://localhost:5000/Coffee/add", newSales ).then(() =>{
     
-   setHotelName("");
-   setEmail("");
-   setPhoneNum("");
-   setLocation("");
-   setAmenties("");
-   setDescription("");
-   setRoomDetail("");
-   setPackDetail("");
+//    setHname("");
+//    setEma("");
+//    setPnum("");
+//    setLoc("");
+//    setAmen("");
+//    setDesc("");
+//    setRoom("");
+//    setPack("");
  
-      //navigate("/allsale1");
+//       //navigate("/allsale1");
 
-   }).catch((err)=>{
-    alert(err)
-   })
+//    }).catch((err)=>{
+//     alert(err)
+//    })
  
 
-}
+// }
 
 
 
@@ -121,7 +145,7 @@ const cardstyle ={
 }} >
   
   <div style={{marginLeft:"700px"}}><br/><br/>
-                    <label for="topic" style={lableStyle1}><h3>ADD SALES </h3></label>
+                    <label  style={lableStyle1}><h3>ADD SALES </h3></label>
                     </div>
                     <div style={{marginTop:"10px",marginLeft:"960px"}}>
                     <Link to="/allsale1">
@@ -132,12 +156,12 @@ const cardstyle ={
                     
   <br></br>
   
-    <form onSubmit={sendData}>
+    <Form method="post">
     <div style={cardstyle}>
   <div className="form-group">
-    <label for="HotelName" style={lableStyle}  >Hotel name</label>
-    <input type="text" class="form-control" id="HotelName"  placeholder="Enter hotel name" style={inputStyle}  onChange={(e) => {
-        setHotelName(e.target.value);
+    <label htmlFor="HotelName" style={lableStyle}  >Hotel name</label>
+    <input type="text" className="form-control" id="HotelName" name="HotelName"  placeholder="Enter hotel name" style={inputStyle}  onChange={(e) => {
+        setHname(e.target.value);
     }}
     />
    </div>
@@ -145,9 +169,9 @@ const cardstyle ={
 
    
    <div className="form-group" >
-    <label for="Email" style={lableStyle} >Email</label>
-    <input type="text" className="form-control" id="Email"  placeholder="Enter email" style={inputStyle} onChange={(e) => {
-       setEmail(e.target.value);
+    <label htmlFor="Email" style={lableStyle} >Email</label>
+    <input type="text" className="form-control" id="Email" name="Email" placeholder="Enter email" style={inputStyle} onChange={(e) => {
+      setEma(e.target.value);
     }}
     />
    </div>
@@ -155,44 +179,44 @@ const cardstyle ={
    
    
    <div className="form-group">
-    <label for="PhoneNum" style={lableStyle}  >phone number</label>
-    <input type="text" className="form-control" id="PhoneNum "  placeholder="Enter phone number" style={inputStyle} onChange={(e) => {
-        setPhoneNum(e.target.value);
+    <label htmlFor="PhoneNum" style={lableStyle}  >phone number</label>
+    <input type="text" className="form-control" id="PhoneNum" name="PhoneNum"  placeholder="Enter phone number" style={inputStyle} onChange={(e) => {
+        setPnum(e.target.value);
     }}/>
    </div>
    
    <div className="form-group">
-    <label for="Location" style={lableStyle} >Location</label>
-    <input type="text" className="form-control" id="Location"  placeholder="Enter location" style={inputStyle} onChange={(e) => {
-        setLocation(e.target.value);
+    <label htmlFor="Location" style={lableStyle} >Location</label>
+    <input type="text" className="form-control" id="Location" name="Location"  placeholder="Enter location" style={inputStyle} onChange={(e) => {
+        setLoc(e.target.value);
     }}/>
     </div>
    
     <div className="form-group">
-    <label for="Amenties" style={lableStyle}  >am</label>
-    <input type="text" className="form-control" id="Amenties"  placeholder="Enter am" style={inputStyle} onChange={(e) => {
-        setAmenties(e.target.value);
+    <label htmlFor="Amenties" style={lableStyle}  >am</label>
+    <input type="text" className="form-control" id="Amenties" name="Amenties"  placeholder="Enter am" style={inputStyle} onChange={(e) => {
+        setAmen(e.target.value);
     }}/>
    </div>
 
    <div className="form-group">
-    <label for="Description" style={lableStyle}  >Dis</label>
-    <input type="text" className="form-control" id="Description"  placeholder="Enter dis" style={inputStyle} onChange={(e) => {
-        setDescription(e.target.value);
+    <label htmlFor="Description" style={lableStyle}  >Dis</label>
+    <input type="text" className="form-control" id="Description" name="Description"  placeholder="Enter dis" style={inputStyle} onChange={(e) => {
+        setDesc(e.target.value);
     }}/>
    </div>
 
    <div className="form-group">
-    <label for="RoomDetail" style={lableStyle}  >room</label>
-    <input type="text" className="form-control" id="RoomDetail"  placeholder="Enter room" style={inputStyle} onChange={(e) => {
-        setRoomDetail(e.target.value);
+    <label htmlFor="RoomDetail" style={lableStyle}  >room</label>
+    <input type="text" className="form-control" id="RoomDetail" name="RoomDetail"  placeholder="Enter room" style={inputStyle} onChange={(e) => {
+        setRoom(e.target.value);
     }}/>
    </div>
 
    <div className="form-group">
-    <label for="PackDetail" style={lableStyle}  >pack</label>
-    <input type="text" className="form-control" id="PackDetail"  placeholder="Enter pack" style={inputStyle} onChange={(e) => {
-        setPackDetail(e.target.value);
+    <label htmlFor="PackDetail" style={lableStyle}  >pack</label>
+    <input type="text" className="form-control" id="PackDetail" name="PackDetail"  placeholder="Enter pack" style={inputStyle} onChange={(e) => {
+        setPack(e.target.value);
     }}/>
 
    </div>
@@ -200,11 +224,11 @@ const cardstyle ={
 
 
     <div >
-    <button type="submit" class="btn btn-primary" style={buttonStyle}>Submit</button>
+    <button type="submit" className="btn btn-primary" style={buttonStyle}>Submit</button>
  </div>
  </div>
  
-</form>
+</Form>
 </div>
 
 

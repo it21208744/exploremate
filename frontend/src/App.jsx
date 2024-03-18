@@ -19,6 +19,7 @@ import Travelpedia from './pages/travelers/Travelpedia'
 import SalesHeader from './pages/Accomadation/SalesHeader'
 import AddHotel from './pages/Accomadation/AddHotel'
 
+import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
         element: <HotelOwnerDashBoardLayout />,
         children: [
           { index: true, element: <SalesHeader/> },
-          { path: 'addhotel', element: <AddHotel/> },
+          { path: 'addhotel', element: <AddHotel/>, action: AddhotelAction },
 
         
         ],

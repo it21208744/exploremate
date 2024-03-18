@@ -11,7 +11,7 @@ import bodyParser from 'body-parser';
 //const dotenv = require("dotenv");
 import * as dotenv from 'dotenv';
 dotenv.config();
-const PORT = process.env.PORT || 5173;
+const PORT = process.env.PORT || 5000;
 const URL = process.env.MONGODB_URL;
 import CoffeeRouter from './routes/Coffee.js'
 
@@ -44,7 +44,7 @@ import travelersRouter from './routes/travelersRouter.js'
 
 // app.use('api/v1/hotelowner')
 app.use(express.json())
-app.use("/Coffee", CoffeeRouter);
+app.use("/api/v1/Coffee", CoffeeRouter);
 
 app.use('/api/v1/travelers', travelersRouter)
 
@@ -56,7 +56,7 @@ try {
   console.log('Connected to the database')
   //implement the connection to the database here
   app.listen(PORT, () => {
-    console.log(`server is running on port x`)
+    console.log(`server is running on port ${PORT}`)
   }
   )
   

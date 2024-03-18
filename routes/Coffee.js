@@ -35,9 +35,10 @@ router.route("/add").post(async (req,res)=>{
     })
 
     newSale.save().then(()=>{
-    res.json("Sales added")
+    res.send("Sales added")
      }).catch((err)=>{
         console.log(err);
+        res.send("error occured")
     })
 
 
