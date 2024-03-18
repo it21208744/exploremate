@@ -42,9 +42,11 @@ const PlannerFormElements = () => {
         <h1 className="pageTitle">Plan your next adventure</h1>
         <Form method="post" className="form">
           <div>
-            <label htmlFor="location" className="form-label">
-              Where to go?
-            </label>
+            <div>
+              <label htmlFor="location" className="form-label">
+                Where to go?
+              </label>
+            </div>
             <input
               type="text"
               name="location"
@@ -54,9 +56,11 @@ const PlannerFormElements = () => {
             />
           </div>
           <div>
-            <label htmlFor="date" className="form-label">
-              When?
-            </label>
+            <div>
+              <label htmlFor="date" className="form-label">
+                When?
+              </label>
+            </div>
             <input
               type="date"
               name="date"
@@ -65,9 +69,11 @@ const PlannerFormElements = () => {
             />
           </div>
           <div>
-            <label htmlFor="days" className="form-label">
-              How many days?
-            </label>
+            <div>
+              <label htmlFor="days" className="form-label">
+                How many days?
+              </label>
+            </div>
             <input
               type="days"
               name="days"
@@ -77,9 +83,11 @@ const PlannerFormElements = () => {
             />
           </div>
           <div>
-            <label htmlFor="type" className="form-label">
-              Type?
-            </label>
+            <div>
+              <label htmlFor="type" className="form-label">
+                Type?
+              </label>
+            </div>
             <input type="text" name="type" className="formInput" id="type" />
           </div>
 
@@ -87,35 +95,39 @@ const PlannerFormElements = () => {
             {isSubmitting ? 'Creating a plan...' : 'Lets travel'}
           </button>
         </Form>
-        {/* {outputSituation === 'default' ? <h1>default</h1> : null} */}
-        {outputSituation === 'outPutPresents' ? (
-          <ul>
-            <li>
-              <button type="button" onClick={() => changeGuide(true)}>
-                GUIDE
-              </button>
-            </li>
-            <li>
-              <button type="button" onClick={() => changeGuide(false)}>
-                TRAVELPEDIA
-              </button>
-            </li>
-          </ul>
-        ) : null}
-        {outputSituation === 'outPutPresents' ? (
-          isGuide ? (
-            <PlannerOutputGuide
-              planAndWeather={planAndWeather}
-              packingList={packingList}
-            />
+        <div className="output">
+          {outputSituation === 'outPutPresents' ? (
+            <ul className="horizontalNav">
+              <li>
+                <button type="button" onClick={() => changeGuide(true)}>
+                  GUIDE
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => changeGuide(false)}>
+                  TRAVELPEDIA
+                </button>
+              </li>
+            </ul>
+          ) : null}
+
+          {outputSituation === 'outPutPresents' ? (
+            isGuide ? (
+              <PlannerOutputGuide
+                planAndWeather={planAndWeather}
+                packingList={packingList}
+              />
+            ) : (
+              <div className="travelpedia">
+                <Travelpedia location={location} weather={weather} />
+              </div>
+            )
           ) : (
-            <Travelpedia location={location} weather={weather} />
-          )
-        ) : (
-          <div className="defaultContent">
-            <h1>Here goes some bullshit</h1>
-          </div>
-        )}
+            <div className="defaultContent">
+              <h1>Here goes some bullshit</h1>
+            </div>
+          )}
+        </div>
       </div>
     </Wrapper>
   )
