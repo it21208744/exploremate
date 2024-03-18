@@ -4,7 +4,7 @@ import axios from "axios";
 import {Link} from 'react-router-dom';
 
 import { useNavigate } from "react-router-dom";
-export default function AddSales(){
+export default function AddHotel(){
 
 const [HotelName , setHotelName] = useState("");
 const [Email , setEmail] = useState("");
@@ -45,7 +45,7 @@ function sendData(e){
    setRoomDetail("");
    setPackDetail("");
  
-      navigate("/allsale1");
+      //navigate("/allsale1");
 
    }).catch((err)=>{
     alert(err)

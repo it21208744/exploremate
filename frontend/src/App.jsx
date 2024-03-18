@@ -17,7 +17,7 @@ import Profile from './pages/travelers/Profile'
 import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
 import SalesHeader from './pages/Accomadation/SalesHeader'
-import AddSales from './pages/Accomadation/AddHotel'
+import AddHotel from './pages/Accomadation/AddHotel'
 
 const router = createBrowserRouter([
   {
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         element: <HotelOwnerDashBoardLayout />,
         children: [
           { index: true, element: <SalesHeader/> },
-          { path: 'addhotel', element: <AddSales/> },
+          { path: 'addhotel', element: <AddHotel/> },
 
         
         ],

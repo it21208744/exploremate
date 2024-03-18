@@ -9,44 +9,36 @@ const router = Router ()
 
  
 router.route("/add").post(async (req,res)=>{
-  const {HotelName, Email, PhoneNum,Location,Amenties,Description, RoomDetail, PackDetail} = req.body
+  //const {HotelName, Email, PhoneNum,Location,Amenties,Description, RoomDetail, PackDetail} = req.body
 
-    // const HotelName = req.body.HotelName;
-    // console.log(HotelName)
-    // const Email  =req.body.Email;
-    // const PhoneNum =Number(req.body.PhoneNum);
-    // const Location =req.body.Location;
-    // const Amenties = req.body.Amenties;
-    // const  Description = req.body.Description;
-    // const  RoomDetail = req.body.RoomDetail;
-    // const  PackDetail = req.body.PackDetail;
+    const HotelName = req.body.HotelName;
+    const Email  =req.body.Email;
+    const PhoneNum =Number(req.body.PhoneNum);
+    const Location =req.body.Location;
+    const Amenties = req.body.Amenties;
+    const  Description = req.body.Description;
+    const  RoomDetail = req.body.RoomDetail;
+    const  PackDetail = req.body.PackDetail;
 
-try {
-  await hotel.create(req.body)
-  res.send('coffee added')
-} catch (error) {
-  console.log(error)
-  res.send('Something went wrong')
-}
     
 
-    // const newSale = new Cofe({
-    //   HotelName,
-    //   Email ,
-    //  PhoneNum ,
-    //   Location ,
-    //   Amenties ,
-    //    Description ,
-    //   RoomDetail ,
-    //   PackDetail 
+    const newSale = new hotel({
+    HotelName,
+    Email ,
+    PhoneNum ,
+    Location ,
+    Amenties ,
+    Description ,
+    RoomDetail ,
+    PackDetail 
 
-    // })
+    })
 
-    // newSale.save().then(()=>{
-    //   res.json("Sales added")
-    // }).catch((err)=>{
-    //     console.log(err);
-    // })
+    newSale.save().then(()=>{
+    res.json("Sales added")
+     }).catch((err)=>{
+        console.log(err);
+    })
 
 
 
@@ -89,7 +81,7 @@ router.route("/update/:id").put(async (req,res)=>{
 
    }
 
-   const update = await Cofe.findByIdAndUpdate(salesId , updateSales ).then(()=>{
+   const update = await hotel.findByIdAndUpdate(salesId , updateSales ).then(()=>{
     res.status(200).send({status: "Sales updated" })
    }).catch((err)=>{
     res.status(500).send({status: "Error with updating data" , error: err.message })
@@ -101,7 +93,7 @@ router.route("/update/:id").put(async (req,res)=>{
 
 router.route("/delete/:id").delete(async(req,res)=>{
   let salesId = req.params.id;
-  await Cofe.findByIdAndDelete(salesId)
+  await hotel.findByIdAndDelete(salesId)
   .then(()=>{
      res.status(200).send({status: "Sale deleted"});
   }).catch((err)=>{
@@ -118,8 +110,8 @@ router.route("/delete/:id").delete(async(req,res)=>{
 router.route("/get/:id").get(async(req,res)=>{
     let salesId = req.params.id;
     const sale = await Cofe.findById(salesId)
-    .then((Cofe)=>{
-       res.status(200).send({status: "Sale fetched" ,Cofe});
+    .then((hotel)=>{
+       res.status(200).send({status: "Sale fetched" ,hotel});
     }).catch((err)=>{
       console.log(err.message);
       res.status(500).send({status: "Error with get sale",error:err.message});
