@@ -14,7 +14,7 @@ const [Amenties , setAmenties] = useState("");
 const [Description , setDescription] = useState("");
 const [RoomDetail , setRoomDetail] = useState("");
 const [PackDetail , setPackDetail] = useState("");
-const [imageUrl , setimageUrl] = useState("");
+
 
 const navigate = useNavigate();
 
@@ -30,11 +30,11 @@ function sendData(e){
         Amenties,
         Description,
         RoomDetail,
-        PackDetail,
-        imageUrl
+        PackDetail
+       
   }
 
-   axios.post("http://localhost:8070/Coffee/add", newSales ).then(() =>{
+   axios.post("http://localhost:5173/Coffee/add", newSales ).then(() =>{
     
    setHotelName("");
    setEmail("");
@@ -44,7 +44,7 @@ function sendData(e){
    setDescription("");
    setRoomDetail("");
    setPackDetail("");
-   setimageUrl("");
+ 
       navigate("/allsale1");
 
    }).catch((err)=>{
@@ -152,12 +152,7 @@ const cardstyle ={
     />
    </div>
    
-   <div className="form-group">
-    <label for="quantity" style={lableStyle}  >Quantity</label>
-    <input type="text" className="form-control" id="quantity"  placeholder="Enter quantity" style={inputStyle} onChange={(e) => {
-        setquantity(e.target.value);
-    }}/>
-   </div>
+   
    
    <div className="form-group">
     <label for="PhoneNum" style={lableStyle}  >phone number</label>
@@ -174,8 +169,8 @@ const cardstyle ={
     </div>
    
     <div className="form-group">
-    <label for="Amenties" style={lableStyle}  >Discount(Rs per item)</label>
-    <input type="text" className="form-control" id="Amenties"  placeholder="Enter discount" style={inputStyle} onChange={(e) => {
+    <label for="Amenties" style={lableStyle}  >am</label>
+    <input type="text" className="form-control" id="Amenties"  placeholder="Enter am" style={inputStyle} onChange={(e) => {
         setAmenties(e.target.value);
     }}/>
    </div>
@@ -201,12 +196,7 @@ const cardstyle ={
     }}/>
 
    </div>
-   <div className="form-group">
-    <label for="imageUrl" style={lableStyle}  >imag</label>
-    <input type="text" className="form-control" id="imageUrl"  placeholder="Enter image" style={inputStyle} onChange={(e) => {
-        setimageUrl(e.target.value);
-    }}/>
-   </div>
+   
 
 
     <div >

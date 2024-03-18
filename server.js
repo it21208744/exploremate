@@ -11,7 +11,7 @@ import bodyParser from 'body-parser';
 //const dotenv = require("dotenv");
 import * as dotenv from 'dotenv';
 dotenv.config();
-const PORT = process.env.PORT || 5174;
+const PORT = process.env.PORT || 5173;
 const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL, {
