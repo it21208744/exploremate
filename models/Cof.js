@@ -48,12 +48,8 @@ const salesSchema = new mongoose.Schema({
         type : String,
         required: true
 
-    },
+    }
 
-    imageUrl: {
-        type: String, // Assuming you are storing the URL of the uploaded image
-        required: true,
-      }
     
 
 })

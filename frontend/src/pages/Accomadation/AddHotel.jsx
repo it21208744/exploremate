@@ -34,7 +34,7 @@ function sendData(e){
         imageUrl
   }
 
-   axios.post("http://localhost:5173/Coffee/add", newSales ).then(() =>{
+   axios.post("http://localhost:8070/Coffee/add", newSales ).then(() =>{
     
    setHotelName("");
    setEmail("");

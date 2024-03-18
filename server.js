@@ -11,7 +11,7 @@ import bodyParser from 'body-parser';
 //const dotenv = require("dotenv");
 import * as dotenv from 'dotenv';
 dotenv.config();
-const PORT = process.env.PORT || 5173;
+const PORT = process.env.PORT || 8070;
 const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL, {
@@ -49,7 +49,7 @@ app.use('/api/v1/taxi', taxiRouter)
 try {
   //implement the connection to the database here
   app.listen(5000, () => {
-    console.log(`server is running on port 5000`)
+    console.log(`server is running on port x`)
     const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("Mongodb Connection success!");
