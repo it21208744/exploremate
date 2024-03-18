@@ -56,4 +56,4 @@ const salesSchema = new mongoose.Schema({
 
 
 
-export default mongoose.model('Cofe',salesSchema);
+export default mongoose.model('hotel',salesSchema);

@@ -3,37 +3,50 @@ import { Router } from 'express'
 const router = Router ()
 // const router = Router()
 // let cof = require("../models/Cof");
- import Cofe from "../models/Cof.js";
-
-router.route("/add").post((req,res)=>{
-    const HotelName = req.body.HotelName;
-    const Email  =req.body.Email;
-    const PhoneNum =Number(req.body.PhoneNum);
-    const Location =req.body.Location;
-    const Amenties = req.body.Amenties;
-    const  Description = req.body.Description;
-    const  RoomDetail = req.body.RoomDetail;
-    const  PackDetail = req.body.PackDetail;
+ import hotel from "../models/Cof.js";
 
 
 
-    const newSale = new Cofe({
-      HotelName,
-      Email ,
-     PhoneNum ,
-      Location ,
-      Amenties ,
-       Description ,
-      RoomDetail ,
-      PackDetail 
+ 
+router.route("/add").post(async (req,res)=>{
+  const {HotelName, Email, PhoneNum,Location,Amenties,Description, RoomDetail, PackDetail} = req.body
 
-    })
+    // const HotelName = req.body.HotelName;
+    // console.log(HotelName)
+    // const Email  =req.body.Email;
+    // const PhoneNum =Number(req.body.PhoneNum);
+    // const Location =req.body.Location;
+    // const Amenties = req.body.Amenties;
+    // const  Description = req.body.Description;
+    // const  RoomDetail = req.body.RoomDetail;
+    // const  PackDetail = req.body.PackDetail;
 
-    newSale.save().then(()=>{
-      res.json("Sales added")
-    }).catch((err)=>{
-        console.log(err);
-    })
+try {
+  await hotel.create(req.body)
+  res.send('coffee added')
+} catch (error) {
+  console.log(error)
+  res.send('Something went wrong')
+}
+    
+
+    // const newSale = new Cofe({
+    //   HotelName,
+    //   Email ,
+    //  PhoneNum ,
+    //   Location ,
+    //   Amenties ,
+    //    Description ,
+    //   RoomDetail ,
+    //   PackDetail 
+
+    // })
+
+    // newSale.save().then(()=>{
+    //   res.json("Sales added")
+    // }).catch((err)=>{
+    //     console.log(err);
+    // })
 
 
 
