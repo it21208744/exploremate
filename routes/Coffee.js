@@ -48,8 +48,8 @@ router.route("/add").post(async (req,res)=>{
 
 router.route("/").get((req,res)=>{
 
-Cofe.find().then((Coffees)=>{
-  res.json(Coffees)
+hotel.find().then((hotel)=>{
+  res.json(hotel)
 
 }).catch((err)=>{
     console.log(err)
@@ -110,7 +110,7 @@ router.route("/delete/:id").delete(async(req,res)=>{
 
 router.route("/get/:id").get(async(req,res)=>{
     let salesId = req.params.id;
-    const sale = await Cofe.findById(salesId)
+    const sale = await hotel.findById(salesId)
     .then((hotel)=>{
        res.status(200).send({status: "Sale fetched" ,hotel});
     }).catch((err)=>{

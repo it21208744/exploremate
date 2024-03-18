@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 const UpdateSale = () => {
-    const[id,setid] = useState(" ");
-    const [HotelName , setHotelName] = useState("");
+const[id,setid] = useState(" ");
+const [HotelName , setHotelName] = useState("");
 const [Email , setEmail] = useState("");
 const [PhoneNum , setPhoneNum] = useState("");
 const [Location , setLocation] = useState("");

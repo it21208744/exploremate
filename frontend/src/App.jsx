@@ -18,8 +18,12 @@ import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
 import SalesHeader from './pages/Accomadation/SalesHeader'
 import AddHotel from './pages/Accomadation/AddHotel'
+import AllHotels from './pages/Accomadation/AllHotels'
+
 
 import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
+//import { action as AllHotelsAction } from './pages/Accomadation/AllHotels'
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -54,7 +58,7 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <SalesHeader/> },
           { path: 'addhotel', element: <AddHotel/>, action: AddhotelAction },
-
+          { path: 'allhotels', element: <AllHotels/> },
         
         ],
       },
