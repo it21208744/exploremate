@@ -23,6 +23,7 @@ import AllHotels from './pages/Accomadation/AllHotels'
 
 import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
 //import { action as AllHotelsAction } from './pages/Accomadation/AllHotels'
+//import { action as AllhotelAction } from './pages/Accomadation/AllHotels'
 
 const router = createBrowserRouter([
   {
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <SalesHeader/> },
           { path: 'addhotel', element: <AddHotel/>, action: AddhotelAction },
-          { path: 'allhotels', element: <AllHotels/> },
+          { path: 'allhotels', element: <AllHotels/>  },
         
         ],
       },
