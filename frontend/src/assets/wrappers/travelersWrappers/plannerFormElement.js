@@ -11,7 +11,7 @@ const colors = {
 const Wrapper = styled.div`
   .pageTitle {
     color: ${colors.title};
-    position: relative;
+    position: absolute;
     top: -15vw;
     left: 25vw;
   }
