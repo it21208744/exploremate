@@ -44,14 +44,14 @@ const navigate = useNavigate();
 //   e.preventDefault();
 
 //   const newSales = {
-//         HotelName,
-//         Email,
-//         PhoneNum,
-//         Location,
-//         Amenties,
-//         Description,
-//         RoomDetail,
-//         PackDetail
+        // HotelName,
+        // Email,
+        // PhoneNum,
+        // Location,
+        // Amenties,
+        // Description,
+        // RoomDetail,
+        // PackDetail
        
 //   }
 //   //hehehe
