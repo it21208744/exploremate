@@ -62,12 +62,7 @@ const PlannerFormElements = () => {
                 When?
               </label>
             </div>
-            <input
-              type="date"
-              name="date"
-              className="formInput-date"
-              id="date"
-            />
+            <input type="date" name="date" className="formInput" id="date" />
           </div>
           <div>
             <div>
@@ -90,13 +85,16 @@ const PlannerFormElements = () => {
               </label>
             </div>
 
-            <select id="type" name="type" className="selectInput">
+            <select
+              id="type"
+              name="type"
+              className="formInput"
+              defaultValue={'Family-Friendly'}
+            >
               <option value="Cultural">Cultural</option>
               <option value="Adventure ">Adventure </option>
               <option value="Historical ">Historical </option>
-              <option value="Family-Friendly" selected>
-                Family-Friendly
-              </option>
+              <option value="Family-Friendly">Family-Friendly</option>
               <option value="Food hunting">Food hunting</option>
             </select>
           </div>
@@ -131,10 +129,7 @@ const PlannerFormElements = () => {
           {outputSituation === 'outPutPresents' ? (
             isGuide ? (
               <div className="guide">
-                <PlannerOutputGuide
-                  planAndWeather={planAndWeather}
-                  packingList={packingList}
-                />
+                <PlannerOutputGuide planAndWeather={planAndWeather} />
               </div>
             ) : (
               <div className="travelpedia">

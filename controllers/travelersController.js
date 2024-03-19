@@ -1,6 +1,7 @@
 import { generateList, generatePlans } from '../components/openAI.js'
-
 import { checkWeather } from '../components/weather.js'
+
+import travelPlan from '../models/travelPlan.js'
 
 export const addPlan = async (req, res, next) => {
   const { location, days, type, date } = req.body
@@ -32,4 +33,20 @@ export const getSinglePlan = (req, res) => {
 
 export const deletePlan = (req, res) => {
   res.send(`delete a plan`)
+}
+
+export const savePlan = async (req, res) => {
+  const city = req.body.planAndWeather.weather.name
+
+  const packingList = req.body.planAndWeather.packingList
+
+  const plan = req.body.planAndWeather.plansContent
+
+  try {
+    await travelPlan.create({ city, packingList, plan })
+    res.send('Plan saved')
+  } catch (error) {
+    //console.log(error)
+    res.send('Something went wrong')
+  }
 }

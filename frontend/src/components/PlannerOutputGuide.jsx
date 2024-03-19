@@ -1,4 +1,19 @@
+import axios from 'axios'
+import { toast } from 'react-toastify'
+
 const PlannerOutput = (planAndWeather) => {
+  const savePlan = async () => {
+    try {
+      const res = await axios.post(
+        '/api/v1/travelers/savePlan/',
+        planAndWeather
+      )
+      toast.success('Plan saved successfully')
+    } catch (error) {
+      toast.error('Something went wrong')
+    }
+  }
+
   const plans = planAndWeather?.planAndWeather?.plansContent
 
   let plansAsArray = []
@@ -6,7 +21,7 @@ const PlannerOutput = (planAndWeather) => {
     plansAsArray = Object.values(plans).map((item) => item.actions)
   }
 
-  const packingList = planAndWeather?.packingList
+  const packingList = planAndWeather?.planAndWeather?.packingList
 
   let PackingListAsArray = []
   if (packingList) {
@@ -44,6 +59,8 @@ const PlannerOutput = (planAndWeather) => {
           )
         })}
       </ul>
+
+      <button onClick={savePlan}>save this plan</button>
     </div>
   )
 }

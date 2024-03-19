@@ -22,9 +22,26 @@ const Wrapper = styled.div`
     /* left: 25vw; */
   }
 
-  .form input {
+  .form-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #86b9b0;
+    margin-bottom: 8px;
+  }
+
+  .formInput {
     width: 30vw;
-    height: 3vh;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+
+  .formInput:focus {
+    outline: none;
+    border-color: #007bff;
   }
 
   .selectInput {
@@ -40,7 +57,7 @@ const Wrapper = styled.div`
 
   .output {
     position: absolute;
-    top: 8vw;
+    top: 12vw;
     width: 100vw;
     border-top: 20px solid black;
     /* background: grey; */
