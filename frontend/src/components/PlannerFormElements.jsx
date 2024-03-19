@@ -109,6 +109,7 @@ const PlannerFormElements = () => {
                 <button
                   type="button"
                   onClick={() => changeGuide(true)}
+                  // className="test"
                   className={isGuide ? 'activeBtn' : null}
                 >
                   GUIDE

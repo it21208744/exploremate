@@ -12,13 +12,13 @@ const Wrapper = styled.div`
   .pageTitle {
     color: ${colors.title};
     position: absolute;
-    top: -15vw;
+    top: -50vh;
     left: 25vw;
   }
 
   .form {
-    position: relative;
-    top: -14vw;
+    position: absolute;
+    top: -30vh;
     /* left: 25vw; */
   }
 
@@ -50,9 +50,9 @@ const Wrapper = styled.div`
   }
 
   button {
-    position: relative;
-    left: 39vw;
-    top: 3vh;
+    position: absolute;
+    left: 35vw;
+    top: 40vh;
   }
 
   .output {
@@ -63,12 +63,16 @@ const Wrapper = styled.div`
     /* background: grey; */
   }
 
-  .output .horizontalNav {
-    position: relative;
-    top: -1vw;
-    left: -5vw;
+  .horizontalNav {
+    position: absolute;
+    top: -38vh;
+    left: 14vw;
     list-style: none;
-    display: inline;
+  }
+
+  .test {
+    position: absolute;
+    left: 50vh;
   }
 
   .output .horizontalNav li {
@@ -134,6 +138,13 @@ const Wrapper = styled.div`
   .guide {
     opacity: 0; /* Initially hidden */
     animation: slideInLeft 0.2s ease forwards; /* Apply slide-in animation */
+    position: relative;
+    top: 20vh;
+  }
+
+  .saveBtn {
+    position: relative;
+    top: 5vh;
   }
 `
 

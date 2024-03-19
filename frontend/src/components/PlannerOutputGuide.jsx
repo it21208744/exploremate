@@ -60,7 +60,9 @@ const PlannerOutput = (planAndWeather) => {
         })}
       </ul>
 
-      <button onClick={savePlan}>save this plan</button>
+      <button onClick={savePlan} className="saveBtn">
+        save this plan
+      </button>
     </div>
   )
 }
