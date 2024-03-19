@@ -69,7 +69,7 @@ router.route("/update/:id").put(async (req,res)=>{
     RoomDetail ,
     PackDetail } = req.body;
 
-   const updateSales = {
+   const UpdateHotels = {
      
     HotelName,
     Email ,
@@ -82,7 +82,7 @@ router.route("/update/:id").put(async (req,res)=>{
 
    }
 
-   const update = await hotel.findByIdAndUpdate(salesId , updateSales ).then(()=>{
+   const update = await hotel.findByIdAndUpdate(salesId , UpdateHotels ).then(()=>{
     res.status(200).send({status: "Sales updated" })
    }).catch((err)=>{
     res.status(500).send({status: "Error with updating data" , error: err.message })

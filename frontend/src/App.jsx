@@ -19,7 +19,7 @@ import Travelpedia from './pages/travelers/Travelpedia'
 import SalesHeader from './pages/Accomadation/SalesHeader'
 import AddHotel from './pages/Accomadation/AddHotel'
 import AllHotels from './pages/Accomadation/AllHotels'
-
+import UpdateHotels from './pages/Accomadation/UpdateHotels'
 
 import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
 //import { action as AllHotelsAction } from './pages/Accomadation/AllHotels'
@@ -60,6 +60,7 @@ const router = createBrowserRouter([
           { index: true, element: <SalesHeader/> },
           { path: 'addhotel', element: <AddHotel/>, action: AddhotelAction },
           { path: 'allhotels', element: <AllHotels/>  },
+          { path: 'uphotels', element: <UpdateHotels/>  },
         
         ],
       },

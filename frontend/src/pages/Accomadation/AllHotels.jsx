@@ -29,6 +29,7 @@ export default function AllSales() {
                 <table className="table table-striped" id="my-table" style={{ color: "#000" }}>
                     <thead>
                         <tr>
+                        <th>ID</th>
                             <th>HotelName</th>
                             <th>Email</th>
                             <th>PhoneNum</th>
@@ -42,6 +43,7 @@ export default function AllSales() {
                     <tbody>
                         {hotel.map((item) => (
                             <tr key={item._id}>
+                                <td>{item._id}</td>
                                 <td>{item.HotelName}</td>
                                 <td>{item.Email}</td>
                                 <td>{item.PhoneNum}</td>
@@ -50,7 +52,24 @@ export default function AllSales() {
                                 <td>{item.Description}</td>
                                 <td>{item.RoomDetail}</td>
                                 <td>{item.PackDetail}</td>
-                            </tr>
+
+                                
+    <td>
+        <a href="uphotels">
+            <button className="btn-success" onClick={() => SetToLocalStorage(
+                item._id,
+                item.HotelName,
+                item.Email,
+                item.PhoneNum,
+                item.Location,
+                item.Amenties,
+                item.Description,
+                item.RoomDetail,
+                item.PackDetail
+            )}>Edit{" "}</button>
+        </a>
+    </td>
+</tr>
                         ))}
                     </tbody>
                 </table>
