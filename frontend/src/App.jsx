@@ -17,6 +17,8 @@ import Profile from './pages/travelers/Profile'
 import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
 
+
+import { action as RegisterAction } from './pages/Register'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -26,7 +28,7 @@ const router = createBrowserRouter([
       { index: true, element: <LandingPage /> },
       { path: 'landing', element: <LandingPage /> },
       { path: 'login', element: <Login /> },
-      { path: 'register', element: <Register /> },
+      { path: 'register', element: <Register />, action: RegisterAction },
       {
         path: 'travelerDashBoard',
         element: <TravelerDashBoardLayout />,
