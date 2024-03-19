@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import Travelpedia from '../pages/travelers/Travelpedia'
 import { toast } from 'react-toastify'
 import Wrapper from '../assets/wrappers/travelersWrappers/plannerFormElement'
+import NiceBtn from './NiceBtn'
 
 export const action = async ({ request }) => {
   const formData = await request.formData()
@@ -75,7 +76,7 @@ const PlannerFormElements = () => {
               </label>
             </div>
             <input
-              type="days"
+              type="number"
               name="days"
               className="formInput"
               id="days"
@@ -88,23 +89,39 @@ const PlannerFormElements = () => {
                 Type?
               </label>
             </div>
-            <input type="text" name="type" className="formInput" id="type" />
-          </div>
 
-          <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Creating a plan...' : 'Lets travel'}
-          </button>
+            <select id="type" name="type" className="selectInput">
+              <option value="Cultural">Cultural</option>
+              <option value="Adventure ">Adventure </option>
+              <option value="Historical ">Historical </option>
+              <option value="Family-Friendly" selected>
+                Family-Friendly
+              </option>
+              <option value="Food hunting">Food hunting</option>
+            </select>
+          </div>
+          <div className="button">
+            <NiceBtn isSubmitting={isSubmitting} />
+          </div>
         </Form>
         <div className="output">
           {outputSituation === 'outPutPresents' ? (
             <ul className="horizontalNav">
               <li>
-                <button type="button" onClick={() => changeGuide(true)}>
+                <button
+                  type="button"
+                  onClick={() => changeGuide(true)}
+                  className={isGuide ? 'activeBtn' : null}
+                >
                   GUIDE
                 </button>
               </li>
               <li>
-                <button type="button" onClick={() => changeGuide(false)}>
+                <button
+                  type="button"
+                  onClick={() => changeGuide(false)}
+                  className={isGuide ? null : 'activeBtn'}
+                >
                   TRAVELPEDIA
                 </button>
               </li>
@@ -113,10 +130,12 @@ const PlannerFormElements = () => {
 
           {outputSituation === 'outPutPresents' ? (
             isGuide ? (
-              <PlannerOutputGuide
-                planAndWeather={planAndWeather}
-                packingList={packingList}
-              />
+              <div className="guide">
+                <PlannerOutputGuide
+                  planAndWeather={planAndWeather}
+                  packingList={packingList}
+                />
+              </div>
             ) : (
               <div className="travelpedia">
                 <Travelpedia location={location} weather={weather} />
