@@ -17,6 +17,8 @@ import Profile from './pages/travelers/Profile'
 import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
 
+import { action as addPlan } from './components/PlannerFormElements'
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -34,6 +36,7 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Planner />,
+            action: addPlan,
           },
           { path: 'planOnYourBudget', element: <PlanOnYourBudget /> },
           { path: 'services', element: <Services /> },

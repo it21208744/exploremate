@@ -8,7 +8,6 @@ const TravelerSideNavBar = () => {
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar)
-    console.log(showSidebar)
   }
 
   return (
