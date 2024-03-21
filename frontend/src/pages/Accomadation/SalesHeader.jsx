@@ -12,13 +12,16 @@ const SalesHeader =()=>{
     color:"#6F4E37"         
   };
     return(
-
-      
-            <ul className="navbar-nav">       
+<>
+<div style={{ textAlign: 'center' }}>
+  <h1 style={{ color: '#042630' }}>WELCOME TO EXPLOREMATE</h1>
+</div>
+            <ul >       
             
-              <li className="nav-item">
-              <Link to ="addhotel" className="nav-link"  style={lableStyle}>Add Hotels</Link>
-              <Link to ="allhotels" className="nav-link"  style={lableStyle}>Add Hotels</Link>
+              <li >
+              <Link to ="addhotel" className="nav-link"  style={lableStyle}>Add New Hotels |</Link>
+              <Link to ="allhotels" className="nav-link"  style={lableStyle}>Manage Hotels |</Link>
+              <Link to ="allhotels" className="nav-link"  style={lableStyle}>View Bookings</Link>
               </li>
               
              <br/>
@@ -27,9 +30,9 @@ const SalesHeader =()=>{
         
        
       
-      
+            </>
   
-    )
+    );
 }
 
 export default SalesHeader;
