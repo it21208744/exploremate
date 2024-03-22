@@ -44,15 +44,32 @@ const AllPlanting = () => {
          
         }
 
-        const SetToLocalStorage = (id, date, divisionName, plantType, numOfPlants, numOfWorkers, discription) =>{
+        const SetToLocalStorage = (id, companyName, bussinessRegNo, companyEmail, comContactNo, vehicleType, vehicleModel,licenNo,inssuranceCompany,driverName,driverEmail,contactNumber,driverLiceNo) =>{
+
+          //  localStorage.setItem("id",id);
+          //  localStorage.setItem("date",date);
+          //  localStorage.setItem("divisionName",divisionName);
+          //  localStorage.setItem("plantType",plantType);
+          //  localStorage.setItem("numOfPlants",numOfPlants);
+          //  localStorage.setItem("numOfWorkers",numOfWorkers);
+          //  localStorage.setItem("discription",discription);
 
            localStorage.setItem("id",id);
-           localStorage.setItem("date",date);
-           localStorage.setItem("divisionName",divisionName);
-           localStorage.setItem("plantType",plantType);
-           localStorage.setItem("numOfPlants",numOfPlants);
-           localStorage.setItem("numOfWorkers",numOfWorkers);
-           localStorage.setItem("discription",discription);
+           localStorage.setItem("companyName",companyName);
+           localStorage.setItem("bussinessRegNo",bussinessRegNo);
+           localStorage.setItem("companyEmail",companyEmail);
+           localStorage.setItem("comContactNo",comContactNo);
+           localStorage.setItem("vehicleType",vehicleType);
+           localStorage.setItem("vehicleModel",vehicleModel);
+           localStorage.setItem("licenNo",licenNo);
+           localStorage.setItem("inssuranceCompany",inssuranceCompany);
+           localStorage.setItem("driverName",driverName);
+           localStorage.setItem("driverEmail",driverEmail);
+           localStorage.setItem("contactNumber",contactNumber);
+           localStorage.setItem("driverLiceNo",driverLiceNo);
+    
+
+
     
         };
 
@@ -66,7 +83,7 @@ const AllPlanting = () => {
 
         useEffect(() => {
           const filteredResults = Plantings.filter(item => {
-            return item.divisionName.toLowerCase().includes(searchTerm.toLowerCase());
+            return item.companyName.toLowerCase().includes(searchTerm.toLowerCase());
           });
           setFilteredData(filteredResults);
         }, [Plantings, searchTerm]);
@@ -85,25 +102,25 @@ const AllPlanting = () => {
     },[]);
 
 
-    const [totalAmount, setTotalAmount] = useState(0);
+    // const [totalAmount, setTotalAmount] = useState(0);
 
-    const handleCalculate = () => {
-      let total = 0;
-      Plantings.forEach((item) => {
-        total += item.numOfPlants;
-      });
-      setTotalAmount(total);
-    };
+    // const handleCalculate = () => {
+    //   let total = 0;
+    //   Plantings.forEach((item) => {
+    //     total += item.numOfPlants;
+    //   });
+    //   setTotalAmount(total);
+    // };
 
-    const [totalWorkers, setTotalWorkers] = useState(0);
+    // const [totalWorkers, setTotalWorkers] = useState(0);
 
-    const handleCalculat = () => {
-      let total = 0;
-      Plantings.forEach((item) => {
-        total += item.numOfWorkers;
-      });
-      setTotalWorkers(total);
-    };
+    // const handleCalculat = () => {
+    //   let total = 0;
+    //   Plantings.forEach((item) => {
+    //     total += item.numOfWorkers;
+    //   });
+    //   setTotalWorkers(total);
+    // };
 
     const inputStyle = {
       display: "block",
@@ -196,26 +213,32 @@ const AllPlanting = () => {
 
   <div className="container" >
   <div className="">
-           <center> <h1 style={lableStyle}>...All Planting Records...</h1></center> 
+           <center> <h1 style={lableStyle}>...All Taxies Records...</h1></center> 
 
            <div style={{  height: '10vh' }}>
-      <input type="text" value={searchTerm} style={iStyle} placeholder="Search Division" onChange={handleSearch} />
+      <input type="text" value={searchTerm} style={iStyle} placeholder="Search companyName" onChange={handleSearch} />
 
       </div>
       
       <div style={cardstyle}>
-    <table class="table">
+    <table className="table">
       
       
   <thead>
     <tr>
       
-      <th scope="col">Date</th>
-      <th scope="col">Division Name</th>
-      <th scope="col">plant Type</th>
-      <th scope="col">Num.OfPlants</th>
-      <th scope="col">Num.OfWorkers</th>
-      <th scope="col">Discription</th>
+      <th scope="col">Company Name</th>
+      <th scope="col">Bussiness RegNo</th>
+      <th scope="col">Company Email</th>
+      <th scope="col">Company Contact No</th>
+      <th scope="col">Vehicle Type</th>
+      <th scope="col">Vehicle Model</th>
+      <th scope="col">Licen Number</th>
+      <th scope="col">Inssurance Company</th>
+      <th scope="col">Driver Name</th>
+      <th scope="col">Driver Email</th>
+      <th scope="col">Contact Number</th>
+      <th scope="col">Driver Licen Number</th>
       
     </tr>
   </thead>
@@ -227,22 +250,53 @@ const AllPlanting = () => {
 <tbody>
     <tr >
       
-      <td>{item.date}</td>
+      {/* <td>{item.date}</td>
       <td>{item.divisionName}</td>
       <td>{item.plantType}</td>
       <td>{item.numOfPlants}</td>
       <td>{item.numOfWorkers}</td>
-      <td>{item.discription}</td>
+      <td>{item.discription}</td> */}
+
+
+
+
+      <td>{item.companyName}</td>
+      <td>{item.bussinessRegNo}</td>
+      <td>{item.companyEmail}</td>
+      <td>{item.comContactNo}</td>
+      <td>{item.vehicleType}</td>
+      <td>{item.vehicleModel}</td>
+      <td>{item.licenNo}</td>
+      <td>{item.inssuranceCompany}</td>
+      <td>{item.driverName}</td>
+      <td>{item. driverEmail}</td>
+      <td>{item.contactNumber}</td>
+      <td>{item.driverLiceNo}</td>
+
+
+
+
+
+
+
 
       <Link to = "/updatep">
       <td><button className ="btn-success"onClick={() =>SetToLocalStorage(
         item._id,
-        item.date,
-        item.divisionName,
-        item.plantType,
-        item.numOfPlants,
-        item.numOfWorkers,
-        item.discription)}>Edit{" "}</button></td></Link>
+        item.companyName,
+        item.bussinessRegNo,
+        item.companyEmail,
+        item.comContactNo,
+        item.vehicleType,
+        item.vehicleModel,
+        item.licenNo,
+        item.inssuranceCompany,
+        item.driverName,
+        item.driverEmail,
+        item.contactNumber,
+        item.driverLiceNo
+        
+        )}>Edit{" "}</button></td></Link>
 
 
       <td><button className ="btn-danger"onClick={() =>handleDeleteClick(item._id)}>Delete</button></td>
@@ -253,7 +307,7 @@ const AllPlanting = () => {
         <Modal.Header closeButton>
           <Modal.Title>Delete Confirmation</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this planting details?</Modal.Body>
+        <Modal.Body>Are you sure you want to delete this taxies details?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
           <Button variant="danger" onClick={handleDelete}>Delete</Button>
@@ -275,17 +329,17 @@ const AllPlanting = () => {
 
 <br/><br/>
 <div style={{marginLeft: "220px"}}>
-      <b><p>Number of plants: {totalAmount}</p></b>
+      <b><p>Number of plants: {'totalAmount'}</p></b>
       </div>
       <div style={{marginLeft: "230px"}}>
-      <button onClick={handleCalculate} style={{ backgroundColor: '#a6b992', color: 'black' }}>Calculate</button>
+      <button onClick={'handleCalculate'} style={{ backgroundColor: '#a6b992', color: 'black' }}>Calculate</button>
       </div>
 
       <div style={{marginTop: "-70px",marginLeft: "800px"}}>
-      <b><p>Number of Workers: {totalWorkers}</p></b>
+      <b><p>Number of Workers: {'totalWorkers'}</p></b>
       </div>
       <div style={{marginTop: "-2px",marginLeft: "820px"}}>
-      <button onClick={handleCalculat} style={{ backgroundColor: '#a6b992', color: 'black' }}>Calculate</button>
+      <button onClick={'handleCalculat'} style={{ backgroundColor: '#a6b992', color: 'black' }}>Calculate</button>
 </div></div><br/>
 
 <div className="content">
@@ -332,15 +386,29 @@ const AllPlanting = () => {
         <div ref={componentRef}>
          <center><h1>All Planting Details</h1></center> 
          <br></br>
-<table class="table" >
+<table className="table" >
       <thead style={{fontSize:"24px"}}>
         <tr>
-          <th scope="col">Date</th>
+          {/* <th scope="col">Date</th>
           <th scope="col">Division Name</th>
           <th scope="col">Plant Type</th>
           <th scope="col">NumOf.Plants</th>
           <th scope="col">NumOf.Workers</th>
-          <th scope="col">Discription</th>
+          <th scope="col">Discription</th> */}
+
+
+      <th scope="col">Company Name</th>
+      <th scope="col">Bussiness RegNo</th>
+      <th scope="col">Company Email</th>
+      <th scope="col">Company Contact No</th>
+      <th scope="col">Vehicle Type</th>
+      <th scope="col">Vehicle Model</th>
+      <th scope="col">Licen Number</th>
+      <th scope="col">Inssurance Company</th>
+      <th scope="col">Driver Name</th>
+      <th scope="col">Driver Email</th>
+      <th scope="col">Contact Number</th>
+      <th scope="col">Driver Licen Number</th>
 
           
         </tr>
@@ -357,12 +425,27 @@ const AllPlanting = () => {
           return (
             <tbody style={{fontSize:"24px"}}>
               <tr>
-                <th scope="row">{item.date}</th>
+            {/* <th scope="row">{item.date}</th>
             <td>{item.divisionName}</td>
             <td>{item.plantType}</td>
             <td>{item.numOfPlants}</td>
             <td>{item.numOfWorkers}</td>
-            <td>{item.discription}</td>
+            <td>{item.discription}</td> */}
+
+
+
+      <td>{item.companyName}</td>
+      <td>{item.bussinessRegNo}</td>
+      <td>{item.companyEmail}</td>
+      <td>{item.comContactNo}</td>
+      <td>{item.vehicleType}</td>
+      <td>{item.vehicleModel}</td>
+      <td>{item.licenNo}</td>
+      <td>{item.inssuranceCompany}</td>
+      <td>{item.driverName}</td>
+      <td>{item. driverEmail}</td>
+      <td>{item.contactNumber}</td>
+      <td>{item.driverLiceNo}</td>
                 
               </tr>
 
@@ -373,11 +456,11 @@ const AllPlanting = () => {
      
     </table>
 
-    <br></br>
+    {/* <br></br>
     <h4> Number of Plants: {totalAmount}</h4>
 
     <br></br>
-    <h4> Number of Workers: {totalWorkers}</h4>
+    <h4> Number of Workers: {totalWorkers}</h4> */}
 
 
 </div></div>

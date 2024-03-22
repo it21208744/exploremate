@@ -21,7 +21,7 @@ import AddPlanting from './pages/AddPlanting'
 import AllPlanting from './pages/AllPlanting'
 import PlantUpdate from './pages/PlantUpdate'
 
-
+import { action as addPlantingAction } from './pages/AddPlanting'
 
 const router = createBrowserRouter([
   {
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
         element: <TaxiOwnerDashBoard />,
         children: [
           { index: true, element: <h1>TaxiOwnerOpt1</h1> },
-          { path: 'addPlanting', element: <AddPlanting/> },
+          { path: 'addPlanting', element: <AddPlanting/>, action: addPlantingAction },
           { path: 'allPlanting', element: <AllPlanting/> },
           { path: 'plantUpdate', element: <PlantUpdate/> },
           { path: 'opt4', element: <h1>TaxiOwnerOpt4</h1> },

@@ -25,7 +25,7 @@ app.use("/api/v1/planting", plantingRouter);
 
 try {
   //implement the connection to the database here
-await mongoose.connect('mongodb+srv://Coffee:T39@coffeestatemanagement.vvppjvj.mongodb.net/BrownVilla_db?retryWrites=true&w=majority')
+await mongoose.connect('mongodb+srv://Coffee:T39@coffeestatemanagement.vvppjvj.mongodb.net/exploremate?retryWrites=true&w=majority&appName=CoffeEstateManagement')
 app.listen(5000, () => {
   console.log(`server is running on port 5000`)
 })
