@@ -1,5 +1,10 @@
 import express from 'express'
 
+
+import connectDB from './config/db.js'
+import userRoutes from './routes/users.js'
+import authRoutes from './routes/auth.js'
+
 const app = express()
 //const mongoose = require("mongoose");
 import mongoose from 'mongoose';
@@ -38,18 +43,33 @@ import CoffeeRouter from './routes/Coffee.js'
 
 
 
+import mongoose from 'mongoose'
+
 import taxiRouter from './routes/taxiRouter.js'
 import travelersRouter from './routes/travelersRouter.js'
-// app.use('api/v1/auth')
+import dotenv from 'dotenv'
+import userProfileRoutes from './routes/userProfileRoute.js'
+import feedbackRoutes from './routes/feedbackRoute.js'
+dotenv.config()
 
+<<<<<<< IT21226182
 // app.use('api/v1/hotelowner')
 app.use(express.json())
+
+=======
+const PORT = 5000
+>>>>>>> main
+
+app.use(express.json())
 app.use("/api/v1/Coffee", CoffeeRouter);
-
 app.use('/api/v1/travelers', travelersRouter)
-
 app.use('/api/v1/taxi', taxiRouter)
+app.use('/api/v1/users', userRoutes)
+app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/userss', userProfileRoutes)
+app.use('/api/v1/feedback', feedbackRoutes)
 
+<<<<<<< IT21226182
 try {
 
   await mongoose.connect(URL)
@@ -63,3 +83,14 @@ try {
 } catch (error) {
   console.log(`error is - ${error}`)
 }
+=======
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`)
+    })
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error)
+  })
+>>>>>>> main
