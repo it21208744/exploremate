@@ -147,11 +147,7 @@ const cardstyle ={
   <div style={{marginLeft:"700px"}}><br/><br/>
                     <label  style={lableStyle1}><h3>ADD SALES </h3></label>
                     </div>
-                    <div style={{marginTop:"10px",marginLeft:"960px"}}>
-                    <Link to="/allsale1">
-                            <button className="btn btn-secondary" style={buttonStyle}> Back</button>
-                        </Link>
-                        </div>
+                    
                        
                     
   <br></br>
