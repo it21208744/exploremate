@@ -6,6 +6,7 @@ import taxiRouter from './routes/taxiRouter.js'
 import travelersRouter from './routes/travelersRouter.js'
 import dotenv from 'dotenv'
 import userProfileRoutes from './routes/userProfileRoute.js'
+import feedbackRoutes from './routes/feedbackRoute.js'
 dotenv.config()
 
 const app = express()
@@ -17,6 +18,7 @@ app.use('/api/v1/taxi', taxiRouter)
 app.use('/api/v1/users', userRoutes)
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/userss', userProfileRoutes)
+app.use('/api/v1/feedback', feedbackRoutes)
 
 connectDB()
   .then(() => {

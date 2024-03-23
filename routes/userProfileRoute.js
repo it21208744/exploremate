@@ -1,58 +1,106 @@
-import express from 'express';
-import { User, validate } from '../model/user.js';
-import bcrypt from 'bcrypt';
+import { Router } from 'express';
+import jwt from 'jsonwebtoken';
+import { User } from '../model/user.js';
+import validateToken from '../middleware/tokenValidate.js';
 
-const router = express.Router();
 
-// Fetch user profile by email
-router.get('/:email', async (req, res) => {
+const router = Router();
+
+router.use(validateToken)
+
+router.get('/Profile', async (req, res) => {
   try {
-      const user = await User.findOne({ email: req.params.email });
-      if (!user) {
-          return res.status(404).json({ message: 'User profile not found' });
-      }
-      res.status(200).json(user);
+    
+    const id = req.user.email
+    
+
+    
+
+    if (!id) {
+      return res.status(401).json({ message: 'id not found' });
+    }
+
+   
+    // const user = await User.findById(id);
+    // const user = await User.findOne(id);
+    const user = await User.findOne({ email: id });
+
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    
+    res.status(200).json({ data: user, message: 'Profile details retrieved successfully' });
   } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal Server Error' });
+    console.error('Error fetching user profile:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-// Delete user profile by email
-router.delete('/:email', async (req, res) => {
+router.put('/profile', async (req, res) => {
   try {
-      // Find the user by email and delete it
-      const user = await User.findOneAndDelete({ email: req.params.email });
-      if (!user) {
-          return res.status(404).json({ message: 'User profile not found' });
-      }
-      res.status(200).json({ message: 'User profile deleted successfully', user });
+    const id = req.user.email;
+
+    if (!id) {
+      return res.status(401).json({ message: 'ID not found' });
+    }
+
+    const { firstName, lastName, email } = req.body;
+
+    if (!firstName || !lastName || !email) {
+      return res.status(400).json({ message: 'Please provide all required fields' });
+    }
+
+    // Check if the new email provided already exists in the database
+    const existingUser = await User.findOne({ email });
+    if (existingUser && existingUser.email !== id) {
+      return res.status(400).json({ message: 'Email already exists' });
+    }
+
+    // Update user profile
+    const user = await User.findOneAndUpdate({ email: id }, { firstName, lastName, email }, { new: true });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json({ data: user, message: 'Profile details updated successfully' });
   } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal Server Error' });
+    console.error('Error updating user profile:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
+// router.put('/profile/picture', async (req, res) => {
+//   try {
+//     const id = req.user.email;
 
-// Edit user profile by email
-router.put('/:email', async (req, res) => {
-  try {
-      const { firstName, lastName, email, password } = req.body;
+//     if (!id) {
+//       return res.status(401).json({ message: 'ID not found' });
+//     }
 
-      // Find the user by email and update its details
-      const user = await User.findOneAndUpdate({ email: req.params.email }, { $set: { firstName, lastName, email, password } }, { new: true });
+//     const { profilePicture } = req.body;
 
-      // If the user is not found, return a 404 error
-      if (!user) {
-          return res.status(404).json({ message: 'User profile not found' });
-      }
+//     if (!profilePicture) {
+//       return res.status(400).json({ message: 'Please provide a profile picture' });
+//     }
 
-      // If the user is found and updated successfully, return a success message and the updated user object
-      res.status(200).json({ message: 'User profile updated successfully', user });
-  } catch (error) {
-      // If an error occurs, log it and return a 500 error
-      console.error(error);
-      res.status(500).json({ message: 'Internal Server Error' });
-  }
-});
+//     const user = await User.findOneAndUpdate({ email: id }, { profilePicture }, { new: true });
+
+//     if (!user) {
+//       return res.status(404).json({ message: 'User not found' });
+//     }
+
+//     res.status(200).json({ data: user, message: 'Profile picture added successfully' });
+//   } catch (error) {
+//     console.error('Error adding profile picture:', error);
+//     res.status(500).json({ message: 'Internal Server Error' });
+//   }
+// });
+
+
+
+
 
 export default router;
+

@@ -1,62 +1,47 @@
-// const Login = () => {
-//   return <h4>login</h4>
-// }
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Login = () => {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    });
-    const [loginSuccess, setLoginSuccess] = useState(false);
-    const [error, setError] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // New state for tracking login status
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch('/api/auth', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-            if (!response.ok) {
-                throw new Error('Failed to login');
-            }
-            setLoginSuccess(true);
-        } catch (error) {
-            console.error('Error:', error);
-            setError('Failed to login. Please check your email and password.');
-        }
-    };
+    try {
+      const response = await axios.post('/api/v1/auth', {
+        email,
+        password,
+      });
+      console.log(response?.data?.data); 
+      localStorage.setItem('token', response.data.data);
+      setIsLoggedIn(true); // Set login status to true
+    } catch (error) {
+      console.error('Login error:', error);
+      setErrorMessage('Invalid email or password'); 
+    }
+  };
 
-    return (
-        <div>
-            {loginSuccess ? (
-                <div>
-                    <h2>Login Successful!</h2>
-                    <p>You have successfully logged in.</p>
-                </div>
-            ) : (
-                <div>
-                    {error && <p>{error}</p>}
-                    <form onSubmit={handleSubmit}>
-                        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
-                        <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" required />
-                        <button type="submit">Login</button>
-                    </form>
-                </div>
-            )}
+  return (
+    <div>
+      <h2>Login</h2>
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      {isLoggedIn && <p style={{ color: 'green' }}>Login successful!</p>} {/* Success message */}
+      <form onSubmit={handleLogin}>
+        <div >
+          <label>Email:</label>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
-    );
+        <div >
+          <label>Password:</label>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
 };
 
 export default Login;
-
-

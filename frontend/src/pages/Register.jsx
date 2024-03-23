@@ -16,47 +16,16 @@ export const action = async ({ request }) => {
     return error
   }
 
-  //test
-  //   const res = await axios.get('api/v1/users/test/')
-  //   console.log(res)
-  //   return null
+  
 }
 
 const register = () => {
-  // const [formData, setFormData] = useState({
-  //     firstName: '',
-  //     lastName: '',
-  //     email: '',
-  //     password: ''
-  // });
-  // const [successMessage, setSuccessMessage] = useState('');
-
-  // const handleChange = (e) => {
-  //     setFormData({ ...formData, [e.target.name]: e.target.value });
-  // };
-
-  // const handleSubmit = async (e) => {
-  //     e.preventDefault();
-  //     try {
-  //         const response = await axios.post('http://localhost:5000/api/users', formData);
-  //         console.log(response.data.message);
-  //         setSuccessMessage('User registered successfully!');
-
-  //         setFormData({
-  //             firstName: '',
-  //             lastName: '',
-  //             email: '',
-  //             password: ''
-  //         });
-  //     } catch (error) {
-  //         console.error('Error registering user:', error);
-  //     }
-  // };
+  
 
   return (
     <div>
       <h2>Register</h2>
-      {/* {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>} */}
+      
       <Form method="post">
         <div>
           <label>First Name:</label>

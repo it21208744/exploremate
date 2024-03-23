@@ -19,6 +19,8 @@ import Travelpedia from './pages/travelers/Travelpedia'
 
 
 import { action as RegisterAction } from './pages/Register'
+
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
           },
           { path: 'planOnYourBudget', element: <PlanOnYourBudget /> },
           { path: 'services', element: <Services /> },
-          { path: 'profile', element: <Profile /> },
+          { path: 'profile', element: <Profile />,  },
 
           //temporary
           { path: 'guide', element: <Guide /> },

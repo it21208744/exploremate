@@ -8,10 +8,11 @@ const userSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
+    // profilePicture: { type: String } 
 });
 
 userSchema.methods.generateAuthToken = function() {
-    const token = jwt.sign({ _id: this._id }, process.env.JWTPRIVATEKEY, { expiresIn: '7d' });
+    const token = jwt.sign({ email: this.email }, process.env.JWTPRIVATEKEY, { expiresIn: '7d' });
     return token;
 };
 
@@ -27,5 +28,7 @@ const validate = (data) => {
     return schema.validate(data);
 };
 
+
 export { User, validate };
+export default User;
 
