@@ -17,7 +17,11 @@ import Profile from './pages/travelers/Profile'
 import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
 
+
+
+import { action as RegisterAction } from './pages/Register'
 import { action as addPlan } from './components/PlannerFormElements'
+
 
 const router = createBrowserRouter([
   {
@@ -28,7 +32,7 @@ const router = createBrowserRouter([
       { index: true, element: <LandingPage /> },
       { path: 'landing', element: <LandingPage /> },
       { path: 'login', element: <Login /> },
-      { path: 'register', element: <Register /> },
+      { path: 'register', element: <Register />, action: RegisterAction },
       {
         path: 'travelerDashBoard',
         element: <TravelerDashBoardLayout />,
@@ -40,7 +44,7 @@ const router = createBrowserRouter([
           },
           { path: 'planOnYourBudget', element: <PlanOnYourBudget /> },
           { path: 'services', element: <Services /> },
-          { path: 'profile', element: <Profile /> },
+          { path: 'profile', element: <Profile />,  },
 
           //temporary
           { path: 'guide', element: <Guide /> },

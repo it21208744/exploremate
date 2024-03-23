@@ -1,32 +1,38 @@
 import express from 'express'
+
+import connectDB from './config/db.js'
+import userRoutes from './routes/users.js'
+import authRoutes from './routes/auth.js'
 const app = express()
 
 import mongoose from 'mongoose'
 
 import taxiRouter from './routes/taxiRouter.js'
 import travelersRouter from './routes/travelersRouter.js'
-// app.use('api/v1/auth')
+import dotenv from 'dotenv'
+import userProfileRoutes from './routes/userProfileRoute.js'
+import feedbackRoutes from './routes/feedbackRoute.js'
+dotenv.config()
 
-// app.use('api/v1/hotelowner')
+const app = express()
+const PORT = 5000
+
 app.use(express.json())
-
 app.use('/api/v1/travelers', travelersRouter)
-
 app.use('/api/v1/taxi', taxiRouter)
+app.use('/api/v1/users', userRoutes)
+app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/userss', userProfileRoutes)
+app.use('/api/v1/feedback', feedbackRoutes)
 
-app.use((err, req, res, next) => {
-  console.log(err)
-  res.status(404).json({ msg: 'City not found' })
-})
 
-try {
-  //implement the connection to the database here
-  await mongoose.connect(
-    'mongodb+srv://Chamodan:chamodan2001@cluster0.souvqop.mongodb.net/exploremate?retryWrites=true&w=majority&appName=Cluster0'
-  )
-  app.listen(5000, () => {
-    console.log(`server is running on port 5000`)
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`)
+    })
   })
-} catch (error) {
-  console.log(`error is - ${error}`)
-}
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error)
+
+  })
