@@ -6,12 +6,12 @@ const containerStyle = {
   height: '400px',
 }
 
-const center = {
-  lat: 6.6828,
-  lng: 80.3992,
-}
+function MyComponent({ location }) {
+  const center = {
+    lat: location ? location.lat : 10,
+    lng: location ? location.lon : 10,
+  }
 
-function MyComponent() {
   const { isLoaded } = useJsApiLoader({
     id: '6ed21df9e972ca0e',
     googleMapsApiKey: 'AIzaSyBegmRyEjys-jM18Uu8IF11oerq7kv6BYc',
@@ -33,7 +33,7 @@ function MyComponent() {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={19}
+      zoom={15}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
