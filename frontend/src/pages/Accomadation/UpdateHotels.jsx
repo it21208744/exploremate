@@ -122,7 +122,7 @@ const [PackDetail , setPack] = useState("");
      <div style={cardstyle}>
   <div className="form-group">
     <label htmlFor="HotelName" style={lableStyle}  >Hotel name</label>
-    <input type="text" className="form-control" id="HotelName" name="HotelName"  placeholder="Enter hotel name" style={inputStyle}  onChange={(e) => {
+    <input type="text" className="form-control" id="HotelName" name="HotelName"  placeholder="Enter hotel name" style={inputStyle} value = {HotelName} onChange={(e) => {
         setHname(e.target.value);
     }}
     />
@@ -132,7 +132,7 @@ const [PackDetail , setPack] = useState("");
    
    <div className="form-group" >
     <label htmlFor="Email" style={lableStyle} >Email</label>
-    <input type="text" className="form-control" id="Email" name="Email" placeholder="Enter email" style={inputStyle} onChange={(e) => {
+    <input type="text" className="form-control" id="Email" name="Email" placeholder="Enter email" style={inputStyle} value = {Email} onChange={(e) => {
       setEma(e.target.value);
     }}
     />
@@ -142,42 +142,42 @@ const [PackDetail , setPack] = useState("");
    
    <div className="form-group">
     <label htmlFor="PhoneNum" style={lableStyle}  >phone number</label>
-    <input type="text" className="form-control" id="PhoneNum" name="PhoneNum"  placeholder="Enter phone number" style={inputStyle} onChange={(e) => {
+    <input type="text" className="form-control" id="PhoneNum" name="PhoneNum"  placeholder="Enter phone number" style={inputStyle} value = {PhoneNum} onChange={(e) => {
         setPnum(e.target.value);
     }}/>
    </div>
    
    <div className="form-group">
     <label htmlFor="Location" style={lableStyle} >Location</label>
-    <input type="text" className="form-control" id="Location" name="Location"  placeholder="Enter location" style={inputStyle} onChange={(e) => {
+    <input type="text" className="form-control" id="Location" name="Location"  placeholder="Enter location" style={inputStyle} value = {Location} onChange={(e) => {
         setLoc(e.target.value);
     }}/>
     </div>
    
     <div className="form-group">
     <label htmlFor="Amenties" style={lableStyle}  >am</label>
-    <input type="text" className="form-control" id="Amenties" name="Amenties"  placeholder="Enter am" style={inputStyle} onChange={(e) => {
+    <input type="text" className="form-control" id="Amenties" name="Amenties"  placeholder="Enter am" style={inputStyle} value = {Amenties} onChange={(e) => {
         setAmen(e.target.value);
     }}/>
    </div>
 
    <div className="form-group">
     <label htmlFor="Description" style={lableStyle}  >Dis</label>
-    <input type="text" className="form-control" id="Description" name="Description"  placeholder="Enter dis" style={inputStyle} onChange={(e) => {
+    <input type="text" className="form-control" id="Description" name="Description"  placeholder="Enter dis" style={inputStyle} value = {Description} onChange={(e) => {
         setDesc(e.target.value);
     }}/>
    </div>
 
    <div className="form-group">
     <label htmlFor="RoomDetail" style={lableStyle}  >room</label>
-    <input type="text" className="form-control" id="RoomDetail" name="RoomDetail"  placeholder="Enter room" style={inputStyle} onChange={(e) => {
+    <input type="text" className="form-control" id="RoomDetail" name="RoomDetail"  placeholder="Enter room" style={inputStyle} value = {RoomDetail} onChange={(e) => {
         setRoom(e.target.value);
     }}/>
    </div>
 
    <div className="form-group">
     <label htmlFor="PackDetail" style={lableStyle}  >pack</label>
-    <input type="text" className="form-control" id="PackDetail" name="PackDetail"  placeholder="Enter pack" style={inputStyle} onChange={(e) => {
+    <input type="text" className="form-control" id="PackDetail" name="PackDetail"  placeholder="Enter pack" style={inputStyle} value = {PackDetail} onChange={(e) => {
         setPack(e.target.value);
     }}/>
 
