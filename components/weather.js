@@ -6,3 +6,6 @@ export const checkWeather = async (city) => {
   const weather = response.json()
   return weather
 }
+
+//for weather forcast
+//https://api.openweathermap.org/data/2.5/forecast?q=Kadawatha&appid=5fc825d88b67c9e4641832203d5da2c2&units=metric

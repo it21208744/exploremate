@@ -18,7 +18,9 @@ import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
 
 
+
 import { action as RegisterAction } from './pages/Register'
+import { action as addPlan } from './components/PlannerFormElements'
 
 
 const router = createBrowserRouter([
@@ -38,6 +40,7 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Planner />,
+            action: addPlan,
           },
           { path: 'planOnYourBudget', element: <PlanOnYourBudget /> },
           { path: 'services', element: <Services /> },
