@@ -13,10 +13,12 @@ const SalesHeader =()=>{
   };
     return(
 <>
-<div style={{ textAlign: 'center' }}>
+<div >
+  <center>
   <h1 style={{ color: '#042630' }}>WELCOME TO EXPLOREMATE</h1>
+  </center>
 </div>
-            <ul >       
+            {/* <ul >       
             
               <li >
               <Link to ="addhotel" className="nav-link"  style={lableStyle}>Add New Hotels |</Link>
@@ -26,7 +28,7 @@ const SalesHeader =()=>{
               
              <br/>
               
-            </ul>
+            </ul> */}
         
        
       

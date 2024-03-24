@@ -1,6 +1,5 @@
 import React,{useState} from "react"
 import axios from "axios";
-
 import {Link, Form, useNavigate, useActionData} from 'react-router-dom';
 import {toast} from 'react-toastify'
 
@@ -85,33 +84,44 @@ const inputStyle = {
           width:"100%",
           height:"36px",
           borderWidth: "0 0 2px 0",
-          borderColor: "#5543ca",
-          fontSize: "18px",
-          fontWeight: "400",
+          borderColor: "#86b9b0",
+          fontSize: "14px",
+          fontWeight: "300",
           LineHeight: '26px',
 };
 
 const buttonStyle = {
   display: "inline-block",
-  backgroundImage: "linear-gradient(125deg,#a72879,#064497)",
+  backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
+  //backgroundColor: "#c46804",
   color:"#fff",
   textTransform:"uppercase",
   letterSpacing:"2px",
   fontSize: "16px",
-    width:"200px",
+    width:"130px",
     height:"36px",
     border:"none",
+    borderRadius: "5px",
     cursor: "pointer",
     
 };
-
+// const backgroundImage = {
+//   backgroundImage: url('path/to/your/image.jpg'),
+//   backgroundSize: "cover",
+//   backgroundPosition: "center",
+  
+// };
 const lableStyle = { 
-  color:"#064497"         
+  color:"#4c7273" ,  
+  fontWeight: "600",    
+  fontSize: "18px",   
 };
+//heading
 const lableStyle1 = { 
-  color:"#064497" ,
-  fontWeight: "500",  
-     
+  color:"#042630" ,
+  //fontWeight: "300",  
+  fontSize: "20px", 
+ // marginBottom: "1000px"
 };
 
 const cardstyle ={
@@ -119,11 +129,12 @@ const cardstyle ={
   boxShadow:"0 2px 20px ",
   borderRadius: "$radius",
   transition: "transform 200ms ease-in",
-  padding:"20px",
+  padding:"30px",
   backdropFilter: "blur(5px)",
   background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
   width: "800px",
-  marginLeft:"360px"
+  marginLeft:"360px",
+  //marginBottom: "100px"
 }
 
 
@@ -136,7 +147,7 @@ const cardstyle ={
     <>
     
 
-    <div style={{backgroundImage:`url("./images/coffee-beans-2.jpg")`,
+    <div style={{backgroundImage:`url("../assets/images/Accomadation/landingBackground.webp")`,
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     width: '100vw',
@@ -145,7 +156,7 @@ const cardstyle ={
 }} >
   
   <div style={{marginLeft:"700px"}}><br/><br/>
-                    <label  style={lableStyle1}><h3>ADD SALES </h3></label>
+                    <label  style={lableStyle1}><h3>ADD HOTEL </h3></label>
                     </div>
                     
                        
@@ -217,11 +228,13 @@ const cardstyle ={
 
    </div>
    
-
+  <br></br>
 
     <div >
     <button type="submit" className="btn btn-primary" style={buttonStyle}>Submit</button>
+    
  </div>
+ 
  </div>
  
 </Form>
