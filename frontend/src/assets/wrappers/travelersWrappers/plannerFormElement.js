@@ -49,7 +49,7 @@ const Wrapper = styled.div`
     height: 3.9vh;
   }
 
-  button {
+  .Nicebutton {
     position: absolute;
     left: 35vw;
     top: 40vh;
@@ -60,13 +60,13 @@ const Wrapper = styled.div`
     top: 12vw;
     width: 100vw;
     border-top: 20px solid black;
-    /* background: grey; */
+    background: transparent;
   }
 
   .horizontalNav {
     position: absolute;
-    top: -38vh;
-    left: 14vw;
+    top: 2vh;
+    left: 28vw;
     list-style: none;
   }
 
@@ -145,6 +145,7 @@ const Wrapper = styled.div`
   .saveBtn {
     position: relative;
     top: 5vh;
+    left: 35vw;
   }
 `
 

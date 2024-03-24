@@ -101,7 +101,7 @@ const PlannerFormElements = () => {
               <option value="Food hunting">Food hunting</option>
             </select>
           </div>
-          <div className="button">
+          <div className="Nicebutton">
             <NiceBtn isSubmitting={isSubmitting} />
           </div>
         </Form>
@@ -112,7 +112,6 @@ const PlannerFormElements = () => {
                 <button
                   type="button"
                   onClick={() => changeGuide(true)}
-                  // className="test"
                   className={isGuide ? 'activeBtn' : null}
                 >
                   GUIDE
