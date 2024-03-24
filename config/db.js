@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const mongoURI = 'mongodb+srv://Coffee:T39@coffeestatemanagement.vvppjvj.mongodb.net/BrownVilla_db?retryWrites=true&w=majority'
+const mongoURI = 'mongodb+srv://Chamodan:chamodan2001@cluster0.souvqop.mongodb.net/Exploremate2?retryWrites=true&w=majority&appName=Cluster0'
 
 const connectDB = async () => {
   try {
