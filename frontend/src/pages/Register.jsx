@@ -23,7 +23,8 @@ const register = () => {
   
 
   return (
-    <div>
+   
+    <div style={{ position: 'relative', left: '30vw' }}>
       <h2>Register</h2>
       
       <Form method="post">
@@ -46,6 +47,7 @@ const register = () => {
         <button type="submit">Register</button>
       </Form>
     </div>
+    
   )
 }
 

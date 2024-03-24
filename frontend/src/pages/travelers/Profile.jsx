@@ -65,11 +65,20 @@ const UserProfile = () => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token'); 
+  // const handleLogout = () => {
+  //   localStorage.removeItem('token'); 
     
-    window.location.href = '/login';
+  //   window.location.href = '/login';
+  // };
+  const handleLogout = () => {
+    const confirmed = window.confirm('Are you sure you want to logout?');
+  
+    if (confirmed) {
+      localStorage.removeItem('token');
+      window.location.href = '/login';
+    }
   };
+  
 
   return (
     <Wrapper>

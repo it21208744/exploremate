@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  .profileContainer {
+  .feedbacksContainer {
     position: relative;
-    left: 30vw;  //test
+    left: 10vw;  
   }
 `
 

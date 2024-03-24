@@ -16,7 +16,8 @@ import Services from './pages/travelers/Services'
 import Profile from './pages/travelers/Profile'
 import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
-
+import Feedback from './components/FeedbackForm'
+import FeedbackTable from './components/FeedbackTable'
 
 
 import { action as RegisterAction } from './pages/Register'
@@ -74,8 +75,12 @@ const router = createBrowserRouter([
           { path: 'opt4', element: <h1>TaxiOwnerOpt4</h1> },
         ],
       },
+      { path: 'feedback', element: <Feedback /> },
+      { path: 'feedbackTabel', element: <FeedbackTable /> },
     ],
+    
   },
+
 ])
 
 const App = () => {

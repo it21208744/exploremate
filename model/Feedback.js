@@ -10,6 +10,10 @@ const feedbackSchema = new mongoose.Schema({
         ref: 'user',
         required: true
     }
+    // photo: {
+    //     data: Buffer, // Store the photo data as binary data
+    //     contentType: String // Store the content type of the photo
+    // }
 }, {
     timestamps: true
 });

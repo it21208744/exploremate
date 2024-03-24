@@ -25,7 +25,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div style={{ position: 'relative', left: '30vw' }}>
       <h2>Login</h2>
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       {isLoggedIn && <p style={{ color: 'green' }}>Login successful!</p>} {/* Success message */}
