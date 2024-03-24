@@ -12,7 +12,7 @@ export const action = async ({ request }) => {
  console.log(data)
 
   try {
-    const res = await axios.post('/api/v1/planting/add/', data)
+    const res = await axios.post('/api/v1/Planting/add/', data)
     console.log(res)
     toast.success('Registration successful')
     // return redirect('/login')

@@ -23,6 +23,7 @@ import PlantUpdate from './pages/PlantUpdate'
 
 import { action as addPlantingAction } from './pages/AddPlanting'
 
+
 const router = createBrowserRouter([
   {
     path: '/',

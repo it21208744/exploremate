@@ -1,17 +1,12 @@
 import axios from "axios";
 import React,{useState,useEffect} from "react";
 //import { DatePickerDialogRjsf } from "../../utils/DatePicker";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
+import {Link, Form, useNavigate, useActionData} from 'react-router-dom';
+import {toast} from 'react-toastify'
 
 const PlantUpdate = () => {
-    // const[id,setid] = useState(" ");
-    // const[date,setdate] = useState("");
-    // const[divisionName,setdivisionName] = useState("");
-    // const[plantType,setplantType] = useState("");
-    // const[numOfPlants,setnumOfPlants] = useState("");
-    // const[numOfWorkers,setnumOfWorkers] = useState("");
-    // const[discription,setdiscription] = useState("");
-    // console.log("date"+date);
+   
 
     const[id,setid] = useState(" ");
     const[companyName,setcompanyName] = useState(" ");
@@ -33,30 +28,23 @@ const PlantUpdate = () => {
     const navigate = useNavigate();
 
 
-    // useEffect(() => {
-    //     // setid(localStorage.getItem("id"));
-    //     // setdate(localStorage.getItem("date"));
-    //     // setdivisionName(localStorage.getItem("divisionName"));
-    //     // setplantType(localStorage.getItem("plantType"));
-    //     // setnumOfPlants(localStorage.getItem("numOfPlants"));
-    //     // setnumOfWorkers(localStorage.getItem("numOfWorkers"));
-    //     // setdiscription(localStorage.getItem("discription"));
+     useEffect(() => {
+    
+        setid(localStorage.getItem("id"));
+        setcompanyName(localStorage.getItem("companyName"));
+        setbussinessRegNo(localStorage.getItem("bussinessRegNo"));
+        setcompanyEmail(localStorage.getItem("companyEmail"));
+        setcomContactNo(localStorage.getItem("comContactNo"));
 
-    //     const[id,setid] = useState(" ");
-    //     setcompanyName(localStorage.getItem("companyName"));
-    //     setbussinessRegNo(localStorage.getItem("bussinessRegNo"));
-    //     setcompanyEmail(localStorage.getItem("companyEmail"));
-    //     setcomContactNo(localStorage.getItem("comContactNo"));
+        setvehicleType(localStorage.getItem("vehicleType"));
+        setvehicleModel(localStorage.getItem("vehicleModel"));
+        setlicenNo(localStorage.getItem("licenNo"));
+        setinssuranceCompany(localStorage.getItem("inssuranceCompany"));
 
-    //     setvehicleType(localStorage.getItem("vehicleType"));
-    //     setvehicleModel(localStorage.getItem("vehicleModel"));
-    //     setlicenNo(localStorage.getItem("licenNo"));
-    //     setinssuranceCompany(localStorage.getItem("inssuranceCompany"));
-
-    //     setdriverName(localStorage.getItem("driverName"));
-    //     setdriverEmail(localStorage.getItem("driverEmail"));
-    //     setcontactNumber(localStorage.getItem("contactNumber"));
-    //     setdriverLiceNo(localStorage.getItem("driverLiceNo"));
+        setdriverName(localStorage.getItem("driverName"));
+        setdriverEmail(localStorage.getItem("driverEmail"));
+        setcontactNumber(localStorage.getItem("contactNumber"));
+        setdriverLiceNo(localStorage.getItem("driverLiceNo"));
         
 
 
@@ -64,22 +52,16 @@ const PlantUpdate = () => {
 
 
 
-    //  },[])
+      },[])
 
 
      const handleUpdate = (e)=>{
       e.preventDefault();
       console.log("Id...",id);
-      axios.put(`http://localhost:8070/planting/update/${id}`,
+      axios.patch(`/api/v1/Planting/update/${id}`,
       {
         
-        // date : date,
-        // divisionName : divisionName,
-        // plantType :plantType,
-        // numOfPlants:numOfPlants,
-        // numOfWorkers :numOfWorkers,
-        // discription:discription,
-
+        
         companyName:companyName,
         bussinessRegNo:bussinessRegNo,
         companyEmail:companyEmail,
@@ -99,9 +81,7 @@ const PlantUpdate = () => {
 
 
       }
-      ).then(()=>{
-          navigate("/pd");
-      });
+      )
   };
 
 
@@ -157,99 +137,13 @@ const PlantUpdate = () => {
                 height: '110vh'
 
             }}>
+
+              
     <div className="container" >
     <b><center><h1 style={lableStyle1}>Update Taxies Records....</h1></center> </b>
      <form onSubmit = {handleUpdate} >
   <div className="form-group">
-  {/* <b><label htmlFor="Date" style={lableStyle}>Date</label></b> */}
-    {/*<input type="text" className="form-control" id="date"  placeholder="Enter Date" 
-      value={date}
-      onChange={(e)=>{
-
-        setdate(e.target.value);
-
-
-      }}
-    
-    
-    />*/}
-
-{/* <DatePickerDialogRjsf  onChange={(e)=>{setdate(e) }}/> */}
-    
-  {/* </div>
-
-  <div className="form-group">
-  <b><label htmlFor="divisionName" style={lableStyle}>Division Name</label>
-    <input type="text" className="form-control" id="divisionName"  placeholder="Enter Division Name" style={inputStyle}
-    value={divisionName}
-    onChange={(e)=>{
-
-        setdivisionName(e.target.value);
-
-
-      }}
-      /></b>
-    
-  </div> */}
-
   
-
-
-  {/* <div className="form-group">
-  <b><label htmlFor="plantType" style={lableStyle}>CoffeePlantType</label>
-    <input type="text" className="form-control" id="plantType"  placeholder="Enter coffeePlant Type" style={inputStyle}
-    value={plantType}
-    onChange={(e)=>{
-
-        setplantType(e.target.value);
-
-
-      }}
-      /></b>
-    
-  </div>
-   */}
-    {/* <div className="form-group">
-    <b><label htmlFor="numOfPlants" style={lableStyle}>Number Of Coffee Plants</label>
-    <input type="text" className="form-control" id="numOfPlants"  placeholder="Enter Number Of CoffeePlants" style={inputStyle}
-   value={numOfPlants}
-    onChange={(e)=>{
-
-        setnumOfPlants(e.target.value);
-
-
-      }}
-     /></b>
-    
-  </div> */}
-
-  {/* <div className="form-group">
-  <b><label htmlFor="numOfWorkers" style={lableStyle}>Number Of Workers</label>
-    <input type="text" className="form-control" id="numOfWorkers"  placeholder="Enter Number Of Workers" style={inputStyle}
-    value={numOfWorkers}
-    onChange={(e)=>{
-
-        setnumOfWorkers(e.target.value);
-
-
-      }}
-      /></b>
-    
-  </div> */}
-
-  {/* <div className="form-group">
-  <b><label htmlFor="discription" style={lableStyle}>Discription</label>
-    <textarea className="form-control" id="discription" rows="3" style={inputStyle}
-    value={discription}
-    onChange={(e)=>{
-
-        setdiscription(e.target.value);
-
-
-      }}
-      /></b>
-  </div>
-  */}
 
 <h2>Company details</h2>
 <div className="form-group">
@@ -348,7 +242,7 @@ const PlantUpdate = () => {
     value={licenNo}
     onChange={(e)=>{
 
-        setdivisionName(e.target.value);
+        setlicenNo(e.target.value);
 
 
       }}/></b>
@@ -373,7 +267,7 @@ const PlantUpdate = () => {
 <div className="form-group">
 <b><label htmlFor="driverName" style={lableStyle} >DriverName</label>
 
-    <input type="text" className="form-control" id="divisionName"  placeholder="Driver Name" style={inputStyle}
+    <input type="text" className="form-control" id="driverName"  placeholder="Driver Name" style={inputStyle}
     value={'hehe'}
     onChange={(e)=>{
 
@@ -430,7 +324,8 @@ const PlantUpdate = () => {
 
 
   </div>
-  <b><center><button className="btn btn-secondary" style={buttonStyle}onClick={handleUpdate}>Update</button></center></b>
+  {/* <b><center><button className="btn btn-secondary" style={buttonStyle}onClick={handleUpdate}>Update</button></center></b> */}
+  <button type="submit" className="btn btn-primary" style={buttonStyle}>Submit</button>
 </form>
 </div>  </div> 
     </>

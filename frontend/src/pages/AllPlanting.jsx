@@ -1,471 +1,141 @@
-import React,{useState,useEffect,useRef} from "react";
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
-
-import { Link } from "react-router-dom";
-
-// import EstateHeader from "./EstateHeader";
 import { Table, Button, Modal } from 'react-bootstrap';
-import ReactToPrint from "react-to-print";
 
-const AllPlanting = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [selectedId, setSelectedId] = useState(null);
+export default function AllPlanting() {
+    const [taxi, settaxi] = useState([]);
+    const [selectedId, setSelectedId] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
-    const[Plantings,setPlantings] = useState([]);
-    const [filteredData, setFilteredData] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [inputText,setInputText] = useState("");
-    
-       function  getPlantings () {
-        axios.get("http://localhost:8070/planting/").then((res) =>{
-            setPlantings(res.data);
+    // Move fetchHotelData outside of useEffect
+    const fetchTaxiData = async () => {
+        try {
+            const response = await axios.get("/api/v1/Planting/");
+            settaxi(response.data);
+        } catch (error) {
+            console.error('Error fetch Taxi data:', error);
+        }
+    };
 
-        }).catch((err)=>{
-            alert(err.message);
-        })
-       }
+    useEffect(() => {
+      fetchTaxiData();
+    }, []);
 
-       const handleDeleteClick = (_id) => {
+    const handleDeleteClick = (_id) => {
         setSelectedId(_id);
         setShowModal(true);
-      };
+    };
 
-       function handleDelete(){
-
-        axios.delete(`http://localhost:8070/planting/delete/${selectedId}`).then((res)=>{
-            getPlantings();
-            setPlantings(Plantings.filter(item => item._id !== selectedId));
+    const handleDelete = () => {
+        axios.delete(`/api/v1/Planting/delete/${selectedId}`).then((res) => {
+          fetchTaxiData(); // Call fetchHotelData to update the state after deletion
+          settaxi(taxi.filter(item => item._id !== selectedId));
             setShowModal(false);
-
         }).catch((err) => {
             alert(err.message);
             setShowModal(false);
-        })
-         
-        }
+        });
+    };
 
-        const SetToLocalStorage = (id, companyName, bussinessRegNo, companyEmail, comContactNo, vehicleType, vehicleModel,licenNo,inssuranceCompany,driverName,driverEmail,contactNumber,driverLiceNo) =>{
-
-          //  localStorage.setItem("id",id);
-          //  localStorage.setItem("date",date);
-          //  localStorage.setItem("divisionName",divisionName);
-          //  localStorage.setItem("plantType",plantType);
-          //  localStorage.setItem("numOfPlants",numOfPlants);
-          //  localStorage.setItem("numOfWorkers",numOfWorkers);
-          //  localStorage.setItem("discription",discription);
-
-           localStorage.setItem("id",id);
-           localStorage.setItem("companyName",companyName);
-           localStorage.setItem("bussinessRegNo",bussinessRegNo);
-           localStorage.setItem("companyEmail",companyEmail);
-           localStorage.setItem("comContactNo",comContactNo);
-           localStorage.setItem("vehicleType",vehicleType);
-           localStorage.setItem("vehicleModel",vehicleModel);
-           localStorage.setItem("licenNo",licenNo);
-           localStorage.setItem("inssuranceCompany",inssuranceCompany);
-           localStorage.setItem("driverName",driverName);
-           localStorage.setItem("driverEmail",driverEmail);
-           localStorage.setItem("contactNumber",contactNumber);
-           localStorage.setItem("driverLiceNo",driverLiceNo);
-    
-
+    const SetToLocalStorage = (id, companyName, bussinessRegNo, companyEmail, comContactNo, vehicleType, vehicleModel,licenNo,inssuranceCompany,driverName,driverEmail,contactNumber,driverLiceNo) =>{
 
     
-        };
-
-       
-
-       
-
-        
-
-
-
-        useEffect(() => {
-          const filteredResults = Plantings.filter(item => {
-            return item.companyName.toLowerCase().includes(searchTerm.toLowerCase());
-          });
-          setFilteredData(filteredResults);
-        }, [Plantings, searchTerm]);
-      
-        const handleSearch = event => {
-          setSearchTerm(event.target.value);
-        };
+       localStorage.setItem("id",id);
+       localStorage.setItem("companyName",companyName);
+       localStorage.setItem("bussinessRegNo",bussinessRegNo);
+       localStorage.setItem("companyEmail",companyEmail);
+       localStorage.setItem("comContactNo",comContactNo);
+       localStorage.setItem("vehicleType",vehicleType);
+       localStorage.setItem("vehicleModel",vehicleModel);
+       localStorage.setItem("licenNo",licenNo);
+       localStorage.setItem("inssuranceCompany",inssuranceCompany);
+       localStorage.setItem("driverName",driverName);
+       localStorage.setItem("driverEmail",driverEmail);
+       localStorage.setItem("contactNumber",contactNumber);
+       localStorage.setItem("driverLiceNo",driverLiceNo);
 
 
-
-
-
-
-        useEffect(() => {
-       getPlantings();
-    },[]);
-
-
-    // const [totalAmount, setTotalAmount] = useState(0);
-
-    // const handleCalculate = () => {
-    //   let total = 0;
-    //   Plantings.forEach((item) => {
-    //     total += item.numOfPlants;
-    //   });
-    //   setTotalAmount(total);
-    // };
-
-    // const [totalWorkers, setTotalWorkers] = useState(0);
-
-    // const handleCalculat = () => {
-    //   let total = 0;
-    //   Plantings.forEach((item) => {
-    //     total += item.numOfWorkers;
-    //   });
-    //   setTotalWorkers(total);
-    // };
-
-    const inputStyle = {
-      display: "block",
-        width:"100%",
-        height:"36px",
-        borderWidth: "0 0 2px 0",
-        borderColor: "#5543ca",
-        fontSize: "18px",
-        fontWeight: "400",
-        LineHeight: '26px',
     };
 
-    const iStyle = {
-  
-      borderRadius: "25px",
-        border: "2px solid #3c341f",
-        padding: "20px",
-        width: '300px',
-        height: '15px',
-    }; 
-  
-    const buttonStyle = {
-      display: "inline-block",
-      backgroundImage: "linear-gradient(125deg,#a72879,#064497)",
-      color:"#fff",
-      textTransform:"uppercase",
-      letterSpacing:"2px",
-      fontSize: "16px",
-        width:"200px",
-        height:"36px",
-        border:"none",
-        cursor: "pointer",
-        marginRight:"20px",
-        marginLeft:"15px"
-        
-    };
-    const buttonStyle1 = {
-      display: "inline-block",
-      
-      backgroundImage: "linear-gradient(125deg,#a72879,#064497)",
-      color:"#fff",
-      textTransform:"uppercase",
-      letterSpacing:"0px",
-      fontSize: "8px",
-        width:"100px",
-        height:"28px",
-        border:"none",
-        cursor: "pointer",
-        float: "right",
-        marginLeft: '400px'
-    };
-  
-  
-    const lableStyle = { 
-      color:"#5543ca"         
-    };
 
-    const componentRef = useRef(null);
-  
-    const cardstyle ={
-      overflow : "hidden",
-      marginTop: "10px",
-      marginLeft: "-40px",
-     
-      width: "1200px",
-      height: "450px",
-      boxShadow:"0 2px 20px ",
-      borderRadius: "$radius",
-      transition: "transform 200ms ease-in",
-      padding:"20px",
-      backdropFilter: "blur(50px)",
-      background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
-    }
-
-    
-
-
-    return(
+    return (
         <>
-        {/* <EstateHeader/> */}
-        <div style={{
-                backgroundImage: `url("./img/coffee-beans-2.jpg")`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                width: '100vw',
-                height: '110vh'
-
-            }}>
-
-
-  <div className="container" >
-  <div className="">
-           <center> <h1 style={lableStyle}>...All Taxies Records...</h1></center> 
-
-           <div style={{  height: '10vh' }}>
-      <input type="text" value={searchTerm} style={iStyle} placeholder="Search companyName" onChange={handleSearch} />
-
-      </div>
+            <div className="d-flex flex-direction-column justify-content-between m-2">
+                <h3>Taxi Details</h3>
+            </div>
+            <br />
+            <div>
+                <table className="table table-striped" id="my-table" style={{ color: "#000" }}>
+                    <thead>
+                        <tr>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Bussiness RegNo</th>
+                        <th scope="col">Company Email</th>
+                        <th scope="col">Company Contact No</th>
+                        <th scope="col">Vehicle Type</th>
+                        <th scope="col">Vehicle Model</th>
+                        <th scope="col">Licen Number</th>
+                        <th scope="col">Inssurance Company</th>
+                        <th scope="col">Driver Name</th>
+                        <th scope="col">Driver Email</th>
+                        <th scope="col">Contact Number</th>
+                        <th scope="col">Driver Licen Number</th>
       
-      <div style={cardstyle}>
-    <table className="table">
-      
-      
-  <thead>
-    <tr>
-      
-      <th scope="col">Company Name</th>
-      <th scope="col">Bussiness RegNo</th>
-      <th scope="col">Company Email</th>
-      <th scope="col">Company Contact No</th>
-      <th scope="col">Vehicle Type</th>
-      <th scope="col">Vehicle Model</th>
-      <th scope="col">Licen Number</th>
-      <th scope="col">Inssurance Company</th>
-      <th scope="col">Driver Name</th>
-      <th scope="col">Driver Email</th>
-      <th scope="col">Contact Number</th>
-      <th scope="col">Driver Licen Number</th>
-      
-    </tr>
-  </thead>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {taxi.map((item) => (
+                            <tr key={item._id}>
+                                <td>{item.companyName}</td>
+                                <td>{item.bussinessRegNo}</td>
+                                <td>{item.companyEmail}</td>
+                                <td>{item.comContactNo}</td>
+                                <td>{item.vehicleType}</td>
+                                <td>{item.vehicleModel}</td>
+                                <td>{item.licenNo}</td>
+                                <td>{item.inssuranceCompany}</td>
+                                <td>{item.driverName}</td>
+                                <td>{item. driverEmail}</td>
+                                <td>{item.contactNumber}</td>
+                                <td>{item.driverLiceNo}</td>
 
-  {filteredData.map((item) => {
-       return(
-        <>
+                                <td>
+                                    <a href="plantUpdate">
+                                        <button className="btn-success" onClick={() => SetToLocalStorage(
+                                            item._id,
+                                            item.companyName,
+                                            item.bussinessRegNo,
+                                            item.companyEmail,
+                                            item.comContactNo,
+                                            item.vehicleType,
+                                            item.vehicleModel,
+                                            item.licenNo,
+                                            item.inssuranceCompany,
+                                            item.driverName,
+                                            item.driverEmail,
+                                            item.contactNumber,
+                                            item.driverLiceNo
+                                        )}>Edit</button>
+                                    </a>
+                                </td>
+                                <td><button className="btn-danger" onClick={() => handleDeleteClick(item._id)}>Delete</button></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
 
-<tbody>
-    <tr >
-      
-      {/* <td>{item.date}</td>
-      <td>{item.divisionName}</td>
-      <td>{item.plantType}</td>
-      <td>{item.numOfPlants}</td>
-      <td>{item.numOfWorkers}</td>
-      <td>{item.discription}</td> */}
-
-
-
-
-      <td>{item.companyName}</td>
-      <td>{item.bussinessRegNo}</td>
-      <td>{item.companyEmail}</td>
-      <td>{item.comContactNo}</td>
-      <td>{item.vehicleType}</td>
-      <td>{item.vehicleModel}</td>
-      <td>{item.licenNo}</td>
-      <td>{item.inssuranceCompany}</td>
-      <td>{item.driverName}</td>
-      <td>{item. driverEmail}</td>
-      <td>{item.contactNumber}</td>
-      <td>{item.driverLiceNo}</td>
-
-
-
-
-
-
-
-
-      <Link to = "/updatep">
-      <td><button className ="btn-success"onClick={() =>SetToLocalStorage(
-        item._id,
-        item.companyName,
-        item.bussinessRegNo,
-        item.companyEmail,
-        item.comContactNo,
-        item.vehicleType,
-        item.vehicleModel,
-        item.licenNo,
-        item.inssuranceCompany,
-        item.driverName,
-        item.driverEmail,
-        item.contactNumber,
-        item.driverLiceNo
-        
-        )}>Edit{" "}</button></td></Link>
-
-
-      <td><button className ="btn-danger"onClick={() =>handleDeleteClick(item._id)}>Delete</button></td>
-    </tr>
-    
-  </tbody>
-  {<Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Delete Confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this taxies details?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
-          <Button variant="danger" onClick={handleDelete}>Delete</Button>
-        </Modal.Footer>
-      </Modal> }
-      
-        
+                <Modal show={showModal} onHide={() => setShowModal(false)}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Delete Confirmation</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
+                        <Button variant="danger" onClick={handleDelete}>Delete</Button>
+                    </Modal.Footer>
+                </Modal>
+            </div>
+            <br />
         </>
-       )
-
-  })
-}
-
-
-
-</table>
-
-
-
-<br/><br/>
-<div style={{marginLeft: "220px"}}>
-      <b><p>Number of plants: {'totalAmount'}</p></b>
-      </div>
-      <div style={{marginLeft: "230px"}}>
-      <button onClick={'handleCalculate'} style={{ backgroundColor: '#a6b992', color: 'black' }}>Calculate</button>
-      </div>
-
-      <div style={{marginTop: "-70px",marginLeft: "800px"}}>
-      <b><p>Number of Workers: {'totalWorkers'}</p></b>
-      </div>
-      <div style={{marginTop: "-2px",marginLeft: "820px"}}>
-      <button onClick={'handleCalculat'} style={{ backgroundColor: '#a6b992', color: 'black' }}>Calculate</button>
-</div></div><br/>
-
-<div className="content">
-    <ReactToPrint
-      trigger={() =>(
-        <button
-          type="button"
-          className="btn btn-secondary"
-          style={buttonStyle}
-        >
-          <i className="fas fa-print mr-2"></i>Generate Reports
-        </button>
-      )}
-      content={() => componentRef.current} //return the current value of the reference
-      />
-      </div>
-
-
-
-
-</div>
-
-<br/>
-
-
-
-{/*<div style={{marginLeft: "220px"}}>
-      <b><p>Number of plants: {totalAmount}</p></b>
-      </div>
-      <div style={{marginLeft: "230px"}}>
-      <button onClick={handleCalculate} style={{ backgroundColor: '#a6b992', color: 'black' }}>Calculate</button>
-      </div>
-
-      <div style={{marginTop: "-70px",marginLeft: "800px"}}>
-      <b><p>Number of plants: {totalWorkers}</p></b>
-      </div>
-      <div style={{marginTop: "-2px",marginLeft: "820px"}}>
-      <button onClick={handleCalculat} style={{ backgroundColor: '#a6b992', color: 'black' }}>Calculate</button>
-</div>*/}
-
-</div></div>
-      
-      <div hidden>
-        <div ref={componentRef}>
-         <center><h1>All Planting Details</h1></center> 
-         <br></br>
-<table className="table" >
-      <thead style={{fontSize:"24px"}}>
-        <tr>
-          {/* <th scope="col">Date</th>
-          <th scope="col">Division Name</th>
-          <th scope="col">Plant Type</th>
-          <th scope="col">NumOf.Plants</th>
-          <th scope="col">NumOf.Workers</th>
-          <th scope="col">Discription</th> */}
-
-
-      <th scope="col">Company Name</th>
-      <th scope="col">Bussiness RegNo</th>
-      <th scope="col">Company Email</th>
-      <th scope="col">Company Contact No</th>
-      <th scope="col">Vehicle Type</th>
-      <th scope="col">Vehicle Model</th>
-      <th scope="col">Licen Number</th>
-      <th scope="col">Inssurance Company</th>
-      <th scope="col">Driver Name</th>
-      <th scope="col">Driver Email</th>
-      <th scope="col">Contact Number</th>
-      <th scope="col">Driver Licen Number</th>
-
-          
-        </tr>
-      </thead>
-      {Plantings.filter((el) => {
-        if (el === "") {
-          return el;
-        } else {
-          return el.date.toLowerCase().includes(inputText) ||
-            el.divisionName.toLowerCase().includes(inputText);
-        }
-      })
-        .map((item) => {
-          return (
-            <tbody style={{fontSize:"24px"}}>
-              <tr>
-            {/* <th scope="row">{item.date}</th>
-            <td>{item.divisionName}</td>
-            <td>{item.plantType}</td>
-            <td>{item.numOfPlants}</td>
-            <td>{item.numOfWorkers}</td>
-            <td>{item.discription}</td> */}
-
-
-
-      <td>{item.companyName}</td>
-      <td>{item.bussinessRegNo}</td>
-      <td>{item.companyEmail}</td>
-      <td>{item.comContactNo}</td>
-      <td>{item.vehicleType}</td>
-      <td>{item.vehicleModel}</td>
-      <td>{item.licenNo}</td>
-      <td>{item.inssuranceCompany}</td>
-      <td>{item.driverName}</td>
-      <td>{item. driverEmail}</td>
-      <td>{item.contactNumber}</td>
-      <td>{item.driverLiceNo}</td>
-                
-              </tr>
-
-            </tbody>
-
-          )
-        })}
-     
-    </table>
-
-    {/* <br></br>
-    <h4> Number of Plants: {totalAmount}</h4>
-
-    <br></br>
-    <h4> Number of Workers: {totalWorkers}</h4> */}
-
-
-</div></div>
-    </>
     );
-};
-
-export default AllPlanting
+}
