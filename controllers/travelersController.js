@@ -3,9 +3,8 @@ import { checkWeather } from '../components/weather.js'
 
 import travelPlan from '../models/travelPlan.js'
 
-export const addPlan = async (req, res, next) => {
+export const addPlan = async (req, res) => {
   const { location, days, type, date } = req.body
-
   const weather = await checkWeather(location)
 
   if (weather.cod != 404) {
@@ -42,11 +41,12 @@ export const savePlan = async (req, res) => {
 
   const plan = req.body.planAndWeather.plansContent
 
+  const userEmail = req.user.email
+
   try {
-    await travelPlan.create({ city, packingList, plan })
+    await travelPlan.create({ city, packingList, plan, userEmail })
     res.send('Plan saved')
   } catch (error) {
-    //console.log(error)
-    res.send('Something went wrong')
+    res.status(500).send('Something went wrong')
   }
 }

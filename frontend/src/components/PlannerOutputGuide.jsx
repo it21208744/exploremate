@@ -1,15 +1,21 @@
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import getTokenFromHeader from './getTokenFromHeader'
 
 const PlannerOutput = (planAndWeather) => {
   const savePlan = async () => {
     try {
+      const config = getTokenFromHeader()
+
       const res = await axios.post(
         '/api/v1/travelers/savePlan/',
-        planAndWeather
+        planAndWeather,
+        config
       )
+      console.log(res)
       toast.success('Plan saved successfully')
     } catch (error) {
+      console.log(error)
       toast.error('Something went wrong')
     }
   }

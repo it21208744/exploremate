@@ -6,16 +6,19 @@ import Travelpedia from '../pages/travelers/Travelpedia'
 import { toast } from 'react-toastify'
 import Wrapper from '../assets/wrappers/travelersWrappers/plannerFormElement'
 import NiceBtn from './NiceBtn'
+import getTokenFromHeader from './getTokenFromHeader'
 
 export const action = async ({ request }) => {
   const formData = await request.formData()
   const data = Object.fromEntries(formData)
+
   try {
-    const planAndWeather = await (
-      await axios.post('/api/v1/travelers/', data)
-    ).data
-    return planAndWeather
+    const config = getTokenFromHeader()
+    console.log(config)
+    const planAndWeather = await axios.post('/api/v1/travelers/', data, config)
+    return planAndWeather.data
   } catch (error) {
+    console.log(error)
     toast.error('Wrong city name')
     return error
   }
