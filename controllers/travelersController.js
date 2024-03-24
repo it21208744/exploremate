@@ -22,8 +22,9 @@ export const addPlan = async (req, res) => {
   res.status(404).json({ msg: 'There is no such city' })
 }
 
-export const getAllPlans = (req, res) => {
-  res.send(`get all plans`)
+export const getAllPlans = async (req, res) => {
+  const plans = await travelPlan.find({ userEmail: req.user.email })
+  res.send(plans)
 }
 
 export const getSinglePlan = (req, res) => {
