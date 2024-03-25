@@ -13,6 +13,13 @@ const SalesHeader =()=>{
   };
     return(
 <>
+<div style={{backgroundImage:`url("../../../assets/images/beautiOfEarth.webp")`,
+    backgroundRepeat:"no-repeat",
+    backgroundSize:"cover",
+    width: '100vw',
+    height: '100vh'
+      
+}} >
 <div >
   <center>
   <h1 style={{ color: '#042630' }}>WELCOME TO EXPLOREMATE</h1>
@@ -30,7 +37,7 @@ const SalesHeader =()=>{
               
             </ul> */}
         
-       
+        </div>
       
             </>
   

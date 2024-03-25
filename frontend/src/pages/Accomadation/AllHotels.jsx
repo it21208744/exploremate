@@ -49,13 +49,69 @@ export default function AllSales() {
         localStorage.setItem("PackDetail", PackDetail);
     };
 
+ //heading
+const lableStyle1 = { 
+    color:"#042630" ,
+    //fontWeight: "300",  
+    fontSize: "20px", 
+   // marginBottom: "1000px"
+  };
+
+
+  const buttonDelete = {
+    display: "inline-block",
+    //backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
+    backgroundColor: "#D71515",
+    color:"#fff",
+    textTransform:"uppercase",
+    letterSpacing:"2px",
+    fontSize: "16px",
+      width:"110px",
+      height:"36px",
+      border:"none",
+      borderRadius: "20px",
+      cursor: "pointer",
+      
+  };
+
+  const buttonEdit = {
+    display: "inline-block",
+    //backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
+    backgroundColor: "green",
+    color:"#fff",
+    textTransform:"uppercase",
+    letterSpacing:"2px",
+    fontSize: "16px",
+      width:"110px",
+      height:"36px",
+      border:"none",
+      borderRadius: "20px",
+      cursor: "pointer",
+      
+  };
+
+
+
+
+  
+
+
     return (
         <>
-            <div className="d-flex flex-direction-column justify-content-between m-2">
-                <h3>Sales Details</h3>
-            </div>
-            <br />
-            <div>
+        <div style={{backgroundImage:`url("../../../assets/images/beautiOfEarth.webp")`,
+    backgroundRepeat:"no-repeat",
+    backgroundSize:"cover",
+    width: '100vw',
+    height: '100vh'
+      
+}} >
+            <div style={{marginLeft:"700px"}}><br/><br/>
+                    <label  style={lableStyle1}><h3>HOTEL DETAILS</h3></label>
+                    </div>
+                    
+                       
+                    
+  <br></br>
                 <table className="table table-striped" id="my-table" style={{ color: "#000" }}>
                     <thead>
                         <tr>
@@ -84,7 +140,7 @@ export default function AllSales() {
                                 <td>{item.PackDetail}</td>
                                 <td>
                                     <a href="uphotels">
-                                        <button className="btn-success" onClick={() => SetToLocalStorage(
+                                        <button style={buttonEdit } className="btn-success" onClick={() => SetToLocalStorage(
                                             item._id,
                                             item.HotelName,
                                             item.Email,
@@ -97,7 +153,7 @@ export default function AllSales() {
                                         )}>Edit</button>
                                     </a>
                                 </td>
-                                <td><button className="btn-danger" onClick={() => handleDeleteClick(item._id)}>Delete</button></td>
+                                <td><button style={ buttonDelete } className="btn-danger" onClick={() => handleDeleteClick(item._id)}>Delete</button></td>
                             </tr>
                         ))}
                     </tbody>
@@ -114,6 +170,7 @@ export default function AllSales() {
                     </Modal.Footer>
                 </Modal>
             </div>
+            
             <br />
         </>
     );
