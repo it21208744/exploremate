@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-//import myImage from '../../../assets/images/beautiOfEarth.webp';
+
 
 const SalesHeader =()=>{
   const lableStyle = { 
@@ -25,7 +25,6 @@ const SalesHeader =()=>{
 <div >
   <center>
   <h1 style={{ color: '#042630' }}>WELCOME TO EXPLOREMATE</h1>
-  <img src={myImage} alt="My Image" />
   </center>
 </div>
             {/* <ul >       
