@@ -1,5 +1,13 @@
 import styled from 'styled-components'
 
+const colors = {
+  background: '#d0d6d6',
+  title: '#041421',
+  texts: '#042630',
+  secTexts: '#86b9b0',
+  light: '#d0d6d6',
+}
+
 const Wrapper = styled.div`
   .btn {
     width: 180px;
@@ -16,7 +24,7 @@ const Wrapper = styled.div`
     left: 0;
     top: 0;
     fill: none;
-    stroke: #d0d6d6;
+    stroke: ${colors.title};
     stroke-dasharray: 150 480;
     stroke-dashoffset: 150;
     transition: 1s ease-in-out;
@@ -24,7 +32,7 @@ const Wrapper = styled.div`
 
   .btn:hover {
     transition: 1s ease-in-out;
-    background: #042630;
+    background: ${colors.secTexts};
   }
 
   .btn:hover svg {
@@ -32,9 +40,9 @@ const Wrapper = styled.div`
   }
 
   .btn span {
-    color: white;
+    color: ${colors.texts};
     font-size: 15px;
-    font-weight: 300;
+    font-weight: bolder;
   }
 `
 export default Wrapper

@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 const colors = {
-  title: '#d0d6d6',
-  background: '#041421',
-  tiles: '#042630',
-  secTexts: '#86b9b0',
+  background: '#d0d6d6',
+  title: '#041421',
+  texts: '#042630',
+  tile: '#86b9b0',
   light: '#d0d6d6',
 }
 
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   .form-label {
     font-size: 16px;
     font-weight: bold;
-    color: #86b9b0;
+    color: ${colors.texts};
     margin-bottom: 8px;
   }
 
@@ -57,6 +57,7 @@ const Wrapper = styled.div`
 
   .output {
     position: absolute;
+    color: ${colors.texts};
     top: 12vw;
     width: 100vw;
     border-top: 20px solid black;
