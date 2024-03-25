@@ -4,6 +4,8 @@ const Wrapper = styled.div`
   .profileContainer {
     position: relative;
     left: 50vw;
+    background: transparent;
+    color: black;
   }
 `
 
