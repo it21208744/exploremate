@@ -31,8 +31,15 @@ export const getSinglePlan = (req, res) => {
   res.json(req.params)
 }
 
-export const deletePlan = (req, res) => {
-  res.send(`delete a plan`)
+export const deletePlan = async (req, res) => {
+  console.log(req.params.id)
+  try {
+    await travelPlan.findByIdAndDelete(req.params.id)
+    res.send('deleted')
+  } catch (error) {
+    // console.log(error)
+    res.json({ error })
+  }
 }
 
 export const savePlan = async (req, res) => {

@@ -1,12 +1,22 @@
 import NiceModal, { useModal } from '@ebay/nice-modal-react'
-import { Modal, Button, Popover } from 'antd'
+import { Modal, Button } from 'antd'
+import axios from 'axios'
+import getTokenFromHeader from './getTokenFromHeader'
 
 export default NiceModal.create(({ city, plan, packingList, id }) => {
   const modal = useModal()
 
-  const handleDelete = () => {
-    // Implement delete logic here
-    console.log('Delete button clicked')
+  const handleDelete = async (id) => {
+    try {
+      const res = await axios.delete(
+        `/api/v1/travelers/${id}`,
+        getTokenFromHeader()
+      )
+      console.log(res)
+    } catch (error) {
+      console.log(error)
+    }
+    // console.log(id)
 
     modal.hide() // Optionally close the modal after deletion
   }
@@ -20,7 +30,7 @@ export default NiceModal.create(({ city, plan, packingList, id }) => {
           key="delete"
           type="danger"
           onClick={() => {
-            handleDelete()
+            handleDelete(id)
           }}
         >
           Delete
