@@ -18,9 +18,8 @@ const Guide = () => {
     getPlans()
   }, [])
 
-  const showPlan = () => {
-    // Show a modal with arguments passed to the component as props
-    NiceModal.show(SinglePlanInfo, { name: 'Nate' })
+  const showPlan = (city, plan, packingList, id) => {
+    NiceModal.show(SinglePlanInfo, { city, plan, packingList, id })
   }
 
   return (
@@ -31,8 +30,13 @@ const Guide = () => {
             <div className="planThumbnail">
               <h1>To {plan.city}</h1>
               <h3>{Object.keys(plan.plan).length} days trip</h3>
-              <button onClick={showPlan}>Show plan</button>
-              {/* {console.log(plan.city)} */}
+              <button
+                onClick={() =>
+                  showPlan(plan.city, plan.plan, plan.packingList, plan._id)
+                }
+              >
+                Show plan
+              </button>
             </div>
           </div>
         )
