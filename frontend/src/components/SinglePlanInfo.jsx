@@ -1,8 +1,18 @@
-const SinglePlanInfo = () => {
+import NiceModal, { useModal } from '@ebay/nice-modal-react'
+import { Modal } from 'antd'
+
+export default NiceModal.create(({ name }) => {
+  const modal = useModal()
   return (
-    <div>
+    <Modal
+      title="Hello Antd"
+      onOk={() => modal.hide()}
+      open={modal.visible}
+      onCancel={() => modal.hide()}
+      afterClose={() => modal.remove()}
+    >
       <h1>HE he this is a single plan</h1>
-    </div>
+      {console.log(name)}
+    </Modal>
   )
-}
-export default SinglePlanInfo
+})
