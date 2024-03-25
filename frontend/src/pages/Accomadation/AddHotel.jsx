@@ -148,6 +148,7 @@ const cardstyle ={
     
 
     <div style={{backgroundImage:`url("../../../assets/images/beautiOfEarth.webp")`,
+    backgroundColor:"#FFFFF0",
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     width: '100vw',
