@@ -62,34 +62,40 @@ const [PackDetail , setPack] = useState("");
             width:"100%",
             height:"36px",
             borderWidth: "0 0 2px 0",
-            borderColor: "#5543ca",
-            fontSize: "18px",
-            fontWeight: "400",
+            borderColor: "#86b9b0",
+            fontSize: "14px",
+            fontWeight: "300",
             LineHeight: '26px',
   };
   
   const buttonStyle = {
     display: "inline-block",
-    backgroundImage: "linear-gradient(125deg,#a72879,#064497)",
+    backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
+    //backgroundColor: "#c46804",
     color:"#fff",
     textTransform:"uppercase",
     letterSpacing:"2px",
     fontSize: "16px",
-      width:"200px",
+      width:"130px",
       height:"36px",
       border:"none",
+      borderRadius: "5px",
       cursor: "pointer",
       
   };
   
   const lableStyle = { 
-    color:"#064497"         
+    color:"#4c7273" ,  
+    fontWeight: "600",    
+    fontSize: "18px",   
   };
-  const lableStyle1 = { 
-    color:"#064497" ,
-    fontWeight: "500",  
-       
-  };
+  //heading
+const lableStyle1 = { 
+  color:"#042630" ,
+  //fontWeight: "300",  
+  fontSize: "20px", 
+ // marginBottom: "1000px"
+};
   
   const cardstyle ={
     overflow : "hidden",
@@ -105,17 +111,19 @@ const [PackDetail , setPack] = useState("");
   
    return(
   <>
-    <div style={{backgroundImage:`url("./images/coffee-beans-2.jpg")`,
-      backgroundRepeat:"no-repeat",
-      backgroundSize:"cover",
-      width: '100vw',
+    <div style={{backgroundImage:`url("../../../assets/images/beautiOfEarth.webp")`,
+    backgroundColor:"#FFFFF0",
+    backgroundRepeat:"no-repeat",
+    backgroundSize:"cover",
+    width: '100vw',
     height: '100vh'
       
 }}>
  
-  <div style={{marginLeft:"630px"}}><br/><br/>
-                    <label  style={lableStyle1}><h3>Update Sales</h3></label>
+ <div style={{marginLeft:"700px"}}><br/><br/>
+                    <label  style={lableStyle1}><h3>UPDATE HOTELS</h3></label>
                     </div>
+                    
                     
    <br></br>
      <Form onSubmit = {handleUpdate} >
@@ -141,7 +149,7 @@ const [PackDetail , setPack] = useState("");
    
    
    <div className="form-group">
-    <label htmlFor="PhoneNum" style={lableStyle}  >phone number</label>
+    <label htmlFor="PhoneNum" style={lableStyle}  >Phone number</label>
     <input type="text" className="form-control" id="PhoneNum" name="PhoneNum"  placeholder="Enter phone number" style={inputStyle} value = {PhoneNum} onChange={(e) => {
         setPnum(e.target.value);
     }}/>
@@ -155,28 +163,28 @@ const [PackDetail , setPack] = useState("");
     </div>
    
     <div className="form-group">
-    <label htmlFor="Amenties" style={lableStyle}  >am</label>
+    <label htmlFor="Amenties" style={lableStyle}  >Amenities</label>
     <input type="text" className="form-control" id="Amenties" name="Amenties"  placeholder="Enter am" style={inputStyle} value = {Amenties} onChange={(e) => {
         setAmen(e.target.value);
     }}/>
    </div>
 
    <div className="form-group">
-    <label htmlFor="Description" style={lableStyle}  >Dis</label>
+    <label htmlFor="Description" style={lableStyle}  >Description</label>
     <input type="text" className="form-control" id="Description" name="Description"  placeholder="Enter dis" style={inputStyle} value = {Description} onChange={(e) => {
         setDesc(e.target.value);
     }}/>
    </div>
 
    <div className="form-group">
-    <label htmlFor="RoomDetail" style={lableStyle}  >room</label>
+    <label htmlFor="RoomDetail" style={lableStyle}  >Room details</label>
     <input type="text" className="form-control" id="RoomDetail" name="RoomDetail"  placeholder="Enter room" style={inputStyle} value = {RoomDetail} onChange={(e) => {
         setRoom(e.target.value);
     }}/>
    </div>
 
    <div className="form-group">
-    <label htmlFor="PackDetail" style={lableStyle}  >pack</label>
+    <label htmlFor="PackDetail" style={lableStyle}  >Package details</label>
     <input type="text" className="form-control" id="PackDetail" name="PackDetail"  placeholder="Enter pack" style={inputStyle} value = {PackDetail} onChange={(e) => {
         setPack(e.target.value);
     }}/>
@@ -186,6 +194,7 @@ const [PackDetail , setPack] = useState("");
 
 
     <div >
+      <br></br>
     <button type="submit" className="btn btn-primary" style={buttonStyle}>Submit</button>
  </div>
  </div>

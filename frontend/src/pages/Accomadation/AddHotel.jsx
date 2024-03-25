@@ -147,7 +147,7 @@ const cardstyle ={
     <>
     
 
-    <div style={{backgroundImage:`url("../../../assets/images/beautiOfEarth.webp")`,
+    <div style={{backgroundImage:`url("C:\Users\ASUS\Desktop\ITPM\exploremate\frontend\src\assets\images\hotell.jpg")`,
     backgroundColor:"#FFFFF0",
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
@@ -187,7 +187,7 @@ const cardstyle ={
    
    
    <div className="form-group">
-    <label htmlFor="PhoneNum" style={lableStyle}  >phone number</label>
+    <label htmlFor="PhoneNum" style={lableStyle}  >Phone number</label>
     <input type="text" className="form-control" id="PhoneNum" name="PhoneNum"  placeholder="Enter phone number" style={inputStyle} onChange={(e) => {
         setPnum(e.target.value);
     }}/>
@@ -201,28 +201,28 @@ const cardstyle ={
     </div>
    
     <div className="form-group">
-    <label htmlFor="Amenties" style={lableStyle}  >am</label>
+    <label htmlFor="Amenties" style={lableStyle}  >Amenities</label>
     <input type="text" className="form-control" id="Amenties" name="Amenties"  placeholder="Enter am" style={inputStyle} onChange={(e) => {
         setAmen(e.target.value);
     }}/>
    </div>
 
    <div className="form-group">
-    <label htmlFor="Description" style={lableStyle}  >Dis</label>
+    <label htmlFor="Description" style={lableStyle}  >Description</label>
     <input type="text" className="form-control" id="Description" name="Description"  placeholder="Enter dis" style={inputStyle} onChange={(e) => {
         setDesc(e.target.value);
     }}/>
    </div>
 
    <div className="form-group">
-    <label htmlFor="RoomDetail" style={lableStyle}  >room</label>
+    <label htmlFor="RoomDetail" style={lableStyle}  >Room details</label>
     <input type="text" className="form-control" id="RoomDetail" name="RoomDetail"  placeholder="Enter room" style={inputStyle} onChange={(e) => {
         setRoom(e.target.value);
     }}/>
    </div>
 
    <div className="form-group">
-    <label htmlFor="PackDetail" style={lableStyle}  >pack</label>
+    <label htmlFor="PackDetail" style={lableStyle}  >Package details</label>
     <input type="text" className="form-control" id="PackDetail" name="PackDetail"  placeholder="Enter pack" style={inputStyle} onChange={(e) => {
         setPack(e.target.value);
     }}/>
