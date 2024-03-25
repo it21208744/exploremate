@@ -18,8 +18,8 @@ const Guide = () => {
     getPlans()
   }, [])
 
-  const showPlan = (city, plan, packingList, id) => {
-    NiceModal.show(SinglePlanInfo, { city, plan, packingList, id })
+  const showPlan = (city, plan, packingList, id, getPlans) => {
+    NiceModal.show(SinglePlanInfo, { city, plan, packingList, id, getPlans })
   }
 
   return (
@@ -32,7 +32,13 @@ const Guide = () => {
               <h3>{Object.keys(plan.plan).length} days trip</h3>
               <button
                 onClick={() =>
-                  showPlan(plan.city, plan.plan, plan.packingList, plan._id)
+                  showPlan(
+                    plan.city,
+                    plan.plan,
+                    plan.packingList,
+                    plan._id,
+                    getPlans
+                  )
                 }
               >
                 Show plan

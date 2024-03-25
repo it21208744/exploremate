@@ -3,7 +3,7 @@ import { Modal, Button } from 'antd'
 import axios from 'axios'
 import getTokenFromHeader from './getTokenFromHeader'
 
-export default NiceModal.create(({ city, plan, packingList, id }) => {
+export default NiceModal.create(({ city, plan, packingList, id, getPlans }) => {
   const modal = useModal()
 
   const handleDelete = async (id) => {
@@ -12,7 +12,7 @@ export default NiceModal.create(({ city, plan, packingList, id }) => {
         `/api/v1/travelers/${id}`,
         getTokenFromHeader()
       )
-      console.log(res)
+      getPlans()
     } catch (error) {
       console.log(error)
     }
