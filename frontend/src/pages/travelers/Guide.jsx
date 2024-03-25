@@ -1,29 +1,34 @@
+import { set } from 'mongoose'
 import Wrapper from '../../assets/wrappers/travelersWrappers/guide'
 import getTokenfromHeaders from '../../components/getTokenFromHeader'
 import axios from 'axios'
+import { useState, useEffect } from 'react'
 const Guide = () => {
-  try {
-    const res = axios.get('/api/v1/travelers/', getTokenfromHeaders())
-    res.then((test) => console.log(test.data[0].city))
-  } catch (error) {
-    console.log(error)
+  const [plans, setPlans] = useState([])
+
+  const getPlans = async () => {
+    const res = await axios.get('/api/v1/travelers/', getTokenfromHeaders())
+    setPlans(res.data)
   }
+
+  useEffect(() => {
+    getPlans()
+  }, [])
+
+  // console.log(plans)
 
   return (
     <Wrapper>
-      <div className="guideContainer">
-        <div className="planThumbnail">
-          <h1>To Jaffna</h1>
-          <h3>3 days trip</h3>
-        </div>
-      </div>
-
-      <div className="guideContainer">
-        <div className="planThumbnail">
-          <h1>To Jaffna</h1>
-          <h3>3 days trip</h3>
-        </div>
-      </div>
+      {plans.map((plan) => {
+        return (
+          <div className="guideContainer" key={plan._id}>
+            <div className="planThumbnail">
+              <h1>To {plan.city}</h1>
+              <h3>{Object.keys(plan.plan).length} days trip</h3>
+            </div>
+          </div>
+        )
+      })}
     </Wrapper>
   )
 }
