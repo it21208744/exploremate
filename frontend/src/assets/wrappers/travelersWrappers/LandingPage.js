@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import img from '../../../assets/images/beautiOfEarth.webp'
-import img2 from '../../../assets/images/landingBackground.webp'
 
 const Wrapper = styled.div`
   /* * {
@@ -8,27 +7,31 @@ const Wrapper = styled.div`
   } */
   .btnRegister {
     color: #0b0c10;
-    font-size: 0.8vw;
+    font-size: 1vw;
     z-index: 5;
     width: 5vw;
     position: fixed;
     top: 2%;
+    border-radius: 5px;
     /* margin-right: 2vw; */
     background: #45a29e;
     right: 1vw;
+    text-align: center;
     transition: background 0.5s ease, width 0.5s ease;
   }
 
   .btnLogin {
-    font-size: 0.8vw;
+    font-size: 1vw;
     color: #0b0c10;
     z-index: 5;
     width: 5vw;
     position: fixed;
     top: 2%;
+    border-radius: 5px;
     /* margin-right: 2vw; */
     background: #45a29e;
     right: 7vw;
+    text-align: center;
     transition: background 0.5s ease, width 0.5s ease;
   }
 
