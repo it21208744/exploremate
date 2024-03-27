@@ -18,6 +18,7 @@ router.post('/', async (req, res) => {
         const newUser = await new User({
             ...req.body,
             password: hashPassword,
+            role: 'user'
         }).save()
 
         // Create a user profile for the newly created user
@@ -27,6 +28,7 @@ router.post('/', async (req, res) => {
             lastName: req.body.lastName,
             email: req.body.email,
             password: req.body.password,
+            role: 'user'
             // You can add other fields here
         }).save()
 

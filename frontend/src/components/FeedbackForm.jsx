@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Make sure axios is installed: npm install axios
+import axios from 'axios';
 
 function FeedbackForm() {
   const [message, setMessage] = useState('');
@@ -10,25 +10,25 @@ function FeedbackForm() {
     try {
       const response = await axios.post('api/v1/feedback/feedback', { message }, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Assuming you store the token in localStorage
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
         }
       });
       
       console.log('Feedback submitted successfully:', response.data);
-      // Show a JavaScript alert box when feedback is successfully submitted
+    
       window.alert('Feedback added successfully!');
-      // You can handle success here, e.g., show a success message to the user
+      
     } catch (error) {
       console.error('Error submitting feedback:', error.response.data);
-      // Handle error, e.g., show an error message to the user
+      
     }
   };
 
   return (
-    <div style={{ position: 'relative', left: '30vw' }}>
+    <div style={{ margin: '0 auto', maxWidth: '400px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px',position: 'relative', left: '30vw' }}> {/* Apply card-like styling to the container div */}
       <h2>Feedback Form</h2>
-      <form onSubmit={handleSubmit} style={{ maxWidth: '400px' }}> {/* Apply max width to the form */}
-        <div style={{ marginBottom: '1rem' }}> {/* Margin bottom for spacing */}
+      <form onSubmit={handleSubmit}> 
+        <div style={{ marginBottom: '1rem' }}> 
           <label htmlFor="message" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Message:</label>
           <textarea
             id="message"
@@ -38,7 +38,7 @@ function FeedbackForm() {
             required
           />
         </div>
-        <button type="submit" style={{ padding: '0.5rem 1rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '4px' }}>Submit Feedback</button>
+        <button type="submit" style={{ padding: '0.5rem 1rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Submit Feedback</button>
       </form>
     </div>
   );

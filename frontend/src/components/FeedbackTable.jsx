@@ -30,7 +30,7 @@ const FeedbackTable = () => {
     const confirmed = window.confirm('Are you sure you want to delete this feedback entry?');
 
     if (!confirmed) {
-      return; // If user cancels, do nothing
+      return; 
     }
 
     try {
@@ -39,7 +39,7 @@ const FeedbackTable = () => {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
-      // Remove the deleted feedback entry from the state
+      
       setFeedbackEntries(feedbackEntries.filter(entry => entry._id !== id));
     } catch (error) {
       console.error('Error deleting feedback:', error.response.data);
@@ -55,14 +55,14 @@ const FeedbackTable = () => {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
-      // Update the feedback entry in the state
+      
       setFeedbackEntries(feedbackEntries.map(entry => {
         if (entry._id === id) {
           return { ...entry, message: editMessage };
         }
         return entry;
       }));
-      // Clear the editing state
+     
       setEditingId(null);
       setEditMessage('');
     } catch (error) {
@@ -71,44 +71,33 @@ const FeedbackTable = () => {
   };
 
   return (
-    <div style={{ margin: '0 auto', maxWidth: '800px', padding: '20px' }}>
+    <div style={{ margin: '0 auto', maxWidth: '800px', padding: '20px',position: 'relative', left: '30vw' }}>
       <h2>Feedback Entries</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr>
-              <th style={{ border: '1px solid #ddd', padding: '8px' }}>Message</th>
-              <th style={{ border: '1px solid #ddd', padding: '8px' }}>Date</th>
-              <th style={{ border: '1px solid #ddd', padding: '8px' }}>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {feedbackEntries.map((entry) => (
-              <tr key={entry._id}>
-                <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-                  {editingId === entry._id ? (
-                    <input type="text" value={editMessage} onChange={(e) => setEditMessage(e.target.value)} />
-                  ) : (
-                    entry.message
-                  )}
-                </td>
-                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{new Date(entry.createdAt).toLocaleDateString()}</td>
-                <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-                  {editingId === entry._id ? (
-                    <button onClick={() => handleUpdateFeedback(entry._id)}>Save</button>
-                  ) : (
-                    <>
-                      <button onClick={() => setEditingId(entry._id)}>Edit</button>
-                      <button onClick={() => handleDeleteFeedback(entry._id)}>Delete</button>
-                    </>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
+          {feedbackEntries.map((entry) => (
+            <div key={entry._id} style={{ border: '5px solid #ccc', borderRadius: '5px', padding: '20px' }}>
+              <p><strong>Message:</strong> {editingId === entry._id ? (
+                <input type="text" value={editMessage} onChange={(e) => setEditMessage(e.target.value)} />
+              ) : (
+                entry.message
+              )}</p>
+              <p><strong>Date:</strong> {new Date(entry.createdAt).toLocaleDateString()}</p>
+              <div>
+                {editingId === entry._id ? (
+                  <button style={{ marginRight: '10px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px', padding: '8px 12px', cursor: 'pointer' }} onClick={() => handleUpdateFeedback(entry._id)}>Save</button>
+                ) : (
+                  <>
+                    <button style={{ marginRight: '10px', backgroundColor: '#28a745', color: '#fff', border: 'none', borderRadius: '5px', padding: '8px 12px', cursor: 'pointer' }} onClick={() => setEditingId(entry._id)}>Edit</button>
+                    <button style={{ backgroundColor: '#dc3545', color: '#fff', border: 'none', borderRadius: '5px', padding: '8px 12px', cursor: 'pointer' }} onClick={() => handleDeleteFeedback(entry._id)}>Delete</button>
+                  </>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

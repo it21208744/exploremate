@@ -2,17 +2,19 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Form } from 'react-router-dom'
 
+
 export const action = async ({ request }) => {
   const formData = await request.formData()
   const data = Object.fromEntries(formData)
   console.log(data)
 
+ 
   try {
     const res = await axios.post('/api/v1/users/', data)
     console.log(res)
     return res
   } catch (error) {
-    //   toast.error('Wrong city name')
+    
     return error
   }
 
@@ -20,8 +22,12 @@ export const action = async ({ request }) => {
 }
 
 const register = () => {
-  
+  const [role, setRole] = useState('user'); 
 
+  const handleRoleChange = (e) => {
+    setRole(e.target.value);
+  
+  }
   return (
    
     <div style={{ position: 'relative', left: '30vw' }}>
@@ -43,6 +49,13 @@ const register = () => {
         <div>
           <label>Password:</label>
           <input type="password" name="password" required />
+        </div>
+        <div>
+          <label>Role:</label>
+          <select name="role" value={role} onChange={handleRoleChange}>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
         </div>
         <button type="submit">Register</button>
       </Form>
