@@ -10,7 +10,7 @@ const colors = {
 
 const Wrapper = styled.div`
   .pageTitle {
-    color: ${colors.title};
+    color: #042630;
     position: absolute;
     top: -50vh;
     left: 25vw;
@@ -19,13 +19,13 @@ const Wrapper = styled.div`
   .form {
     position: absolute;
     top: -30vh;
-    /* left: 25vw; */
+    left: 25vw;
   }
 
   .form-label {
     font-size: 16px;
     font-weight: bold;
-    color: ${colors.texts};
+    color: #4c7273;
     margin-bottom: 8px;
   }
 
@@ -33,7 +33,7 @@ const Wrapper = styled.div`
     width: 30vw;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #86b9b0;
     border-radius: 5px;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
@@ -51,7 +51,7 @@ const Wrapper = styled.div`
 
   .Nicebutton {
     position: absolute;
-    left: 35vw;
+    left: 10vw;
     top: 40vh;
   }
 
@@ -59,7 +59,7 @@ const Wrapper = styled.div`
     position: absolute;
     color: ${colors.texts};
     top: 12vw;
-    width: 100vw;
+    width: 83vw;
     border-top: 20px solid black;
     background: transparent;
   }
@@ -69,11 +69,6 @@ const Wrapper = styled.div`
     top: 2vh;
     left: 28vw;
     list-style: none;
-  }
-
-  .test {
-    position: absolute;
-    left: 50vh;
   }
 
   .output .horizontalNav li {
@@ -147,6 +142,7 @@ const Wrapper = styled.div`
     position: relative;
     top: 5vh;
     left: 35vw;
+    background: #4c7273;
   }
 `
 

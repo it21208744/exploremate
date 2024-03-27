@@ -60,8 +60,8 @@ const Wrapper = styled.div`
     z-index: 4;
     top: -4vw;
     font-size: 5vw; /* Responsive font size based on viewport width */
-    color: white;
-    background: #242424;
+    color: #042630;
+    background: #fffff0;
     height: 6vw;
   }
 
