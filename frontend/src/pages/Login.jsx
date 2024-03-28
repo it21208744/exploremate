@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';//ggggg
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -7,6 +8,9 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  
   
   
 
@@ -18,10 +22,22 @@ const Login = () => {
         email,
         password,
       });
-      console.log(response?.data?.data);
+      console.log(response?.data?.user?.role);
       localStorage.setItem('token', response.data.data);
 
-      setIsLoggedIn(true); 
+      setIsLoggedIn(true);
+
+      const userRole = response?.data?.user?.role;
+      //  console.log(response.data.data);
+      
+      if (userRole === 'admin') {
+        navigate('/register');
+      } else if (userRole === 'user') {
+        navigate('/travelerDashBoard/profile');
+      } else {
+        
+        navigate('/register');
+      }
 
     } catch (error) {
       console.error('Login error:', error);

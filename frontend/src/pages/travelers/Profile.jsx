@@ -15,7 +15,8 @@ const UserProfile = () => {
     const fetchUserProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-
+        
+          
         if (!token) {
           throw new Error('Token not found');
         }
@@ -23,10 +24,16 @@ const UserProfile = () => {
         const response = await axios.get('/api/v1/userss/profile', {
           headers: {
             Authorization: `Bearer ${token}`
+            
           }
+          
+          
         });
+       
+        
 
         setProfile(response.data.data);
+        
         setFormData(response.data.data); 
         setError(null);
       } catch (error) {
