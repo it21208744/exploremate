@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
+  /* background: black;
+  position: relative;
+  width: 100vw; */
+
   .loginContainer {
     color: black;
     background-color: rgba(128, 128, 128, 0.5);
@@ -11,8 +15,10 @@ const Wrapper = styled.div`
   }
 
   h2 {
-    position: relative;
-    top: -5vh;
+    position: absolute;
+    top: 0.1vh;
+    left: 11vw;
+
     text-align: center;
   }
 

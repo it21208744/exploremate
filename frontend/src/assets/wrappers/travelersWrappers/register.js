@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
+  /* background-color: black;
+  position: fixed;
+  width: 100%; */
+
   .RegisterContainer {
     color: black;
     background-color: rgba(128, 128, 128, 0.5);
@@ -12,8 +16,10 @@ const Wrapper = styled.div`
 
   h2 {
     position: relative;
-    top: -5vh;
+    top: 6vh;
+    left: 36.2vw;
     text-align: center;
+    color: black;
   }
 
   input {
