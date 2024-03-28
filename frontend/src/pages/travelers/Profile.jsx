@@ -75,25 +75,25 @@ const UserProfile = () => {
     <Wrapper>
       <div className="profileContainer">
         <div
-          style={{
-            fontFamily: 'Arial, sans-serif',
-            textAlign: 'center',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            minHeight: '100vh',
-          }}
+        // style={{
+        //   fontFamily: 'Arial, sans-serif',
+        //   textAlign: 'center',
+        //   display: 'flex',
+        //   justifyContent: 'center',
+        //   alignItems: 'center',
+        //   minHeight: '100vh',
+        // }}
         >
           <div>
-            <h2 style={{ color: '#2c3e50' }}>User Profile</h2>
+            <h2 /*style={{ color: '#2c3e50' }}*/>User Profile</h2>
             {profile && (
               <div
-                style={{
-                  backgroundColor: '#ecf0f1',
-                  padding: '10px',
-                  borderRadius: '5px',
-                  margin: '10px 0',
-                }}
+              // style={{
+              //   backgroundColor: '#ecf0f1',
+              //   padding: '10px',
+              //   borderRadius: '5px',
+              //   margin: '10px 0',
+              // }}
               >
                 <p>
                   <strong>First Name:</strong> {profile.firstName}
@@ -106,10 +106,10 @@ const UserProfile = () => {
                 </p>
               </div>
             )}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p /*style={{ color: 'red' }}*/>{error}</p>}
             <form onSubmit={handleSubmit}>
-              <label style={{ display: 'block', marginBottom: '10px' }}>
-                <span style={{ color: '#2c3e50', marginRight: '10px' }}>
+              <label /*style={{ display: 'block', marginBottom: '10px' }}*/>
+                <span /*style={{ color: '#2c3e50', marginRight: '10px' }}*/>
                   First Name:
                 </span>
                 <input
@@ -117,17 +117,17 @@ const UserProfile = () => {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  style={{
-                    padding: '5px',
-                    borderRadius: '5px',
-                    border: '1px solid #ccc',
-                    width: '200px',
-                  }}
+                  // style={{
+                  //   padding: '5px',
+                  //   borderRadius: '5px',
+                  //   border: '1px solid #ccc',
+                  //   width: '200px',
+                  // }}
                   required
                 />
               </label>
-              <label style={{ display: 'block', marginBottom: '10px' }}>
-                <span style={{ color: '#2c3e50', marginRight: '10px' }}>
+              <label /*style={{ display: 'block', marginBottom: '10px' }}*/>
+                <span /*style={{ color: '#2c3e50', marginRight: '10px' }}*/>
                   Last Name:
                 </span>
                 <input
@@ -135,17 +135,17 @@ const UserProfile = () => {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  style={{
-                    padding: '5px',
-                    borderRadius: '5px',
-                    border: '1px solid #ccc',
-                    width: '200px',
-                  }}
+                  // style={{
+                  //   padding: '5px',
+                  //   borderRadius: '5px',
+                  //   border: '1px solid #ccc',
+                  //   width: '200px',
+                  // }}
                   required
                 />
               </label>
-              <label style={{ display: 'block', marginBottom: '10px' }}>
-                <span style={{ color: '#2c3e50', marginRight: '10px' }}>
+              <label /*style={{ display: 'block', marginBottom: '10px' }}*/>
+                <span /*style={{ color: '#2c3e50', marginRight: '10px' }}*/>
                   Email:
                 </span>
                 <input
@@ -153,40 +153,40 @@ const UserProfile = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  style={{
-                    padding: '5px',
-                    borderRadius: '5px',
-                    border: '1px solid #ccc',
-                    width: '200px',
-                  }}
+                  // style={{
+                  //   padding: '5px',
+                  //   borderRadius: '5px',
+                  //   border: '1px solid #ccc',
+                  //   width: '200px',
+                  // }}
                   required
                 />
               </label>
               <button
                 type="submit"
-                style={{
-                  backgroundColor: '#3498db',
-                  color: 'white',
-                  padding: '8px 20px',
-                  borderRadius: '5px',
-                  border: 'none',
-                  cursor: 'pointer',
-                }}
+                // style={{
+                //   backgroundColor: '#3498db',
+                //   color: 'white',
+                //   padding: '8px 20px',
+                //   borderRadius: '5px',
+                //   border: 'none',
+                //   cursor: 'pointer',
+                // }}
               >
                 Update Profile
               </button>
               <button
                 type="button"
                 onClick={handleLogout}
-                style={{
-                  backgroundColor: '#e74c3c',
-                  color: 'white',
-                  padding: '8px 20px',
-                  borderRadius: '5px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  marginLeft: '10px',
-                }}
+                // style={{
+                //   backgroundColor: '#e74c3c',
+                //   color: 'white',
+                //   padding: '8px 20px',
+                //   borderRadius: '5px',
+                //   border: 'none',
+                //   cursor: 'pointer',
+                //   marginLeft: '10px',
+                // }}
               >
                 Logout
               </button>
