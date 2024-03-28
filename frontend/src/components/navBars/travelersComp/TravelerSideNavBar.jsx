@@ -1,6 +1,6 @@
 import Wrapper from '../../../assets/wrappers/travelersWrappers/TravelerSideNavBar'
 import { NavLink } from 'react-router-dom'
-import { CiMenuBurger } from 'react-icons/ci'
+
 import { RiMoneyDollarCircleFill } from 'react-icons/ri'
 import { AiTwotoneSchedule } from 'react-icons/ai'
 import { FaUserAlt } from 'react-icons/fa'
@@ -34,43 +34,43 @@ const TravelerSideNavBar = () => {
           </li> */}
           <li className="navLink">
             <NavLink to="." className="navLink">
-              <span className="icon">
+              <span className="text">
                 <FcPlanner />
+                Planner
               </span>
-              <span className="text">Planner</span>
             </NavLink>
           </li>
           <li className="navLink">
             <NavLink to="planOnYourBudget">
-              <span className="icon">
+              <span className="text">
                 <RiMoneyDollarCircleFill />
+                Plan on your budget
               </span>
-              <span className="text">Plan on your budget</span>
             </NavLink>
           </li>
           <li className="navLink">
             <NavLink to="services">
-              <span className="icon">
+              <span className="text">
                 <MdLocalHotel />
+                Services
               </span>
-              <span className="text">Services</span>
             </NavLink>
           </li>
           <li className="navLink">
             <NavLink to="profile">
-              <span className="icon">
+              <span className="text">
                 <FaUserAlt />
+                Profile
               </span>
-              <span className="text">Profile</span>
             </NavLink>
           </li>
 
           <li className="navLink">
             <NavLink to="guide">
-              <span className="icon">
+              <span className="text">
                 <AiTwotoneSchedule />
+                Plans
               </span>
-              <span className="text">Plans</span>
             </NavLink>
           </li>
         </ul>
