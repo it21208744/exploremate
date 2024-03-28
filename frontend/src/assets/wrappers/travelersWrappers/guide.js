@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   .planThumbnail {
     position: relative;
     top: 5vh;
-    background: blue;
+    background: grey;
     margin: 1vw;
     padding: 30px;
     border-style: double;

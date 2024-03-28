@@ -81,14 +81,26 @@ const Wrapper = styled.div`
     display: inline-block;
     width: 30px; /* Adjust as needed */
     text-align: center;
+    font-size: 1.5em;
+    color: grey;
+    transition: font-size 0.3s ease;
+  }
+
+  .navLink .icon:hover {
     font-size: 2em;
   }
 
   .navLink .text {
     display: inline-block;
     vertical-align: middle;
-    margin-left: 10px; /* Adjust as needed */
-    font-size: 1.5em;
+    margin-left: 10px;
+    font-size: 1em;
+    color: grey;
+    transition: font-size 0.3s ease;
+  }
+
+  .navLink .text:hover {
+    font-size: 20px;
   }
 `
 
