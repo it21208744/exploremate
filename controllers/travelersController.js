@@ -1,12 +1,13 @@
 import { generateList, generatePlans } from '../components/openAI.js'
-import { checkWeather } from '../components/weather.js'
+import { checkWeather, weatherForecast } from '../components/weather.js'
 
 import travelPlan from '../models/travelPlan.js'
 
 export const addPlan = async (req, res) => {
   const { location, days, type, date } = req.body
   const weather = await checkWeather(location)
-
+  const futureWeather = await weatherForecast(location, date)
+  console.log(futureWeather)
   if (weather.cod != 404) {
     const plansContent = await generatePlans(location, days, type)
 
