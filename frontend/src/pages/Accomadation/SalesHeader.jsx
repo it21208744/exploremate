@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import hotell from '../../assets/images/hotell.jpg'
 
 const SalesHeader =()=>{
   const lableStyle = { 
@@ -14,8 +14,9 @@ const SalesHeader =()=>{
   };
     return(
 <>
-<div style={{backgroundImage:`url("../../../assets/images/beautiOfEarth.webp")`,
- backgroundColor:"#FFFFF0",
+<div style={{background: `url(${hotell})`,
+  //background:`url("../../assets/images/hotell.jpg")`,
+ //backgroundColor:"#FFFFF0",
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     width: '100vw',
