@@ -39,7 +39,7 @@ const [PackDetail , setPack] = useState("");
       e.preventDefault();
       console.log("Id...",id);
       axios.put(`/api/v1/Coffee/update/${id}`,
-      
+      toast.success('Hotel updated'),
       {
         
         HotelName:HotelName,

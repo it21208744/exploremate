@@ -193,8 +193,8 @@ const lableStyle1 = {
                         ))}
                     </tbody>
                 </Table>
-                </div>
-                <Modal show={showModal} onHide={() => setShowModal(false)}>
+                
+                 <Modal show={showModal} onHide={() => setShowModal(false)}>
                     <Modal.Header closeButton>
                         <Modal.Title>Delete Confirmation</Modal.Title>
                     </Modal.Header>
@@ -204,6 +204,7 @@ const lableStyle1 = {
                         <Button variant="danger" onClick={handleDelete}>Delete</Button>
                     </Modal.Footer>
                 </Modal>
+                </div> 
             </div>
             
             <br />

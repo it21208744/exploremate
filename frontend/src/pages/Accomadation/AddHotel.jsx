@@ -25,7 +25,7 @@ export default function AddHotel(){
  const res = useActionData()
  //:)
 
-
+ 
 const [HotelName , setHname] = useState("");
 const [Email , setEma] = useState("");
 const [PhoneNum , setPnum] = useState("");
@@ -34,9 +34,10 @@ const [Amenties , setAmen] = useState("");
 const [Description , setDesc] = useState("");
 const [RoomDetail , setRoom] = useState("");
 const [PackDetail , setPack] = useState("");
+// const navigate = useNavigate();
+// navigate("allhotels");
 
 
-const navigate = useNavigate();
 
 
 // function sendData(e){

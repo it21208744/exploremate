@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import hotell from '../../assets/images/hotell.jpg'
-
+import hotell from '../../assets/images/hote.webp'
+//import hotells from '../../assets/images/hotel3.jpeg'
 const SalesHeader =()=>{
   const lableStyle = { 
     color:"#5543ca",
@@ -14,9 +14,9 @@ const SalesHeader =()=>{
   };
     return(
 <>
-<div style={{background: `url(${hotell})`,
-  //background:`url("../../assets/images/hotell.jpg")`,
- //backgroundColor:"#FFFFF0",
+<div style={{
+  //background: `url(${hotell})`,
+ backgroundColor:"#FFFFF0",
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     width: '100vw',
@@ -25,7 +25,10 @@ const SalesHeader =()=>{
 }} >
 <div >
   <center>
-  <h1 style={{ color: '#042630' }}>WELCOME TO EXPLOREMATE</h1>
+  <h1 style={{ color: '#042630' }}>WELCOME TO EXPLOREMATE ......</h1>
+  
+  <img style={{width: '80vw',
+    height: '70vh'}} src={hotell} alt="My Uploaded Image" />
   </center>
 </div>
             {/* <ul >       
