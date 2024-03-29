@@ -23,7 +23,7 @@ console.log(req.body.role)
 
         // Create a user profile for the newly created user
         const userProfile = await new User({
-            user: newUser._id, // Associate user profile with the newly created user
+            user: newUser._id, 
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
@@ -31,7 +31,7 @@ console.log(req.body.role)
             // role: req.body.role
             role: req.body.role
 
-            // You can add other fields here
+            
         }).save()
 
         res

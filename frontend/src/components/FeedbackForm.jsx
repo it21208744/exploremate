@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function FeedbackForm() {
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    navigate('/feedbackTabel');
     
     try {
       const response = await axios.post('api/v1/feedback/feedback', { message }, {
@@ -25,7 +29,7 @@ function FeedbackForm() {
   };
 
   return (
-    <div style={{ margin: '0 auto', maxWidth: '400px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px',position: 'relative', left: '30vw' }}> {/* Apply card-like styling to the container div */}
+    <div style={{ margin: '0 auto', maxWidth: '400px', padding: '20px', border: '2px solid #ccc', borderRadius: '5px',position: 'relative', left: '30vw' }}> {/* Apply card-like styling to the container div */}
       <h2>Feedback Form</h2>
       <form onSubmit={handleSubmit}> 
         <div style={{ marginBottom: '1rem' }}> 
