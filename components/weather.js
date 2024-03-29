@@ -13,10 +13,18 @@ export const checkWeather = async (city) => {
 export const weatherForecast = async (city, date) => {
   const response = await fetch(ForecastUrl + `&q=${city}` + `&appid=${apiKey}`)
   const allWeather = await response.json()
+  let futureWeather = {}
 
-  const weather = getFirstItemByDate(allWeather, date)
-
-  return weather
+  if (allWeather !== undefined) {
+    const weather = getFirstItemByDate(allWeather, date)
+    if (weather)
+      futureWeather = {
+        temp: weather.main.temp,
+        desc: weather.weather[0].description,
+        wind: weather.wind.speed,
+      }
+  }
+  return futureWeather
 }
 
 //for weather forcast

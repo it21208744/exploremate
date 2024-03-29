@@ -12,7 +12,7 @@ const PlannerOutput = (planAndWeather) => {
         planAndWeather,
         config
       )
-      console.log(res)
+      // console.log(res)
       toast.success('Plan saved successfully')
     } catch (error) {
       console.log(error)

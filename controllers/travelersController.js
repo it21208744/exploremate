@@ -5,20 +5,30 @@ import travelPlan from '../models/travelPlan.js'
 
 export const addPlan = async (req, res) => {
   const { location, days, type, date } = req.body
-  const weather = await checkWeather(location)
-  const futureWeather = await weatherForecast(location, date)
-  console.log(futureWeather)
-  if (weather.cod != 404) {
-    const plansContent = await generatePlans(location, days, type)
-
-    let packingList = await generateList(
-      weather.weather[0].description,
-      weather.main.temp,
-      weather.wind.speed
-    )
-
-    return res.status(200).json({ plansContent, weather, packingList })
+  let weather
+  let futureWeather
+  try {
+    futureWeather = await weatherForecast(location, date)
+    weather = await checkWeather(location)
+  } catch (error) {
+    console.log(error)
   }
+
+  console.log(futureWeather)
+  if (weather !== undefined)
+    if (weather.cod != 404) {
+      const plansContent = await generatePlans(location, days, type)
+
+      let packingList = await generateList(
+        weather.weather[0].description,
+        weather.main.temp,
+        weather.wind.speed
+      )
+
+      return res
+        .status(200)
+        .json({ plansContent, weather, futureWeather, packingList, date })
+    }
 
   res.status(404).json({ msg: 'There is no such city' })
 }
@@ -38,7 +48,6 @@ export const deletePlan = async (req, res) => {
     await travelPlan.findByIdAndDelete(req.params.id)
     res.send('deleted')
   } catch (error) {
-    // console.log(error)
     res.json({ error })
   }
 }
