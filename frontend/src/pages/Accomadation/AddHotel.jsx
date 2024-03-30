@@ -1,19 +1,22 @@
 import React,{useState} from "react"
 import axios from "axios";
-import {Link, Form, useNavigate, useActionData} from 'react-router-dom';
+import {Link, Form, redirect, useActionData, } from 'react-router-dom';
 import {toast} from 'react-toastify'
-
 
 
 
 export const action = async ({ request }) => {
   const formData = await request.formData()
+  // const navigate = useNavigate()
+
   const data = Object.fromEntries(formData)
   try {
     const res = await axios.post("/api/v1/Coffee/add", data )
     toast.success('Hotel added')
-    return res
+    return redirect('../allhotels')
+    
   } catch (error) {
+    console.log(error)
     toast.error('Something went wrong')
     return error
   }
@@ -34,8 +37,7 @@ const [Amenties , setAmen] = useState("");
 const [Description , setDesc] = useState("");
 const [RoomDetail , setRoom] = useState("");
 const [PackDetail , setPack] = useState("");
-// const navigate = useNavigate();
-// navigate("allhotels");
+
 
 
 

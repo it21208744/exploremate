@@ -1,7 +1,7 @@
 import axios from "axios";
 import React,{useState,useEffect} from "react";
 //import SalesHeader from './SalesHeader';
-import {Link, Form, useNavigate, useActionData} from 'react-router-dom';
+import {Link, Form, useNavigate, useActionData, redirect} from 'react-router-dom';
 import {toast} from 'react-toastify'
 
 const UpdateHotels = () => {
@@ -38,8 +38,8 @@ const [PackDetail , setPack] = useState("");
      const handleUpdate = (e)=>{
       e.preventDefault();
       console.log("Id...",id);
-      axios.put(`/api/v1/Coffee/update/${id}`,
-      toast.success('Hotel updated'),
+      try {
+        axios.put(`/api/v1/Coffee/update/${id}`,
       {
         
         HotelName:HotelName,
@@ -53,6 +53,13 @@ const [PackDetail , setPack] = useState("");
        
       }
       )
+      toast.success('Hotel updated')
+       navigate('/HotelOwnerDashBoardLayout/allhotels')
+
+      } catch (error) {
+        toast.error('Something went wrong')
+      }
+      
   };
 
  
