@@ -20,7 +20,7 @@ import Travelpedia from './pages/travelers/Travelpedia'
 import AddPlanting from './pages/AddPlanting'
 import AllPlanting from './pages/AllPlanting'
 import PlantUpdate from './pages/PlantUpdate'
-
+import HeaderTaxi from './pages/HeaderTaxi'
 import { action as addPlantingAction } from './pages/AddPlanting'
 
 
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
         path: 'TaxiOwnerDashBoard',
         element: <TaxiOwnerDashBoard />,
         children: [
-          { index: true, element: <h1>TaxiOwnerOpt1</h1> },
+          { index: true, element: <HeaderTaxi/>},
           { path: 'addPlanting', element: <AddPlanting/>, action: addPlantingAction },
           { path: 'allPlanting', element: <AllPlanting/> },
           { path: 'plantUpdate', element: <PlantUpdate/> },

@@ -58,50 +58,137 @@ export default function AllPlanting() {
     };
 
 
+    
+ //heading
+const lableStyle1 = { 
+    color:"#042630" ,
+    //fontWeight: "300",  
+    fontSize: "20px", 
+   // marginBottom: "1000px"
+  };
+
+
+  const buttonDelete = {
+    display: "inline-block",
+    //backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
+    backgroundColor: "#D71515",
+    color:"#fff",
+    textTransform:"uppercase",
+    letterSpacing:"1px",
+    fontSize: "14px",
+      width:"90px",
+      height:"36px",
+      border:"none",
+      borderRadius: "20px",
+      cursor: "pointer",
+      
+  };
+
+  const buttonEdit = {
+    display: "inline-block",
+    //backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
+    backgroundColor: "green",
+    color:"#fff",
+    textTransform:"uppercase",
+    letterSpacing:"1px",
+    fontSize: "14px",
+      width:"90px",
+      height:"36px",
+      border:"none",
+      borderRadius: "20px",
+      cursor: "pointer",
+      
+  };
+
+
+  const cardstyle ={
+    overflow : "hidden",
+    boxShadow:"0 2px 20px ",
+    borderRadius: "$radius",
+    transition: "transform 200ms ease-in",
+    padding:"30px",
+    backdropFilter: "blur(5px)",
+    background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
+    width: "1300px",
+    marginLeft:"100px",
+   
+  };
+  
+
+  const tableStyle = {
+    borderCollapse: 'collapse',
+    width: '100%',
+    color: '#4c7273'
+  };
+
+  const thStyle = {
+    border: '1px solid #ddd',
+    padding: '8px',
+    textAlign: 'left',
+    backgroundColor: '#f2f2f2'
+  };
+
+  const tdStyle = {
+    border: '1px solid #ddd',
+    padding: '8px',
+    textAlign: 'left'
+  };
+
+
+
     return (
         <>
-            <div className="d-flex flex-direction-column justify-content-between m-2">
-                <h3>Taxi Details</h3>
-            </div>
+        <div style={{
+            //backgroundImage:url("../../../assets/images/beautiOfEarth.webp"),
+         backgroundColor:"#FFFFF0",
+    backgroundRepeat:"no-repeat",
+    backgroundSize:"cover",
+    width: '100vw',
+    height: '100vh'
+      
+}} >
+            <div style={{marginLeft:"700px" }}><br/><br/>
+                    <label  style={lableStyle1}><h3>TAXI DETAILS</h3></label>
+                    </div>
             <br />
-            <div>
-                <table className="table table-striped" id="my-table" style={{ color: "#000" }}>
+            <div style={cardstyle}>
+                <Table style={tableStyle}table className="table table-striped" id="my-table" >
                     <thead>
                         <tr>
-                        <th scope="col">Company Name</th>
-                        <th scope="col">Bussiness RegNo</th>
-                        <th scope="col">Company Email</th>
-                        <th scope="col">Company Contact No</th>
-                        <th scope="col">Vehicle Type</th>
-                        <th scope="col">Vehicle Model</th>
-                        <th scope="col">Licen Number</th>
-                        <th scope="col">Inssurance Company</th>
-                        <th scope="col">Driver Name</th>
-                        <th scope="col">Driver Email</th>
-                        <th scope="col">Contact Number</th>
-                        <th scope="col">Driver Licen Number</th>
+                        <th style={thStyle}>Company Name</th>
+                        <th style={thStyle}>Bussiness RegNo</th>
+                        <th style={thStyle}>Company Email</th>
+                        <th style={thStyle}>Company Contact No</th>
+                        <th style={thStyle}>Vehicle Type</th>
+                        <th style={thStyle}>Vehicle Model</th>
+                        <th style={thStyle}>Licen Number</th>
+                        <th style={thStyle}>Inssurance Company</th>
+                        <th style={thStyle}>Driver Name</th>
+                        <th style={thStyle}>Driver Email</th>
+                        <th style={thStyle}>Contact Number</th>
+                        <th style={thStyle}>Driver Licen Number</th>
       
                         </tr>
                     </thead>
                     <tbody>
                         {taxi.map((item) => (
                             <tr key={item._id}>
-                                <td>{item.companyName}</td>
-                                <td>{item.bussinessRegNo}</td>
-                                <td>{item.companyEmail}</td>
-                                <td>{item.comContactNo}</td>
-                                <td>{item.vehicleType}</td>
-                                <td>{item.vehicleModel}</td>
-                                <td>{item.licenNo}</td>
-                                <td>{item.inssuranceCompany}</td>
-                                <td>{item.driverName}</td>
-                                <td>{item. driverEmail}</td>
-                                <td>{item.contactNumber}</td>
-                                <td>{item.driverLiceNo}</td>
+                                <td style={tdStyle}>{item.companyName}</td>
+                                <td style={tdStyle}>{item.bussinessRegNo}</td>
+                                <td style={tdStyle}>{item.companyEmail}</td>
+                                <td style={tdStyle}>{item.comContactNo}</td>
+                                <td style={tdStyle}>{item.vehicleType}</td>
+                                <td style={tdStyle}>{item.vehicleModel}</td>
+                                <td style={tdStyle}>{item.licenNo}</td>
+                                <td style={tdStyle}>{item.inssuranceCompany}</td>
+                                <td style={tdStyle}>{item.driverName}</td>
+                                <td style={tdStyle}>{item. driverEmail}</td>
+                                <td style={tdStyle}>{item.contactNumber}</td>
+                                <td style={tdStyle}>{item.driverLiceNo}</td>
 
                                 <td>
                                     <a href="plantUpdate">
-                                        <button className="btn-success" onClick={() => SetToLocalStorage(
+                                        <button style={buttonEdit } className="btn-success" onClick={() => SetToLocalStorage(
                                             item._id,
                                             item.companyName,
                                             item.bussinessRegNo,
@@ -118,11 +205,11 @@ export default function AllPlanting() {
                                         )}>Edit</button>
                                     </a>
                                 </td>
-                                <td><button className="btn-danger" onClick={() => handleDeleteClick(item._id)}>Delete</button></td>
+                                <td><button style={ buttonDelete } className="btn-danger" onClick={() => handleDeleteClick(item._id)}>Delete</button></td>
                             </tr>
                         ))}
                     </tbody>
-                </table>
+                </Table>
 
                 <Modal show={showModal} onHide={() => setShowModal(false)}>
                     <Modal.Header closeButton>
@@ -134,6 +221,7 @@ export default function AllPlanting() {
                         <Button variant="danger" onClick={handleDelete}>Delete</Button>
                     </Modal.Footer>
                 </Modal>
+            </div>
             </div>
             <br />
         </>

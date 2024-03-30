@@ -107,7 +107,7 @@ export const action = async ({ request }) => {
         width:"100%",
         height:"36px",
         borderWidth: "0 0 2px 0",
-        borderColor: "#5543ca",
+        borderColor: "#86b9bo",
         fontSize: "18px",
         fontWeight: "400",
         LineHeight: '26px',
@@ -115,7 +115,7 @@ export const action = async ({ request }) => {
 
     const buttonStyle = {
       display: "inline-block",
-      backgroundImage: "linear-gradient(125deg,#a72879,#064497)",
+      backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
       color:"#fff",
       textTransform:"uppercase",
       letterSpacing:"2px",
@@ -128,13 +128,14 @@ export const action = async ({ request }) => {
     };
 
     const lableStyle = { 
-      color:"#064497"         
+      color:"#04c7273",
+      fontSize: "16px"        
     };
     const lableStyle1 = { 
       marginTop: "-50px",
       marginBottom: "-30px",
       marginLeft: "350px",
-      color:"#064497" ,
+      color:"#042630" ,
       fontWeight: "500",  
       
     };

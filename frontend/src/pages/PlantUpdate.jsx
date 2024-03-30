@@ -2,10 +2,12 @@ import axios from "axios";
 import React,{useState,useEffect} from "react";
 //import { DatePickerDialogRjsf } from "../../utils/DatePicker";
 //import { useNavigate } from "react-router-dom";
-import {Link, Form, useNavigate, useActionData} from 'react-router-dom';
+import {Link, Form, useNavigate, useActionData, redirect} from 'react-router-dom';
 import {toast} from 'react-toastify'
 
 const PlantUpdate = () => {
+  const navigate = useNavigate();
+
    
 
     const[id,setid] = useState(" ");
@@ -25,7 +27,6 @@ const PlantUpdate = () => {
     const[driverLiceNo,setdriverLiceNo] = useState("");
     
 
-    const navigate = useNavigate();
 
 
      useEffect(() => {
@@ -56,9 +57,11 @@ const PlantUpdate = () => {
 
 
      const handleUpdate = (e)=>{
+
       e.preventDefault();
       console.log("Id...",id);
       axios.patch(`/api/v1/Planting/update/${id}`,
+      
       {
         
         
@@ -82,6 +85,8 @@ const PlantUpdate = () => {
 
       }
       )
+
+     navigate('/TaxiOwnerDashBoard/allPlanting')
   };
 
 
@@ -108,7 +113,7 @@ const PlantUpdate = () => {
 
   const buttonStyle = {
     display: "inline-block",
-    backgroundImage: "linear-gradient(125deg,#a72879,#064497)",
+    backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
     color:"#fff",
     textTransform:"uppercase",
     letterSpacing:"2px",
@@ -118,9 +123,21 @@ const PlantUpdate = () => {
       border:"none",
       cursor: "pointer",
       marginTop: "6px",
+      marginLeft: "650px",
   };
     
-
+  const cardstyle ={
+    overflow : "hidden",
+    boxShadow:"0 2px 20px ",
+    borderRadius: "$radius",
+    transition: "transform 200ms ease-in",
+    padding:"30px",
+    backdropFilter: "blur(5px)",
+    background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
+    width: "1100px",
+    marginLeft:"180px",
+   
+  };
 
     
 
@@ -144,7 +161,7 @@ const PlantUpdate = () => {
      <form onSubmit = {handleUpdate} >
   <div className="form-group">
   
-
+  <div style={cardstyle}>
 <h2>Company details</h2>
 <div className="form-group">
 <b><label htmlFor="companyName" style={lableStyle} >CompanyName</label>
@@ -323,6 +340,7 @@ const PlantUpdate = () => {
 
 
 
+  </div>
   </div>
   {/* <b><center><button className="btn btn-secondary" style={buttonStyle}onClick={handleUpdate}>Update</button></center></b> */}
   <button type="submit" className="btn btn-primary" style={buttonStyle}>Submit</button>
