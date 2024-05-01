@@ -41,7 +41,7 @@ const HotelOwnerDashBoardLayout = () => {
       }}>
         {/* Left-aligned item */}
         <li style={{ padding: '0 15px', color:'#414654', fontWeight: "800", fontSize:'20px'}}>
-          <a href="#home" style={{ textDecoration: 'none', color: 'black' }}>EXPLOREMATE</a>
+          <a href="#home" style={{ textDecoration: 'none', color: 'black',fontFamily:'Serif Fonts' }}>EXPLOREMATE</a>
         </li>
         
         {/* Center-aligned section */}
