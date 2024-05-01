@@ -4,6 +4,7 @@ import React,{useState,useEffect} from "react";
 //import { useNavigate } from "react-router-dom";
 import {Link, Form, useNavigate, useActionData, redirect} from 'react-router-dom';
 import {toast} from 'react-toastify'
+import taxii from '../assets/taxi5.jpg'
 
 const PlantUpdate = () => {
   const navigate = useNavigate();
@@ -89,26 +90,31 @@ const PlantUpdate = () => {
      navigate('/TaxiOwnerDashBoard/allPlanting')
   };
 
-
+ //--------------------------------------------------------------  
   const lableStyle1 = { 
-    
-    color:"#064497" ,
-    fontWeight: "500",  
+    color:"#fff" ,
+    //fontWeight: "300",  
+    fontSize: "30px", 
+   // marginBottom: "1000px"
     
   };
   const lableStyle = { 
-    color:"#064497"         
+    color:"#4c7273" ,  
+    fontWeight: "600",    
+    fontSize: "18px",   
+    fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",         
   };
 
   const inputStyle = {
     display: "block",
-      width:"100%",
-      height:"36px",
-      borderWidth: "0 0 2px 0",
-      borderColor: "#5543ca",
-      fontSize: "14px",
-      fontWeight: "400",
-      LineHeight: '26px',
+            width:"100%",
+            height:"36px",
+            borderWidth: "0 0 2px 0",
+            borderColor: "#86b9b0",
+            fontSize: "14px",
+            fontWeight: "300",
+            LineHeight: '26px',
+            fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
   };
 
   const buttonStyle = {
@@ -134,28 +140,28 @@ const PlantUpdate = () => {
     padding:"30px",
     backdropFilter: "blur(5px)",
     background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
-    width: "1100px",
-    marginLeft:"180px",
+    width: "800px",
+    marginLeft:"320px",
    
   };
 
     
 
-
+ //--------------------------------------------------------------  
    return(
 
 
     <>
-   <div style={{
-                backgroundImage: `url("./img/coffee-beans-2.jpg")`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                width: '100vw',
-                height: '110vh'
+  <div style={{
+  background: `url(${taxii})`,
+ //backgroundColor:"#FFFFF0",
+    backgroundRepeat:"no-repeat",
+    backgroundSize:"cover",
+    width: '100vw',
+    height: '170vh'
 
             }}>
-
-              
+              <br></br>
     <div className="container" >
     <b><center><h1 style={lableStyle1}>Update Taxies Records....</h1></center> </b>
      <form onSubmit = {handleUpdate} >

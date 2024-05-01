@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import { Table, Button, Modal } from 'react-bootstrap';
+import { Table, Button, Modal,Alert } from 'react-bootstrap';
+import taxii from '../assets/taxi5.jpg'
 
 export default function AllPlanting() {
     const [taxi, settaxi] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [showNotification, setShowNotification] = useState(false);
 
     // Move fetchHotelData outside of useEffect
     const fetchTaxiData = async () => {
@@ -23,20 +25,22 @@ export default function AllPlanting() {
 
     const handleDeleteClick = (_id) => {
         setSelectedId(_id);
-        setShowModal(true);
+        //setShowModal(true);
+        setShowNotification(true); 
     };
 
     const handleDelete = () => {
         axios.delete(`/api/v1/Planting/delete/${selectedId}`).then((res) => {
-          fetchTaxiData(); // Call fetchHotelData to update the state after deletion
-          settaxi(taxi.filter(item => item._id !== selectedId));
-            setShowModal(false);
+            fetchTaxiData(); // Call fetchTaxiData to update the state after deletion
+            settaxi(taxi.filter(item => item._id !== selectedId));
+            // Hide the notification after the item is deleted
+            setShowNotification(false);
         }).catch((err) => {
             alert(err.message);
-            setShowModal(false);
+            // Hide the notification if there was an error
+            setShowNotification(false);
         });
     };
-
     const SetToLocalStorage = (id, companyName, bussinessRegNo, companyEmail, comContactNo, vehicleType, vehicleModel,licenNo,inssuranceCompany,driverName,driverEmail,contactNumber,driverLiceNo) =>{
 
     
@@ -57,13 +61,29 @@ export default function AllPlanting() {
 
     };
 
+ //--------------------------------------------------------------  
 
+    // Styles for the notification
+    const alertStyle = {
+        marginBottom: '20px',
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        zIndex: 1000,
+        borderRadius: '5px',
+        padding: '10px',
+    };
+
+
+    const buttonStyle = {
+        marginLeft: '10px',
+    };
     
  //heading
 const lableStyle1 = { 
-    color:"#042630" ,
+    color:"#fff",
     //fontWeight: "300",  
-    fontSize: "20px", 
+    fontSize: "25px", 
    // marginBottom: "1000px"
   };
 
@@ -103,14 +123,14 @@ const lableStyle1 = {
 
   const cardstyle ={
     overflow : "hidden",
-    boxShadow:"0 2px 20px ",
+    boxShadow:"0 2px 10px ",
     borderRadius: "$radius",
     transition: "transform 200ms ease-in",
     padding:"30px",
-    backdropFilter: "blur(5px)",
+    backdropFilter: "blur(10px)",
     background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
-    width: "1300px",
-    marginLeft:"100px",
+    width: "1365px",
+    marginLeft:"55px",
    
   };
   
@@ -130,25 +150,83 @@ const lableStyle1 = {
 
   const tdStyle = {
     border: '1px solid #ddd',
-    padding: '8px',
-    textAlign: 'left'
+        padding: '8px',
+        textAlign: 'left',
+        color:"#fff",
   };
 
 
 
+  // Component for the notification message
+  const Notification = ({ buttonStyle, onClose, onDelete }) => {
+
+
+     // Define custom styles for the notification container and buttons
+     const notificationStyle = {
+        backgroundColor: '#f2f2f2', // White background for the notification
+        color: 'black', // Text color
+        padding: '10px',
+        borderRadius: '5px', // Rounded corners
+        marginBottom: '20px',
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        zIndex: 1000,
+        border: '1px solid lightgray', // Optional: border for better visibility
+    };
+
+    const headingStyle = {
+        color: 'red', // Red color for the heading text
+        textAlign: 'center', // Center-align the heading text
+        fontWeight: 'bold', // Bold the heading text
+    };
+
+    const deleteButtonStyle = {
+        backgroundColor: 'red', // Red color for "Delete" button
+        color: 'white', // White text color
+        marginLeft: '10px',
+        borderRadius: '5px', // Rounded corners
+    };
+
+    const cancelButtonStyle = {
+        backgroundColor: 'blue', // Blue color for "Cancel" button
+        color: 'white', // White text color
+        borderRadius: '5px', // Rounded corners
+    };
+
+ //--------------------------------------------------------------  
+
+    return (
+        <Alert  style={notificationStyle} onClose={onClose} dismissible>
+          <Alert.Heading style={headingStyle}>Delete Confirmation</Alert.Heading>
+            <p>Are you sure you want to delete this taxi?</p>
+            <div className="d-flex justify-content-end">
+                <Button variant="secondary"style={cancelButtonStyle} onClick={onClose}>
+                    Cancel
+                </Button>
+                <Button variant="danger"  style={deleteButtonStyle} onClick={onDelete}>
+                    Delete
+                </Button>
+            </div>
+        </Alert>
+    );
+};
+
+
     return (
         <>
-        <div style={{
-            //backgroundImage:url("../../../assets/images/beautiOfEarth.webp"),
-         backgroundColor:"#FFFFF0",
+         <div style={{
+  background: `url(${taxii})`,
+ //backgroundColor:"#FFFFF0",
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     width: '100vw',
-    height: '100vh'
-      
-}} >
-            <div style={{marginLeft:"700px" }}><br/><br/>
-                    <label  style={lableStyle1}><h3>TAXI DETAILS</h3></label>
+    height: '170vh'
+
+            }}>
+
+            <div style={{marginLeft:"650px" }}><br/><br/>
+                    <label  style={lableStyle1}><h3>TAXI  DETAILS</h3></label>
                     </div>
             <br />
             <div style={cardstyle}>
@@ -210,7 +288,7 @@ const lableStyle1 = {
                         ))}
                     </tbody>
                 </Table>
-
+{/* 
                 <Modal show={showModal} onHide={() => setShowModal(false)}>
                     <Modal.Header closeButton>
                         <Modal.Title>Delete Confirmation</Modal.Title>
@@ -220,7 +298,15 @@ const lableStyle1 = {
                         <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
                         <Button variant="danger" onClick={handleDelete}>Delete</Button>
                     </Modal.Footer>
-                </Modal>
+                </Modal> */}
+
+{showNotification && (
+    <Notification
+        buttonStyle={buttonStyle} // Pass buttonStyle as a prop
+        onClose={() => setShowNotification(false)}
+        onDelete={handleDelete}
+    />
+)}
             </div>
             </div>
             <br />

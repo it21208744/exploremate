@@ -6,6 +6,8 @@ import axios from "axios";
 import { useNavigate, Form, redirect } from "react-router-dom";
 import {toast} from 'react-toastify'
 
+import taxi from '../assets/taxi5.jpg'
+
 export const action = async ({ request }) => {
   const formData = await request.formData()
   const data = Object.fromEntries(formData)
@@ -101,16 +103,17 @@ export const action = async ({ request }) => {
 
         
     // }
-
+//-----------------------------------------------------------------------------
     const inputStyle = {
       display: "block",
-        width:"100%",
-        height:"36px",
-        borderWidth: "0 0 2px 0",
-        borderColor: "#86b9bo",
-        fontSize: "14px",
-        fontWeight: "400",
-        LineHeight: '26px',
+              width:"100%",
+              height:"36px",
+              borderWidth: "0 0 2px 0",
+              borderColor: "#86b9b0",
+              fontSize: "14px",
+              fontWeight: "300",
+              LineHeight: '26px',
+              fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
     };
 
     const buttonStyle = {
@@ -120,39 +123,41 @@ export const action = async ({ request }) => {
       textTransform:"uppercase",
       letterSpacing:"2px",
       fontSize: "16px",
-        width:"200px",
+        width:"130px",
         height:"36px",
         border:"none",
+        borderRadius: "5px",
         cursor: "pointer",
-        marginTop: "6px",
-    };
-
-    const lableStyle = { 
-      color:"#04c7273",
-      fontSize: "16px"        
-    };
-    const lableStyle1 = { 
-      marginTop: "-50px",
-      marginBottom: "-30px",
-      marginLeft: "350px",
-      color:"#042630" ,
-      fontWeight: "500",  
-      
-    };
-
-    const cardstyle ={
-      overflow : "hidden",
-      marginTop: "10px",
-      marginLeft: "285px",
-      width: "900px",
-      height: "1000px",
-      boxShadow:"0 2px 20px ",
-      borderRadius: "$radius",
-      transition: "transform 200ms ease-in",
-      padding:"20px",
-      backdropFilter: "blur(5px)",
-      background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
         
+    };
+    const lableStyle = { 
+      color:"#4c7273" ,  
+      fontWeight: "600",    
+      fontSize: "18px",   
+      fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
+    };
+    //heading
+const lableStyle1 = { 
+  color:"#fff",
+  //fontWeight: "300",  
+  fontSize: "20px", 
+ // marginBottom: "1000px"
+ //fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
+ 
+};
+const cardstyle ={
+  overflow : "hidden",
+  boxShadow:"0 2px 20px ",
+  borderRadius: "$radius",
+  transition: "transform 200ms ease-in",
+  padding:"30px",
+  backdropFilter: "blur(5px)",
+  background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
+  width: "800px",
+  marginLeft:"360px",
+  
+  //marginBottom: "100px"
+ //--------------------------------------------------------------       
     }
   
     return( 
@@ -160,13 +165,15 @@ export const action = async ({ request }) => {
 
 
 
-      
-        <div style={{
-                backgroundImage: `url("./img/coffee-beans-2.jpg")`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                width: '100vw',
-                height: '100vh'
+
+        
+    <div style={{
+  background: `url(${taxi})`,
+ //backgroundColor:"#FFFFF0",
+    backgroundRepeat:"no-repeat",
+    backgroundSize:"cover",
+    width: '100vw',
+    height: '170vh'
 
             }}>
         
@@ -406,7 +413,7 @@ export const action = async ({ request }) => {
  
 </div>
 
-
+   <br></br>
 
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
   <button type="submit" className="btn btn-primary" style={buttonStyle}>Add</button></div>
