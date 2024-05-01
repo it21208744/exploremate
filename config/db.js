@@ -1,14 +1,18 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
+import * as dotenv from 'dotenv'
+dotenv.config()
 
-const mongoURI = 'mongodb+srv://Chamodan:chamodan2001@cluster0.souvqop.mongodb.net/Exploremate2?retryWrites=true&w=majority&appName=Cluster0'
+
+const mongoURI = process.env.MONGODB_URL
+
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(mongoURI);
-    console.log('Connected to MongoDB');
+    await mongoose.connect(mongoURI)
+    console.log('Connected to MongoDB')
   } catch (error) {
-    console.error('Error connecting to MongoDB:', error);
+    console.error('Error connecting to MongoDB:', error)
   }
-};
+}
 
-export default connectDB;
+export default connectDB

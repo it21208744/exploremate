@@ -64,8 +64,12 @@ router.put('/feedback/:id', validateToken, expressAsyncHandler(async (req, res) 
 // Delete Feedback
 router.delete('/feedback/:id', validateToken, expressAsyncHandler(async (req, res) => {
     try {
-        const feedback = await Feedback.findById(req.params.id);
+        const feedbackId = req.params.id;
 
+       
+        const feedback = await Feedback.findById(feedbackId);
+
+        
         if (!feedback) {
             return res.status(404).json({ message: 'Feedback not found' });
         }
@@ -75,12 +79,20 @@ router.delete('/feedback/:id', validateToken, expressAsyncHandler(async (req, re
             return res.status(403).json({ message: 'You are not authorized to delete this feedback' });
         }
 
-        await feedback.remove();
+        
+        await Feedback.deleteOne({ _id: feedbackId });
+
+       
         res.json({ message: 'Feedback deleted successfully' });
     } catch (error) {
+        
+        console.error('Error deleting feedback:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
 }));
+
+
+
 
 export default router;
 

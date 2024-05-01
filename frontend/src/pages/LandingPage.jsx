@@ -1,6 +1,7 @@
 import Wrapper from '../assets/wrappers/travelersWrappers/LandingPage'
 import LandingPageCard from '../components/LandingPageCard'
 import artificial_intelligence from '../assets/images/LandingPage/artificial_intelligence.svg'
+import { NavLink } from 'react-router-dom'
 const LandingPage = () => {
   window.addEventListener('scroll', function () {
     var header = document.querySelector('h1')
@@ -18,8 +19,12 @@ const LandingPage = () => {
       <div className="landingPageContainer">
         <h1>ExploreMate</h1>
         <div className="btns">
-          <button className="btnLogin">Login</button>
-          <button className="btnRegister">Register</button>
+          <NavLink className="btnLogin" to="Login">
+            Login
+          </NavLink>
+          <NavLink className="btnRegister" to="register">
+            Register
+          </NavLink>
         </div>
 
         {/* need to make this a seperate function and customize this more with css and add other stuffs too, like scrolling animations */}

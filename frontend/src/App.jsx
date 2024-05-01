@@ -16,6 +16,17 @@ import Services from './pages/travelers/Services'
 import Profile from './pages/travelers/Profile'
 import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
+
+
+  import AddPlanting from './pages/AddPlanting'
+import AllPlanting from './pages/AllPlanting'
+import PlantUpdate from './pages/PlantUpdate'
+import HeaderTaxi from './pages/HeaderTaxi'
+import { action as addPlantingAction } from './pages/AddPlanting'
+  
+  
+  import Feedback from './components/FeedbackForm'
+import FeedbackTable from './components/FeedbackTable'
 import SalesHeader from './pages/Accomadation/SalesHeader'
 import AddHotel from './pages/Accomadation/AddHotel'
 import AllHotels from './pages/Accomadation/AllHotels'
@@ -24,7 +35,6 @@ import UpdateHotels from './pages/Accomadation/UpdateHotels'
 import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
 //import { action as AllHotelsAction } from './pages/Accomadation/AllHotels'
 //import { action as AllhotelAction } from './pages/Accomadation/AllHotels'
-
 
 
 import { action as RegisterAction } from './pages/Register'
@@ -39,8 +49,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <LandingPage /> },
       { path: 'landing', element: <LandingPage /> },
-      { path: 'login', element: <Login /> },
       { path: 'register', element: <Register />, action: RegisterAction },
+      { path: 'login', element: <Login /> },
       {
         path: 'travelerDashBoard',
         element: <TravelerDashBoardLayout />,
@@ -52,7 +62,7 @@ const router = createBrowserRouter([
           },
           { path: 'planOnYourBudget', element: <PlanOnYourBudget /> },
           { path: 'services', element: <Services /> },
-          { path: 'profile', element: <Profile />,  },
+          { path: 'profile', element: <Profile /> },
 
           //temporary
           { path: 'guide', element: <Guide /> },
@@ -64,31 +74,32 @@ const router = createBrowserRouter([
         path: 'HotelOwnerDashBoardLayout',
         element: <HotelOwnerDashBoardLayout />,
         children: [
-          { index: true, element: <SalesHeader/> },
-          { path: 'addhotel', element: <AddHotel/>, action: AddhotelAction },
-          { path: 'allhotels', element: <AllHotels/>  },
-          { path: 'uphotels', element: <UpdateHotels/>  },
-        
+          { index: true, element: <SalesHeader /> },
+          { path: 'addhotel', element: <AddHotel />, action: AddhotelAction },
+          { path: 'allhotels', element: <AllHotels /> },
+          { path: 'uphotels', element: <UpdateHotels /> },
         ],
       },
       {
         path: 'TaxiOwnerDashBoard',
         element: <TaxiOwnerDashBoard />,
         children: [
-          { index: true, element: <h1>TaxiOwnerOpt1</h1> },
-          { path: 'opt1', element: <h1>TaxiOwnerOpt1</h1> },
-          { path: 'opt2', element: <h1>TaxiOwnerOpt2</h1> },
-          { path: 'opt3', element: <h1>TaxiOwnerOpt3</h1> },
+          { index: true, element: <HeaderTaxi/>},
+          { path: 'addPlanting', element: <AddPlanting/>, action: addPlantingAction },
+          { path: 'allPlanting', element: <AllPlanting/> },
+          { path: 'plantUpdate', element: <PlantUpdate/> },
           { path: 'opt4', element: <h1>TaxiOwnerOpt4</h1> },
         ],
       },
+      { path: 'feedback', element: <Feedback /> },
+      { path: 'feedbackTabel', element: <FeedbackTable /> },
     ],
+    
   },
+
 ])
 
 const App = () => {
   return <RouterProvider router={router} />
 }
 export default App
-
-//hehee
