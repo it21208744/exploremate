@@ -140,7 +140,7 @@ export default function AllSales() {
                             <th style={thStyle}>Email</th>
                             <th style={thStyle}>Phone Number</th>
                             <th style={thStyle}>Location</th>
-                            <th style={thStyle}>Amenties</th>
+                            <th style={thStyle}>Cost</th>
                             <th style={thStyle}>Description</th>
                             <th style={thStyle}>Room Details</th>
                             <th style={thStyle}>Pack Details</th>

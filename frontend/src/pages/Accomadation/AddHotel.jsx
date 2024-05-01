@@ -57,7 +57,6 @@ const inputStyle = {
 const buttonStyle = {
   display: "inline-block",
   backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
-  //backgroundColor: "#c46804",
   color:"#fff",
   textTransform:"uppercase",
   letterSpacing:"2px",
@@ -69,12 +68,7 @@ const buttonStyle = {
     cursor: "pointer",
     
 };
-// const backgroundImage = {
-//   backgroundImage: url('path/to/your/image.jpg'),
-//   backgroundSize: "cover",
-//   backgroundPosition: "center",
-  
-// };
+
 const lableStyle = { 
   color:"#4c7273" ,  
   fontWeight: "600",    
@@ -87,7 +81,8 @@ const lableStyle1 = {
   //fontWeight: "300",  
   fontSize: "20px", 
  // marginBottom: "1000px"
- fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
+ //fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
+ 
 };
 
 const cardstyle ={
@@ -144,7 +139,7 @@ const cardstyle ={
     />
    </div>
    
-
+   <br></br>
    
    <div className="form-group" >
     <label htmlFor="Email" style={lableStyle} >Email</label>
@@ -155,7 +150,7 @@ const cardstyle ={
     />
    </div>
    
-   
+   <br></br>
    
    <div className="form-group">
     <label htmlFor="PhoneNum" style={lableStyle}  >Phone number</label>
@@ -168,7 +163,7 @@ const cardstyle ={
 
     />
    </div>
-   
+   <br></br>
    <div className="form-group">
     <label htmlFor="Location" style={lableStyle} >Location</label>
     <input type="text" className="form-control" id="Location" name="Location"  placeholder="Enter location" style={inputStyle} onChange={(e) => {
@@ -180,18 +175,19 @@ const cardstyle ={
     
     />
     </div>
-   
+    <br></br>
     <div className="form-group">
-    <label htmlFor="Amenties" style={lableStyle}  >Amenities</label>
-    <input type="text" className="form-control" id="Amenties" name="Amenties"  placeholder="Enter am" style={inputStyle} onChange={(e) => {
+    <label htmlFor="Amenties" style={lableStyle}  >Cost</label>
+    <input type="text" className="form-control" id="Amenties" name="Amenties"  placeholder="Enter cost" style={inputStyle} onChange={(e) => {
         setAmen(e.target.value);
     }}
     required
-
+    pattern="[0-9]+"
+    title="Only values can be entered"
     
     />
    </div>
-
+   <br></br>
    <div className="form-group">
     <label htmlFor="Description" style={lableStyle}  >Description</label>
     <input type="text" className="form-control" id="Description" name="Description"  placeholder="Enter dis" style={inputStyle} onChange={(e) => {
@@ -203,7 +199,7 @@ const cardstyle ={
     
     />
    </div>
-
+   <br></br>
    <div className="form-group">
     <label htmlFor="RoomDetail" style={lableStyle}  >Room details</label>
     <input type="text" className="form-control" id="RoomDetail" name="RoomDetail"  placeholder="Enter room" style={inputStyle} onChange={(e) => {
@@ -213,7 +209,7 @@ const cardstyle ={
 
     />
    </div>
-
+   <br></br>
    <div className="form-group">
     <label htmlFor="PackDetail" style={lableStyle}  >Package details</label>
     <input type="text" className="form-control" id="PackDetail" name="PackDetail"  placeholder="Enter pack" style={inputStyle} onChange={(e) => {

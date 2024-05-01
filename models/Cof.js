@@ -22,7 +22,7 @@ const salesSchema = new mongoose.Schema({
     required: true,
   },
   Amenties: {
-    type: String,
+    type: Number,
     required: true,
   },
 

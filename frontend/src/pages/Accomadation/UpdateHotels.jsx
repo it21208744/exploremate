@@ -73,6 +73,7 @@ const [PackDetail , setPack] = useState("");
             fontSize: "14px",
             fontWeight: "300",
             LineHeight: '26px',
+            fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
   };
   
   const buttonStyle = {
@@ -95,6 +96,7 @@ const [PackDetail , setPack] = useState("");
     color:"#4c7273" ,  
     fontWeight: "600",    
     fontSize: "18px",   
+    fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
   };
   //heading
 const lableStyle1 = { 
@@ -145,7 +147,7 @@ const lableStyle1 = {
    </div>
    
 
-   
+   <br></br>
    <div className="form-group" >
     <label htmlFor="Email" style={lableStyle} >Email</label>
     <input type="text" className="form-control" id="Email" name="Email" placeholder="Enter email" style={inputStyle} value = {Email} onChange={(e) => {
@@ -156,7 +158,7 @@ const lableStyle1 = {
    </div>
    
    
-   
+   <br></br>
    <div className="form-group">
     <label htmlFor="PhoneNum" style={lableStyle}  >Phone number</label>
     <input type="text" className="form-control" id="PhoneNum" name="PhoneNum"  placeholder="Enter phone number" style={inputStyle} value = {PhoneNum} onChange={(e) => {
@@ -171,7 +173,7 @@ const lableStyle1 = {
     
     />
    </div>
-   
+   <br></br>
    <div className="form-group">
     <label htmlFor="Location" style={lableStyle} >Location</label>
     <input type="text" className="form-control" id="Location" name="Location"  placeholder="Enter location" style={inputStyle} value = {Location} onChange={(e) => {
@@ -181,16 +183,18 @@ const lableStyle1 = {
     
     />
     </div>
-   
+    <br></br>
     <div className="form-group">
-    <label htmlFor="Amenties" style={lableStyle}  >Amenities</label>
-    <input type="text" className="form-control" id="Amenties" name="Amenties"  placeholder="Enter am" style={inputStyle} value = {Amenties} onChange={(e) => {
+    <label htmlFor="Amenties" style={lableStyle}  >Cost</label>
+    <input type="text" className="form-control" id="Amenties" name="Amenties"  placeholder="Enter cost" style={inputStyle} value = {Amenties} onChange={(e) => {
         setAmen(e.target.value);
     }}
     required
+    pattern="[0-9]+"
+    title="Only values can be entered"
     />
    </div>
-
+   <br></br>
    <div className="form-group">
     <label htmlFor="Description" style={lableStyle}  >Description</label>
     <input type="text" className="form-control" id="Description" name="Description"  placeholder="Enter dis" style={inputStyle} value = {Description} onChange={(e) => {
@@ -200,7 +204,7 @@ const lableStyle1 = {
     
     />
    </div>
-
+   <br></br>
    <div className="form-group">
     <label htmlFor="RoomDetail" style={lableStyle}  >Room details</label>
     <input type="text" className="form-control" id="RoomDetail" name="RoomDetail"  placeholder="Enter room" style={inputStyle} value = {RoomDetail} onChange={(e) => {
@@ -209,7 +213,7 @@ const lableStyle1 = {
     required
     />
    </div>
-
+   <br></br>
    <div className="form-group">
     <label htmlFor="PackDetail" style={lableStyle}  >Package details</label>
     <input type="text" className="form-control" id="PackDetail" name="PackDetail"  placeholder="Enter pack" style={inputStyle} value = {PackDetail} onChange={(e) => {
