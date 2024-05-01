@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Table, Button, Modal } from 'react-bootstrap';
-
+import hotell from '../../assets/images/as.webp'
 export default function AllSales() {
     const [hotel, setHotel] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
@@ -49,42 +49,117 @@ export default function AllSales() {
         localStorage.setItem("PackDetail", PackDetail);
     };
 
+    // Styles
+    const lableStyle1 = { 
+        color:"#042630" ,
+        fontSize: "20px", 
+    };
+
+    const buttonDelete = {
+        display: "inline-block",
+        backgroundColor: "#D71515",
+        color:"#fff",
+        textTransform:"uppercase",
+        letterSpacing:"1px",
+        fontSize: "14px",
+        width:"90px",
+        height:"36px",
+        border:"none",
+        borderRadius: "20px",
+        cursor: "pointer",
+    };
+
+    const buttonEdit = {
+        display: "inline-block",
+        backgroundColor: "green",
+        color:"#fff",
+        textTransform:"uppercase",
+        letterSpacing:"1px",
+        fontSize: "14px",
+        width:"90px",
+        height:"36px",
+        border:"none",
+        borderRadius: "20px",
+        cursor: "pointer",
+    };
+
+    const cardstyle ={
+        overflow : "hidden",
+        boxShadow:"0 2px 20px ",
+        borderRadius: "$radius",
+        transition: "transform 200ms ease-in",
+        padding:"30px",
+        backdropFilter: "blur(5px)",
+        background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
+        width: "1200px",
+        marginLeft:"180px",
+    };
+    
+    const tableStyle = {
+        borderCollapse: 'collapse',
+        width: '100%',
+        color: '#4c7273'
+    };
+
+    const thStyle = {
+        border: '1px solid #ddd',
+        padding: '8px',
+        textAlign: 'left',
+        backgroundColor: '#f2f2f2'
+    };
+
+    const tdStyle = {
+        border: '1px solid #ddd',
+        padding: '8px',
+        textAlign: 'left',
+        color: '#4c7273',
+        
+    };
+
     return (
         <>
-            <div className="d-flex flex-direction-column justify-content-between m-2">
-                <h3>Sales Details</h3>
+        
+    <div style={{
+  background: `url(${hotell})`,
+ //backgroundColor:"#FFFFF0",
+    backgroundRepeat:"no-repeat",
+    backgroundSize:"cover",
+    width: '100vw',
+    height: '150vh'
+      
+}} >
+            <div style={{marginLeft:"700px"}}><br/><br/>
+                <label  style={lableStyle1}><h3>HOTEL DETAILS</h3></label>
             </div>
-            <br />
-            <div>
-                <table className="table table-striped" id="my-table" style={{ color: "#000" }}>
+            <br></br>
+            <div style={cardstyle}>
+                <Table style={tableStyle} className="table table-striped" id="my-table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>HotelName</th>
-                            <th>Email</th>
-                            <th>PhoneNum</th>
-                            <th>Location</th>
-                            <th>Amenties</th>
-                            <th>Description</th>
-                            <th>RoomDetail</th>
-                            <th>PackDetail</th>
+                            <th style={thStyle}>Hotel Name</th>
+                            <th style={thStyle}>Email</th>
+                            <th style={thStyle}>Phone Number</th>
+                            <th style={thStyle}>Location</th>
+                            <th style={thStyle}>Amenties</th>
+                            <th style={thStyle}>Description</th>
+                            <th style={thStyle}>Room Details</th>
+                            <th style={thStyle}>Pack Details</th>
                         </tr>
                     </thead>
                     <tbody>
                         {hotel.map((item) => (
                             <tr key={item._id}>
-                                <td>{item._id}</td>
-                                <td>{item.HotelName}</td>
-                                <td>{item.Email}</td>
-                                <td>{item.PhoneNum}</td>
-                                <td>{item.Location}</td>
-                                <td>{item.Amenties}</td>
-                                <td>{item.Description}</td>
-                                <td>{item.RoomDetail}</td>
-                                <td>{item.PackDetail}</td>
+                                <td style={tdStyle}>{item.HotelName}</td>
+                                <td style={tdStyle}>{item.Email}</td>
+                                <td style={tdStyle}>{item.PhoneNum}</td>
+                                <td  style={tdStyle}>{item.Location}</td>
+                                <td style={tdStyle}>{item.Amenties}</td>
+                                <td style={tdStyle}>{item.Description}</td>
+                                <td style={tdStyle}>{item.RoomDetail}</td>
+                                <td style={tdStyle}>{item.PackDetail}</td>
                                 <td>
                                     <a href="uphotels">
-                                        <button className="btn-success" onClick={() => SetToLocalStorage(
+                                        <button style={buttonEdit} className="btn-success" onClick={() => SetToLocalStorage(
                                             item._id,
                                             item.HotelName,
                                             item.Email,
@@ -97,13 +172,17 @@ export default function AllSales() {
                                         )}>Edit</button>
                                     </a>
                                 </td>
-                                <td><button className="btn-danger" onClick={() => handleDeleteClick(item._id)}>Delete</button></td>
+                                <td><button style={buttonDelete} className="btn-danger" onClick={() => handleDeleteClick(item._id)}>Delete</button></td>
                             </tr>
                         ))}
                     </tbody>
-                </table>
-
-                <Modal show={showModal} onHide={() => setShowModal(false)}>
+                </Table>
+                
+                <Modal
+                    show={showModal}
+                    onHide={() => setShowModal(false)}
+                    centered // This centers the modal vertically
+                >
                     <Modal.Header closeButton>
                         <Modal.Title>Delete Confirmation</Modal.Title>
                     </Modal.Header>
@@ -113,8 +192,9 @@ export default function AllSales() {
                         <Button variant="danger" onClick={handleDelete}>Delete</Button>
                     </Modal.Footer>
                 </Modal>
-            </div>
-            <br />
+            </div> 
+        </div>
+        <br />
         </>
     );
 }

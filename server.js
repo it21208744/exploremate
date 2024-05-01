@@ -5,8 +5,14 @@ import userRoutes from './routes/users.js'
 import authRoutes from './routes/auth.js'
 
 const app = express()
+
 import mongoose from 'mongoose';
 
+
+
+import * as dotenv from 'dotenv'
+dotenv.config()
+const PORT = process.env.PORT || 5000
 
 
 
@@ -23,9 +29,11 @@ import userProfileRoutes from './routes/userProfileRoute.js'
 import feedbackRoutes from './routes/feedbackRoute.js'
 
 
+
 dotenv.config()
 
 // const app = express()
+
 
 app.use(express.json())
 app.use('/api/v1/Coffee', CoffeeRouter)
