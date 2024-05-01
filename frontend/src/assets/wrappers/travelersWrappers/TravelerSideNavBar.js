@@ -8,44 +8,30 @@ const Wrapper = styled.div`
     height: 100%;
     width: 300px;
     transition: left 0.3s ease, background 0.3s ease;
+    background: black;
   }
 
-  .ShowSidebarContainer {
-    left: 0;
-    background: #0b0c10;
-  }
-
-  .HideSidebarContainer {
-    left: -225px;
-    background: transparent;
+  .sidebar {
+    list-style-type: none;
+    padding: 2vw;
+    text-align: left; /* Aligns the items inside the ul to the right */
   }
 
   .navLink {
-    position: relative;
-    right: 35px;
-    margin: 10px;
-    padding: 10px;
-    width: 250px;
-    border-radius: 10px;
-    text-align: center;
-
-    color: #0b0c10;
-    transition: color 0.3s;
+    margin-bottom: 10px; /* Adjust as needed */
   }
 
-  /* hover effect doesnt work */
-  .navLink:hover {
-    color: #1f2833;
+  .navLink .text {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    font-size: 1em;
+    color: grey;
+    transition: font-size 0.3s ease;
   }
 
-  .menuBtn {
-    position: relative;
-    margin-bottom: 40px;
-    left: 190px;
-  }
-
-  ul {
-    list-style: none;
+  .navLink .text:hover {
+    font-size: 20px;
   }
 `
 

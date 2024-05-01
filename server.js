@@ -1,35 +1,49 @@
 import express from 'express'
+
+import connectDB from './config/db.js'
+import userRoutes from './routes/users.js'
+import authRoutes from './routes/auth.js'
+
 const app = express()
 import mongoose from 'mongoose';
 
-import * as dotenv from 'dotenv';
-dotenv.config();
-const PORT = process.env.PORT || 5173;
-const URL = process.env.MONGODB_URL;
 
 
 
-
-
+import * as dotenv from 'dotenv'
+dotenv.config()
+const PORT = process.env.PORT || 5000
 import plantingRouter from './routes/plantings.js'
+import CoffeeRouter from './routes/Coffee.js'
+
 import taxiRouter from './routes/taxiRouter.js'
 import travelersRouter from './routes/travelersRouter.js'
-// app.use('api/v1/auth')
 
-// app.use('api/v1/hotelowner')
+import userProfileRoutes from './routes/userProfileRoute.js'
+import feedbackRoutes from './routes/feedbackRoute.js'
+
+
+dotenv.config()
+
+// const app = express()
+
 app.use(express.json())
-
+app.use('/api/v1/Coffee', CoffeeRouter)
 app.use('/api/v1/travelers', travelersRouter)
 app.use('/api/v1/taxi', taxiRouter)
+app.use('/api/v1/users', userRoutes)
+app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/userss', userProfileRoutes)
+app.use('/api/v1/feedback', feedbackRoutes)
 app.use("/api/v1/planting", plantingRouter);
 
-try {
-  //implement the connection to the database here
-await mongoose.connect('mongodb+srv://Coffee:T39@coffeestatemanagement.vvppjvj.mongodb.net/exploremate?retryWrites=true&w=majority&appName=CoffeEstateManagement')
-app.listen(5000, () => {
-  console.log(`server is running on port 5000`)
-})
-  
-} catch (error) {
-  console.log(`error is - ${error}`)
-}
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`)
+    })
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error)
+  })
+
