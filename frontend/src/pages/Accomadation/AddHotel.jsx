@@ -2,7 +2,7 @@ import React,{useState} from "react"
 import axios from "axios";
 import {Link, Form, redirect, useActionData, } from 'react-router-dom';
 import {toast} from 'react-toastify'
-import hotell from '../../assets/images/as.webp'
+import hotell from '../../assets/images/10.jpg'
 
 
 export const action = async ({ request }) => {
@@ -95,6 +95,7 @@ const cardstyle ={
   background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
   width: "800px",
   marginLeft:"360px",
+  
   //marginBottom: "100px"
 }
 
@@ -114,7 +115,7 @@ const cardstyle ={
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     width: '100vw',
-    height: '120vh'
+    height: '125vh'
       
 }} >
       

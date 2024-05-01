@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Table, Button, Modal } from 'react-bootstrap';
-import hotell from '../../assets/images/as.webp'
+import hotell from '../../assets/images/90.webp'
 export default function AllSales() {
     const [hotel, setHotel] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
@@ -125,7 +125,7 @@ export default function AllSales() {
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     width: '100vw',
-    height: '150vh'
+    height: '40vh'
       
 }} >
             <div style={{marginLeft:"700px"}}><br/><br/>

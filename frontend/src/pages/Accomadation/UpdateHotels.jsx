@@ -3,6 +3,7 @@ import React,{useState,useEffect} from "react";
 //import SalesHeader from './SalesHeader';
 import {Link, Form, useNavigate, useActionData, redirect} from 'react-router-dom';
 import {toast} from 'react-toastify'
+import hotell from '../../assets/images/10.jpg'
 
 const UpdateHotels = () => {
     const[id,setid] = useState(" ");
@@ -114,20 +115,22 @@ const lableStyle1 = {
     padding:"20px",
     backdropFilter: "blur(5px)",
     background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
-    width: "610px",
-    marginLeft:"450px"
+    width: "730px",
+    marginLeft:"420px",
+
   }
   
    return(
   <>
-    <div style={{backgroundImage:`url("../../../assets/images/beautiOfEarth.webp")`,
-    backgroundColor:"#FFFFF0",
+    <div style={{
+  background: `url(${hotell})`,
+ //backgroundColor:"#FFFFF0",
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     width: '100vw',
-    height: '100vh'
+    height: '125vh'
       
-}}>
+}} >
  
  <div style={{marginLeft:"700px"}}><br/><br/>
                     <label  style={lableStyle1}><h3>UPDATE HOTELS</h3></label>
