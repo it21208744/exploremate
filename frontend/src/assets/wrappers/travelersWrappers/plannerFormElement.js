@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
   .form {
     position: absolute;
-    top: -30vh;
+    top: 1vh;
     left: 25vw;
   }
 
@@ -58,7 +58,7 @@ const Wrapper = styled.div`
   .output {
     position: absolute;
     color: ${colors.texts};
-    top: 12vw;
+    top: 25vw;
     width: 83vw;
     border-top: 20px solid black;
     background: transparent;
