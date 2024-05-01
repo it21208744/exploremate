@@ -32,8 +32,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <LandingPage /> },
       { path: 'landing', element: <LandingPage /> },
-      { path: 'login', element: <Login /> },
       { path: 'register', element: <Register />, action: RegisterAction },
+      { path: 'login', element: <Login /> },
       {
         path: 'travelerDashBoard',
         element: <TravelerDashBoardLayout />,

@@ -90,7 +90,8 @@ const FeedbackTable = () => {
                   <button style={{ marginRight: '10px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px', padding: '8px 12px', cursor: 'pointer' }} onClick={() => handleUpdateFeedback(entry._id)}>Save</button>
                 ) : (
                   <>
-                    <button style={{ marginRight: '10px', backgroundColor: '#28a745', color: '#fff', border: 'none', borderRadius: '5px', padding: '8px 12px', cursor: 'pointer' }} onClick={() => setEditingId(entry._id)}>Edit</button>
+                    {/* <button style={{ marginRight: '10px', backgroundColor: '#28a745', color: '#fff', border: 'none', borderRadius: '5px', padding: '8px 12px', cursor: 'pointer' }} onClick={() => setEditingId(entry._id)}>Edit</button> */}
+                    <button style={{ marginRight: '10px', backgroundColor: '#28a745', color: '#fff', border: 'none', borderRadius: '5px', padding: '8px 12px', cursor: 'pointer' }} onClick={() => {setEditingId(entry._id); setEditMessage(entry.message);}}>Edit</button>
                     <button style={{ backgroundColor: '#dc3545', color: '#fff', border: 'none', borderRadius: '5px', padding: '8px 12px', cursor: 'pointer' }} onClick={() => handleDeleteFeedback(entry._id)}>Delete</button>
                   </>
                 )}
