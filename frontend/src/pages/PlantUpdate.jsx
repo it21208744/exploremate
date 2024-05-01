@@ -285,7 +285,7 @@ const PlantUpdate = () => {
 <b><label htmlFor="driverName" style={lableStyle} >DriverName</label>
 
     <input type="text" className="form-control" id="driverName"  placeholder="Driver Name" style={inputStyle}
-    value={'hehe'}
+    value={driverName}
     onChange={(e)=>{
 
         setdriverName(e.target.value);
