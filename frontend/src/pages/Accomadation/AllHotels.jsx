@@ -111,7 +111,9 @@ export default function AllSales() {
     const tdStyle = {
         border: '1px solid #ddd',
         padding: '8px',
-        textAlign: 'left'
+        textAlign: 'left',
+        color: '#4c7273',
+        
     };
 
     return (
@@ -123,7 +125,7 @@ export default function AllSales() {
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     width: '100vw',
-    height: '185vh'
+    height: '150vh'
       
 }} >
             <div style={{marginLeft:"700px"}}><br/><br/>

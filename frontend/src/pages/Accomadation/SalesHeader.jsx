@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import hotell from '../../assets/images/as.webp'
+import hotell from '../../assets/images/hotel2.jpg'
 //import hotells from '../../assets/images/hotel3.jpeg'
 const SalesHeader =()=>{
   const lableStyle = { 
