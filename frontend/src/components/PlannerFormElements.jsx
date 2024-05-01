@@ -6,16 +6,20 @@ import Travelpedia from '../pages/travelers/Travelpedia'
 import { toast } from 'react-toastify'
 import Wrapper from '../assets/wrappers/travelersWrappers/plannerFormElement'
 import NiceBtn from './NiceBtn'
+import getTokenFromHeader from './getTokenFromHeader'
 
 export const action = async ({ request }) => {
   const formData = await request.formData()
   const data = Object.fromEntries(formData)
+
   try {
-    const planAndWeather = await (
-      await axios.post('/api/v1/travelers/', data)
-    ).data
-    return planAndWeather
+    const config = getTokenFromHeader()
+
+    const planAndWeather = await axios.post('/api/v1/travelers/', data, config)
+    // console.log(planAndWeather.data.date)
+    return planAndWeather.data
   } catch (error) {
+    console.log(error)
     toast.error('Wrong city name')
     return error
   }
@@ -31,7 +35,10 @@ const PlannerFormElements = () => {
 
   const location = planAndWeather?.weather?.coord
   const weather = planAndWeather?.weather
-  const packingList = planAndWeather?.packingList
+  const date = planAndWeather?.date
+  // const packingList = planAndWeather?.packingList
+  // console.log(planAndWeather)
+  const futureWeather = planAndWeather?.futureWeather
 
   useEffect(() => {
     if (weather) setSituation('outPutPresents')
@@ -62,7 +69,13 @@ const PlannerFormElements = () => {
                 When?
               </label>
             </div>
-            <input type="date" name="date" className="formInput" id="date" />
+            <input
+              type="date"
+              name="date"
+              className="formInput"
+              id="date"
+              required
+            />
           </div>
           <div>
             <div>
@@ -98,7 +111,7 @@ const PlannerFormElements = () => {
               <option value="Food hunting">Food hunting</option>
             </select>
           </div>
-          <div className="button">
+          <div className="Nicebutton">
             <NiceBtn isSubmitting={isSubmitting} />
           </div>
         </Form>
@@ -109,7 +122,6 @@ const PlannerFormElements = () => {
                 <button
                   type="button"
                   onClick={() => changeGuide(true)}
-                  // className="test"
                   className={isGuide ? 'activeBtn' : null}
                 >
                   GUIDE
@@ -134,7 +146,12 @@ const PlannerFormElements = () => {
               </div>
             ) : (
               <div className="travelpedia">
-                <Travelpedia location={location} weather={weather} />
+                <Travelpedia
+                  location={location}
+                  weather={weather}
+                  futureWeather={futureWeather}
+                  date={date}
+                />
               </div>
             )
           ) : (

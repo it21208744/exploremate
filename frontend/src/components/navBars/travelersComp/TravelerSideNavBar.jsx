@@ -1,6 +1,11 @@
 import Wrapper from '../../../assets/wrappers/travelersWrappers/TravelerSideNavBar'
 import { NavLink } from 'react-router-dom'
-import { CiMenuBurger } from 'react-icons/ci'
+
+import { RiMoneyDollarCircleFill } from 'react-icons/ri'
+import { AiTwotoneSchedule } from 'react-icons/ai'
+import { FaUserAlt } from 'react-icons/fa'
+import { MdLocalHotel } from 'react-icons/md'
+import { FcPlanner } from 'react-icons/fc'
 import { useState } from 'react'
 
 const TravelerSideNavBar = () => {
@@ -18,7 +23,7 @@ const TravelerSideNavBar = () => {
         }
       >
         <ul className="sidebar">
-          <li className="menuBtn">
+          {/* <li className="menuBtn">
             <button
               type="button"
               className="closeMenuBtn"
@@ -26,29 +31,48 @@ const TravelerSideNavBar = () => {
             >
               <CiMenuBurger />
             </button>
+          </li> */}
+          <li className="navLink">
+            <NavLink to="." className="navLink">
+              <span className="text">
+                <FcPlanner />
+                Planner
+              </span>
+            </NavLink>
           </li>
           <li className="navLink">
-            <NavLink to=".">Planner</NavLink>
+            <NavLink to="planOnYourBudget">
+              <span className="text">
+                <RiMoneyDollarCircleFill />
+                Plan on your budget
+              </span>
+            </NavLink>
           </li>
           <li className="navLink">
-            <NavLink to="planOnYourBudget">Plan on your budget</NavLink>
+            <NavLink to="services">
+              <span className="text">
+                <MdLocalHotel />
+                Services
+              </span>
+            </NavLink>
           </li>
           <li className="navLink">
-            <NavLink to="services">Services</NavLink>
-          </li>
-          <li className="navLink">
-            <NavLink to="profile">Profile</NavLink>
+            <NavLink to="profile">
+              <span className="text">
+                <FaUserAlt />
+                Profile
+              </span>
+            </NavLink>
           </li>
 
-          {/* temporary */}
           <li className="navLink">
-            <NavLink to="guide">guide</NavLink>
+            <NavLink to="guide">
+              <span className="text">
+                <AiTwotoneSchedule />
+                Plans
+              </span>
+            </NavLink>
           </li>
-          <li className="navLink">
-            <NavLink to="travelpedia">travelpedia</NavLink>
-          </li>
-
-          {/* temporary */}
         </ul>
       </div>
     </Wrapper>

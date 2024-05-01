@@ -25,11 +25,8 @@ import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
 //import { action as AllHotelsAction } from './pages/Accomadation/AllHotels'
 //import { action as AllhotelAction } from './pages/Accomadation/AllHotels'
 
-
-
 import { action as RegisterAction } from './pages/Register'
 import { action as addPlan } from './components/PlannerFormElements'
-
 
 const router = createBrowserRouter([
   {
@@ -52,7 +49,7 @@ const router = createBrowserRouter([
           },
           { path: 'planOnYourBudget', element: <PlanOnYourBudget /> },
           { path: 'services', element: <Services /> },
-          { path: 'profile', element: <Profile />,  },
+          { path: 'profile', element: <Profile /> },
 
           //temporary
           { path: 'guide', element: <Guide /> },
@@ -64,11 +61,10 @@ const router = createBrowserRouter([
         path: 'HotelOwnerDashBoardLayout',
         element: <HotelOwnerDashBoardLayout />,
         children: [
-          { index: true, element: <SalesHeader/> },
-          { path: 'addhotel', element: <AddHotel/>, action: AddhotelAction },
-          { path: 'allhotels', element: <AllHotels/>  },
-          { path: 'uphotels', element: <UpdateHotels/>  },
-        
+          { index: true, element: <SalesHeader /> },
+          { path: 'addhotel', element: <AddHotel />, action: AddhotelAction },
+          { path: 'allhotels', element: <AllHotels /> },
+          { path: 'uphotels', element: <UpdateHotels /> },
         ],
       },
       {
@@ -90,5 +86,3 @@ const App = () => {
   return <RouterProvider router={router} />
 }
 export default App
-
-//hehee
