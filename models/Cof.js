@@ -43,7 +43,6 @@ const salesSchema = new mongoose.Schema({
 
   userEmail: {
     type: String,
-    required: true,
   },
 })
 

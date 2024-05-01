@@ -17,15 +17,13 @@ import Profile from './pages/travelers/Profile'
 import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
 
-
-  import AddPlanting from './pages/AddPlanting'
+import AddPlanting from './pages/AddPlanting'
 import AllPlanting from './pages/AllPlanting'
 import PlantUpdate from './pages/PlantUpdate'
 import HeaderTaxi from './pages/HeaderTaxi'
 import { action as addPlantingAction } from './pages/AddPlanting'
-  
-  
-  import Feedback from './components/FeedbackForm'
+
+import Feedback from './components/FeedbackForm'
 import FeedbackTable from './components/FeedbackTable'
 import SalesHeader from './pages/Accomadation/SalesHeader'
 import AddHotel from './pages/Accomadation/AddHotel'
@@ -36,10 +34,8 @@ import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
 //import { action as AllHotelsAction } from './pages/Accomadation/AllHotels'
 //import { action as AllhotelAction } from './pages/Accomadation/AllHotels'
 
-
 import { action as RegisterAction } from './pages/Register'
 import { action as addPlan } from './components/PlannerFormElements'
-
 
 const router = createBrowserRouter([
   {
@@ -84,19 +80,21 @@ const router = createBrowserRouter([
         path: 'TaxiOwnerDashBoard',
         element: <TaxiOwnerDashBoard />,
         children: [
-          { index: true, element: <HeaderTaxi/>},
-          { path: 'addPlanting', element: <AddPlanting/>, action: addPlantingAction },
-          { path: 'allPlanting', element: <AllPlanting/> },
-          { path: 'plantUpdate', element: <PlantUpdate/> },
+          { index: true, element: <HeaderTaxi /> },
+          {
+            path: 'addPlanting',
+            element: <AddPlanting />,
+            action: addPlantingAction,
+          },
+          { path: 'allPlanting', element: <AllPlanting /> },
+          { path: 'plantUpdate', element: <PlantUpdate /> },
           { path: 'opt4', element: <h1>TaxiOwnerOpt4</h1> },
         ],
       },
       { path: 'feedback', element: <Feedback /> },
       { path: 'feedbackTabel', element: <FeedbackTable /> },
     ],
-    
   },
-
 ])
 
 const App = () => {
