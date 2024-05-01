@@ -40,6 +40,11 @@ const salesSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  userEmail: {
+    type: String,
+    required: true,
+  },
 })
 
 export default mongoose.model('hotel', salesSchema)
