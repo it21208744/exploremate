@@ -68,13 +68,13 @@ const Register = () => {
             </select>
           </div>
 
-          <div>
-            <label>Role:</label>
+          {/* <div>
+            <label>Role1:</label>
             <select name="role" value={role} onChange={handleRoleChange}>
               <option value="user">User</option>
               <option value="admin">Admin</option>
             </select>
-          </div>
+          </div> */}
         </Form>
       </div>
     </Wrapper>
