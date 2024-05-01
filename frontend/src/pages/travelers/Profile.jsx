@@ -14,7 +14,10 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const token = localStorage.getItem('token')
+
+        const token = localStorage.getItem('token');
+        
+          
 
         if (!token) {
           throw new Error('Token not found')
@@ -22,13 +25,21 @@ const UserProfile = () => {
 
         const response = await axios.get('/api/v1/userss/profile', {
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
 
-        setProfile(response.data.data)
-        setFormData(response.data.data)
-        setError(null)
+            Authorization: `Bearer ${token}`
+            
+          }
+          
+          
+        });
+       
+        
+
+        setProfile(response.data.data);
+        
+        setFormData(response.data.data); 
+        setError(null);
+
       } catch (error) {
         console.error('Error fetching profile:', error)
         setError(error.response?.data?.message || 'Failed to fetch profile')
@@ -65,11 +76,22 @@ const UserProfile = () => {
     }
   }
 
-  const handleLogout = () => {
-    localStorage.removeItem('token')
 
-    window.location.href = '/login'
-  }
+  // const handleLogout = () => {
+  //   localStorage.removeItem('token'); 
+    
+  //   window.location.href = '/login';
+  // };
+  const handleLogout = () => {
+    const confirmed = window.confirm('Are you sure you want to logout?');
+  
+    if (confirmed) {
+      localStorage.removeItem('token');
+      window.location.href = '/login';
+    }
+  };
+  
+
 
   return (
     <Wrapper>

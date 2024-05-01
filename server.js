@@ -17,6 +17,12 @@ import travelersRouter from './routes/travelersRouter.js'
 import userProfileRoutes from './routes/userProfileRoute.js'
 import feedbackRoutes from './routes/feedbackRoute.js'
 
+dotenv.config()
+
+// const app = express()
+const PORT = 5000
+
+
 app.use(express.json())
 app.use('/api/v1/Coffee', CoffeeRouter)
 app.use('/api/v1/travelers', travelersRouter)
@@ -25,6 +31,7 @@ app.use('/api/v1/users', userRoutes)
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/userss', userProfileRoutes)
 app.use('/api/v1/feedback', feedbackRoutes)
+
 
 connectDB()
   .then(() => {
