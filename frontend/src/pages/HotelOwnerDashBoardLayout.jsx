@@ -43,8 +43,8 @@ const HotelOwnerDashBoardLayout = () => {
         justifyContent: 'space-between', // Spreads content to utilize full width
       }}>
         {/* Left-aligned item */}
-        <li style={{ padding: '0 15px', color:'#414654', fontWeight: "800", fontSize:'20px',  fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",}}>
-          <a href="#home" style={{ textDecoration: 'none', color: '#041421',  fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif", }}>EXPLOREMATE</a>
+        <li style={{ padding: '0 15px', color:'#414654', fontWeight: "800",marginTop:'10px' }}>
+          <a href="#home" style={{ textDecoration: 'none', color: '#041421',  fontFamily: "Cursive,Brush Script MT", marginTop:'10px' }}>EXPLOREMATE</a>
         </li>
         
         {/* Center-aligned section */}
