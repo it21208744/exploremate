@@ -42,46 +42,6 @@ const [PackDetail , setPack] = useState("");
 
 
 
-// function sendData(e){
-//   e.preventDefault();
-
-//   const newSales = {
-        // HotelName,
-        // Email,
-        // PhoneNum,
-        // Location,
-        // Amenties,
-        // Description,
-        // RoomDetail,
-        // PackDetail
-       
-//   }
-//   //hehehe
-
-
-//   //hehe
-//    axios.post("http://localhost:5000/Coffee/add", newSales ).then(() =>{
-    
-//    setHname("");
-//    setEma("");
-//    setPnum("");
-//    setLoc("");
-//    setAmen("");
-//    setDesc("");
-//    setRoom("");
-//    setPack("");
- 
-//       //navigate("/allsale1");
-
-//    }).catch((err)=>{
-//     alert(err)
-//    })
- 
-
-// }
-
-
-
 const inputStyle = {
   display: "block",
           width:"100%",
@@ -91,6 +51,7 @@ const inputStyle = {
           fontSize: "14px",
           fontWeight: "300",
           LineHeight: '26px',
+          fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
 };
 
 const buttonStyle = {
@@ -118,6 +79,7 @@ const lableStyle = {
   color:"#4c7273" ,  
   fontWeight: "600",    
   fontSize: "18px",   
+  fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
 };
 //heading
 const lableStyle1 = { 
@@ -125,6 +87,7 @@ const lableStyle1 = {
   //fontWeight: "300",  
   fontSize: "20px", 
  // marginBottom: "1000px"
+ fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
 };
 
 const cardstyle ={
