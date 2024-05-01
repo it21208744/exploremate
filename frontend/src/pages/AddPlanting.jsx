@@ -108,7 +108,7 @@ export const action = async ({ request }) => {
         height:"36px",
         borderWidth: "0 0 2px 0",
         borderColor: "#86b9bo",
-        fontSize: "18px",
+        fontSize: "14px",
         fontWeight: "400",
         LineHeight: '26px',
     };

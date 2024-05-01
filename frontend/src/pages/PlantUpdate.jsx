@@ -106,7 +106,7 @@ const PlantUpdate = () => {
       height:"36px",
       borderWidth: "0 0 2px 0",
       borderColor: "#5543ca",
-      fontSize: "18px",
+      fontSize: "14px",
       fontWeight: "400",
       LineHeight: '26px',
   };
