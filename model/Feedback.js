@@ -1,11 +1,13 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const feedbackSchema = new mongoose.Schema({
+const feedbackSchema = new mongoose.Schema(
+  {
     message: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     userEmail: {
+
         type: mongoose.Schema.Types.String,
         ref: 'user',
         required: true
@@ -18,6 +20,7 @@ const feedbackSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const Feedback = mongoose.model('Feedback', feedbackSchema);
 
-export default Feedback;
+const Feedback = mongoose.model('Feedback', feedbackSchema)
+
+export default Feedback

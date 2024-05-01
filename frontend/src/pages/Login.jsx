@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -9,13 +10,15 @@ const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
+
   const handleLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
       const response = await axios.post('/api/v1/auth', {
         email,
         password,
+
       });
 
       localStorage.setItem('token', response.data.data);
@@ -33,10 +36,12 @@ const Login = () => {
     } catch (error) {
       console.error('Login error:', error);
       setErrorMessage('Invalid email or password');
+
     }
-  };
+  }
 
   return (
+
     <div className="login-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',position: 'relative', left: '40vw' }}>
       <div className="login-form" style={{ backgroundColor: '#f0f0f0', padding: '20px', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
         <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Login</h2>
@@ -58,4 +63,5 @@ const Login = () => {
   );
 };
 
-export default Login;
+
+export default Login

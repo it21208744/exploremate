@@ -1,6 +1,6 @@
 import { Router } from 'express'
 const router = Router()
-
+import validateToken from '../middleware/tokenValidate.js'
 import {
   addPlan,
   getAllPlans,
@@ -8,6 +8,8 @@ import {
   deletePlan,
   savePlan,
 } from '../controllers/travelersController.js'
+
+router.use(validateToken)
 
 router.route('/').get(getAllPlans).post(addPlan)
 router.route('/:id').get(getSinglePlan).delete(deletePlan)

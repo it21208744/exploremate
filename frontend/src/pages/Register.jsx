@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Form,useNavigate , redirect} from 'react-router-dom';
+
 
 
 export const action = async ({ request }) => {
@@ -20,6 +22,7 @@ export const action = async ({ request }) => {
     console.log(error)
     return error;
   }
+
 };
 
 const Register = () => {
@@ -64,5 +67,6 @@ const Register = () => {
     </div>
   );
 };
+
 
 export default Register;

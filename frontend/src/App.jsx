@@ -16,13 +16,21 @@ import Services from './pages/travelers/Services'
 import Profile from './pages/travelers/Profile'
 import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
-import Feedback from './components/FeedbackForm'
+
+  import Feedback from './components/FeedbackForm'
 import FeedbackTable from './components/FeedbackTable'
+import SalesHeader from './pages/Accomadation/SalesHeader'
+import AddHotel from './pages/Accomadation/AddHotel'
+import AllHotels from './pages/Accomadation/AllHotels'
+import UpdateHotels from './pages/Accomadation/UpdateHotels'
+
+import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
+//import { action as AllHotelsAction } from './pages/Accomadation/AllHotels'
+//import { action as AllhotelAction } from './pages/Accomadation/AllHotels'
 
 
 import { action as RegisterAction } from './pages/Register'
 import { action as addPlan } from './components/PlannerFormElements'
-
 
 const router = createBrowserRouter([
   {
@@ -45,7 +53,7 @@ const router = createBrowserRouter([
           },
           { path: 'planOnYourBudget', element: <PlanOnYourBudget /> },
           { path: 'services', element: <Services /> },
-          { path: 'profile', element: <Profile />,  },
+          { path: 'profile', element: <Profile /> },
 
           //temporary
           { path: 'guide', element: <Guide /> },
@@ -57,11 +65,10 @@ const router = createBrowserRouter([
         path: 'HotelOwnerDashBoardLayout',
         element: <HotelOwnerDashBoardLayout />,
         children: [
-          { index: true, element: <h1>HotelOwnerOpt1</h1> },
-          { path: 'opt1', element: <h1>HotelOwnerOpt1</h1> },
-          { path: 'opt2', element: <h1>HotelOwnerOpt2</h1> },
-          { path: 'opt3', element: <h1>HotelOwnerOpt3</h1> },
-          { path: 'opt4', element: <h1>HotelOwnerOpt4</h1> },
+          { index: true, element: <SalesHeader /> },
+          { path: 'addhotel', element: <AddHotel />, action: AddhotelAction },
+          { path: 'allhotels', element: <AllHotels /> },
+          { path: 'uphotels', element: <UpdateHotels /> },
         ],
       },
       {
@@ -87,5 +94,3 @@ const App = () => {
   return <RouterProvider router={router} />
 }
 export default App
-
-//hehee

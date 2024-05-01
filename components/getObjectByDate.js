@@ -1,24 +1,12 @@
-function getObjectByDate(data, targetDate) {
-  const dateString = targetDate.toISOString().split('T')[0]
+export function getFirstItemByDate(data, targetDate) {
+  let weatherArr = []
 
-  for (const item of data.list) {
-    const itemDate = new Date(item.dt_txt)
-
-    const itemDateString = itemDate.toISOString().split('T')[0]
-
-    if (itemDateString === dateString) {
-      return item
+  const list = data.list
+  list.forEach((obj) => {
+    if (obj.dt_txt.substring(0, 10) === targetDate) {
+      weatherArr.push(obj)
     }
-  }
+  })
 
-  return null
+  return weatherArr[0]
 }
-
-// Example usage
-const jsonData = {}
-const targetDate = new Date('2024-03-22') // Example date
-const result = getObjectByDate(jsonData, targetDate)
-
-console.log(result) // Output the first object with the specified date
-
-export default getObjectByDate
