@@ -50,6 +50,31 @@ const Register = () => {
             <input type="password" name="password" required />
           </div>
           <button type="submit">Register</button>
+          <div style={{ marginBottom: '10px' }}>
+            <label>Role:</label>
+            <select
+              name="role"
+              value={role}
+              onChange={handleRoleChange}
+              style={{
+                width: '100%',
+                padding: '8px',
+                borderRadius: '5px',
+                border: '1px solid #ccc',
+              }}
+            >
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Role:</label>
+            <select name="role" value={role} onChange={handleRoleChange}>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
         </Form>
       </div>
     </Wrapper>
