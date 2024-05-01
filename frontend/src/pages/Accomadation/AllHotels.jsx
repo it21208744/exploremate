@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Table, Button, Modal } from 'react-bootstrap';
-
+import hotell from '../../assets/images/as.webp'
 export default function AllSales() {
     const [hotel, setHotel] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
@@ -116,14 +116,16 @@ export default function AllSales() {
 
     return (
         <>
-        <div style={{
-            backgroundImage:`url("../../../assets/images/beautiOfEarth.webp")`,
-            backgroundColor:"#FFFFF0",
-            backgroundRepeat:"no-repeat",
-            backgroundSize:"cover",
-            width: '100vw',
-            height: '100vh'
-        }}>
+        
+    <div style={{
+  background: `url(${hotell})`,
+ //backgroundColor:"#FFFFF0",
+    backgroundRepeat:"no-repeat",
+    backgroundSize:"cover",
+    width: '100vw',
+    height: '185vh'
+      
+}} >
             <div style={{marginLeft:"700px"}}><br/><br/>
                 <label  style={lableStyle1}><h3>HOTEL DETAILS</h3></label>
             </div>

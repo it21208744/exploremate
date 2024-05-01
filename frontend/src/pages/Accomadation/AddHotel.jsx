@@ -2,7 +2,7 @@ import React,{useState} from "react"
 import axios from "axios";
 import {Link, Form, redirect, useActionData, } from 'react-router-dom';
 import {toast} from 'react-toastify'
-
+import hotell from '../../assets/images/as.webp'
 
 
 export const action = async ({ request }) => {
@@ -150,14 +150,17 @@ const cardstyle ={
     <>
     
 
-    <div style={{backgroundImage:`url("C:\Users\ASUS\Desktop\ITPM\exploremate\frontend\src\assets\images\hotell.jpg")`,
-    backgroundColor:"#FFFFF0",
+    <div style={{
+  background: `url(${hotell})`,
+ //backgroundColor:"#FFFFF0",
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     width: '100vw',
-    height: '100vh'
+    height: '120vh'
       
 }} >
+      
+
   
   <div style={{marginLeft:"700px"}}><br/><br/>
                     <label  style={lableStyle1}><h3>ADD HOTEL </h3></label>
