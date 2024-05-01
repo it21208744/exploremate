@@ -17,6 +17,14 @@ import Profile from './pages/travelers/Profile'
 import Guide from './pages/travelers/Guide'
 import Travelpedia from './pages/travelers/Travelpedia'
 
+
+  import AddPlanting from './pages/AddPlanting'
+import AllPlanting from './pages/AllPlanting'
+import PlantUpdate from './pages/PlantUpdate'
+import HeaderTaxi from './pages/HeaderTaxi'
+import { action as addPlantingAction } from './pages/AddPlanting'
+  
+  
   import Feedback from './components/FeedbackForm'
 import FeedbackTable from './components/FeedbackTable'
 import SalesHeader from './pages/Accomadation/SalesHeader'
@@ -31,6 +39,7 @@ import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
 
 import { action as RegisterAction } from './pages/Register'
 import { action as addPlan } from './components/PlannerFormElements'
+
 
 const router = createBrowserRouter([
   {
@@ -75,10 +84,10 @@ const router = createBrowserRouter([
         path: 'TaxiOwnerDashBoard',
         element: <TaxiOwnerDashBoard />,
         children: [
-          { index: true, element: <h1>TaxiOwnerOpt1</h1> },
-          { path: 'opt1', element: <h1>TaxiOwnerOpt1</h1> },
-          { path: 'opt2', element: <h1>TaxiOwnerOpt2</h1> },
-          { path: 'opt3', element: <h1>TaxiOwnerOpt3</h1> },
+          { index: true, element: <HeaderTaxi/>},
+          { path: 'addPlanting', element: <AddPlanting/>, action: addPlantingAction },
+          { path: 'allPlanting', element: <AllPlanting/> },
+          { path: 'plantUpdate', element: <PlantUpdate/> },
           { path: 'opt4', element: <h1>TaxiOwnerOpt4</h1> },
         ],
       },
