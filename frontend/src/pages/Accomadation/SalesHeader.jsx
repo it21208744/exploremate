@@ -1,48 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import hotell from '../../assets/images/hotel2.jpg'
-//import hotells from '../../assets/images/hotel3.jpeg'
+import hotell from '../../assets/images/t.jpg'
+
 const SalesHeader =()=>{
+
   const lableStyle = { 
-    color:"#5543ca",
+    color:"#042630",
     fontWeight: "400", 
-    fontSize: "18px",        
+    fontSize: "18px",    
+    marginTop:"80px"    
   };
   
-  const logoColor = { 
-    color:"#6F4E37"         
-  };
+
     return(
 <>
 <div style={{
-  //background: `url(${hotell})`,
- backgroundColor:"#FFFFF0",
+  background: `url(${hotell})`,
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
+    backgroundPosition: "center",
     width: '100vw',
     height: '100vh'
       
 }} >
-<div >
-  <center>
-  <h1 style={{ color: '#042630' }}>WELCOME TO EXPLOREMATE ......</h1>
+
+  {/* <h1 style={lableStyle}>WELCOME TO EXPLOREMATE</h1> */}
   
   <img style={{width: '80vw',
-    height: '70vh'}} src={hotell} alt="My Uploaded Image" />
-  </center>
-</div>
-            {/* <ul >       
-            
-              <li >
-              <Link to ="addhotel" className="nav-link"  style={lableStyle}>Add New Hotels |</Link>
-              <Link to ="allhotels" className="nav-link"  style={lableStyle}>Manage Hotels |</Link>
-              <Link to ="allhotels" className="nav-link"  style={lableStyle}>View Bookings</Link>
-              </li>
-              
-             <br/>
-              
-            </ul> */}
-        
+    height: '70vh',
+    marginLeft:'150px',marginTop:'120px'}} src={hotell} alt="My Uploaded Image" />
+    
         </div>
       
             </>
