@@ -92,7 +92,8 @@ export default function AllSales() {
         backdropFilter: "blur(5px)",
         background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
         width: "1200px",
-        marginLeft:"180px",
+        marginLeft:"40px",
+        marginTop:'40px'
     };
     const imagestyle = {
         width: '97%', // Image is larger
@@ -142,16 +143,16 @@ export default function AllSales() {
          <img style={imagestyle} src={hotell} alt="An example image" />
             <div style={{
           position: 'absolute',
-          top: '50%',
-          left: '47%',
+          top: '45%',
+          left: '50%',
           textAlign:'center',
           transform: 'translate(-50%, -50%)',
           backgroundColor: 'none',
           color: '#d0d6d6',//#042630
           padding: '10px',
           borderRadius: '5px',}}><br/><br/>
-                <label  ><h3>HOTEL DETAILS</h3></label>
-            </div>
+                <label  style={{ fontSize:'25px',}}><h3>HOTEL DETAILS</h3></label>
+           
             <br></br>
             <div style={cardstyle}>
                 <Table style={tableStyle} className="table table-striped" id="my-table">
@@ -214,6 +215,7 @@ export default function AllSales() {
                     </Modal.Footer>
                 </Modal>
             </div> 
+            </div>
         </div>
         <br />
         </>
