@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Table, Button, Modal } from 'react-bootstrap';
-import hotell from '../../assets/images/90.webp'
+import hotell from '../../assets/images/7.jpeg'
 export default function AllSales() {
     const [hotel, setHotel] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
@@ -94,6 +94,13 @@ export default function AllSales() {
         width: "1200px",
         marginLeft:"180px",
     };
+    const imagestyle = {
+        width: '97%', // Image is larger
+        height: '50vh',
+        //marginTop: '5px',
+        marginLeft:'30px',
+        borderRadius: "20px",
+      };
     
     const tableStyle = {
         borderCollapse: 'collapse',
@@ -119,17 +126,31 @@ export default function AllSales() {
     return (
         <>
         
+         
     <div style={{
-  background: `url(${hotell})`,
- //backgroundColor:"#FFFFF0",
-    backgroundRepeat:"no-repeat",
-    backgroundSize:"cover",
-    width: '100vw',
-    height: '40vh'
+  //background: `url(${hotell})`,
+ backgroundColor:"#FFFFF0",//#FFFFF0
+    //backgroundRepeat:"no-repeat",
+    //backgroundSize:"cover",
+    //width: '50vw',
+    //height: '100vh'
+   // position: 'relative',
+    // display: 'inline-block' 
       
 }} >
-            <div style={{marginLeft:"700px"}}><br/><br/>
-                <label  style={lableStyle1}><h3>HOTEL DETAILS</h3></label>
+         
+         <img style={imagestyle} src={hotell} alt="An example image" />
+            <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '47%',
+          textAlign:'center',
+          transform: 'translate(-50%, -50%)',
+          backgroundColor: 'none',
+          color: '#d0d6d6',//#042630
+          padding: '10px',
+          borderRadius: '5px',}}><br/><br/>
+                <label  ><h3>HOTEL DETAILS</h3></label>
             </div>
             <br></br>
             <div style={cardstyle}>
