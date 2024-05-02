@@ -83,6 +83,45 @@ export default function AllSales() {
         cursor: "pointer",
     };
 
+
+
+    const buttonDelete1 = {
+        display: "inline-block",
+        backgroundColor: "#D71515",
+        color:"#fff",
+        textTransform:"uppercase",
+        letterSpacing:"1px",
+        fontSize: "10px",
+        width:"60px",
+        height:"30px",
+        border:"none",
+        borderRadius: "20px",
+        cursor: "pointer",
+        marginLeft:'10px'
+
+    };
+
+    const buttonEdit1 = {
+        display: "inline-block",
+        backgroundColor: "#b4b4b2",
+        color:"black",
+        textTransform:"uppercase",
+        letterSpacing:"1px",
+        fontSize: "10px",
+        width:"60px",
+        height:"30px",
+        border:"none",
+        borderRadius: "20px",
+        cursor: "pointer",
+        marginLeft:'70px'
+    };
+
+
+
+
+
+
+
     const cardstyle ={
         overflow : "hidden",
         boxShadow:"0 2px 20px ",
@@ -122,6 +161,18 @@ export default function AllSales() {
         textAlign: 'left',
         color: '#4c7273',
         
+    };
+    const modalStyle = {
+        position: 'absolute',
+        top: '10%', // To place it near the top
+        left: '50%',
+        transform: 'translateX(-50%)',
+        padding: '20px',
+        border: '1px solid #ccc',
+        borderRadius: '10px',
+        boxShadow: '0px 5px 20px rgba(0, 0, 0, 0.1)',
+        backgroundColor: '#f9f9f9',
+        // width:'200px',
     };
 
     return (
@@ -199,21 +250,25 @@ export default function AllSales() {
                         ))}
                     </tbody>
                 </Table>
-                
+              
                 <Modal
                     show={showModal}
                     onHide={() => setShowModal(false)}
-                    centered // This centers the modal vertically
+                    // centered // This centers the modal vertically
+                    style={modalStyle}
                 >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Delete Confirmation</Modal.Title>
+                    {/* <Modal.Header closeButton></Modal.Header> */}
+                    <Modal.Header >
+                        <Modal.Title style={{textAlign:'center'}}>Delete Confirmation</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+                    <br/>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
-                        <Button variant="danger" onClick={handleDelete}>Delete</Button>
+                        <Button variant="secondary" style={buttonEdit1} onClick={() => setShowModal(false)}>Cancel</Button>
+                        <Button variant="danger" style={buttonDelete1} onClick={handleDelete}>Delete</Button>
                     </Modal.Footer>
                 </Modal>
+                
             </div> 
             </div>
         </div>
