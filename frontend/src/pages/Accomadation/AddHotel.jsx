@@ -2,7 +2,7 @@ import React,{useState} from "react"
 import axios from "axios";
 import {Link, Form, redirect, useActionData, } from 'react-router-dom';
 import {toast} from 'react-toastify'
-import hotell from '../../assets/images/u.jpg'
+import hotell from '../../assets/images/10.jpg'
 
 
 export const action = async ({ request }) => {
