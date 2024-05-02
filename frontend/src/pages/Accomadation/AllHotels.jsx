@@ -74,8 +74,11 @@ export default function AllSales() {
     };
 
     const buttonEdit = {
+        // display: "inline-block",
+        // backgroundColor: "green",
+        // color:"#fff",
         display: "inline-block",
-        backgroundColor: "green",
+        backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
         color:"#fff",
         textTransform:"uppercase",
         letterSpacing:"1px",
@@ -218,7 +221,7 @@ export default function AllSales() {
           textAlign:'center',
           transform: 'translate(-50%, -50%)',
           backgroundColor: 'none',
-          color: '#d0d6d6',//#042630
+          color: '#fff',//#042630
           padding: '10px',
           borderRadius: '5px',}}><br/><br/>
                 <label  style={{ fontSize:'25px',}}><h3>HOTEL DETAILS</h3></label>
