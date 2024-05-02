@@ -3,7 +3,7 @@ import React,{useState,useEffect} from "react";
 //import SalesHeader from './SalesHeader';
 import {Link, Form, useNavigate, useActionData, redirect} from 'react-router-dom';
 import {toast} from 'react-toastify'
-import hotell from '../../assets/images/10.jpg'
+import hotell from '../../assets/images/www.jpg'
 
 const UpdateHotels = () => {
     const[id,setid] = useState(" ");
