@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import axios from "axios";
 import { Table, Button, Modal } from 'react-bootstrap';
 import hotell from '../../assets/images/7.jpeg'
+import ReactToPrint from "react-to-print";
+
 export default function AllSales() {
     const [hotel, setHotel] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [inputText,setInputText] = useState("");
 
     // Move fetchHotelData outside of useEffect
     const fetchHotelData = async () => {
@@ -48,6 +51,7 @@ export default function AllSales() {
         localStorage.setItem("RoomDetail", RoomDetail);
         localStorage.setItem("PackDetail", PackDetail);
     };
+    const componentRef = useRef(null);
 
     // Styles
     const lableStyle1 = { 
@@ -116,7 +120,22 @@ export default function AllSales() {
         marginLeft:'70px'
     };
 
-
+    const buttonEdit11 = {
+        display: "inline-block",
+        backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
+        color:"#fff",
+       // backgroundColor: "#b4b4b2",
+        //color:"black",
+        textTransform:"uppercase",
+        letterSpacing:"1px",
+        fontSize: "10px",
+        width:"150px",
+        height:"30px",
+        border:"none",
+        borderRadius: "20px",
+        cursor: "pointer",
+        marginLeft:'500px'
+    };
 
 
 
@@ -250,7 +269,21 @@ export default function AllSales() {
                         ))}
                     </tbody>
                 </Table>
-              
+                <br></br>
+                <div className="content">
+    <ReactToPrint
+      trigger={() =>(
+        <button
+          type="button"
+          className="btn btn-secondary"
+          style={buttonEdit11}
+        >
+          <i className="fas fa-print mr-2"></i>Generate Reports
+        </button>
+      )}
+      content={() => componentRef.current} //return the current value of the reference
+      />
+      </div>
                 <Modal
                     show={showModal}
                     onHide={() => setShowModal(false)}
@@ -268,6 +301,60 @@ export default function AllSales() {
                         <Button variant="danger" style={buttonDelete1} onClick={handleDelete}>Delete</Button>
                     </Modal.Footer>
                 </Modal>
+                <div hidden>
+        <div ref={componentRef}>
+         <center><h1>All Hotel Details</h1></center> 
+         <br></br>
+<table className="table" >
+      <thead style={{fontSize:"24px"}}>
+        <tr>
+        <th scope="col">id</th>
+          <th scope="col">HotelName</th>
+          <th scope="col">Email</th>
+          <th scope="col">PhoneNum</th>
+          <th scope="col">Location</th>
+          <th scope="col">Cost</th>
+          <th scope="col">Description</th>
+          <th scope="col">RoomDetail</th>
+          <th scope="col">PackDetail</th>
+         
+    
+          
+        </tr>
+      </thead>
+      {hotel.filter((el) => {
+        if (el === "") {
+          return el;
+        } else {
+          return el.HotelName.toLowerCase().includes(inputText) ||
+            el.Location.toLowerCase().includes(inputText);
+        }
+      })
+        .map((item) => {
+          return (
+            <tbody style={{fontSize:"24px"}}>
+              <tr>
+                <th scope="row">{item._id}</th>
+            <td>{item.HotelName}</td>
+            <td >{item.Email}</td>
+            <td  >{item.PhoneNum}</td>
+            <td  >{item. Location}</td>
+            <td>{item.Amenties}</td>
+            <td>{item.Description}</td>
+            <td>{item.RoomDetail}</td>
+            <td>{item.PackDetail}</td>
+           
+                
+              </tr>
+
+            </tbody>
+
+          )
+        })}
+     
+    </table>
+    </div>
+    </div>
                 
             </div> 
             </div>
