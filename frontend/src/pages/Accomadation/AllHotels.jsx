@@ -71,6 +71,7 @@ export default function AllSales() {
         border:"none",
         borderRadius: "20px",
         cursor: "pointer",
+        
     };
 
     const buttonEdit = {
@@ -137,7 +138,8 @@ export default function AllSales() {
         border:"none",
         borderRadius: "20px",
         cursor: "pointer",
-        marginLeft:'500px'
+        marginLeft:'500px',
+       
     };
 
 
@@ -281,7 +283,7 @@ export default function AllSales() {
           className="btn btn-secondary"
           style={buttonEdit11}
         >
-          <i className="fas fa-print mr-2"></i>Generate Reports
+          <i className="fas fa-print mr-2"></i>Generate a report
         </button>
       )}
       content={() => componentRef.current} //return the current value of the reference
