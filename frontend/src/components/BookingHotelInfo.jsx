@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 // Import React and useState hook
 import { Modal } from 'antd'
 import NiceModal, { useModal } from '@ebay/nice-modal-react'
@@ -7,6 +6,9 @@ import axios from 'axios'
 import DatePicker1 from './DatePicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { getBookedDates } from './betweenDatesArr'
+import React, { useState } from 'react'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 export default NiceModal.create((hotel) => {
   const allBookedDates = getBookedDates(hotel.bookedDates)
@@ -25,6 +27,26 @@ export default NiceModal.create((hotel) => {
     } catch (error) {}
   }
 
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(null)
+
+  const getTomorrow = () => {
+    const today = new Date()
+    const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000)
+    return tomorrow
+  }
+
+  const isDateDisabled = (date) => {
+    const tomorrow = getTomorrow()
+    return date < tomorrow
+  }
+
+  const onChange = (dates) => {
+    const [start, end] = dates
+    setStartDate(start)
+    setEndDate(end)
+  }
+
   return (
     <Modal
       title={`${hotel.HotelName} - ${hotel.Location}`}
@@ -40,7 +62,18 @@ export default NiceModal.create((hotel) => {
       <h3>Cost per night - {hotel.Amenties}</h3>
       <h2>Phone No - {hotel.PhoneNum}</h2>
       <h2>Email - {hotel.Email}</h2>
-      <DatePicker1 bookedDays={allBookedDates} />
+      <DatePicker
+        selected={startDate}
+        onChange={onChange}
+        startDate={startDate}
+        endDate={endDate}
+        excludeDates={allBookedDates}
+        selectsRange
+        selectsDisabledDaysInRange
+        inline
+        minDate={getTomorrow()}
+        disabled={isDateDisabled}
+      />
       <button onClick={() => handleBooking(startDate, endDate, hotel._id)}>
         Book
       </button>
