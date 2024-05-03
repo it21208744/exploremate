@@ -6,12 +6,16 @@ import axios from 'axios'
 import DatePicker1 from './DatePicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { getBookedDates } from './betweenDatesArr'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
 export default NiceModal.create((hotel) => {
-  const allBookedDates = getBookedDates(hotel.bookedDates)
+  const [allBookedDates, setAllBookedDates] = useState(null)
+
+  useEffect(() => {
+    setAllBookedDates(getBookedDates(hotel.bookedDates))
+  }, [])
 
   const modal = useModal()
 
