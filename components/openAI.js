@@ -68,21 +68,49 @@ give only the json as answer. mention the specific item name.`
 }
 
 //---------------------Budget Planning-------------------------------
-
+//and ${FilterTaxiList}
 export const budgetPlanning = async (NumDays,filtereHotelList,FilterTaxiList) => {
-  const query = `Give a ${NumDays} plan to ${filtereHotelList} and ${FilterTaxiList}. Give the answer as a json. like 
+  let relatedHotels = []
+
+  filtereHotelList.forEach((hotel)=>{
+      relatedHotels.push({
+        id:hotel._id,
+        HotelName:hotel.HotelName,
+        Description:hotel.Description,
+        Price: hotel.Amenties,
+        TotalExpense:hotel.Amenties*NumDays
+
+      })
+    })
+
+    if (relatedHotels.length == 0)
+      return 
+
+    const stringObj = JSON.stringify(relatedHotels)
+    
+    
+  
+  const query = `Give a ${NumDays} plan to each hotel in the following list of object. 
+  ${stringObj}
+
+  Only using this list of object Give the answer as a json. dont add anything from yourself.  use below template. 
   {
-  "plan1": {
-    "day": "Day 1",
-    "actions": "Visit the local markets and try traditional African cuisine"
-  },
-  "plan2": {
-    "day": "Day 2",
-    "actions": "Go on a safari to see the amazing wildlife in their natural habitat"
+  "Hotel1": {
+    "id": "66327d788f64da6a03363577" //replace this with given id in the list of objects
+    "HotelName": "Galadari",
+    "costPerNight": 1000,
+    "Description": "This has the best sea view  among others. And this is also located near a forest.",
+    "TotalExpense": Leave this as it is
+    "Plan":{
+      'morning": "Use description for this",
+      "evening": "Use description for this",
+      "night": "Use description for this"
+    }
   }
 }. 
 
-give only the json as answer. mention where to go. tour must be ${type}`
+calculate the total expense using this equation. number of days * cost per night
+give only the json as answer. `
   const response = await openAIClient.chat.completions.create({
     messages: [
       { role: 'system', content: 'you are a helpful assistant' },
@@ -92,5 +120,10 @@ give only the json as answer. mention where to go. tour must be ${type}`
     temperature: 0,
   })
 
+  
+ 
   return jsonStringToObject(response.choices[0].message.content)
+
 }
+
+//ChatGPT eken dena hotels plans lis of object eka true hotel plans list of object ekak ekka compare karala eeken valid chatgpt generate hotels tika witharak ganna.

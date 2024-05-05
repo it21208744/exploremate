@@ -4,6 +4,7 @@ import { Router } from 'express'
 const router = Router()
 import budget from '../models/BudgetModel.js'
 import hotel from '../models/Cof.js'
+import { budgetPlanning } from '../components/openAI.js'
 
 router.route('/add').post(async (req, res) => {
   console.log(`hehe working :)`)
@@ -108,7 +109,7 @@ router.route('/get/:id').get(async (req, res) => {
 // Route to get a list of hotels based on user input
 router.post('/find-hotels', async (req, res) => {
   try {
-    const { Location, Budget } = req.body;
+    const { Location, Budget, NumDays } = req.body;
 
     // Query to find hotels matching location and within cost range
     const hotels = await hotel.find({
@@ -116,15 +117,28 @@ router.post('/find-hotels', async (req, res) => {
       Amenties: { $lte: Budget },
     });
 
-    if (hotels.length === 0) {
-      res.status(404).json({ message: 'No hotels found matching your criteria.' });
-    } else {
-      res.status(200).json(hotels);
+    const plan = await budgetPlanning(NumDays,hotels)
+
+
+  //   if (hotels.length === 0) {
+  //     res.status(404).json({ message: 'No hotels found matching your criteria.' });
+  //   } else {
+  //     res.status(200).json(hotels);
       
-    }
-  } catch (error) {
-    res.status(500).json({ message: 'Error retrieving hotels.', error });
+  //   }
+  // } catch (error) {
+  //   res.status(500).json({ message: 'Error retrieving hotels.', error });
+  // }
+
+  if (plan.length === 0) {
+    res.status(404).json({ message: 'No hotels and plans found matching your criteria.' });
+  } else {
+    res.status(200).json({plan});
+    
   }
+} catch (error) {
+  res.status(500).json({ message: 'Error retrieving hotels.', error });
+}
 });
 
 
