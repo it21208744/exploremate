@@ -1,6 +1,12 @@
 //const router = require("express").Router();
 import { Router } from 'express'
 const router = Router()
+
+
+
+
+
+
 // const router = Router()
 // let cof = require("../models/Cof");
 import hotel from '../models/Cof.js'
@@ -117,5 +123,10 @@ router.route('/get/:id').get(async (req, res) => {
         .send({ status: 'Error with get sale', error: err.message })
     })
 })
+
+
+
+
+
 
 export default router

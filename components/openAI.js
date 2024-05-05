@@ -1,5 +1,6 @@
 import OpenAI from 'openai'
 import { jsonStringToObject } from './stringToObject.js'
+//import 
 
 const apiKey = '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'
 
@@ -63,5 +64,33 @@ give only the json as answer. mention the specific item name.`
     model: 'gpt-3.5-turbo',
     temperature: 0,
   })
+  return jsonStringToObject(response.choices[0].message.content)
+}
+
+//---------------------Budget Planning-------------------------------
+
+export const budgetPlanning = async (NumDays,filtereHotelList,FilterTaxiList) => {
+  const query = `Give a ${NumDays} plan to ${filtereHotelList} and ${FilterTaxiList}. Give the answer as a json. like 
+  {
+  "plan1": {
+    "day": "Day 1",
+    "actions": "Visit the local markets and try traditional African cuisine"
+  },
+  "plan2": {
+    "day": "Day 2",
+    "actions": "Go on a safari to see the amazing wildlife in their natural habitat"
+  }
+}. 
+
+give only the json as answer. mention where to go. tour must be ${type}`
+  const response = await openAIClient.chat.completions.create({
+    messages: [
+      { role: 'system', content: 'you are a helpful assistant' },
+      { role: 'user', content: query },
+    ],
+    model: 'gpt-3.5-turbo',
+    temperature: 0,
+  })
+
   return jsonStringToObject(response.choices[0].message.content)
 }
