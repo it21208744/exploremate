@@ -31,14 +31,19 @@ import SalesHeader from './pages/Accomadation/SalesHeader'
 import AddHotel from './pages/Accomadation/AddHotel'
 import AllHotels from './pages/Accomadation/AllHotels'
 import UpdateHotels from './pages/Accomadation/UpdateHotels'
+import  BudgetForm  from './components/BudgetForm'
+import Budgetdisplay from './components/Budgetdisplay'
 
 import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
+
+import { action as BudgetFormAction } from './components/BudgetForm'
 //import { action as AllHotelsAction } from './pages/Accomadation/AllHotels'
 //import { action as AllhotelAction } from './pages/Accomadation/AllHotels'
 
 
 import { action as RegisterAction } from './pages/Register'
 import { action as addPlan } from './components/PlannerFormElements'
+
 
 
 const router = createBrowserRouter([
@@ -78,6 +83,8 @@ const router = createBrowserRouter([
           { path: 'addhotel', element: <AddHotel />, action: AddhotelAction },
           { path: 'allhotels', element: <AllHotels /> },
           { path: 'uphotels', element: <UpdateHotels /> },
+          { path: 'addbudget', element: <BudgetForm /> ,action: BudgetFormAction },
+          { path: 'budgetdisplay', element: <Budgetdisplay /> },
         ],
       },
       {

@@ -6,6 +6,7 @@ const apiKey = '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'
 
 const openAIClient = new OpenAI({
   apiKey: apiKey,
+  dangerouslyAllowBrowser: true 
 })
 
 export const generatePlans = async (location, dates, type) => {
@@ -102,7 +103,7 @@ export const budgetPlanning = async (NumDays,filtereHotelList,FilterTaxiList) =>
     "Description": "This has the best sea view  among others. And this is also located near a forest.",
     "TotalExpense": Leave this as it is
     "Plan":{
-      'morning": "Use description for this",
+      "morning": "Use description for this",
       "evening": "Use description for this",
       "night": "Use description for this"
     }
