@@ -29,6 +29,7 @@ import SalesHeader from './pages/Accomadation/SalesHeader'
 import AddHotel from './pages/Accomadation/AddHotel'
 import AllHotels from './pages/Accomadation/AllHotels'
 import UpdateHotels from './pages/Accomadation/UpdateHotels'
+import GetMyBookings from './pages/travelers/GetMyBookings'
 
 import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
 //import { action as AllHotelsAction } from './pages/Accomadation/AllHotels'
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
             element: <Planner />,
             action: addPlan,
           },
-          { path: 'planOnYourBudget', element: <PlanOnYourBudget /> },
+          { path: 'planOnYourBudget', element: <GetMyBookings /> },
           { path: 'services', element: <Services /> },
           { path: 'profile', element: <Profile /> },
 
