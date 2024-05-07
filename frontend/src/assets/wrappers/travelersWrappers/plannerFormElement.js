@@ -9,6 +9,8 @@ const colors = {
 }
 
 const Wrapper = styled.div`
+  /* background-color: black !important; */
+
   .pageTitle {
     color: #042630;
     position: absolute;
@@ -142,7 +144,21 @@ const Wrapper = styled.div`
     position: relative;
     top: 5vh;
     left: 35vw;
-    background: #4c7273;
+    padding: 15px 30px; /* Increased padding for a more spacious feel */
+    background: #f7dfd6; /* Light beige background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Defined shadow for depth */
+    border-radius: 20px; /* Generous rounding for a smooth look */
+    color: #333; /* Dark text for readability */
+    font-weight: bold; /* Emphasize the button text */
+    text-transform: uppercase; /* Create a bolder presence */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .saveBtn:hover {
+    background: #e0c3b0; /* Warm, peachy tone on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    color: #fff; /* White text for clear contrast */
   }
 `
 
