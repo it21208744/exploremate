@@ -28,7 +28,7 @@ const Services = () => {
   }
 
   return (
-    <Wrapper>
+    <>
       <div className="servicesContainer">
         {hotel.map((hotel) => {
           return (
@@ -43,7 +43,7 @@ const Services = () => {
                 position: 'relative',
                 left: '20vw',
                 marginBottom: '2vh',
-                width: 800,
+                width: 500,
                 border: 'solid',
                 borderWidth: '2px',
               }}
@@ -55,7 +55,7 @@ const Services = () => {
           )
         })}
       </div>
-    </Wrapper>
+    </>
   )
 }
 export default Services
