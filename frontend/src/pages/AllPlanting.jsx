@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,useRef} from 'react';
 import axios from "axios";
 import { Table, Button, Modal,Alert } from 'react-bootstrap';
 import taxii from '../assets/taxi5.jpg'
+import ReactToPrint from 'react-to-print'
 
 export default function AllPlanting() {
     const [taxi, settaxi] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [showNotification, setShowNotification] = useState(false);
+    const [inputText, setInputText] = useState('')
 
-    // Move fetchHotelData outside of useEffect
+
+    
+
+    // Move fetchtaxiData outside of useEffect
     const fetchTaxiData = async () => {
         try {
             const response = await axios.get("/api/v1/Planting/");
@@ -61,9 +66,30 @@ export default function AllPlanting() {
 
     };
 
+    const componentRef = useRef(null)
+
  //--------------------------------------------------------------  
 
     // Styles for the notification
+
+
+    const buttonEdit11= {
+        display: 'inline-block',
+        backgroundColor: '#f0f0f0', // white background
+        color: 'black', // black text
+        textTransform: 'uppercase', // uppercase text
+        letterSpacing: '1px', // spacing between letters
+        fontSize: '10px', // font size
+        width: '150px', // button width
+        height: '40px', // button height
+        border: '1px solid black', // 2px wide black border
+        borderRadius: '5px', // rounded corners with a 20px radius
+        cursor: 'pointer', // changes cursor to pointer on hover
+        marginLeft: '680px', // positioning to the right (adjust as needed)
+    };
+
+
+
     const alertStyle = {
         marginBottom: '20px',
         position: 'fixed',
@@ -194,6 +220,14 @@ const lableStyle1 = {
         borderRadius: '5px', // Rounded corners
     };
 
+
+
+
+
+
+
+
+
  //--------------------------------------------------------------  
 
     return (
@@ -288,6 +322,21 @@ const lableStyle1 = {
                         ))}
                     </tbody>
                 </Table>
+
+                <br></br>
+            <div className="content">
+              <ReactToPrint
+                trigger={() => (
+                    <button type="button" className="btn btn-secondary" style={buttonEdit11}>
+                        <i className="fas fa-print mr-2"></i>Generate a report
+                    </button>
+                )}
+                content={() => componentRef.current} //return the current value of the reference
+              />
+            </div>
+
+
+
 {/* 
                 <Modal show={showModal} onHide={() => setShowModal(false)}>
                     <Modal.Header closeButton>
@@ -307,6 +356,79 @@ const lableStyle1 = {
         onDelete={handleDelete}
     />
 )}
+
+<div hidden>
+              <div ref={componentRef}>
+                <center>
+                  <h1>All Taxi Details</h1>
+                </center>
+                <br></br>
+               
+                <table style={{ borderCollapse: 'collapse',border: '1px solid'}}>
+             
+                  <thead style={{ fontSize: '24px',borderCollapse: 'collapse',border: '1px solid' }}>
+                    <tr  >
+                      {/* <th scope="col">id</th> */}
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Company Name</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Bussiness RegNo</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Company Email</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Company Contact No</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Vehicle Type</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Vehicle Model</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Licen Number</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Inssurance Company</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Driver Name</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Driver Email</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Contact Number</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Driver Licen Number</th>
+                    </tr>
+                  </thead>
+                  {taxi
+                    .filter((el) => {
+                        if (el === '') {
+                          return el
+                        } else {
+                          return (
+        el.companyName.toLowerCase().includes(inputText) ||
+        el.bussinessRegNo.toLowerCase().includes(inputText)
+    )
+}
+                    })
+                    .map((item) => {
+                      return (
+                        <tbody style={{ fontSize: '24px',border: '1px solid' }} key={item._id}>
+                          <tr>
+                            {/* <th scope="row">{item._id}</th> */}
+                            <td  style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.companyName}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.bussinessRegNo}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.companyEmail}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.comContactNo}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.vehicleType}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.vehicleModel}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.licenNo}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.inssuranceCompany}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.driverName}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.driverEmail}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.contactNumber}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.contactNumber}</td>
+                          </tr>
+                        </tbody>
+                      )
+                    })}
+                </table>
+                
+              </div>
+            </div>
+          
+
+
+
+
+
+
+
+
+
             </div>
             </div>
             <br />
