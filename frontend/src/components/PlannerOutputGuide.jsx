@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import getTokenFromHeader from './getTokenFromHeader'
-
+import { Divider } from 'antd'
 const PlannerOutput = (planAndWeather) => {
   const savePlan = async () => {
     try {
@@ -50,7 +50,7 @@ const PlannerOutput = (planAndWeather) => {
           )
         })}
       </ul>
-
+      <Divider />
       <h2>You might need these things...</h2>
 
       <ul>
