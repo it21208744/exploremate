@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 import Wrapper from '../assets/wrappers/travelersWrappers/plannerFormElement'
 import NiceBtn from './NiceBtn'
 import getTokenFromHeader from './getTokenFromHeader'
-
+import nightSky from '../assets/images/nightSky.png'
 export const action = async ({ request }) => {
   const formData = await request.formData()
   const data = Object.fromEntries(formData)
@@ -156,7 +156,7 @@ const PlannerFormElements = () => {
             )
           ) : (
             <div className="defaultContent">
-              <h1>Here goes some bullshit</h1>
+              <img src={nightSky} alt="" />
             </div>
           )}
         </div>
