@@ -38,7 +38,7 @@ const GetMyBookings = () => {
     <div style={{ position: 'absolute', left: '20vw' }}>
       <Row gutter={20}>
         {bookings.map((hotel, index) => (
-          <Col span={15} key={index}>
+          <Col span={65} key={index}>
             <Card title={hotel.hotelName} bordered={true}>
               <h5>You booked {hotel.hotelName} for these days</h5>
               <>
@@ -52,17 +52,15 @@ const GetMyBookings = () => {
                       description="Are you sure to delete this booking?"
                       okText="Yes"
                       cancelText="No"
+                      onConfirm={() => {
+                        deleteBookings(hotel.hotelid, bookingDates._id)
+                      }}
                     >
-                      <Button
-                        danger
-                        size="small"
-                        onClick={() => {
-                          deleteBookings(hotel.hotelid, bookingDates._id)
-                        }}
-                      >
+                      <Button danger size="small">
                         <MdDeleteOutline />
                       </Button>
                     </Popconfirm>
+                    <br />
                     <br />
                   </span>
                 ))}
