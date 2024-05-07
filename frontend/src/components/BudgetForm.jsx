@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Form, redirect, useActionData, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import hotell from '../assets/images/443.jpg'
+import hotell from '../assets/images/f.jpg'
 import { budgetPlanning } from '../../../components/openAI' // Import the AI function
 
 export const action = async ({ request }) => {
@@ -97,7 +97,7 @@ export default function BudgetForm() {
   //heading
   const lableStyle1 = { 
     //color:"#042630" ,
-    color:"#fff" ,
+    color:"#042630" ,
     //fontWeight: "300",  
     fontSize: "25px", 
    // marginBottom: "1000px"

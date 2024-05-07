@@ -1,6 +1,6 @@
 import React from 'react'
 import { useActionData } from 'react-router-dom'
-import hotell from '../assets/images/ok.jpg'
+import hotell from '../assets/images/f.jpg'
 // Component to display the AI-generated plan
 export default function PlanResult() {
   let data = localStorage.getItem('budgetPlan') // Get the plan data from the action
@@ -22,7 +22,8 @@ export default function PlanResult() {
     background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
     width: "800px",
     marginLeft:"360px",
-    marginBottom: "10px"
+    marginTop: "50px"
+  
   }
   const buttonStyle = {
     display: "inline-block",
@@ -46,10 +47,12 @@ export default function PlanResult() {
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           width: '100vw',
-          height: '125vh',
+          height: '180vh',
         }}
       >
     <div>
+      <div></div>
+      <br></br>
       {Object.keys(plan).map((key) => {
         const hotelPlan = plan[key]
         return (
