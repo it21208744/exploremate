@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import nightSky from '../../images/nightSky.png'
 
 const colors = {
   background: '#d0d6d6',
@@ -59,11 +60,14 @@ const Wrapper = styled.div`
 
   .output {
     position: absolute;
-    color: ${colors.texts};
+    color: white;
+    left: -3vw;
     top: 25vw;
+    padding-left: 20px;
     width: 83vw;
-    border-top: 20px solid black;
-    background: transparent;
+    height: 150vh;
+    border-top: 5px solid black;
+    background: url(${nightSky});
   }
 
   .horizontalNav {
@@ -95,13 +99,13 @@ const Wrapper = styled.div`
     transition: background 0.6s ease; /* Transition background over 0.3 seconds with ease timing function */
   }
 
-  .defaultContent {
+  /* .defaultContent {
     position: absolute;
-    /* left: 25vw; */
-    width: 100%;
+    left: -10vw;
+    width: 10vw;
     height: 100vh;
     background: grey;
-  }
+  } */
 
   @keyframes slideInRight {
     0% {

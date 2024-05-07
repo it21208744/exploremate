@@ -16,6 +16,8 @@ const Travelpedia = ({ location, weather, futureWeather, date }) => {
                 bordered
                 // hoverable
                 style={{
+                  position: 'absolute',
+                  left: '-12vw',
                   width: 640,
                 }}
                 cover={<GoogleMap location={location} />}
