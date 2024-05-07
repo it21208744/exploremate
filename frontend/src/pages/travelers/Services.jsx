@@ -4,6 +4,8 @@ import axios from 'axios'
 import NiceModal from '@ebay/nice-modal-react'
 import BookingHotelInfo from '../../components/BookingHotelInfo'
 import getTokenFromHeader from '../../components/getTokenFromHeader'
+import { Card, Space } from 'antd'
+import hotelCover from '../../assets/images/hotel.png'
 
 const Services = () => {
   const [hotel, setHotel] = useState([])
@@ -27,21 +29,29 @@ const Services = () => {
 
   return (
     <Wrapper>
-      {console.log(hotel)}
       <div className="servicesContainer">
         {hotel.map((hotel) => {
           return (
-            <div
+            <Card
               key={hotel._id}
-              className="hotelCard"
               onClick={() => {
                 viewHotel(hotel)
               }}
+              hoverable="true"
+              cover={<img src={hotelCover} />}
+              style={{
+                position: 'relative',
+                left: '20vw',
+                marginBottom: '2vh',
+                width: 800,
+                border: 'solid',
+                borderWidth: '2px',
+              }}
             >
               <h1>{hotel.HotelName}</h1>
-              <h2>{hotel.Description}</h2>
-              <h3>{hotel.Location}</h3>
-            </div>
+              <h3>{hotel.Description}</h3>
+              <h4>{hotel.Location}</h4>
+            </Card>
           )
         })}
       </div>
@@ -49,3 +59,16 @@ const Services = () => {
   )
 }
 export default Services
+
+//-----------------------
+// <div
+//   key={hotel._id}
+//   className="hotelCard"
+//   onClick={() => {
+//     viewHotel(hotel)
+//   }}
+// // >
+// <h1>{hotel.HotelName}</h1>
+// <h2>{hotel.Description}</h2>
+// <h3>{hotel.Location}</h3>
+// </div>
