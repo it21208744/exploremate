@@ -33,7 +33,7 @@ const Login = () => {
         navigate('/TaxiownerDashBoard')
       }
        else {
-        navigate('/register')
+        navigate('/travelerDashBoard')
       }
     } catch (error) {
       console.error('Login error:', error)

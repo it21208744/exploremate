@@ -5,7 +5,8 @@ import NiceModal from '@ebay/nice-modal-react'
 import BookingHotelInfo from '../../components/BookingHotelInfo'
 import getTokenFromHeader from '../../components/getTokenFromHeader'
 import { Card, Space } from 'antd'
-import hotelCover from '../../assets/images/hotel.png'
+import hotelCover from '../../assets/images/hotellz.jpg'
+import hotell from '../../assets/images/main.png'
 
 const Services = () => {
   const [hotel, setHotel] = useState([])
@@ -29,6 +30,14 @@ const Services = () => {
 
   return (
     <Wrapper>
+      <div style={{
+         // background: `url(${hotell})`,
+          backgroundColor:"#E3DAC9",
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          width: '100vw',
+          height: '700vh',
+        }}>
       <div className="servicesContainer">
         {hotel.map((hotel) => {
           return (
@@ -38,14 +47,17 @@ const Services = () => {
                 viewHotel(hotel)
               }}
               hoverable="true"
-              cover={<img src={hotelCover} style={{ width: '20vw' }} />}
+             
+              cover={<img src={hotelCover} style={{ width: '5vw',height: 'auto' ,display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%'}} />}
               style={{
                 position: 'relative',
-                left: '20vw',
+                left: '40vw',
                 marginBottom: '2vh',
-                width: 800,
+                width: 600,
                 border: 'solid',
                 borderWidth: '2px',
+                
+          
               }}
             >
               <h1>{hotel.HotelName}</h1>
@@ -54,6 +66,7 @@ const Services = () => {
             </Card>
           )
         })}
+      </div>
       </div>
     </Wrapper>
   )
