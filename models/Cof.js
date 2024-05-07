@@ -22,7 +22,7 @@ const salesSchema = new mongoose.Schema({
     required: true,
   },
   Amenties: {
-    type: String,
+    type: Number,
     required: true,
   },
 
@@ -40,6 +40,24 @@ const salesSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  userEmail: {
+    type: String,
+  },
+
+  bookedDates: [
+    {
+      bookedBy: {
+        type: String,
+      },
+      startDate: {
+        type: Date,
+      },
+      endDate: {
+        type: Date,
+      },
+    },
+  ],
 })
 
 export default mongoose.model('hotel', salesSchema)
