@@ -4,14 +4,25 @@ const router = Router()
 
 import hotel from '../models/Cof.js'
 
-// router.use(tokenValidate)
+router.use(tokenValidate)
 
-router.route('/').get(async (req, res) => {
+router.route('/').get((req, res) => {
+  hotel
+    .find()
+    .then((hotel) => {
+      res.json(hotel)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+})
+
+router.route('/getBookings').get(async (req, res) => {
   const userEmail = req.user?.email
 
   try {
     const hotels = await hotel.find({
-      'bookedDates.bookedBy': 'hehe@gmail.com',
+      'bookedDates.bookedBy': userEmail,
     })
 
     const relatedBookings = hotels.map((hotel) => {
@@ -20,12 +31,11 @@ router.route('/').get(async (req, res) => {
         hotelEmail: hotel.Email,
         hotelPhone: hotel.PhoneNum,
         bookings: hotel.bookedDates.filter(
-          (bookings) => bookings.bookedBy === 'hehe@gmail.com'
+          (bookings) => bookings.bookedBy === userEmail
         ),
       }
     })
 
-    console.log(relatedBookings)
     res.json(relatedBookings)
   } catch (error) {
     console.log(error)
