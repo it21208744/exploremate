@@ -1,11 +1,9 @@
-
-  import ReactToPrint from 'react-to-print'
-import React, { useState, useEffect } from 'react'
+import ReactToPrint from 'react-to-print'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import { Table, Button, Modal } from 'react-bootstrap'
-import hotell from '../../assets/images/as.webp'
+import hotell from '../../assets/images/7.jpeg'
 import getTokenFromHeader from '../../components/getTokenFromHeader'
-
 
 export default function AllSales() {
   const [hotel, setHotel] = useState([])
@@ -14,11 +12,9 @@ export default function AllSales() {
 
   const [inputText, setInputText] = useState('')
 
-
   // Move fetchHotelData outside of useEffect
   const fetchHotelData = async () => {
     try {
-
       const config = getTokenFromHeader()
       const response = await axios.get('/api/v1/Coffee/', config)
 
@@ -38,7 +34,6 @@ export default function AllSales() {
   }
 
   const handleDelete = () => {
-
     const config = getTokenFromHeader()
     axios
       .delete(`/api/v1/Coffee/delete/${selectedId}`, config)
@@ -78,7 +73,6 @@ export default function AllSales() {
 
   const componentRef = useRef(null)
 
-
   // Styles
   const lableStyle1 = {
     color: '#042630',
@@ -100,7 +94,6 @@ export default function AllSales() {
   }
 
   const buttonEdit = {
-
     // display: "inline-block",
     // backgroundColor: "green",
     // color:"#fff",
@@ -117,7 +110,6 @@ export default function AllSales() {
     borderRadius: '20px',
     cursor: 'pointer',
   }
-
 
   const buttonDelete1 = {
     display: 'inline-block',
@@ -150,23 +142,19 @@ export default function AllSales() {
   }
 
   const buttonEdit11 = {
-   
     display: 'inline-block',
-  backgroundColor: '#f0f0f0', // white background
-  color: 'black', // black text
-  textTransform: 'uppercase', // uppercase text
-  letterSpacing: '1px', // spacing between letters
-  fontSize: '10px', // font size
-  width: '150px', // button width
-  height: '40px', // button height
-  border: '1px solid black', // 2px wide black border
-  borderRadius: '5px', // rounded corners with a 20px radius
-  cursor: 'pointer', // changes cursor to pointer on hover
-  marginLeft: '680px', // positioning to the right (adjust as needed)
-   
-    
+    backgroundColor: '#f0f0f0', // white background
+    color: 'black', // black text
+    textTransform: 'uppercase', // uppercase text
+    letterSpacing: '1px', // spacing between letters
+    fontSize: '10px', // font size
+    width: '150px', // button width
+    height: '40px', // button height
+    border: '1px solid black', // 2px wide black border
+    borderRadius: '5px', // rounded corners with a 20px radius
+    cursor: 'pointer', // changes cursor to pointer on hover
+    marginLeft: '680px', // positioning to the right (adjust as needed)
   }
-
 
   const cardstyle = {
     overflow: 'hidden',
@@ -188,7 +176,6 @@ export default function AllSales() {
     //marginTop: '5px',
     marginLeft: '30px',
     borderRadius: '20px',
-
   }
 
   const tableStyle = {
@@ -224,15 +211,11 @@ export default function AllSales() {
     // width:'200px',
   }
 
-
   return (
     <>
       <div
         style={{
-
-         
           backgroundColor: '#fff', //#FFFFF0
-     
         }}
       >
         <img style={imagestyle} src={hotell} alt="An example image" />
@@ -375,20 +358,91 @@ export default function AllSales() {
                   <h1>All Hotel Details</h1>
                 </center>
                 <br></br>
-               
-                <table style={{ borderCollapse: 'collapse',border: '1px solid'}}
-             >
-                  <thead style={{ fontSize: '24px',borderCollapse: 'collapse',border: '1px solid' }}>
-                    <tr  >
+
+                <table
+                  style={{ borderCollapse: 'collapse', border: '1px solid' }}
+                >
+                  <thead
+                    style={{
+                      fontSize: '24px',
+                      borderCollapse: 'collapse',
+                      border: '1px solid',
+                    }}
+                  >
+                    <tr>
                       {/* <th scope="col">id</th> */}
-                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">HotelName</th>
-                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Email</th>
-                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">PhoneNum</th>
-                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Location</th>
-                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Cost</th>
-                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Description</th>
-                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">RoomDetail</th>
-                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">PackDetail</th>
+                      <th
+                        style={{
+                          borderCollapse: 'collapse',
+                          border: '1px solid',
+                        }}
+                        scope="col"
+                      >
+                        HotelName
+                      </th>
+                      <th
+                        style={{
+                          borderCollapse: 'collapse',
+                          border: '1px solid',
+                        }}
+                        scope="col"
+                      >
+                        Email
+                      </th>
+                      <th
+                        style={{
+                          borderCollapse: 'collapse',
+                          border: '1px solid',
+                        }}
+                        scope="col"
+                      >
+                        PhoneNum
+                      </th>
+                      <th
+                        style={{
+                          borderCollapse: 'collapse',
+                          border: '1px solid',
+                        }}
+                        scope="col"
+                      >
+                        Location
+                      </th>
+                      <th
+                        style={{
+                          borderCollapse: 'collapse',
+                          border: '1px solid',
+                        }}
+                        scope="col"
+                      >
+                        Cost
+                      </th>
+                      <th
+                        style={{
+                          borderCollapse: 'collapse',
+                          border: '1px solid',
+                        }}
+                        scope="col"
+                      >
+                        Description
+                      </th>
+                      <th
+                        style={{
+                          borderCollapse: 'collapse',
+                          border: '1px solid',
+                        }}
+                        scope="col"
+                      >
+                        RoomDetail
+                      </th>
+                      <th
+                        style={{
+                          borderCollapse: 'collapse',
+                          border: '1px solid',
+                        }}
+                        scope="col"
+                      >
+                        PackDetail
+                      </th>
                     </tr>
                   </thead>
                   {hotel
@@ -404,27 +458,84 @@ export default function AllSales() {
                     })
                     .map((item) => {
                       return (
-                        <tbody style={{ fontSize: '24px',border: '1px solid' }} key={item._id}>
+                        <tbody
+                          style={{ fontSize: '24px', border: '1px solid' }}
+                          key={item._id}
+                        >
                           <tr>
                             {/* <th scope="row">{item._id}</th> */}
-                            <td  style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.HotelName}</td>
-                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.Email}</td>
-                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.PhoneNum}</td>
-                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.Location}</td>
-                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.Amenties}</td>
-                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.Description}</td>
-                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.RoomDetail}</td>
-                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.PackDetail}</td>
+                            <td
+                              style={{
+                                borderCollapse: 'collapse',
+                                border: '1px solid',
+                              }}
+                            >
+                              {item.HotelName}
+                            </td>
+                            <td
+                              style={{
+                                borderCollapse: 'collapse',
+                                border: '1px solid',
+                              }}
+                            >
+                              {item.Email}
+                            </td>
+                            <td
+                              style={{
+                                borderCollapse: 'collapse',
+                                border: '1px solid',
+                              }}
+                            >
+                              {item.PhoneNum}
+                            </td>
+                            <td
+                              style={{
+                                borderCollapse: 'collapse',
+                                border: '1px solid',
+                              }}
+                            >
+                              {item.Location}
+                            </td>
+                            <td
+                              style={{
+                                borderCollapse: 'collapse',
+                                border: '1px solid',
+                              }}
+                            >
+                              {item.Amenties}
+                            </td>
+                            <td
+                              style={{
+                                borderCollapse: 'collapse',
+                                border: '1px solid',
+                              }}
+                            >
+                              {item.Description}
+                            </td>
+                            <td
+                              style={{
+                                borderCollapse: 'collapse',
+                                border: '1px solid',
+                              }}
+                            >
+                              {item.RoomDetail}
+                            </td>
+                            <td
+                              style={{
+                                borderCollapse: 'collapse',
+                                border: '1px solid',
+                              }}
+                            >
+                              {item.PackDetail}
+                            </td>
                           </tr>
                         </tbody>
                       )
                     })}
                 </table>
-                
               </div>
             </div>
           </div>
-
         </div>
       </div>
       <br />
