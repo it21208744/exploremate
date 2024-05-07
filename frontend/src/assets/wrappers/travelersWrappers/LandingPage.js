@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import img from '../../../assets/images/beautiOfEarth.webp'
-
+import img2 from '../../images/night.png'
 const Wrapper = styled.div`
   /* * {
     background: #45a29e;
@@ -66,10 +66,13 @@ const Wrapper = styled.div`
   }
 
   .websiteInfo {
+    background: url(${img2});
     z-index: 2;
     position: absolute;
     top: 80%; /* Adjust as needed */
-    height: 1000%; /* Adjust as needed */
+    height: 75%; /* Adjust as needed */
+    display: flex; /* Display children elements in a row */
+    justify-content: space-between; /* Distribute space between children */
   }
 
   .content {
