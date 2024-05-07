@@ -18,9 +18,24 @@ router.route('/').get(async (req, res) => {
       'bookedDates.bookedBy': 'hehe@gmail.com', // Filter by HotelName and bookedBy email
     })
 
-    let relatedBookings = []
+    // console.log(hotels[1])
+    const relatedBookings = hotels.map((hotel) => {
+      // Create an object for each hotel's related bookings
+      return {
+        hotelName: hotel.HotelName,
+        hotelEmail: hotel.Email,
+        hotelPhone: hotel.PhoneNum,
+        bookings: hotel.bookedDates.filter(
+          (bookings) => bookings.bookedBy === 'hehe@gmail.com'
+        ),
+      }
+    })
 
-    res.json(hotels)
+    console.log(relatedBookings)
+
+    // console.log(relatedBookings)
+
+    res.json(relatedBookings)
   } catch (error) {
     console.log(error)
   }
