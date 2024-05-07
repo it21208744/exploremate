@@ -41,6 +41,13 @@ const NewNav = () => {
       label: 'Plans',
       onClick: () => navigate('/travelerDashBoard/guide'),
     },
+
+    {
+      key: '6',
+      icon: <FcPlanner />,
+      label: 'My bookings',
+      onClick: () => navigate('/travelerDashBoard/bookings'),
+    },
   ]
 
   const [collapsed, setCollapsed] = useState(false)

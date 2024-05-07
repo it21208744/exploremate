@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Card, Col, Row } from 'antd'
 import { Button, Popconfirm } from 'antd'
 import { MdDeleteOutline } from 'react-icons/md'
-
+import bookingBackground from './../../assets/images/bookingBackground.png'
 const GetMyBookings = () => {
   const [bookings, setBookings] = useState([])
   const conf = getTokenFromHeader()
@@ -35,11 +35,24 @@ const GetMyBookings = () => {
   console.log(bookings)
 
   return (
-    <div style={{ position: 'absolute', left: '20vw' }}>
+    <div
+      style={{
+        position: 'absolute',
+        left: '16vw',
+        background: `url(${bookingBackground})`,
+        width: '75vw',
+        height: '100%',
+        padding: '50px',
+      }}
+    >
       <Row gutter={20}>
         {bookings.map((hotel, index) => (
           <Col span={65} key={index}>
-            <Card title={hotel.hotelName} bordered={true}>
+            <Card
+              title={hotel.hotelName}
+              bordered={true}
+              style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}
+            >
               <h5>You booked {hotel.hotelName} for these days</h5>
               <>
                 {hotel.bookings.map((bookingDates, index) => (
