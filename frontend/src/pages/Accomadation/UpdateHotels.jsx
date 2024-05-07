@@ -223,7 +223,7 @@ const UpdateHotels = () => {
             <br></br>
             <div className="form-group">
               <label htmlFor="Amenties" style={lableStyle}>
-                Cost
+              Cost(per day)
               </label>
               <input
                 type="text"
