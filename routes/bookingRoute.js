@@ -7,20 +7,14 @@ import hotel from '../models/Cof.js'
 // router.use(tokenValidate)
 
 router.route('/').get(async (req, res) => {
-  const userEmail = req.user?.email // Optional chaining to handle potential undefined user
-
-  // if (!userEmail) {
-  //   return res.status(400).send('Missing user email in request') // Handle missing email
-  // }
+  const userEmail = req.user?.email
 
   try {
     const hotels = await hotel.find({
-      'bookedDates.bookedBy': 'hehe@gmail.com', // Filter by HotelName and bookedBy email
+      'bookedDates.bookedBy': 'hehe@gmail.com',
     })
 
-    // console.log(hotels[1])
     const relatedBookings = hotels.map((hotel) => {
-      // Create an object for each hotel's related bookings
       return {
         hotelName: hotel.HotelName,
         hotelEmail: hotel.Email,
@@ -32,9 +26,6 @@ router.route('/').get(async (req, res) => {
     })
 
     console.log(relatedBookings)
-
-    // console.log(relatedBookings)
-
     res.json(relatedBookings)
   } catch (error) {
     console.log(error)
