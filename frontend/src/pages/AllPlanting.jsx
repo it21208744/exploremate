@@ -84,8 +84,9 @@ export default function AllPlanting() {
 
   const buttonEdit11 = {
     display: 'inline-block',
-    backgroundColor: '#f0f0f0', // white background
-    color: 'black', // black text
+    backgroundImage: 'linear-gradient(125deg,#042630,#4c7273)',
+    color: '#fff', // white background
+     // black text
     textTransform: 'uppercase', // uppercase text
     letterSpacing: '1px', // spacing between letters
     fontSize: '10px', // font size
@@ -137,7 +138,7 @@ export default function AllPlanting() {
   const buttonEdit = {
     display: 'inline-block',
     //backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
-    backgroundColor: 'green',
+    backgroundImage: 'linear-gradient(125deg,#042630,#4c7273)',
     color: '#fff',
     textTransform: 'uppercase',
     letterSpacing: '1px',
