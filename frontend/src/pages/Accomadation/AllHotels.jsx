@@ -134,20 +134,21 @@ export default function AllSales() {
   }
 
   const buttonEdit11 = {
+   
     display: 'inline-block',
-    backgroundImage: 'linear-gradient(125deg,#042630,#4c7273)',
-    color: '#fff',
-    // backgroundColor: "#b4b4b2",
-    //color:"black",
-    textTransform: 'uppercase',
-    letterSpacing: '1px',
-    fontSize: '10px',
-    width: '150px',
-    height: '30px',
-    border: 'none',
-    borderRadius: '20px',
-    cursor: 'pointer',
-    marginLeft: '500px',
+  backgroundColor: '#f0f0f0', // white background
+  color: 'black', // black text
+  textTransform: 'uppercase', // uppercase text
+  letterSpacing: '1px', // spacing between letters
+  fontSize: '10px', // font size
+  width: '150px', // button width
+  height: '40px', // button height
+  border: '1px solid black', // 2px wide black border
+  borderRadius: '5px', // rounded corners with a 20px radius
+  cursor: 'pointer', // changes cursor to pointer on hover
+  marginLeft: '680px', // positioning to the right (adjust as needed)
+   
+    
   }
 
   const cardstyle = {
@@ -207,21 +208,16 @@ export default function AllSales() {
     <>
       <div
         style={{
-          //background: `url(${hotell})`,
-          backgroundColor: '#FFFFF0', //#FFFFF0
-          //backgroundRepeat:"no-repeat",
-          //backgroundSize:"cover",
-          //width: '50vw',
-          //height: '100vh'
-          // position: 'relative',
-          // display: 'inline-block'
+         
+          backgroundColor: '#fff', //#FFFFF0
+     
         }}
       >
         <img style={imagestyle} src={hotell} alt="An example image" />
         <div
           style={{
             position: 'absolute',
-            top: '45%',
+            top: '55%',
             left: '50%',
             textAlign: 'center',
             transform: 'translate(-50%, -50%)',
@@ -357,18 +353,20 @@ export default function AllSales() {
                   <h1>All Hotel Details</h1>
                 </center>
                 <br></br>
-                <table className="table">
-                  <thead style={{ fontSize: '24px' }}>
-                    <tr>
-                      <th scope="col">id</th>
-                      <th scope="col">HotelName</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">PhoneNum</th>
-                      <th scope="col">Location</th>
-                      <th scope="col">Cost</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">RoomDetail</th>
-                      <th scope="col">PackDetail</th>
+               
+                <table style={{ borderCollapse: 'collapse',border: '1px solid'}}
+             >
+                  <thead style={{ fontSize: '24px',borderCollapse: 'collapse',border: '1px solid' }}>
+                    <tr  >
+                      {/* <th scope="col">id</th> */}
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">HotelName</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Email</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">PhoneNum</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Location</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Cost</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">Description</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">RoomDetail</th>
+                      <th style={{ borderCollapse: 'collapse',border: '1px solid' }} scope="col">PackDetail</th>
                     </tr>
                   </thead>
                   {hotel
@@ -384,22 +382,23 @@ export default function AllSales() {
                     })
                     .map((item) => {
                       return (
-                        <tbody style={{ fontSize: '24px' }} key={item._id}>
+                        <tbody style={{ fontSize: '24px',border: '1px solid' }} key={item._id}>
                           <tr>
-                            <th scope="row">{item._id}</th>
-                            <td>{item.HotelName}</td>
-                            <td>{item.Email}</td>
-                            <td>{item.PhoneNum}</td>
-                            <td>{item.Location}</td>
-                            <td>{item.Amenties}</td>
-                            <td>{item.Description}</td>
-                            <td>{item.RoomDetail}</td>
-                            <td>{item.PackDetail}</td>
+                            {/* <th scope="row">{item._id}</th> */}
+                            <td  style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.HotelName}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.Email}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.PhoneNum}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.Location}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.Amenties}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.Description}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.RoomDetail}</td>
+                            <td style={{ borderCollapse: 'collapse',border: '1px solid' }}>{item.PackDetail}</td>
                           </tr>
                         </tbody>
                       )
                     })}
                 </table>
+                
               </div>
             </div>
           </div>

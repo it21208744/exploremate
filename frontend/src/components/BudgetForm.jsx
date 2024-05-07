@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Form, redirect, useActionData, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import hotell from '../assets/images/10.jpg'
+import hotell from '../assets/images/443.jpg'
 import { budgetPlanning } from '../../../components/openAI' // Import the AI function
 
 export const action = async ({ request }) => {
@@ -40,20 +40,86 @@ export default function BudgetForm() {
       Budget,
       NumDays,
     }
+    try {
+      const response = await axios.post('/api/v1/bd/find-hotels', formData)
+      // console.log(response.data.plan)
+      console.log('hehe')
+     
+        localStorage.setItem('budgetPlan', JSON.stringify(response.data))
+  
+        toast.success('Plan added')
+        navigate('../budgetdisplay') // Redirect to the plan result page
+      
+    } catch (error) {
+      return toast.error('No matching hotels found')
+    }
+
 
     // Submit form data to the action and navigate to the results page
-    const response = await axios.post('/api/v1/bd/find-hotels', formData)
-    // console.log(response.data.plan)
-    if (response.status === 200) {
-      localStorage.setItem('budgetPlan', JSON.stringify(response.data))
 
-      toast.success('Plan added')
-      navigate('../budgetdisplay') // Redirect to the plan result page
-    } else {
-      toast.error('Something went wrong')
-    }
+
+    
   }
 
+  const inputStyle = {
+    display: "block",
+            width:"100%",
+            height:"36px",
+            borderWidth: "0 0 2px 0",
+            borderColor: "#86b9b0",
+            fontSize: "14px",
+            fontWeight: "300",
+            LineHeight: '26px',
+            fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
+  };
+  
+  const buttonStyle = {
+    display: "inline-block",
+    backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
+    color:"#fff",
+    textTransform:"uppercase",
+    letterSpacing:"2px",
+    fontSize: "16px",
+      width:"130px",
+      height:"36px",
+      border:"none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      
+  };
+  
+  const lableStyle = { 
+    color:"#4c7273" ,  
+    fontWeight: "600",    
+    fontSize: "18px",   
+    fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
+  };
+  //heading
+  const lableStyle1 = { 
+    //color:"#042630" ,
+    color:"#fff" ,
+    //fontWeight: "300",  
+    fontSize: "25px", 
+   // marginBottom: "1000px"
+   //fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
+   
+  };
+  
+  const cardstyle ={
+    overflow : "hidden",
+    boxShadow:"0 2px 20px ",
+    borderRadius: "$radius",
+    transition: "transform 200ms ease-in",
+    padding:"30px",
+    backdropFilter: "blur(5px)",
+    background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
+    width: "800px",
+    marginLeft:"360px",
+    
+    //marginBottom: "100px"
+  }
+  
+  
   return (
     <>
       <div
@@ -68,20 +134,22 @@ export default function BudgetForm() {
         <div style={{ marginLeft: '700px' }}>
           <br />
           <br />
-          <label style={{ fontSize: '20px' }}>
+          <label  style={lableStyle1}>
             <h3>Plan on Your Budget </h3>
           </label>
         </div>
 
         <br />
+        <div style={cardstyle}>
         <Form method="post" onSubmit={handleSubmit}>
           <div style={{ padding: '30px' }}>
             <div className="form-group">
-              <label>Location</label>
+              <label  style={lableStyle}>Location</label>
               <input
                 type="text"
                 name="Location"
                 placeholder="Enter location"
+                style={inputStyle} 
                 onChange={(e) => setLocation(e.target.value)}
                 required
               />
@@ -89,11 +157,12 @@ export default function BudgetForm() {
 
             <br />
             <div className="form-group">
-              <label>Budget</label>
+              <label  style={lableStyle}>Budget</label>
               <input
                 type="text"
                 name="Budget"
                 placeholder="Enter Budget"
+                style={inputStyle} 
                 onChange={(e) => setBudget(e.target.value)}
                 required
                 pattern="[0-9]+"
@@ -103,11 +172,12 @@ export default function BudgetForm() {
 
             <br />
             <div className="form-group">
-              <label>Number of Days</label>
+              <label  style={lableStyle}>Number of Days</label>
               <input
                 type="text"
                 name="NumDays"
                 placeholder="Enter NumDays"
+                style={inputStyle} 
                 onChange={(e) => setNumDays(e.target.value)}
                 required
                 pattern="[0-9]+"
@@ -116,9 +186,10 @@ export default function BudgetForm() {
             </div>
 
             <br />
-            <button type="submit">Submit</button>
+            <button type="submit" style={buttonStyle}>Save</button>
           </div>
         </Form>
+        </div>
       </div>
     </>
   )

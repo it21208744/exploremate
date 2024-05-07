@@ -2,7 +2,7 @@ import React,{useState} from "react"
 import axios from "axios";
 import {Link, Form, redirect, useActionData, } from 'react-router-dom';
 import {toast} from 'react-toastify'
-import hotell from '../../assets/images/10.jpg'
+import hotell from '../../assets/images/lulu.webp'
 
 
 export const action = async ({ request }) => {
@@ -191,7 +191,7 @@ const cardstyle ={
    <br></br>
    <div className="form-group">
     <label htmlFor="Description" style={lableStyle}  >Description</label>
-    <input type="text" className="form-control" id="Description" name="Description"  placeholder="Enter dis" style={inputStyle} onChange={(e) => {
+    <textarea type="text" className="form-control" id="Description" name="Description"  placeholder="Enter dis" style={inputStyle} onChange={(e) => {
         setDesc(e.target.value);
     }}
     
