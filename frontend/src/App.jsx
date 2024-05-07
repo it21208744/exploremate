@@ -31,9 +31,8 @@ import AllHotels from './pages/Accomadation/AllHotels'
 import UpdateHotels from './pages/Accomadation/UpdateHotels'
 
 import GetMyBookings from './pages/travelers/GetMyBookings'
-import  BudgetForm  from './components/BudgetForm'
+import BudgetForm from './components/BudgetForm'
 import Budgetdisplay from './components/Budgetdisplay'
-
 
 import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
 
@@ -63,7 +62,12 @@ const router = createBrowserRouter([
             element: <Planner />,
             action: addPlan,
           },
-          { path: 'planOnYourBudget', element: <GetMyBookings /> },
+          {
+            path: 'planOnYourBudget',
+            element: <BudgetForm />,
+            action: BudgetFormAction,
+          },
+          { path: 'budgetdisplay', element: <Budgetdisplay /> },
           { path: 'services', element: <Services /> },
           { path: 'profile', element: <Profile /> },
 
@@ -81,8 +85,6 @@ const router = createBrowserRouter([
           { path: 'addhotel', element: <AddHotel />, action: AddhotelAction },
           { path: 'allhotels', element: <AllHotels /> },
           { path: 'uphotels', element: <UpdateHotels /> },
-          { path: 'addbudget', element: <BudgetForm /> ,action: BudgetFormAction },
-          { path: 'budgetdisplay', element: <Budgetdisplay /> },
         ],
       },
       {
