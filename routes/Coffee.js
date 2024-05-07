@@ -9,11 +9,12 @@ const router = Router()
 
 // const router = Router()
 // let cof = require("../models/Cof");
-import hotel from '../models/Cof.js'
+import tokenValidate from '../middleware/tokenValidate.js'
 
+import hotel from '../models/Cof.js'
+router.use(tokenValidate)
 router.route('/add').post(async (req, res) => {
   //const {HotelName, Email, PhoneNum,Location,Amenties,Description, RoomDetail, PackDetail} = req.body
-
   const HotelName = req.body.HotelName
   const Email = req.body.Email
   const PhoneNum = Number(req.body.PhoneNum)
@@ -22,6 +23,7 @@ router.route('/add').post(async (req, res) => {
   const Description = req.body.Description
   const RoomDetail = req.body.RoomDetail
   const PackDetail = req.body.PackDetail
+  const userEmail = req.user.email
 
   const newSale = new hotel({
     HotelName,
@@ -32,6 +34,7 @@ router.route('/add').post(async (req, res) => {
     Description,
     RoomDetail,
     PackDetail,
+    userEmail,
   })
 
   console.log(newSale)
@@ -49,7 +52,7 @@ router.route('/add').post(async (req, res) => {
 
 router.route('/').get((req, res) => {
   hotel
-    .find()
+    .find({ userEmail: req.user.email })
     .then((hotel) => {
       res.json(hotel)
     })

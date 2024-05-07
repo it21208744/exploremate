@@ -1,8 +1,17 @@
+
 import React,{useState} from "react"
 import axios from "axios";
 import {Link, Form, redirect, useActionData, } from 'react-router-dom';
 import {toast} from 'react-toastify'
 import hotell from '../../assets/images/lulu.webp'
+
+
+import React, { useState } from 'react'
+import axios from 'axios'
+import { Link, Form, redirect, useActionData } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import hotell from '../../assets/images/as.webp'
+import getTokenFromHeader from '../../components/getTokenFromHeader'
 
 
 export const action = async ({ request }) => {
@@ -11,10 +20,10 @@ export const action = async ({ request }) => {
 
   const data = Object.fromEntries(formData)
   try {
-    const res = await axios.post("/api/v1/Coffee/add", data )
+    const config = getTokenFromHeader()
+    const res = await axios.post('/api/v1/Coffee/add', data, config)
     toast.success('Hotel added')
     return redirect('../allhotels')
-    
   } catch (error) {
     console.log(error)
     toast.error('Something went wrong')
@@ -22,9 +31,9 @@ export const action = async ({ request }) => {
   }
 }
 
-export default function AddHotel(){
-
+export default function AddHotel() {
   //this is how u use the response data
+
  const res = useActionData()
  //:)
 
@@ -104,9 +113,56 @@ const cardstyle ={
 
 
 
+  const buttonStyle = {
+    display: 'inline-block',
+    backgroundImage: 'linear-gradient(125deg,#042630,#4c7273)',
+    //backgroundColor: "#c46804",
+    color: '#fff',
+    textTransform: 'uppercase',
+    letterSpacing: '2px',
+    fontSize: '16px',
+    width: '130px',
+    height: '36px',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+  }
+  // const backgroundImage = {
+  //   backgroundImage: url('path/to/your/image.jpg'),
+  //   backgroundSize: "cover",
+  //   backgroundPosition: "center",
 
-  return(
+  // };
+  const lableStyle = {
+    color: '#4c7273',
+    fontWeight: '600',
+    fontSize: '18px',
+  }
+  //heading
+  const lableStyle1 = {
+    color: '#042630',
+    //fontWeight: "300",
+    fontSize: '20px',
+    // marginBottom: "1000px"
+  }
+
+  const cardstyle = {
+    overflow: 'hidden',
+    boxShadow: '0 2px 20px ',
+    borderRadius: '$radius',
+    transition: 'transform 200ms ease-in',
+    padding: '30px',
+    backdropFilter: 'blur(5px)',
+    background:
+      'linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))',
+    width: '800px',
+    marginLeft: '360px',
+    //marginBottom: "100px"
+  }
+
+  return (
     <>
+
     
 
     <div style={{
@@ -238,3 +294,4 @@ const cardstyle ={
 </>
  )
 }
+

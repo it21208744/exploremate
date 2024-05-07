@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
 function FeedbackForm() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
@@ -27,23 +28,97 @@ function FeedbackForm() {
       
     }
   };
+  const inputStyle = {
+    display: "block",
+            width:"100%",
+            height:"36px",
+            borderWidth: "0 0 2px 0",
+            borderColor: "#86b9b0",
+            fontSize: "14px",
+            fontWeight: "300",
+            LineHeight: '26px',
+  };
+  
+  const buttonStyle = {
+    display: "inline-block",
+    backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
+    //backgroundColor: "#c46804",
+    color:"#fff",
+    textTransform:"uppercase",
+    letterSpacing:"2px",
+    fontSize: "16px",
+      width:"200px",
+      height:"36px",
+      border:"none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      
+  };
+  // const backgroundImage = {
+  //   backgroundImage: url('path/to/your/image.jpg'),
+  //   backgroundSize: "cover",
+  //   backgroundPosition: "center",
+    
+  // };
+  const lableStyle = { 
+    color:"#4c7273" ,  
+    fontWeight: "600",    
+    fontSize: "18px",   
+  };
+  //heading
+  const lableStyle1 = { 
+    color:"#042630" ,
+    //fontWeight: "300",  
+    fontSize: "20px", 
+   // marginBottom: "1000px"
+  };
+  
+  const cardstyle ={
+    overflow : "hidden",
+    boxShadow:"0 2px 20px ",
+    borderRadius: "10px",
+    transition: "transform 200ms ease-in",
+    padding:"30px",
+    backdropFilter: "blur(5px)",
+    background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
+    width: "500px",
+    marginLeft:"360px",
+    //marginBottom: "100px"
+  }
 
   return (
-    <div style={{ margin: '0 auto', maxWidth: '400px', padding: '20px', border: '2px solid #ccc', borderRadius: '5px',position: 'relative', left: '30vw' }}> {/* Apply card-like styling to the container div */}
-      <h2>Feedback Form</h2>
+    <div style={{
+      
+        backgroundImage: 'url("https://skeepers.io/app/uploads/2022/10/customer-feedback.jpg")', 
+        backgroundRepeat:"no-repeat",
+        backgroundSize:"cover",
+        
+        width: '100vw',
+        height: '120vh'
+          
+    }}> 
+    <br></br>
+    <br></br>
+    <br></br>
+      <div  style={cardstyle}>
+      <label style={lableStyle}><h2>Feedback Form</h2></label>
       <form onSubmit={handleSubmit}> 
-        <div style={{ marginBottom: '1rem' }}> 
-          <label htmlFor="message" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Message:</label>
+        <div> 
+          <label htmlFor="message" style={lableStyle} >Message:</label>
           <textarea
             id="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            style={{ width: '100%', padding: '0.5rem' }} 
+             
             required
           />
+          
         </div>
-        <button type="submit" style={{ padding: '0.5rem 1rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Submit Feedback</button>
+        <br></br>
+        <br></br>
+        <button type="submit" className="btn btn-primary" style={buttonStyle}>Submit Feedback</button>
       </form>
+    </div>
     </div>
   );
 }

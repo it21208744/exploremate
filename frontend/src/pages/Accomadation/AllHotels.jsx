@@ -1,19 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react'
+
+  import ReactToPrint from 'react-to-print'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Table, Button, Modal } from 'react-bootstrap'
-import hotell from '../../assets/images/7.jpeg'
-import ReactToPrint from 'react-to-print'
+import hotell from '../../assets/images/as.webp'
+import getTokenFromHeader from '../../components/getTokenFromHeader'
+
 
 export default function AllSales() {
   const [hotel, setHotel] = useState([])
   const [selectedId, setSelectedId] = useState(null)
   const [showModal, setShowModal] = useState(false)
+
   const [inputText, setInputText] = useState('')
+
 
   // Move fetchHotelData outside of useEffect
   const fetchHotelData = async () => {
     try {
-      const response = await axios.get('/api/v1/Coffee/')
+
+      const config = getTokenFromHeader()
+      const response = await axios.get('/api/v1/Coffee/', config)
+
       setHotel(response.data)
     } catch (error) {
       console.error('Error fetching hotel data:', error)
@@ -30,8 +38,11 @@ export default function AllSales() {
   }
 
   const handleDelete = () => {
+
+    const config = getTokenFromHeader()
     axios
-      .delete(`/api/v1/Coffee/delete/${selectedId}`)
+      .delete(`/api/v1/Coffee/delete/${selectedId}`, config)
+
       .then((res) => {
         fetchHotelData() // Call fetchHotelData to update the state after deletion
         setHotel(hotel.filter((item) => item._id !== selectedId))
@@ -64,7 +75,9 @@ export default function AllSales() {
     localStorage.setItem('RoomDetail', RoomDetail)
     localStorage.setItem('PackDetail', PackDetail)
   }
+
   const componentRef = useRef(null)
+
 
   // Styles
   const lableStyle1 = {
@@ -87,11 +100,13 @@ export default function AllSales() {
   }
 
   const buttonEdit = {
+
     // display: "inline-block",
     // backgroundColor: "green",
     // color:"#fff",
     display: 'inline-block',
     backgroundImage: 'linear-gradient(125deg,#042630,#4c7273)',
+
     color: '#fff',
     textTransform: 'uppercase',
     letterSpacing: '1px',
@@ -102,6 +117,7 @@ export default function AllSales() {
     borderRadius: '20px',
     cursor: 'pointer',
   }
+
 
   const buttonDelete1 = {
     display: 'inline-block',
@@ -151,6 +167,7 @@ export default function AllSales() {
     
   }
 
+
   const cardstyle = {
     overflow: 'hidden',
     boxShadow: '0 2px 20px ',
@@ -161,6 +178,7 @@ export default function AllSales() {
     background:
       'linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))',
     width: '1200px',
+
     marginLeft: '40px',
     marginTop: '40px',
   }
@@ -170,6 +188,7 @@ export default function AllSales() {
     //marginTop: '5px',
     marginLeft: '30px',
     borderRadius: '20px',
+
   }
 
   const tableStyle = {
@@ -191,6 +210,7 @@ export default function AllSales() {
     textAlign: 'left',
     color: '#4c7273',
   }
+
   const modalStyle = {
     position: 'absolute',
     top: '10%', // To place it near the top
@@ -204,10 +224,12 @@ export default function AllSales() {
     // width:'200px',
   }
 
+
   return (
     <>
       <div
         style={{
+
          
           backgroundColor: '#fff', //#FFFFF0
      
@@ -402,6 +424,7 @@ export default function AllSales() {
               </div>
             </div>
           </div>
+
         </div>
       </div>
       <br />

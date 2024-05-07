@@ -1,6 +1,7 @@
 import Wrapper from '../../assets/wrappers/travelersWrappers/profile'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import SupplierHeader from "./SupplierHeader";
 
 const UserProfile = () => {
   const [profile, setProfile] = useState(null)
@@ -10,7 +11,7 @@ const UserProfile = () => {
     lastName: '',
     email: '',
   })
-
+  
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
@@ -87,128 +88,183 @@ const UserProfile = () => {
   
     if (confirmed) {
       localStorage.removeItem('token');
-      window.location.href = '/login';
+      window.location.href = '/login'
     }
   };
+
+  const inputStyle = {
+    display: "block",
+            width:"100%",
+            height:"36px",
+            borderWidth: "0 0 2px 0",
+            borderColor: "#86b9b0",
+            fontSize: "14px",
+            fontWeight: "300",
+            LineHeight: '26px',
+            borderRadius: "10px",
+            marginBottom:"10px"
+            
+            
+  };
+  
+  const buttonStyle = {
+    display: "inline-block",
+    backgroundImage: "linear-gradient(125deg,#042630,#4c7273)",
+    // backgroundColor: "#c46804",
+    color:"#fff",
+    textTransform:"uppercase",
+    letterSpacing:"2px",
+    fontSize: "16px",
+      width:"200px",
+      height:"36px",
+      border:"none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      marginLeft:"30px"
+      
+  };
+  // const backgroundImage = {
+  //   backgroundImage: url('path/to/your/image.jpg'),
+  //   backgroundSize: "cover",
+  //   backgroundPosition: "center",
+    
+  // };
+  const lableStyle = { 
+    color:"#4c7273" ,  
+    fontWeight: "600",    
+    fontSize: "18px",   
+  };
+  //heading
+  const lableStyle1 = { 
+    color:"#042630" ,
+    //fontWeight: "300",  
+    fontSize: "20px", 
+   // marginBottom: "1000px"
+  };
+  
+  const cardstyle ={
+    overflow : "hidden",
+    boxShadow:"0 2px 20px ",
+    borderRadius: "10px",
+    transition: "transform 200ms ease-in",
+    padding:"20px",
+    backdropFilter: "blur(5px)",
+    background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
+    width: "500px",
+    marginLeft:"500px",
+    marginBottom: "50px"
+  }
+  const cardstyle1 ={
+    backgroundImage: 'url("https://png.pngtree.com/thumb_back/fh260/background/20240124/pngtree-this-is-a-profile-of-a-user-with-shadow-on-a-image_2957804.png")',
+    overflow : "hidden",
+    boxShadow:"0 2px 20px ",
+    borderRadius: "10px",
+    transition: "transform 200ms ease-in",
+    padding:"40px",
+    backdropFilter: "blur(5px)",
+    // background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(4, 114, 77, 0.3))",
+    background: "linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))",
+    width: "250px",
+    marginLeft:"60px",
+    // marginBottom: "100px"
+  }
   
 
-
+ 
   return (
-    <Wrapper>
-      <div className="profileContainer">
-        <div
-        // style={{
-        //   fontFamily: 'Arial, sans-serif',
-        //   textAlign: 'center',
-        //   display: 'flex',
-        //   justifyContent: 'center',
-        //   alignItems: 'center',
-        //   minHeight: '100vh',
-        // }}
-        >
-          <div>
-            <h2 /*style={{ color: '#2c3e50' }}*/>User Profile</h2>
+    // <Wrapper>
+    <>
+    
+    <div></div>
+    <br></br>
+    
+      <div style={{
+      
+        backgroundImage: 'url("https://img.freepik.com/free-vector/realistic-neon-lights-background_23-2148907367.jpg")', 
+        backgroundRepeat:"no-repeat",
+        backgroundSize:"cover",
+        width: '100vw',
+        height: '120vh'
+          
+    }}
+      >
+        <SupplierHeader/>
+          
+        <div>
+          <div style={cardstyle}>
+            <h2>User Profile</h2>
             {profile && (
-              <div
-              // style={{
-              //   backgroundColor: '#ecf0f1',
-              //   padding: '10px',
-              //   borderRadius: '5px',
-              //   margin: '10px 0',
-              // }}
+              <div style={cardstyle1}
+              
+              
               >
+                
                 <p>
-                  <strong>First Name:</strong> {profile.firstName}
+                  
+                  <strong >First Name :</strong> {profile.firstName}
                 </p>
                 <p>
-                  <strong>Last Name:</strong> {profile.lastName}
+                  <strong>Last Name :</strong> {profile.lastName}
                 </p>
                 <p>
-                  <strong>Email:</strong> {profile.email}
+                  <strong>Email :</strong> {profile.email}
                 </p>
               </div>
             )}
-            {error && <p /*style={{ color: 'red' }}*/>{error}</p>}
+            {error && <p>{error}</p>}
             <form onSubmit={handleSubmit}>
-              <label /*style={{ display: 'block', marginBottom: '10px' }}*/>
-                <span /*style={{ color: '#2c3e50', marginRight: '10px' }}*/>
-                  First Name:
+              <div style={{align:"center"}}>
+                <br></br>
+              <label>
+                <span>
+                  <b>First Name</b>
                 </span>
                 <input
                   type="text"
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  // style={{
-                  //   padding: '5px',
-                  //   borderRadius: '5px',
-                  //   border: '1px solid #ccc',
-                  //   width: '200px',
-                  // }}
-                  required
+                  
+                  required style={inputStyle}
                 />
               </label>
-              <label /*style={{ display: 'block', marginBottom: '10px' }}*/>
-                <span /*style={{ color: '#2c3e50', marginRight: '10px' }}*/>
-                  Last Name:
+              <label>
+                <span>
+                  <b>Last Name</b>
                 </span>
                 <input
                   type="text"
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  // style={{
-                  //   padding: '5px',
-                  //   borderRadius: '5px',
-                  //   border: '1px solid #ccc',
-                  //   width: '200px',
-                  // }}
-                  required
+                 
+                  required style={inputStyle}
                 />
               </label>
-              <label /*style={{ display: 'block', marginBottom: '10px' }}*/>
-                <span /*style={{ color: '#2c3e50', marginRight: '10px' }}*/>
-                  Email:
+              <label >
+                <span >
+                  <b>Email</b>
                 </span>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  // style={{
-                  //   padding: '5px',
-                  //   borderRadius: '5px',
-                  //   border: '1px solid #ccc',
-                  //   width: '200px',
-                  // }}
-                  required
+                  
+                  required style={inputStyle}
                 />
               </label>
+              </div>
               <button
-                type="submit"
-                // style={{
-                //   backgroundColor: '#3498db',
-                //   color: 'white',
-                //   padding: '8px 20px',
-                //   borderRadius: '5px',
-                //   border: 'none',
-                //   cursor: 'pointer',
-                // }}
+                type="submit" style={{ marginRight: '10px', backgroundColor: '#28a745', color: '#fff', border: 'none', borderRadius: '5px', padding: '8px 12px', cursor: 'pointer' }}
+                
               >
                 Update Profile
               </button>
               <button
-                type="button"
-                onClick={handleLogout}
-                // style={{
-                //   backgroundColor: '#e74c3c',
-                //   color: 'white',
-                //   padding: '8px 20px',
-                //   borderRadius: '5px',
-                //   border: 'none',
-                //   cursor: 'pointer',
-                //   marginLeft: '10px',
-                // }}
+                type="button"  style={{ backgroundColor: '#c00a1c', color: '#fff', border: 'none', borderRadius: '5px', padding: '8px 12px', cursor: 'pointer' }}
+                onClick={handleLogout} 
+                
               >
                 Logout
               </button>
@@ -216,8 +272,10 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
-    </Wrapper>
+      </>
+    
   )
 }
+
 
 export default UserProfile

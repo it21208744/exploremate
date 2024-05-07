@@ -21,6 +21,7 @@ import travelersRouter from './routes/travelersRouter.js'
 
 import userProfileRoutes from './routes/userProfileRoute.js'
 import feedbackRoutes from './routes/feedbackRoute.js'
+import bookingRouter from './routes/bookingRoute.js'
 
 // const app = express()
 
@@ -33,7 +34,10 @@ app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/userss', userProfileRoutes)
 app.use('/api/v1/feedback', feedbackRoutes)
 app.use('/api/v1/planting', plantingRouter)
+
 app.use('/api/v1/bd', BudgetRRouter)
+app.use('/api/v1/bookings', bookingRouter)
+
 
 connectDB()
   .then(() => {
