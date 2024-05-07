@@ -38,7 +38,7 @@ const Services = () => {
                 viewHotel(hotel)
               }}
               hoverable="true"
-              cover={<img src={hotelCover} />}
+              cover={<img src={hotelCover} style={{ width: '20vw' }} />}
               style={{
                 position: 'relative',
                 left: '20vw',

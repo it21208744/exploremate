@@ -23,6 +23,7 @@ export default NiceModal.create(({ city, plan, packingList, id, getPlans }) => {
 
   return (
     <Modal
+      onCancel={modal.remove}
       open={modal.visible}
       afterClose={modal.remove}
       footer={[
