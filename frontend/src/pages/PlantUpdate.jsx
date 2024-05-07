@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
+import getTokenFromHeader from '../components/getTokenFromHeader'
 //import { DatePickerDialogRjsf } from "../../utils/DatePicker";
 //import { useNavigate } from "react-router-dom";
 import {
@@ -10,7 +11,8 @@ import {
   redirect,
 } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import getTokenFromHeader from '../components/getTokenFromHeader'
+import taxii from '../assets/taxi5.jpg'
+
 const PlantUpdate = () => {
   const navigate = useNavigate()
 
@@ -47,10 +49,9 @@ const PlantUpdate = () => {
     setcontactNumber(localStorage.getItem('contactNumber'))
     setdriverLiceNo(localStorage.getItem('driverLiceNo'))
   }, [])
-
+  const config = getTokenFromHeader()
   const handleUpdate = (e) => {
     e.preventDefault()
-    const config = getTokenFromHeader()
     console.log('Id...', id)
     axios.patch(
       `/api/v1/Planting/update/${id}`,
@@ -77,12 +78,18 @@ const PlantUpdate = () => {
     navigate('/TaxiOwnerDashBoard/allPlanting')
   }
 
+  //--------------------------------------------------------------
   const lableStyle1 = {
-    color: '#064497',
-    fontWeight: '500',
+    color: '#fff',
+    //fontWeight: "300",
+    fontSize: '30px',
+    // marginBottom: "1000px"
   }
   const lableStyle = {
-    color: '#064497',
+    color: '#4c7273',
+    fontWeight: '600',
+    fontSize: '18px',
+    fontFamily: 'Inter, systemUi, Avenir, Helvetica, Arial, sansSerif',
   }
 
   const inputStyle = {
@@ -90,10 +97,11 @@ const PlantUpdate = () => {
     width: '100%',
     height: '36px',
     borderWidth: '0 0 2px 0',
-    borderColor: '#5543ca',
+    borderColor: '#86b9b0',
     fontSize: '14px',
-    fontWeight: '400',
+    fontWeight: '300',
     LineHeight: '26px',
+    fontFamily: 'Inter, systemUi, Avenir, Helvetica, Arial, sansSerif',
   }
 
   const buttonStyle = {
@@ -120,21 +128,24 @@ const PlantUpdate = () => {
     backdropFilter: 'blur(5px)',
     background:
       'linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))',
-    width: '1100px',
-    marginLeft: '180px',
+    width: '800px',
+    marginLeft: '320px',
   }
 
+  //--------------------------------------------------------------
   return (
     <>
       <div
         style={{
-          backgroundImage: `url("./img/coffee-beans-2.jpg")`,
+          background: `url(${taxii})`,
+          //backgroundColor:"#FFFFF0",
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           width: '100vw',
-          height: '110vh',
+          height: '170vh',
         }}
       >
+        <br></br>
         <div className="container">
           <b>
             <center>

@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Link, Form, redirect, useActionData } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import hotell from '../../assets/images/as.webp'
+import hotell from '../../assets/images/lulu.webp'
 import getTokenFromHeader from '../../components/getTokenFromHeader'
-
 export const action = async ({ request }) => {
   const formData = await request.formData()
   // const navigate = useNavigate()
@@ -36,42 +35,6 @@ export default function AddHotel() {
   const [RoomDetail, setRoom] = useState('')
   const [PackDetail, setPack] = useState('')
 
-  // function sendData(e){
-  //   e.preventDefault();
-
-  //   const newSales = {
-  // HotelName,
-  // Email,
-  // PhoneNum,
-  // Location,
-  // Amenties,
-  // Description,
-  // RoomDetail,
-  // PackDetail
-
-  //   }
-  //   //hehehe
-
-  //   //hehe
-  //    axios.post("http://localhost:5000/Coffee/add", newSales ).then(() =>{
-
-  //    setHname("");
-  //    setEma("");
-  //    setPnum("");
-  //    setLoc("");
-  //    setAmen("");
-  //    setDesc("");
-  //    setRoom("");
-  //    setPack("");
-
-  //       //navigate("/allsale1");
-
-  //    }).catch((err)=>{
-  //     alert(err)
-  //    })
-
-  // }
-
   const inputStyle = {
     display: 'block',
     width: '100%',
@@ -81,12 +44,12 @@ export default function AddHotel() {
     fontSize: '14px',
     fontWeight: '300',
     LineHeight: '26px',
+    fontFamily: 'Inter, systemUi, Avenir, Helvetica, Arial, sansSerif',
   }
 
   const buttonStyle = {
     display: 'inline-block',
     backgroundImage: 'linear-gradient(125deg,#042630,#4c7273)',
-    //backgroundColor: "#c46804",
     color: '#fff',
     textTransform: 'uppercase',
     letterSpacing: '2px',
@@ -97,16 +60,12 @@ export default function AddHotel() {
     borderRadius: '5px',
     cursor: 'pointer',
   }
-  // const backgroundImage = {
-  //   backgroundImage: url('path/to/your/image.jpg'),
-  //   backgroundSize: "cover",
-  //   backgroundPosition: "center",
 
-  // };
   const lableStyle = {
     color: '#4c7273',
     fontWeight: '600',
     fontSize: '18px',
+    fontFamily: 'Inter, systemUi, Avenir, Helvetica, Arial, sansSerif',
   }
   //heading
   const lableStyle1 = {
@@ -114,6 +73,7 @@ export default function AddHotel() {
     //fontWeight: "300",
     fontSize: '20px',
     // marginBottom: "1000px"
+    //fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
   }
 
   const cardstyle = {
@@ -127,6 +87,7 @@ export default function AddHotel() {
       'linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))',
     width: '800px',
     marginLeft: '360px',
+
     //marginBottom: "100px"
   }
 
@@ -139,7 +100,7 @@ export default function AddHotel() {
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           width: '100vw',
-          height: '120vh',
+          height: '125vh',
         }}
       >
         <div style={{ marginLeft: '700px' }}>
@@ -172,6 +133,8 @@ export default function AddHotel() {
               />
             </div>
 
+            <br></br>
+
             <div className="form-group">
               <label htmlFor="Email" style={lableStyle}>
                 Email
@@ -189,6 +152,8 @@ export default function AddHotel() {
                 required
               />
             </div>
+
+            <br></br>
 
             <div className="form-group">
               <label htmlFor="PhoneNum" style={lableStyle}>
@@ -209,7 +174,7 @@ export default function AddHotel() {
                 title="Only values can be entered"
               />
             </div>
-
+            <br></br>
             <div className="form-group">
               <label htmlFor="Location" style={lableStyle}>
                 Location
@@ -227,30 +192,32 @@ export default function AddHotel() {
                 required
               />
             </div>
-
+            <br></br>
             <div className="form-group">
               <label htmlFor="Amenties" style={lableStyle}>
-                Amenities
+                Cost
               </label>
               <input
                 type="text"
                 className="form-control"
                 id="Amenties"
                 name="Amenties"
-                placeholder="Enter am"
+                placeholder="Enter cost"
                 style={inputStyle}
                 onChange={(e) => {
                   setAmen(e.target.value)
                 }}
                 required
+                pattern="[0-9]+"
+                title="Only values can be entered"
               />
             </div>
-
+            <br></br>
             <div className="form-group">
               <label htmlFor="Description" style={lableStyle}>
                 Description
               </label>
-              <input
+              <textarea
                 type="text"
                 className="form-control"
                 id="Description"
@@ -263,7 +230,7 @@ export default function AddHotel() {
                 required
               />
             </div>
-
+            <br></br>
             <div className="form-group">
               <label htmlFor="RoomDetail" style={lableStyle}>
                 Room details
@@ -281,7 +248,7 @@ export default function AddHotel() {
                 required
               />
             </div>
-
+            <br></br>
             <div className="form-group">
               <label htmlFor="PackDetail" style={lableStyle}>
                 Package details

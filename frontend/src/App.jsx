@@ -29,9 +29,14 @@ import SalesHeader from './pages/Accomadation/SalesHeader'
 import AddHotel from './pages/Accomadation/AddHotel'
 import AllHotels from './pages/Accomadation/AllHotels'
 import UpdateHotels from './pages/Accomadation/UpdateHotels'
+
 import GetMyBookings from './pages/travelers/GetMyBookings'
+import BudgetForm from './components/BudgetForm'
+import Budgetdisplay from './components/Budgetdisplay'
 
 import { action as AddhotelAction } from './pages/Accomadation/AddHotel'
+
+import { action as BudgetFormAction } from './components/BudgetForm'
 //import { action as AllHotelsAction } from './pages/Accomadation/AllHotels'
 //import { action as AllhotelAction } from './pages/Accomadation/AllHotels'
 
@@ -57,7 +62,12 @@ const router = createBrowserRouter([
             element: <Planner />,
             action: addPlan,
           },
-          { path: 'planOnYourBudget', element: <GetMyBookings /> },
+          {
+            path: 'planOnYourBudget',
+            element: <BudgetForm />,
+            action: BudgetFormAction,
+          },
+          { path: 'budgetdisplay', element: <Budgetdisplay /> },
           { path: 'services', element: <Services /> },
           { path: 'profile', element: <Profile /> },
 

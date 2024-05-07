@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import getTokenFromHeader from '../components/getTokenFromHeader'
+
 // import {FutureBlockDatePickerDialogRjsf } from "../../utils/DatePicker";
 // import EstateHeader from "./EstateHeader";
 import { useNavigate, Form, redirect } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import getTokenFromHeader from '../components/getTokenFromHeader'
+import taxi from '../assets/taxi5.jpg'
 
 export const action = async ({ request }) => {
   const formData = await request.formData()
   const data = Object.fromEntries(formData)
   console.log(data)
-
+  const conf = getTokenFromHeader()
   try {
-    const config = getTokenFromHeader()
-    const res = await axios.post('/api/v1/Planting/add/', data, config)
+    const res = await axios.post('/api/v1/Planting/add/', data, conf)
     console.log(res)
     toast.success('Registration successful')
     // return redirect('/login')
@@ -91,16 +92,17 @@ const AddPlanting = () => {
   //     })
 
   // }
-
+  //-----------------------------------------------------------------------------
   const inputStyle = {
     display: 'block',
     width: '100%',
     height: '36px',
     borderWidth: '0 0 2px 0',
-    borderColor: '#86b9bo',
+    borderColor: '#86b9b0',
     fontSize: '14px',
-    fontWeight: '400',
+    fontWeight: '300',
     LineHeight: '26px',
+    fontFamily: 'Inter, systemUi, Avenir, Helvetica, Arial, sansSerif',
   }
 
   const buttonStyle = {
@@ -110,49 +112,52 @@ const AddPlanting = () => {
     textTransform: 'uppercase',
     letterSpacing: '2px',
     fontSize: '16px',
-    width: '200px',
+    width: '130px',
     height: '36px',
     border: 'none',
+    borderRadius: '5px',
     cursor: 'pointer',
-    marginTop: '6px',
   }
-
   const lableStyle = {
-    color: '#04c7273',
-    fontSize: '16px',
+    color: '#4c7273',
+    fontWeight: '600',
+    fontSize: '18px',
+    fontFamily: 'Inter, systemUi, Avenir, Helvetica, Arial, sansSerif',
   }
+  //heading
   const lableStyle1 = {
-    marginTop: '-50px',
-    marginBottom: '-30px',
-    marginLeft: '350px',
-    color: '#042630',
-    fontWeight: '500',
+    color: '#fff',
+    //fontWeight: "300",
+    fontSize: '20px',
+    // marginBottom: "1000px"
+    //fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",
   }
-
   const cardstyle = {
     overflow: 'hidden',
-    marginTop: '10px',
-    marginLeft: '285px',
-    width: '900px',
-    height: '1000px',
     boxShadow: '0 2px 20px ',
     borderRadius: '$radius',
     transition: 'transform 200ms ease-in',
-    padding: '20px',
+    padding: '30px',
     backdropFilter: 'blur(5px)',
     background:
       'linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))',
+    width: '800px',
+    marginLeft: '360px',
+
+    //marginBottom: "100px"
+    //--------------------------------------------------------------
   }
 
   return (
     <>
       <div
         style={{
-          backgroundImage: `url("./img/coffee-beans-2.jpg")`,
+          background: `url(${taxi})`,
+          //backgroundColor:"#FFFFF0",
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           width: '100vw',
-          height: '100vh',
+          height: '170vh',
         }}
       >
         <div className="container">
@@ -443,6 +448,8 @@ const AddPlanting = () => {
                   />
                 </div>
               </div>
+
+              <br></br>
 
               <div
                 style={{

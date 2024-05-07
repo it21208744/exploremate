@@ -1,6 +1,12 @@
 //const router = require("express").Router();
 import { Router } from 'express'
 const router = Router()
+
+
+
+
+
+
 // const router = Router()
 // let cof = require("../models/Cof");
 import tokenValidate from '../middleware/tokenValidate.js'
@@ -13,7 +19,7 @@ router.route('/add').post(async (req, res) => {
   const Email = req.body.Email
   const PhoneNum = Number(req.body.PhoneNum)
   const Location = req.body.Location
-  const Amenties = req.body.Amenties
+  const Amenties = Number(req.body.Amenties)
   const Description = req.body.Description
   const RoomDetail = req.body.RoomDetail
   const PackDetail = req.body.PackDetail
@@ -120,5 +126,10 @@ router.route('/get/:id').get(async (req, res) => {
         .send({ status: 'Error with get sale', error: err.message })
     })
 })
+
+
+
+
+
 
 export default router

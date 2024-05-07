@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import getTokenFromHeader from '../../components/getTokenFromHeader'
 //import SalesHeader from './SalesHeader';
 import {
   Link,
@@ -10,6 +9,8 @@ import {
   redirect,
 } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import hotell from '../../assets/images/lulu.webp'
+import getTokenFromHeader from '../../components/getTokenFromHeader'
 
 const UpdateHotels = () => {
   const [id, setid] = useState(' ')
@@ -72,6 +73,7 @@ const UpdateHotels = () => {
     fontSize: '14px',
     fontWeight: '300',
     LineHeight: '26px',
+    fontFamily: 'Inter, systemUi, Avenir, Helvetica, Arial, sansSerif',
   }
 
   const buttonStyle = {
@@ -93,6 +95,7 @@ const UpdateHotels = () => {
     color: '#4c7273',
     fontWeight: '600',
     fontSize: '18px',
+    fontFamily: 'Inter, systemUi, Avenir, Helvetica, Arial, sansSerif',
   }
   //heading
   const lableStyle1 = {
@@ -111,20 +114,20 @@ const UpdateHotels = () => {
     backdropFilter: 'blur(5px)',
     background:
       'linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3))',
-    width: '610px',
-    marginLeft: '450px',
+    width: '730px',
+    marginLeft: '420px',
   }
 
   return (
     <>
       <div
         style={{
-          backgroundImage: `url("../../../assets/images/beautiOfEarth.webp")`,
-          backgroundColor: '#FFFFF0',
+          background: `url(${hotell})`,
+          //backgroundColor:"#FFFFF0",
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           width: '100vw',
-          height: '100vh',
+          height: '125vh',
         }}
       >
         <div style={{ marginLeft: '700px' }}>
@@ -157,6 +160,7 @@ const UpdateHotels = () => {
               />
             </div>
 
+            <br></br>
             <div className="form-group">
               <label htmlFor="Email" style={lableStyle}>
                 Email
@@ -176,6 +180,7 @@ const UpdateHotels = () => {
               />
             </div>
 
+            <br></br>
             <div className="form-group">
               <label htmlFor="PhoneNum" style={lableStyle}>
                 Phone number
@@ -196,7 +201,7 @@ const UpdateHotels = () => {
                 title="Only values can be entered"
               />
             </div>
-
+            <br></br>
             <div className="form-group">
               <label htmlFor="Location" style={lableStyle}>
                 Location
@@ -215,31 +220,33 @@ const UpdateHotels = () => {
                 required
               />
             </div>
-
+            <br></br>
             <div className="form-group">
               <label htmlFor="Amenties" style={lableStyle}>
-                Amenities
+                Cost
               </label>
               <input
                 type="text"
                 className="form-control"
                 id="Amenties"
                 name="Amenties"
-                placeholder="Enter am"
+                placeholder="Enter cost"
                 style={inputStyle}
                 value={Amenties}
                 onChange={(e) => {
                   setAmen(e.target.value)
                 }}
                 required
+                pattern="[0-9]+"
+                title="Only values can be entered"
               />
             </div>
-
+            <br></br>
             <div className="form-group">
               <label htmlFor="Description" style={lableStyle}>
                 Description
               </label>
-              <input
+              <textarea
                 type="text"
                 className="form-control"
                 id="Description"
@@ -253,7 +260,7 @@ const UpdateHotels = () => {
                 required
               />
             </div>
-
+            <br></br>
             <div className="form-group">
               <label htmlFor="RoomDetail" style={lableStyle}>
                 Room details
@@ -272,7 +279,7 @@ const UpdateHotels = () => {
                 required
               />
             </div>
-
+            <br></br>
             <div className="form-group">
               <label htmlFor="PackDetail" style={lableStyle}>
                 Package details

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import hotell from '../../assets/images/y.avif'
+import hotell from '../../assets/images/7.jpeg'
 
 const SalesHeader =()=>{
 
@@ -13,7 +13,18 @@ const SalesHeader =()=>{
      fontFamily: 'Arial, sans-serif',
   };
   
-
+  const buttonStyle = {
+    backgroundColor: '#fff', // Transparent background
+    border: 'none', // Dark border (black) 1px solid #000
+    color: ' #000', // Dark text (black)
+    padding: '10px 20px', // Padding for spacing
+    borderRadius: '5px', // Rounded corners
+    cursor: 'pointer', // Pointer cursor for hover effect
+    transition: 'background 0.3s, color 0.3s', // Transition for hover effects
+    marginLeft:'700px',
+    marginTop:'1px',
+    fontSize:'15px',
+  };
     return(
 <>
 <div style={{
@@ -34,9 +45,9 @@ const SalesHeader =()=>{
         <div >
 
   <h1 style={lableStyle}>WELCOME TO EXPLOREMATE</h1>
-  <p style={{color:'#fff',marginLeft:'600px'}}>evaluate your journey with this exclusive expirience with us on this ,
+  <p style={{color:'#fff',marginLeft:'600px', fontFamily: "Inter, systemUi, Avenir, Helvetica, Arial, sansSerif",}}>evaluate your journey with this exclusive expirience with us on this ,
   <br></br>       evaluate your journey with this exclusive expirience</p>
-  <button style = {{marginLeft:'700px',marginTop:'1px',}}>Add Hotels</button>
+  <button style = {buttonStyle}>Manage Hotels</button>
   </div>
   </div>
  
