@@ -51,7 +51,10 @@ const GetMyBookings = () => {
             <Card
               title={hotel.hotelName}
               bordered={true}
-              style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                marginBottom: '2vh',
+              }}
             >
               <h5>You booked {hotel.hotelName} for these days</h5>
               <>

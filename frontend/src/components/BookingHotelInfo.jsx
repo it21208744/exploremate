@@ -9,7 +9,7 @@ import { getBookedDates } from './betweenDatesArr'
 import React, { useState, useEffect } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-
+import { Button, Flex, Tooltip } from 'antd'
 export default NiceModal.create((hotel) => {
   const [allBookedDates, setAllBookedDates] = useState(null)
 
@@ -81,9 +81,12 @@ export default NiceModal.create((hotel) => {
         minDate={getTomorrow()}
         disabled={isDateDisabled}
       />
-      <button onClick={() => handleBooking(startDate, endDate, hotel._id)}>
+      <Button
+        onClick={() => handleBooking(startDate, endDate, hotel._id)}
+        style={{ position: 'absolute', marginLeft: '-13vw', bottom: '2vh' }}
+      >
         Book
-      </button>
+      </Button>
     </Modal>
   )
 })
