@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 
 function FeedbackForm() {
@@ -52,6 +53,7 @@ function FeedbackForm() {
       border:"none",
       borderRadius: "5px",
       cursor: "pointer",
+      marginLeft:"30px"
       
   };
   // const backgroundImage = {
@@ -117,6 +119,9 @@ function FeedbackForm() {
         <br></br>
         <br></br>
         <button type="submit" className="btn btn-primary" style={buttonStyle}>Submit Feedback</button>
+        <button type="submit" className="btn btn-primary" style={buttonStyle}>
+          <Link to="/feedbackTabel" style={{ color: "#ffffff" ,textDecoration: "none"}}>Go Back</Link>
+        </button>
       </form>
     </div>
     </div>
