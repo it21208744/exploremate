@@ -3,7 +3,7 @@ import React,{useState,useEffect} from "react";
 //import SalesHeader from './SalesHeader';
 import {Link, Form, useNavigate, useActionData, redirect} from 'react-router-dom';
 import {toast} from 'react-toastify'
-import hotell from '../../assets/images/10.jpg'
+import hotell from '../../assets/images/lulu.webp'
 
 const UpdateHotels = () => {
     const[id,setid] = useState(" ");
@@ -200,7 +200,7 @@ const lableStyle1 = {
    <br></br>
    <div className="form-group">
     <label htmlFor="Description" style={lableStyle}  >Description</label>
-    <input type="text" className="form-control" id="Description" name="Description"  placeholder="Enter dis" style={inputStyle} value = {Description} onChange={(e) => {
+    <textarea type="text" className="form-control" id="Description" name="Description"  placeholder="Enter dis" style={inputStyle} value = {Description} onChange={(e) => {
         setDesc(e.target.value);
     }}
     required

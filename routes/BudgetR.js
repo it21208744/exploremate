@@ -117,6 +117,10 @@ router.post('/find-hotels', async (req, res) => {
       Amenties: { $lte: Budget },
     });
 
+    if(hotels.length == 0){
+      return res.status(404).json({msg:'no hotels were found'})
+    }
+
     const plan = await budgetPlanning(NumDays,hotels)
 
 
