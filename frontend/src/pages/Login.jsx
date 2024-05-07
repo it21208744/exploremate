@@ -25,7 +25,7 @@ const Login = () => {
       const userRole = response?.data?.user?.role
 
       if (userRole === 'traveller') {
-        navigate('/register')
+        navigate('/travelerDashBoard')
       } else if (userRole === 'hotel') {
         navigate('/HotelOwnerDashBoardLayout')
       }
