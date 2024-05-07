@@ -23,7 +23,7 @@ const GetMyBookings = () => {
   const deleteBookings = async (hotelID, bookingID) => {
     // console.log(hotelID, bookingID)
     const userBookings = await axios.put(
-      `/api/v1/bookings/update/${hotelID}`,
+      `/api/v1/bookings/deleteBookings/${hotelID}`,
       { bookingId: bookingID },
       conf
     )

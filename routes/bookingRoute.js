@@ -60,7 +60,7 @@ router.route('/getBookings').get(async (req, res) => {
 //     })
 // })
 
-router.route('/update/:id').put(async (req, res) => {
+router.route('/deleteBookings/:id').put(async (req, res) => {
   try {
     const hotelId = req.params.id // Extract hotel ID for clarity
 
@@ -92,6 +92,42 @@ router.route('/update/:id').put(async (req, res) => {
   } catch (error) {
     console.error('Error updating hotel record:', error)
     return res.status(500).json({ message: 'Internal server error' })
+  }
+})
+
+//------------------------------
+router.route('/update/:id').put(async (req, res) => {
+  console.log(req.body)
+  console.log(req.params.id)
+  console.log(req.user.email)
+
+  try {
+    const updatedHotelRecord = await hotel.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: {
+          bookedDates: {
+            bookedBy: req.user.email,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
+          },
+        },
+      },
+      { new: true }
+    )
+
+    if (updatedHotelRecord) {
+      console.log(
+        `Booking successfully added to hotel ${updatedHotelRecord.HotelName}`
+      )
+      return updatedHotelRecord // Return the updated hotel object
+    } else {
+      console.error(`Hotel with ID ${req.params.id} not found`)
+      return null // Indicate failure
+    }
+  } catch (error) {
+    console.error('Error updating bookedDates:', error)
+    throw error // Re-throw the error for handling
   }
 })
 
