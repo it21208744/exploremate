@@ -4,17 +4,26 @@ const router = Router()
 
 import hotel from '../models/Cof.js'
 
-router.use(tokenValidate)
+// router.use(tokenValidate)
 
-router.route('/').get((req, res) => {
-  hotel
-    .find()
-    .then((hotel) => {
-      res.json(hotel)
+router.route('/').get(async (req, res) => {
+  const userEmail = req.user?.email // Optional chaining to handle potential undefined user
+
+  // if (!userEmail) {
+  //   return res.status(400).send('Missing user email in request') // Handle missing email
+  // }
+
+  try {
+    const hotels = await hotel.find({
+      'bookedDates.bookedBy': 'hehe@gmail.com', // Filter by HotelName and bookedBy email
     })
-    .catch((err) => {
-      console.log(err)
-    })
+
+    let relatedBookings = []
+
+    res.json(hotels)
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 router.route('/get/:id').get(async (req, res) => {
@@ -33,10 +42,6 @@ router.route('/get/:id').get(async (req, res) => {
 })
 
 router.route('/update/:id').put(async (req, res) => {
-  console.log(req.body)
-  console.log(req.params.id)
-  console.log(req.user.email)
-
   try {
     const updatedHotelRecord = await hotel.findByIdAndUpdate(
       req.params.id,

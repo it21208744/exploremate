@@ -48,15 +48,15 @@ const NewNav = () => {
     setCollapsed(!collapsed)
   }
   return (
-    <div>
+    <div style={{ position: 'fixed', height: '100%' }}>
       <Menu
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         mode="inline"
-        theme="light"
+        theme="dark"
         inlineCollapsed={collapsed}
         items={items}
-        style={{ width: '15vw', position: 'fixed' }}
+        style={{ width: '15vw', position: 'fixed', height: '100%' }}
       />
     </div>
   )
