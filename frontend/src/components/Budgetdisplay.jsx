@@ -4,12 +4,13 @@ import hotell from '../assets/images/f.jpg'
 // Component to display the AI-generated plan
 import NiceModal from '@ebay/nice-modal-react'
 import BookingHotelInfo from '../components/BookingHotelInfo'
+import axios from 'axios'
+import getTokenFromHeader from './getTokenFromHeader'
 export default function PlanResult() {
   let data = localStorage.getItem('budgetPlan') // Get the plan data from the action
   data = JSON.parse(data)
-  console.log(data)
+
   if (!data || !data.plan) {
-    console.log(data[0])
     return <div>No plan data available.</div>
   }
   const viewHotel = (hotel) => {
@@ -42,6 +43,12 @@ export default function PlanResult() {
     borderRadius: '5px',
     cursor: 'pointer',
   }
+
+  const getHotel = async (id) => {
+    const conf = getTokenFromHeader()
+    const hotel = await axios.get(`/api/v1/Coffee/get/${id}`, conf)
+    return hotel.data.hotel
+  }
   return (
     <>
       <div
@@ -58,6 +65,7 @@ export default function PlanResult() {
           <br></br>
           {Object.keys(plan).map((key) => {
             const hotelPlan = plan[key]
+
             return (
               <div style={cardstyle}>
                 <div key={hotelPlan.id}>
@@ -73,7 +81,7 @@ export default function PlanResult() {
                     type="submit"
                     style={buttonStyle}
                     onClick={() => {
-                      viewHotel(plan)
+                      getHotel(hotelPlan.id).then((data) => viewHotel(data))
                     }}
                   >
                     Book now

@@ -3,11 +3,13 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   .content {
     border-radius: 10px;
-    width: 35vw;
+    width: 30vw;
+    margin: 1vw;
+    height: 45vh;
   }
 
   img {
-    width: 30vw;
+    width: 25vw;
     border: 2px solid black;
     border-radius: 10px;
     display: block;

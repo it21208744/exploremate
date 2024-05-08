@@ -35,6 +35,14 @@ const LandingPage = () => {
               'Let artificial intelligence guide your trip planning process.'
             }
           />
+          <LandingPageCard
+            img={artificial_intelligence}
+            introduction={'Book your preferred Hotel'}
+          />
+          <LandingPageCard
+            img={artificial_intelligence}
+            introduction={'Register your business here'}
+          />
         </div>
       </div>
     </Wrapper>
