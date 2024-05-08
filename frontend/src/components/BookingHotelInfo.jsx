@@ -9,7 +9,7 @@ import { getBookedDates } from './betweenDatesArr'
 import React, { useState, useEffect } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-
+import { Button, Flex, Tooltip } from 'antd'
 export default NiceModal.create((hotel) => {
   const [allBookedDates, setAllBookedDates] = useState(null)
 
@@ -20,6 +20,7 @@ export default NiceModal.create((hotel) => {
   const modal = useModal()
 
   const handleBooking = async (startDate, endDate, id) => {
+    modal.hide()
     const conf = getTokenFromHeader()
     const bookingInfo = {
       startDate,
@@ -60,12 +61,14 @@ export default NiceModal.create((hotel) => {
       afterClose={() => modal.remove()}
     >
       <p>{hotel.Description}</p>
-      <h3>Location - {hotel.Location}</h3>
+
       <h3>Room details - {hotel.RoomDetail}</h3>
       <h3>Package details - {hotel.PackDetail}</h3>
-      <h3>Cost per night - {hotel.Amenties}</h3>
-      <h2>Phone No - {hotel.PhoneNum}</h2>
-      <h2>Email - {hotel.Email}</h2>
+      <h3>Cost per night - Rs: {hotel.Amenties}</h3>
+      <h4>
+        Contact - {hotel.PhoneNum} / {hotel.Email}
+      </h4>
+
       <DatePicker
         selected={startDate}
         onChange={onChange}
@@ -78,9 +81,12 @@ export default NiceModal.create((hotel) => {
         minDate={getTomorrow()}
         disabled={isDateDisabled}
       />
-      <button onClick={() => handleBooking(startDate, endDate, hotel._id)}>
+      <Button
+        onClick={() => handleBooking(startDate, endDate, hotel._id)}
+        style={{ position: 'absolute', marginLeft: '-13vw', bottom: '2vh' }}
+      >
         Book
-      </button>
+      </Button>
     </Modal>
   )
 })

@@ -29,6 +29,7 @@ const Services = () => {
   }
 
   return (
+
     <Wrapper>
       <div style={{
          // background: `url(${hotell})`,
@@ -38,6 +39,7 @@ const Services = () => {
           width: '100vw',
           height: '700vh',
         }}>
+
       <div className="servicesContainer">
         {hotel.map((hotel) => {
           return (
@@ -53,7 +55,9 @@ const Services = () => {
                 position: 'relative',
                 left: '40vw',
                 marginBottom: '2vh',
+
                 width: 600,
+
                 border: 'solid',
                 borderWidth: '2px',
                 
@@ -67,8 +71,10 @@ const Services = () => {
           )
         })}
       </div>
+
       </div>
     </Wrapper>
+
   )
 }
 export default Services

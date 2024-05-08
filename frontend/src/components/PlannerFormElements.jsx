@@ -155,9 +155,7 @@ const PlannerFormElements = () => {
               </div>
             )
           ) : (
-            <div className="defaultContent">
-              <img src={nightSky} alt="" />
-            </div>
+            <>{/* <img src={nightSky} alt="" /> */}</>
           )}
         </div>
       </div>

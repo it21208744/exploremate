@@ -70,6 +70,7 @@ const router = createBrowserRouter([
           { path: 'budgetdisplay', element: <Budgetdisplay /> },
           { path: 'services', element: <Services /> },
           { path: 'profile', element: <Profile /> },
+          { path: 'bookings', element: <GetMyBookings /> },
 
           //temporary
           { path: 'guide', element: <Guide /> },
