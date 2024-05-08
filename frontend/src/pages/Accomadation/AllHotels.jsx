@@ -168,7 +168,7 @@ export default function AllSales() {
     width: '1200px',
 
     marginLeft: '40px',
-    marginTop: '40px',
+    marginTop: '20px',
   }
   const imagestyle = {
     width: '97%', // Image is larger
@@ -222,7 +222,7 @@ export default function AllSales() {
         <div
           style={{
             position: 'absolute',
-            top: '55%',
+            top: '100%',
             left: '50%',
             textAlign: 'center',
             transform: 'translate(-50%, -50%)',

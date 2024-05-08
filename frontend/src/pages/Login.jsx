@@ -29,7 +29,9 @@ const Login = () => {
         navigate('/HotelOwnerDashBoardLayout')
       } else if (userRole === 'taxi') {
         navigate('/TaxiownerDashBoard')
+
       } else {
+
         navigate('/travelerDashBoard')
       }
     } catch (error) {
