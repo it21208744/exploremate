@@ -119,7 +119,7 @@ const AddPlanting = () => {
     cursor: 'pointer',
   }
   const lableStyle = {
-    color: '#4c7273',
+    color: '#294b5a',
     fontWeight: '600',
     fontSize: '18px',
     fontFamily: 'Inter, systemUi, Avenir, Helvetica, Arial, sansSerif',
@@ -185,14 +185,7 @@ const AddPlanting = () => {
                     name="companyName"
                     placeholder=" Company Name"
                     style={inputStyle}
-                    // onChange={(e)=>{
-
-                    //     setcompanyName(e.target.value);
-
-                    //   }}
-                    // required
-                    //   pattern="[a-zA-Z\s]+"
-                    // title="Only input strings"
+                    required
                   />
                 </div>
 
@@ -208,6 +201,7 @@ const AddPlanting = () => {
                     name="bussinessRegNo"
                     placeholder="Enter bussiness RegNo"
                     style={inputStyle}
+                    required
                     // onChange={(e)=>{
 
                     //     setbussinessRegNo(e.target.value);
@@ -225,20 +219,14 @@ const AddPlanting = () => {
                   </label>
 
                   <input
-                    type="text"
+                    type="email"
                     className="form-control"
                     id="companyEmail"
                     name="companyEmail"
                     placeholder="Enter company Email"
                     style={inputStyle}
-                    // onChange={(e)=>{
-
-                    //     setcompanyEmail(e.target.value);
-
-                    //   }}
-                    //   required
-                    //   pattern="[a-zA-Z\s]+"
-                    // title="Only input strings"
+                    required
+                    
                   />
                 </div>
                 <div className="form-group">
@@ -247,20 +235,23 @@ const AddPlanting = () => {
                   </label>
 
                   <input
-                    type="number"
+                    type="tel"
                     className="form-control"
                     id="comContactNo"
                     name="comContactNo"
                     placeholder="Enter comContactNo"
                     style={inputStyle}
-                    // onChange={(e)=>{
+                    pattern="\d{10}"  // Regex pattern for exactly 10 digits
+                    maxLength={10}  // Set maximum length to 10
+                    required
 
-                    //     setcomContactNo(e.target.value);
-
-                    //   }}
-                    //   required
-                    //   pattern="[a-zA-Z\s]+"
-                    // title="Only input strings"
+                    onInvalid={(e) => {
+                      e.target.setCustomValidity("Please enter a 10-digit contact number.");
+                    }}
+                    onInput={(e) => {
+                      e.target.setCustomValidity("");  // Reset custom validity message
+                    }}
+                   
                   />
 
                   <h2>vehicle details</h2>
@@ -278,14 +269,8 @@ const AddPlanting = () => {
                     name="vehicleType"
                     placeholder="Enter vehicleType"
                     style={inputStyle}
-                    // onChange={(e)=>{
-
-                    //     setvehicleType(e.target.value);
-
-                    //   }}
-                    //   required
-                    //   pattern="[a-zA-Z\s]+"
-                    // title="Only input strings"
+                    required
+                    
                   />
                 </div>
 
@@ -302,14 +287,7 @@ const AddPlanting = () => {
                     name="vehicleModel"
                     placeholder="VehicleModel"
                     style={inputStyle}
-                    // onChange={(e)=>{
-
-                    //     setvehicleModel(e.target.value);
-
-                    //   }}
-                    //   required
-                    //   pattern="[a-zA-Z\s]+"
-                    // title="Only input strings"
+                    required
                   />
                 </div>
 
@@ -325,14 +303,7 @@ const AddPlanting = () => {
                     name="licenNo"
                     placeholder="Licen Number"
                     style={inputStyle}
-                    // onChange={(e)=>{
-
-                    //     setdivisionName(e.target.value);
-
-                    //   }}
-                    //   required
-                    //   pattern="[a-zA-Z\s]+"
-                    // title="Only input strings"
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -347,14 +318,7 @@ const AddPlanting = () => {
                     name="inssuranceCompany"
                     placeholder="Inssurance Company"
                     style={inputStyle}
-                    // onChange={(e)=>{
-
-                    //     setinssuranceCompany(e.target.value);
-
-                    //   }}
-                    //   required
-                    //   pattern="[a-zA-Z\s]+"
-                    // title="Only input strings"
+                    required
                   />
                 </div>
 
@@ -371,14 +335,7 @@ const AddPlanting = () => {
                     name="driverName"
                     placeholder="Driver Name"
                     style={inputStyle}
-                    // onChange={(e)=>{
-
-                    //     setdriverName(e.target.value);
-
-                    //   }}
-                    //   required
-                    //   pattern="[a-zA-Z\s]+"
-                    // title="Only input strings"
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -387,20 +344,13 @@ const AddPlanting = () => {
                   </label>
 
                   <input
-                    type="text"
+                    type="email"
                     className="form-control"
                     id="driverEmail"
                     name="driverEmail"
                     placeholder="Driver Email"
                     style={inputStyle}
-                    // onChange={(e)=>{
-
-                    //     setdriverEmail(e.target.value);
-
-                    //   }}
-                    //   required
-                    //   pattern="[a-zA-Z\s]+"
-                    // title="Only input strings"
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -409,20 +359,22 @@ const AddPlanting = () => {
                   </label>
 
                   <input
-                    type="text"
+                    type="tel"
                     className="form-control"
                     id="contactNumber"
                     name="contactNumber"
                     placeholder="Contact Number"
                     style={inputStyle}
-                    // onChange={(e)=>{
+                    pattern="\d{10}"  // Regex pattern for exactly 10 digits
+                    maxLength={10}  // Set maximum length to 10
+                    required
 
-                    //     setcontactNumber(e.target.value);
-
-                    //   }}
-                    //   required
-                    //   pattern="[a-zA-Z\s]+"
-                    // title="Only input strings"
+                    onInvalid={(e) => {
+                      e.target.setCustomValidity("Please enter a 10-digit contact number.");
+                    }}
+                    onInput={(e) => {
+                      e.target.setCustomValidity("");  // Reset custom validity message
+                    }}
                   />
                 </div>
                 <div className="form-group">
@@ -437,14 +389,7 @@ const AddPlanting = () => {
                     name="driverLiceNo"
                     placeholder="Driver Licen Number"
                     style={inputStyle}
-                    // onChange={(e)=>{
-
-                    //     setdriverLiceNo(e.target.value);
-
-                    //   }}
-                    //   required
-                    //   pattern="[a-zA-Z\s]+"
-                    // title="Only input strings"
+                    required
                   />
                 </div>
               </div>
