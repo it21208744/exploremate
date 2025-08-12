@@ -18,13 +18,13 @@ const validateToken = expressAsyncHandler(async (req, res, next) => {
 
       const { iat, exp, ...newDecode } = decoded
       // console.log(newDecode)
-      req.user = newDecode // Set decoded value to req.user
+      req.user = newDecode 
       
 
-      next() // Call next() after setting req.user
+      next() 
     })
   } else {
-    // throw new Error('Bearer token not found in Authorization header')
+   
     res.send('something went wrong')
   }
 })
