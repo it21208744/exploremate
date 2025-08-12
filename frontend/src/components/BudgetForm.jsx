@@ -4,16 +4,16 @@ import axios from 'axios'
 import { Form, redirect, useActionData, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import hotell from '../assets/images/f.jpg'
-import { budgetPlanning } from '../../../components/openAI' // Import the AI function
+import { budgetPlanning } from '../../../components/openAI' 
 export const action = async ({ request }) => {
   const formData = await request.formData()
   const data = Object.fromEntries(formData)
 
   const { Location, Budget, NumDays } = data
 
-  // Fetch the list of hotels and taxis, etc.
-  const filtereHotelList = await axios.get('/api/v1/Coffee/') // Assuming this endpoint exists
-  //const FilterTaxiList = await axios.get('/api/taxis');   // Assuming this endpoint exists
+
+  const filtereHotelList = await axios.get('/api/v1/Coffee/') 
+  //const FilterTaxiList = await axios.get('/api/taxis');   
 
   // Call the AI function with user data
   const plan = await budgetPlanning(
