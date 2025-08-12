@@ -18,7 +18,7 @@ export default NiceModal.create(({ city, plan, packingList, id, getPlans }) => {
     }
     // console.log(id)
 
-    modal.hide() // Optionally close the modal after deletion
+    modal.hide() 
   }
 
   return (
