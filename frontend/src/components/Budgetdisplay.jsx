@@ -1,7 +1,7 @@
 import React from 'react'
 import { useActionData } from 'react-router-dom'
 import hotell from '../assets/images/f.jpg'
-// Component to display the AI-generated plan
+
 import NiceModal from '@ebay/nice-modal-react'
 import BookingHotelInfo from '../components/BookingHotelInfo'
 import axios from 'axios'
