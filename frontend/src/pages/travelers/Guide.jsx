@@ -27,11 +27,11 @@ const Guide = () => {
   return (
     <Wrapper style={{
       backgroundImage: `url(${pl1Image})`,
-      backgroundSize: 'cover', // Ensures the image covers the entire area
-      backgroundPosition: 'center', // Centers the image
-      backgroundRepeat: 'no-repeat', // Prevents the image from repeating
-      minHeight: '100vh', // Ensures the wrapper has a minimum height
-      padding: '20px', // Add some padding around the content
+      backgroundSize: 'cover', 
+      backgroundPosition: 'center', 
+      backgroundRepeat: 'no-repeat', 
+      minHeight: '100vh', 
+      padding: '20px', 
     }}>
       {plans.map((plan) => {
         return (
@@ -49,11 +49,11 @@ const Guide = () => {
             hoverable="true"
             cover={<img src={planImg} style={{ 
               width: '30vw',
-                height: '13vh', // Adjust the height as desired
-                objectFit: 'cover', // Ensures the image covers the space
-                borderRadius: '12px', // Match the card border radius
-                display: 'block', // Remove any potential inline block issues
-                margin: '0 auto', // Center the image
+                height: '13vh', 
+                objectFit: 'cover', 
+                borderRadius: '12px', 
+                display: 'block', 
+                margin: '0 auto', 
              }} />}
             style={{
               position: 'relative',
@@ -65,7 +65,7 @@ const Guide = () => {
               borderWidth: '2px',
               overflow: 'hidden',
             boxShadow: '0 2px 20px ',
-            borderRadius: '12px', // Adjust the borderRadius as needed
+            borderRadius: '12px', 
             transition: 'transform 200ms ease-in',
             padding: '30px',
             backdropFilter: 'blur(5px)',
