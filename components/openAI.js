@@ -127,4 +127,4 @@ give only the json as answer. `
 
 }
 
-//ChatGPT eken dena hotels plans lis of object eka true hotel plans list of object ekak ekka compare karala eeken valid chatgpt generate hotels tika witharak ganna.
+
