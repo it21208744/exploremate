@@ -9,11 +9,25 @@ export async function fetchJson(url, { ttl = 10 * 60 * 1000, timeout = 12000, he
     if (hit.expires > Date.now()) return hit.data
     cache.delete(key)
   }
-  const res = await fetch(url, {
-    ...opts,
-    headers: { 'User-Agent': UA, Accept: 'application/json', ...headers },
-    signal: AbortSignal.timeout(timeout),
-  })
+  const request = () =>
+    fetch(url, {
+      ...opts,
+      headers: { 'User-Agent': UA, Accept: 'application/json', ...headers },
+      signal: AbortSignal.timeout(timeout),
+    })
+  let res
+  try {
+    res = await request()
+  } catch {
+    try {
+      res = await request() // one retry for flaky networks
+    } catch (e) {
+      const err = new Error(`Couldn't reach ${new URL(url).host}. Please try again in a moment.`)
+      err.status = 503
+      err.cause = e
+      throw err
+    }
+  }
   if (!res.ok) {
     const text = await res.text().catch(() => '')
     const err = new Error(`Request to ${new URL(url).host} failed (${res.status}) ${text.slice(0, 200)}`)

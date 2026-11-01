@@ -1,4 +1,11 @@
 import 'dotenv/config'
+import dns from 'node:dns'
+import net from 'node:net'
+
+// Some hosts (e.g. Render) advertise IPv6 but can't route it; prefer IPv4 and
+// give connections enough time so outgoing API calls don't time out.
+dns.setDefaultResultOrder('ipv4first')
+if (typeof net.setDefaultAutoSelectFamilyAttemptTimeout === 'function') net.setDefaultAutoSelectFamilyAttemptTimeout(2000)
 
 const env = {
   port: Number(process.env.PORT) || 5000,
