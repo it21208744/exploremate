@@ -18,7 +18,7 @@ You need **Node.js 20 or newer**: https://nodejs.org
 # 1. In this folder, install everything (the first run takes a few minutes)
 npm run setup
 
-# 2. Add demo accounts, hotels and taxis (optional, but recommended)
+# 2. Add the sample data (optional, but recommended)
 npm run seed
 
 # 3. Start the API and the website together
@@ -32,6 +32,9 @@ Open **http://localhost:5173**. Demo logins all use the password `Explore@123`:
 | Traveller | traveller@exploremate.dev |
 | Hotel owner | hotel@exploremate.dev |
 | Taxi operator | taxi@exploremate.dev |
+| More travellers | sara@, tom@, priya@exploremate.dev |
+
+The sample data has 22 hotels and 17 taxis across 13 Sri Lankan towns, past and upcoming bookings in every state (confirmed, awaiting a driver, declined, cancelled), saved trips and reviews. Every business and person in it is fictional: listings end in "(demo)" and reviews are labelled "Sample review" on the site.
 
 > **No database setup needed.** When `MONGODB_URL` in `server/.env` is empty, the app starts its own local MongoDB and keeps the data in `server/.data`. The first start downloads MongoDB once (about 100 MB).
 > To use MongoDB Atlas instead, paste your connection string into `MONGODB_URL`.
@@ -70,7 +73,7 @@ Set a strong `JWT_SECRET` and a real `MONGODB_URL` before deploying.
 2. On https://dashboard.render.com, choose **New → Blueprint** and pick the repository.
 3. Optional: when Render asks, paste a MongoDB Atlas connection string (free M0 cluster) into `MONGODB_URL` and a Gemini key into `GEMINI_API_KEY`.
 
-Without `MONGODB_URL` the site uses the built-in database and adds the demo accounts automatically. That data is wiped whenever the free instance restarts or wakes from sleep, so use Atlas for anything real. Free instances sleep after 15 minutes without visitors, and the first visit after that takes about a minute.
+Without `MONGODB_URL` the site uses the built-in database and adds the sample data automatically. That data is wiped whenever the free instance restarts or wakes from sleep, so use Atlas for anything real. Free instances sleep after 15 minutes without visitors, and the first visit after that takes about a minute.
 
 ## Project structure
 

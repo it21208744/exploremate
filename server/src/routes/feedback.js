@@ -20,7 +20,7 @@ router.get(
   asyncHandler(async (_req, res) => {
     const list = await Feedback.find({ isPublic: true, rating: { $gte: 4 }, category: { $nin: ['bug'] } })
       .populate('user', 'firstName lastName role')
-      .sort({ createdAt: -1 })
+      .sort({ isSample: 1, rating: -1, createdAt: -1 })
       .limit(6)
       .lean()
     res.json(
@@ -32,6 +32,7 @@ router.get(
           message: f.message,
           name: `${f.user.firstName} ${f.user.lastName?.[0] || ''}.`.trim(),
           role: f.user.role,
+          isSample: !!f.isSample,
           createdAt: f.createdAt,
         }))
     )

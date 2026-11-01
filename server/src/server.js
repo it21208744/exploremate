@@ -2,7 +2,6 @@ import env from './config/env.js'
 import { connectDB, disconnectDB } from './config/db.js'
 import { createApp } from './app.js'
 import { activeProvider } from './services/ai.js'
-import User from './models/User.js'
 import { seedDemo } from './seedData.js'
 
 try {
@@ -13,8 +12,8 @@ try {
   process.exit(1)
 }
 
-// AUTO_SEED=true adds the demo accounts when the database is empty (handy for free hosting)
-if (process.env.AUTO_SEED === 'true' && !(await User.exists({}))) {
+// AUTO_SEED=true tops up the sample data on every start (only adds what is missing)
+if (process.env.AUTO_SEED === 'true') {
   await seedDemo({ log: true }).catch((e) => console.warn('Auto-seed failed:', e.message))
 }
 

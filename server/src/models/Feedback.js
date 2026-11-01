@@ -7,6 +7,7 @@ const feedbackSchema = new mongoose.Schema(
     category: { type: String, enum: ['general', 'planner', 'booking', 'bug', 'idea'], default: 'general' },
     message: { type: String, required: true, trim: true, maxlength: 2000 },
     isPublic: { type: Boolean, default: true },
+    isSample: { type: Boolean, default: false }, // seeded sample data, labelled on the site
   },
   { timestamps: true }
 )

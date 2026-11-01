@@ -156,7 +156,10 @@ export default function Landing() {
                 <figure key={r.id} className="panel p-6">
                   <Stars value={r.rating} size="h-4 w-4" />
                   <blockquote className="mt-4 leading-relaxed text-ink-soft">“{r.message}”</blockquote>
-                  <figcaption className="mt-4 text-sm font-semibold">{r.name}</figcaption>
+                  <figcaption className="mt-4 flex items-center gap-2 text-sm font-semibold">
+                    {r.name}
+                    {r.isSample && <span className="chip bg-mist-50 font-normal text-ink-mute">Sample review</span>}
+                  </figcaption>
                 </figure>
               ))}
             </div>
