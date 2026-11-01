@@ -1,0 +1,28 @@
+# One-click deploy on Render (free plan): website + API in a single service.
+services:
+  - type: web
+    name: exploremate
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm install && npm --prefix server install && npm --prefix client install --include=dev && npm --prefix client run build
+    startCommand: npm start
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: AUTO_SEED
+        value: "true"
+      - key: MONGOMS_DOWNLOAD_DIR
+        value: /opt/render/project/src/server/.mongo-bin
+      # Paste a MongoDB Atlas connection string here to keep data across restarts.
+      # Leave empty to use the built-in database (resets when the free instance restarts).
+      - key: MONGODB_URL
+        sync: false
+      # Optional AI key (free): https://aistudio.google.com/apikey
+      - key: GEMINI_API_KEY
+        sync: false
