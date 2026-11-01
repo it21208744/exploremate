@@ -27,7 +27,13 @@ export async function geocode(query) {
   const [city, ...rest] = q.split(',').map((s) => s.trim()).filter(Boolean)
   const hint = rest.join(' ').toLowerCase()
   const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=10&language=en&format=json`
-  const data = await fetchJson(url, { ttl: 24 * 60 * 60 * 1000 })
+  let data
+  try {
+    data = await fetchJson(url, { ttl: 24 * 60 * 60 * 1000 })
+  } catch (e) {
+    console.warn('Open-Meteo geocoding failed, trying OpenStreetMap:', e.message)
+    return geocodeOSM(q)
+  }
   let results = data.results || []
   if (hint) {
     const filtered = results.filter((r) =>
@@ -49,8 +55,116 @@ export async function geocode(query) {
   }
 }
 
-/** Current conditions + 16-day daily forecast. */
+/** Backup place search via OpenStreetMap Nominatim (no key). */
+async function geocodeOSM(q) {
+  const list = await fetchJson(
+    `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=jsonv2&limit=1&addressdetails=1&accept-language=en`,
+    { ttl: 24 * 60 * 60 * 1000 }
+  )
+  const r = list?.[0]
+  if (!r) throw new HttpError(404, `We couldn't find "${q}". Try a city name such as "Kandy" or "Paris, France".`)
+  const a = r.address || {}
+  return {
+    name: a.city || a.town || a.village || a.hamlet || r.name || q,
+    country: a.country || '',
+    countryCode: (a.country_code || '').toUpperCase(),
+    region: a.state || a.province || '',
+    lat: Number(r.lat),
+    lon: Number(r.lon),
+    timezone: 'auto',
+    population: null,
+  }
+}
+
+// MET Norway symbol codes → WMO-like icon keys
+const metIcon = (sym = '') => {
+  const s = sym.replace(/_(day|night|polartwilight)$/, '')
+  if (/thunder/.test(s)) return { code: 95, label: 'Thunderstorm', icon: 'storm' }
+  if (/snow|sleet/.test(s)) return { code: 73, label: s.includes('sleet') ? 'Sleet' : 'Snow', icon: 'snow' }
+  if (/heavyrain/.test(s)) return { code: 65, label: 'Heavy rain', icon: 'rain' }
+  if (/lightrain/.test(s)) return { code: 61, label: 'Light rain', icon: 'drizzle' }
+  if (/rain/.test(s)) return { code: 63, label: s.includes('showers') ? 'Rain showers' : 'Rain', icon: 'rain' }
+  if (/fog/.test(s)) return { code: 45, label: 'Fog', icon: 'fog' }
+  if (/cloudy/.test(s) && !/partly/.test(s)) return { code: 3, label: 'Cloudy', icon: 'cloud' }
+  if (/partlycloudy|fair/.test(s)) return { code: 2, label: s.startsWith('fair') ? 'Mainly clear' : 'Partly cloudy', icon: 'cloud-sun' }
+  if (/clearsky/.test(s)) return { code: 0, label: 'Clear sky', icon: 'sun' }
+  return { code: 3, label: 'Cloudy', icon: 'cloud' }
+}
+const SEVERITY = { storm: 6, snow: 5, rain: 4, drizzle: 3, fog: 2, cloud: 1, 'cloud-sun': 0.5, sun: 0 }
+
+/** Backup forecast from MET Norway (~9 days, no key). Same shape as getWeather. */
+async function getWeatherMET(lat, lon) {
+  const d = await fetchJson(
+    `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${Number(lat).toFixed(4)}&lon=${Number(lon).toFixed(4)}`,
+    { ttl: 30 * 60 * 1000 }
+  )
+  const series = d?.properties?.timeseries || []
+  if (!series.length) throw new Error('MET Norway returned no forecast')
+  // Approximate local time from longitude (good enough for grouping into days)
+  const offsetMs = Math.round(lon / 15) * 3600 * 1000
+  const days = new Map()
+  for (const t of series) {
+    const local = new Date(new Date(t.time).getTime() + offsetMs)
+    const date = local.toISOString().slice(0, 10)
+    const hour = local.getUTCHours()
+    const det = t.data.instant.details
+    const next = t.data.next_1_hours || t.data.next_6_hours
+    const rain = t.data.next_1_hours?.details?.precipitation_amount ?? (t.data.next_6_hours?.details?.precipitation_amount ?? 0) / 6
+    const day = days.get(date) || { date, temps: [], rain: 0, wind: 0, icons: [] }
+    day.temps.push(det.air_temperature)
+    day.rain += rain || 0
+    day.wind = Math.max(day.wind, (det.wind_speed || 0) * 3.6)
+    if (next?.summary?.symbol_code && hour >= 7 && hour <= 20) day.icons.push(metIcon(next.summary.symbol_code))
+    days.set(date, day)
+  }
+  const daily = [...days.values()].map((x) => {
+    const worst = x.icons.sort((a, b) => SEVERITY[b.icon] - SEVERITY[a.icon])[0] || { code: 3, label: 'Cloudy', icon: 'cloud' }
+    const mm = Math.round(x.rain * 10) / 10
+    return {
+      date: x.date,
+      ...worst,
+      tempMax: Math.max(...x.temps),
+      tempMin: Math.min(...x.temps),
+      rainChance: mm >= 5 ? 85 : mm >= 1 ? 65 : mm >= 0.2 ? 40 : 10, // estimated from rain amount
+      rainMm: mm,
+      windMax: Math.round(x.wind),
+      uvMax: null,
+      sunrise: null,
+      sunset: null,
+    }
+  })
+  const now = series[0]
+  const det = now.data.instant.details
+  const cur = metIcon((now.data.next_1_hours || now.data.next_6_hours)?.summary?.symbol_code)
+  return {
+    timezone: 'auto',
+    source: 'MET Norway',
+    units: { temp: '°C', wind: 'km/h', rain: 'mm' },
+    current: {
+      time: now.time,
+      temp: det.air_temperature,
+      feelsLike: det.air_temperature,
+      humidity: det.relative_humidity,
+      wind: Math.round((det.wind_speed || 0) * 3.6),
+      precipitation: now.data.next_1_hours?.details?.precipitation_amount ?? 0,
+      isDay: true,
+      ...cur,
+    },
+    daily,
+  }
+}
+
+/** Current conditions + daily forecast. Open-Meteo first, MET Norway as backup. */
 export async function getWeather(lat, lon) {
+  try {
+    return await getWeatherOpenMeteo(lat, lon)
+  } catch (e) {
+    console.warn('Open-Meteo weather failed, using MET Norway:', e.message)
+    return getWeatherMET(lat, lon)
+  }
+}
+
+async function getWeatherOpenMeteo(lat, lon) {
   const params = new URLSearchParams({
     latitude: lat,
     longitude: lon,
@@ -77,6 +191,7 @@ export async function getWeather(lat, lon) {
   }))
   return {
     timezone: d.timezone,
+    source: 'Open-Meteo',
     units: { temp: '°C', wind: 'km/h', rain: 'mm' },
     current: {
       time: c.time,

@@ -167,7 +167,7 @@ export default function Landing() {
       <footer className="border-t border-mist-200">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 text-sm text-ink-mute sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <Logo />
-          <p>Weather by Open-Meteo, maps © OpenStreetMap contributors, place info from Wikipedia.</p>
+          <p>Weather by Open-Meteo and MET Norway, maps © OpenStreetMap contributors, place info from Wikipedia.</p>
         </div>
       </footer>
     </div>
